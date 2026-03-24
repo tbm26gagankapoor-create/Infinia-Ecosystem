@@ -8,6 +8,15 @@ AI Gateway is a unified open-source LLM inference platform built by Infinia Tech
 
 ---
 
+## Documentation
+
+| Folder | Description |
+|--------|-------------|
+| [`prd/`](prd/) | Full Product Requirements Document — 11 files covering vision, brand, personas, milestones, all 6 feature domains (A-F), and technical architecture |
+| [`market_research/`](market_research/) | 14 in-depth market research documents covering opportunity analysis, competitive landscape, pricing, GTM, and more |
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
