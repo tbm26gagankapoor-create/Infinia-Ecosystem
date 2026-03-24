@@ -37,11 +37,11 @@ Envoy acts as the central API gateway with two extension points connecting to th
 | Extension | Protocol | Purpose |
 |-----------|----------|---------|
 | ext_auth | TCP | Authentication & authorization — validates API keys (`tf-` prefix), checks rate limits, verifies org membership |
-| ext_proc | gRPC | Request/response processing — token counting, usage metering, request transformation, billing event emission |
+| ext_proc | gRPC | Request/response processing — **format translation (OpenAI ↔ Anthropic ↔ internal)**, token counting, usage metering, request transformation, billing event emission |
 
 ## GPU Cluster
 
-Models run on a Kubernetes GPU cluster managed by a custom operator. The operator handles model deployment, scaling, health monitoring, and connects to GitHub for GitOps-driven model configuration. Inference requests reach models via Envoy's Dynamic Forward Proxy, which routes based on the requested model ID.
+Models are self-hosted on a Kubernetes GPU cluster managed by a custom operator. The platform does not proxy to external providers. The operator handles model deployment, scaling, health monitoring, and connects to GitHub for GitOps-driven model configuration. Inference requests reach models via Envoy's Dynamic Forward Proxy, which routes based on the requested model ID. Both OpenAI and Anthropic wire formats are normalized to an internal unified format by the Control Service (via ext_proc) before routing to model endpoints. Responses are translated back into the caller's expected format.
 
 ## Data Stores
 

@@ -2,7 +2,7 @@
 
 **Unified Open-Source LLM Inference Platform**
 
-AI Gateway is a unified open-source LLM inference platform built by Infinia Technologies (IHC Group). It provides a single OpenAI-compatible API endpoint to 40+ open-source models with cost intelligence, enterprise governance, and compliance-as-architecture.
+AI Gateway is a unified open-source LLM inference platform built by Infinia Technologies (IHC Group). It provides dual-compatible API endpoints (OpenAI and Anthropic formats) to many open-source and fine-tuned models on self-hosted GPUs with cost intelligence, enterprise governance, and compliance-as-architecture.
 
 > PRD v1.0 · March 2026
 
@@ -148,8 +148,9 @@ Email/password signup, Google OAuth, email verification, forgot password. $5 fre
 
 #### B1. Unified Inference API — M1
 
-Single OpenAI-compatible endpoint supporting 40+ open-source models. Drop-in replacement for any OpenAI SDK.
+Dual-compatible inference API supporting both OpenAI and Anthropic SDK formats. Many open-source and fine-tuned models on self-hosted K8s GPU cluster. Drop-in replacement for both OpenAI and Anthropic SDKs.
 
+**OpenAI endpoint:**
 ```
 POST /v1/chat/completions
 Authorization: Bearer tf-xxxx
@@ -157,14 +158,24 @@ base_url: https://api.aigateway.ai/v1
 model: meta-llama/llama-3.1-70b-instruct
 ```
 
+**Anthropic endpoint:**
+```
+POST /v1/messages
+x-api-key: tf-xxxx
+base_url: https://api.aigateway.ai
+model: meta-llama/llama-3.1-70b-instruct
+```
+
 Each request generates a billing event: model, tokens (input/output), cost, latency, key ID.
 
 | Metric | Target |
 |--------|--------|
-| Models at launch | 40+ |
+| Open-source and fine-tuned models at launch | Many |
 | Developers successful on first API call | >80% |
 | Users trying 2+ models (30d) | >50% |
 | Week-1 to Week-2 retention | >70% |
+| OpenAI SDK drop-in compatibility | 100% |
+| Anthropic SDK drop-in compatibility | 100% |
 
 #### B2. Model Catalog — M1
 
@@ -176,12 +187,13 @@ Browsable, searchable model list with rich metadata: provider, context window, c
 
 #### B3. Streaming Responses — M1
 
-Real-time token-by-token streaming via Server-Sent Events for all chat completions.
+Real-time token-by-token streaming via Server-Sent Events. Supports both OpenAI and Anthropic streaming protocols.
 
 - `"stream": true` in request body
-- SSE events with `data: {"choices":[{"delta":{"content":"token"}}]}`
+- OpenAI format: SSE events with `data: {"choices":[{"delta":{"content":"token"}}]}`
+- Anthropic format: Typed SSE events (`message_start`, `content_block_delta`, `message_stop`)
 - Final usage object in last chunk
-- 100% OpenAI SDK drop-in compatibility
+- 100% OpenAI and Anthropic SDK streaming compatibility
 
 ---
 

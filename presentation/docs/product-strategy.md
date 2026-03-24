@@ -37,17 +37,17 @@ Each level builds on the last. The **Core Benefit** gets us in the door; the **E
   </div>
   <div class="stat-card">
     <div class="stat-number">100%</div>
-    <div class="stat-label">OpenAI Compatible</div>
+    <div class="stat-label">OpenAI + Anthropic Compatible</div>
   </div>
 </div>
 
 The MVP delivers six capabilities designed to prove product-market fit and generate initial revenue:
 
-- **Unified Inference API** — access to 200+ open-source models through a single endpoint
+- **Unified Inference API** — access to many open-source and fine-tuned models through dual-compatible endpoints (OpenAI + Anthropic)
 - **Interactive Playground** — with blind model comparison for evaluation and selection
 - **Cost Tracking Dashboard** — real-time visibility into spend across models and teams
 - **API Key Management** — with team-level scoping, rotation, and rate limits
-- **OpenAI-Compatible Endpoints** — drop-in replacement for existing integrations
+- **OpenAI + Anthropic Compatible Endpoints** — drop-in replacement for existing integrations using either SDK
 - **Usage Analytics & Billing** — granular consumption data and automated invoicing
 
 ---
@@ -78,7 +78,7 @@ gantt
     axisFormat %b %d
     section Phase 1: Core Platform
         User Authentication              :done, 2026-03-24, 2d
-        Unified Inference API (40+ models):active, 2026-03-24, 3d
+        Unified Inference API (OpenAI + Anthropic):active, 2026-03-24, 3d
         Model Catalog                    :2026-03-25, 2d
         API Key Management               :2026-03-26, 2d
         Streaming Responses              :2026-03-26, 1d
@@ -119,7 +119,7 @@ gantt
 | # | Feature | Details |
 |---|---------|---------|
 | 1 | **User Authentication** | Email/password sign up, Google OAuth, forgot password, email verification |
-| 2 | **Unified Inference API** | Single OpenAI-compatible endpoint supporting 40+ open-source models (LLaMA 3.x, DeepSeek V3/R1, Mistral, Qwen 2.5, Command R+, Gemma 2) |
+| 2 | **Unified Inference API** | Dual-compatible endpoints (OpenAI + Anthropic formats) supporting many open-source and fine-tuned models (LLaMA 3.x, DeepSeek V3/R1, Mistral, Qwen 2.5, Command R+, Gemma 2) on self-hosted GPUs |
 | 3 | **Model Catalog** | Browsable list of all models with metadata — provider, context window, cost per 1M tokens, capabilities |
 | 4 | **API Key Management** | Create, view (masked), copy, revoke API keys. Keys prefixed with `tf-` |
 | 5 | **Streaming Responses** | Real-time token-by-token streaming for all chat completion requests |

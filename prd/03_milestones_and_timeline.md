@@ -13,7 +13,7 @@
 
 **Features:** A1 (Auth), B1 (Unified API), B2 (Model Catalog), B3 (Streaming), C1 (API Keys), D1 (Dashboard Shell), F1 (Credits)
 
-**Exit criteria:** New user signs up, receives $5 credit, creates API key, makes successful `POST /v1/chat/completions` with streaming. All 40+ models accessible.
+**Exit criteria:** New user signs up, receives $5 credit, creates API key, makes successful inference call via either `/v1/chat/completions` (OpenAI) or `/v1/messages` (Anthropic) with streaming. All models accessible.
 
 ## M2: April 5 — Playground, Cost Dashboard, Team Management
 

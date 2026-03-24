@@ -2,7 +2,7 @@
 
 ## Product Summary
 
-AI Gateway is a unified open-source LLM inference platform built by Infinia Technologies (IHC Group). It provides a single OpenAI-compatible API endpoint to 40+ open-source models with cost intelligence, enterprise governance, and compliance-as-architecture.
+AI Gateway is a unified open-source LLM inference platform built by Infinia Technologies (IHC Group). It provides dual-compatible API endpoints (OpenAI and Anthropic formats) to many open-source and fine-tuned models on self-hosted GPUs with cost intelligence, enterprise governance, and compliance-as-architecture.
 
 ## Timeline
 
