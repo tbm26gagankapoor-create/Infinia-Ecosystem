@@ -841,7 +841,7 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 
 <h3>M2: April 5 &mdash; Playground, Cost Dashboard, Team Management</h3>
 <p>Features: D2 (Playground), D3 (Side-by-Side), D4 (Blind Comparison), E1 (Cost Dashboard), E2 (Budget Alerts), E3 (Usage Analytics), C2 (Key Scoping), C3 (Key Rotation), A2 (Team/Org)</p>
-<p><strong>Exit criteria:</strong> Full playground with comparison modes. Cost dashboard with real-time spend. Org creation with role-based access. Key scoping and rotation working.</p>
+<p><strong>Exit criteria:</strong> Full playground with comparison modes. Cost dashboard with real-time spend. Org management with role-based access. Key scoping and rotation working.</p>
 
 <h3>M3: April 11 &mdash; Billing Live</h3>
 <p>Features: F2 (Metered Billing), F3 (Pricing Tiers), F4 (Billing Dashboard), F5 (Enterprise Discounts), D5 (Public Playground)</p>
@@ -908,8 +908,8 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
   <li>User visits <code>/signup</code>. Sees form with email, password, confirm password fields and "Sign up with Google" OAuth button.</li>
   <li><strong>Email path:</strong> User enters email + password (min 8 chars, mixed case, 1 number). Clicks "Create Account".</li>
   <li>System creates account in <code>pending_verification</code> state. Sends verification email within 30 seconds.</li>
-  <li>User clicks verification link (expires 24h). Account moves to <code>active</code>. $5 credit applied. Redirected to dashboard with onboarding card.</li>
-  <li><strong>Google OAuth path:</strong> User clicks "Sign up with Google". Redirected to Google consent. On return, account created (or linked if email matches) and immediately active. $5 credit applied.</li>
+  <li>User clicks verification link (expires 24h). Account moves to <code>active</code>. $5 credit applied. System auto-creates an organisation named <code>"{User's Name}'s Organisation"</code> with an auto-generated URL-safe slug. User becomes Owner. Redirected to dashboard under this org context with onboarding card.</li>
+  <li><strong>Google OAuth path:</strong> User clicks "Sign up with Google". Redirected to Google consent. On return, account created (or linked if email matches) and immediately active. $5 credit applied. Organisation auto-created as above.</li>
   <li><strong>Forgot password:</strong> User clicks "Forgot password" on <code>/login</code>. Enters email. Reset email sent within 30s. Link expires 1h. User sets new password. Existing sessions preserved.</li>
 </ol>
 <div class="flow-error">Error: Duplicate email &rarr; "An account with this email already exists. Sign in or use a different email."</div>
@@ -937,9 +937,9 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <summary>A2. Team/Org Management <span class="milestone-tag m2">M2 &middot; Apr 5</span></summary>
 <div class="feature-content">
 
-<p>Create organizations, invite members by email, Admin/Member roles, org-level default settings.</p>
+<p>Manage organisations (auto-created on signup), invite members by email, Admin/Member roles, org-level default settings.</p>
 <ul class="feature-checklist">
-  <li>Create organizations</li>
+  <li>Rename organisation</li>
   <li>Invite members by email</li>
   <li>Admin/Member roles</li>
   <li>Org-level default settings</li>
@@ -948,14 +948,12 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <div class="sub-section">
 <div class="sub-section-title">User Flow</div>
 <ol class="flow-steps">
-  <li>Authenticated user navigates to Settings &rarr; Organization. Clicks "Create Organization".</li>
-  <li>Dialog opens: org name, URL-safe slug (auto-generated, editable). Clicks "Create". User becomes Owner.</li>
+  <li>User&rsquo;s organisation is auto-created on signup (named <code>"{Name}'s Organisation"</code> with auto-generated slug). User can rename it from Settings &rarr; Organization.</li>
   <li>Owner navigates to Team tab. Clicks "Invite Member". Enters email + selects role (Admin or Member).</li>
   <li>Invitee receives email with join link (expires 7 days). Clicks link, signs up or signs in, joins org.</li>
   <li>Owner/Admin navigates to Org Settings. Sets default model allowlist, rate limits, and cost ceilings for new keys.</li>
-  <li>Members see org context in dashboard. Can switch between personal and org contexts via user menu.</li>
+  <li>Members see org context in dashboard.</li>
 </ol>
-<div class="flow-error">Error: Duplicate org slug &rarr; "This URL is already taken. Please choose another."</div>
 <div class="flow-error">Error: Invite expired &rarr; "This invitation has expired. Ask your admin to send a new invite."</div>
 </div>
 
