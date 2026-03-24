@@ -36,6 +36,10 @@ AI Gateway follows a dark-first monochrome design system. Sharp corners, upperca
 
 The AI Gateway logo is the Material Design `transit-connection-variant` icon — a network of connected nodes representing unified model routing and connectivity.
 
+| On Dark Background | On Light Background |
+|:--:|:--:|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="assets/logo-white.svg"><img src="assets/logo-white.svg" width="64" height="64" alt="AI Gateway logo (white)"></picture> | <picture><source media="(prefers-color-scheme: light)" srcset="assets/logo-black.svg"><img src="assets/logo-black.svg" width="64" height="64" alt="AI Gateway logo (black)"></picture> |
+
 #### Logo Usage Rules
 
 | Rule | Details |
