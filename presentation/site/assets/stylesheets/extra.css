@@ -1,0 +1,653 @@
+/* ============================================
+   AI Gateway — Infinia Technologies Branding
+   Dark monochrome  |  Space Grotesk
+   ============================================ */
+
+:root {
+  --ig-white: #ffffff;
+  --ig-white-80: rgba(255, 255, 255, 0.8);
+  --ig-white-60: rgba(255, 255, 255, 0.6);
+  --ig-white-20: rgba(255, 255, 255, 0.2);
+  --ig-white-10: rgba(255, 255, 255, 0.1);
+  --ig-black: #000000;
+  --ig-dark: #111111;
+  --ig-dark-card: #1a1a1a;
+  --ig-gray: #9c9c9c;
+  --ig-border: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Force dark-first palette colors ── */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: var(--ig-black);
+  --md-default-bg-color--light: var(--ig-dark);
+  --md-code-bg-color: var(--ig-dark-card);
+  --md-typeset-a-color: var(--ig-white);
+}
+
+/* ── Hero section on index page ── */
+.md-content .hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.md-content .hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.md-content .hero .tagline {
+  font-size: 1.35rem;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.md-content .hero .brand-essence {
+  display: inline-block;
+  background: var(--ig-white);
+  color: var(--ig-black);
+  padding: 0.5rem 1.5rem;
+  border-radius: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+[data-md-color-scheme="slate"] .md-content .hero .brand-essence {
+  background: var(--ig-white);
+  color: var(--ig-black);
+}
+
+/* ── Stat cards grid ── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+  align-items: stretch;
+}
+
+.stat-card {
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 120px;
+}
+
+[data-md-color-scheme="slate"] .stat-card {
+  background: var(--ig-dark-card);
+  border-color: var(--ig-border);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.stat-card .stat-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--ig-black);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+}
+
+[data-md-color-scheme="slate"] .stat-card .stat-number {
+  color: var(--ig-white);
+}
+
+.stat-card .stat-label {
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+[data-md-color-scheme="slate"] .stat-card .stat-label {
+  color: var(--ig-gray);
+}
+
+/* ── Pricing tier cards ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+  align-items: stretch;
+}
+
+.pricing-card {
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0;
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+[data-md-color-scheme="slate"] .pricing-card {
+  background: var(--ig-dark-card);
+  border-color: var(--ig-border);
+}
+
+.pricing-card.featured {
+  border-color: var(--ig-white);
+  border-width: 2px;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme="slate"] .pricing-card.featured {
+  border-color: var(--ig-white);
+}
+
+.pricing-card.featured::before {
+  content: "Popular";
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ig-white);
+  color: var(--ig-black);
+  padding: 0.15rem 0.75rem;
+  border-radius: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.pricing-card .tier-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.pricing-card .tier-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ig-black);
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+}
+
+[data-md-color-scheme="slate"] .pricing-card .tier-price {
+  color: var(--ig-white);
+}
+
+.pricing-card .tier-price span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.pricing-card ul {
+  text-align: left;
+  flex: 1;
+}
+
+.pricing-card > em:last-child,
+.pricing-card > p:last-child > em {
+  margin-top: auto;
+  display: block;
+  padding-top: 0.75rem;
+}
+
+.pricing-card .tier-desc {
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* ── Competitor cards ── */
+.competitor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0;
+  align-items: stretch;
+}
+
+.competitor-card {
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+[data-md-color-scheme="slate"] .competitor-card {
+  background: var(--ig-dark-card);
+  border-color: var(--ig-border);
+}
+
+.competitor-card h4 {
+  margin-top: 0 !important;
+  margin-bottom: 0.25rem;
+}
+
+.competitor-card .competitor-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+/* ── Section divider ── */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  margin: 3rem 0;
+}
+
+[data-md-color-scheme="slate"] .section-divider {
+  border-top-color: var(--ig-border);
+}
+
+/* ── Feature highlight boxes ── */
+.feature-box {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--ig-black);
+  border-radius: 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+[data-md-color-scheme="slate"] .feature-box {
+  background: rgba(255, 255, 255, 0.04);
+  border-left-color: var(--ig-white-60);
+}
+
+.feature-box h4 {
+  margin-top: 0 !important;
+  color: var(--ig-black);
+}
+
+[data-md-color-scheme="slate"] .feature-box h4 {
+  color: var(--ig-white);
+}
+
+/* ── Nicer tables ── */
+.md-typeset table:not([class]) {
+  border-radius: 0;
+  overflow: hidden;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--ig-black);
+  color: var(--ig-white);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background: var(--ig-dark-card);
+  border-bottom: 1px solid var(--ig-border);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  border-color: var(--ig-border);
+}
+
+/* ── Admonition overrides ── */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 0;
+}
+
+/* ── Navigation card grid (for index page) ── */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.nav-grid a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0;
+  padding: 1.25rem 1.5rem;
+  text-decoration: none;
+  color: var(--md-default-fg-color);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  min-height: 80px;
+}
+
+[data-md-color-scheme="slate"] .nav-grid a {
+  background: var(--ig-dark-card);
+  border-color: var(--ig-border);
+}
+
+.nav-grid a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  border-color: var(--ig-white-60);
+}
+
+.nav-grid a strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.nav-grid a span {
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* ── Global section spacing & symmetry ── */
+
+.md-content hr {
+  margin: 2.5rem 0;
+}
+
+.md-content .subtitle {
+  font-size: 1.1rem;
+  color: var(--md-default-fg-color--light);
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.feature-box + .feature-box {
+  margin-top: 1rem;
+}
+
+/* Tables: ensure they don't overflow on small screens */
+.md-typeset table:not([class]) {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
+/* Stat card h3 used as number — remove default margins */
+.stat-card h3 {
+  margin: 0 0 0.25rem !important;
+  font-size: 1.8rem;
+  color: var(--ig-black);
+  line-height: 1.1;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+[data-md-color-scheme="slate"] .stat-card h3 {
+  color: var(--ig-white);
+}
+
+/* Competitor card list bullets: tighter spacing */
+.competitor-card ul {
+  margin-bottom: 0;
+}
+
+.competitor-card li {
+  font-size: 0.85rem;
+}
+
+/* ── Header bar override ── */
+.md-header {
+  background: var(--ig-black) !important;
+}
+
+.md-tabs {
+  background: var(--ig-dark) !important;
+}
+
+/* ── Footer ── */
+.md-footer {
+  background: var(--ig-black);
+}
+
+/* ── Consistent card grid for responsive layouts ── */
+@media (min-width: 960px) {
+  .pricing-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .competitor-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .nav-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 959px) and (min-width: 600px) {
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .nav-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 599px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .nav-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Custom quadrant chart ── */
+.quadrant-container {
+  max-width: 700px;
+  margin: 1.5rem auto;
+}
+
+.quadrant-title {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.quadrant-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  aspect-ratio: 1.3;
+  border: 1px solid var(--ig-white-20);
+}
+
+.quadrant-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quadrant-cell.q1 { background: rgba(255,255,255,0.06); }
+.quadrant-cell.q2 { background: rgba(255,255,255,0.10); }
+.quadrant-cell.q3 { background: rgba(255,255,255,0.03); }
+.quadrant-cell.q4 { background: rgba(255,255,255,0.06); }
+
+[data-md-color-scheme="default"] .quadrant-cell.q1 { background: rgba(0,0,0,0.04); }
+[data-md-color-scheme="default"] .quadrant-cell.q2 { background: rgba(0,0,0,0.08); }
+[data-md-color-scheme="default"] .quadrant-cell.q3 { background: rgba(0,0,0,0.02); }
+[data-md-color-scheme="default"] .quadrant-cell.q4 { background: rgba(0,0,0,0.04); }
+
+.quadrant-cell-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ig-white-20);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+}
+
+[data-md-color-scheme="default"] .quadrant-cell-label {
+  color: rgba(0,0,0,0.15);
+}
+
+.quadrant-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--ig-white);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+[data-md-color-scheme="default"] .quadrant-dot {
+  background: var(--ig-black);
+}
+
+.quadrant-dot.highlight {
+  width: 14px;
+  height: 14px;
+  background: var(--ig-white);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.25);
+}
+
+[data-md-color-scheme="default"] .quadrant-dot.highlight {
+  background: var(--ig-black);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
+}
+
+.quadrant-dot span {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ig-white-80);
+  white-space: nowrap;
+}
+
+[data-md-color-scheme="default"] .quadrant-dot span {
+  color: rgba(0,0,0,0.7);
+}
+
+.quadrant-dot.highlight span {
+  font-weight: 700;
+  color: var(--ig-white);
+}
+
+[data-md-color-scheme="default"] .quadrant-dot.highlight span {
+  color: var(--ig-black);
+}
+
+.quadrant-x-label,
+.quadrant-y-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--ig-white-60);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0;
+}
+
+[data-md-color-scheme="default"] .quadrant-x-label,
+[data-md-color-scheme="default"] .quadrant-y-label {
+  color: rgba(0,0,0,0.5);
+}
+
+.quadrant-y-label {
+  flex-direction: column;
+  position: absolute;
+  left: -1rem;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-100%);
+  padding: 0 0.5rem;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  transform: translateX(-100%) rotate(180deg);
+}
+
+/* Simpler y-axis: place outside grid using wrapper */
+.quadrant-container {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.quadrant-y-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2rem;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+/* ── Sidebar divider ── */
+.md-sidebar--primary .md-sidebar__scrollwrap {
+  border-right: 1px solid var(--ig-white-20);
+}
+
+[data-md-color-scheme="default"] .md-sidebar--primary .md-sidebar__scrollwrap {
+  border-right-color: rgba(0, 0, 0, 0.12);
+}
+
+/* ── Layout: narrower sidebar, wider content ── */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: 9rem;
+  }
+  .md-sidebar--secondary {
+    width: 9rem;
+  }
+  .md-grid {
+    max-width: 80rem;
+  }
+  .md-content {
+    max-width: none;
+  }
+}

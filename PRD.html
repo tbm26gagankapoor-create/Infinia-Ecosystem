@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Gateway — Product Requirements Document</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   AI Gateway PRD — Brand Identity Styles
+   Dark monochrome  |  Space Grotesk
+   ============================================ */
+
+:root {
+  --ig-white: #ffffff;
+  --ig-white-80: rgba(255,255,255,0.8);
+  --ig-white-60: rgba(255,255,255,0.6);
+  --ig-white-40: rgba(255,255,255,0.4);
+  --ig-white-20: rgba(255,255,255,0.2);
+  --ig-white-10: rgba(255,255,255,0.1);
+  --ig-black: #000000;
+  --ig-dark: #111111;
+  --ig-dark-card: #1a1a1a;
+  --ig-gray: #9c9c9c;
+  --ig-border: rgba(255,255,255,0.12);
+  --ig-accent: rgba(255,255,255,0.06);
+  --ig-code-bg: #0d0d0d;
+  --ig-success: #22c55e;
+  --ig-warning: #eab308;
+  --ig-error: #ef4444;
+  --ig-info: #3b82f6;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  background: var(--ig-black);
+  color: var(--ig-white-80);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: var(--ig-dark);
+  border-right: 1px solid var(--ig-border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 1.5rem 0;
+}
+
+.sidebar-brand {
+  padding: 0 1.25rem 1.25rem;
+  border-bottom: 1px solid var(--ig-border);
+  margin-bottom: 1rem;
+}
+
+.sidebar-brand h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.15rem;
+}
+
+.sidebar-brand .subtitle {
+  font-size: 0.7rem;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sidebar-brand .meta {
+  font-size: 0.7rem;
+  color: var(--ig-white-40);
+  margin-top: 0.5rem;
+}
+
+.sidebar nav { padding: 0 0.75rem; }
+
+.sidebar .nav-section {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.75rem 0.5rem 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.sidebar a {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  color: var(--ig-white-60);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 400;
+  transition: color 0.15s, background 0.15s;
+}
+
+.sidebar a:hover {
+  color: var(--ig-white);
+  background: var(--ig-white-10);
+}
+
+.sidebar a.indent { padding-left: 1.25rem; font-size: 0.75rem; }
+
+/* ── Main content ── */
+.main {
+  margin-left: 260px;
+  padding: 2.5rem 3rem 4rem;
+  max-width: 1100px;
+}
+
+/* ── Typography ── */
+h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ig-border);
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h5 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ig-white-80);
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+p { margin-bottom: 0.75rem; }
+
+strong { color: var(--ig-white); font-weight: 600; }
+
+code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--ig-dark-card);
+  padding: 0.15rem 0.4rem;
+  color: var(--ig-white-80);
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.card.featured {
+  border-color: var(--ig-white);
+  border-width: 2px;
+  box-shadow: 0 4px 20px rgba(255,255,255,0.08);
+}
+
+/* ── Grid ── */
+.grid { display: grid; gap: 1.25rem; margin: 1.5rem 0; }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.grid-5 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+/* ── Stat cards ── */
+.stat-card {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--ig-gray);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Tables ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--ig-border);
+  margin: 1rem 0;
+  font-size: 0.85rem;
+}
+
+th {
+  background: var(--ig-dark-card);
+  color: var(--ig-white);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--ig-border);
+}
+
+td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--ig-border);
+  color: var(--ig-white-80);
+}
+
+tr:hover td { background: var(--ig-white-10); }
+
+/* ── Feature sections (collapsible) ── */
+details {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  margin-bottom: 0.75rem;
+}
+
+details[open] {
+  border-color: var(--ig-white-20);
+}
+
+summary {
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ig-white);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  user-select: none;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary::before {
+  content: '+';
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  color: var(--ig-gray);
+  width: 1.25rem;
+  flex-shrink: 0;
+}
+
+details[open] summary::before { content: '−'; }
+
+summary .milestone-tag {
+  margin-left: auto;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--ig-border);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ig-gray);
+}
+
+summary .milestone-tag.m1 { border-color: var(--ig-success); color: var(--ig-success); }
+summary .milestone-tag.m2 { border-color: var(--ig-info); color: var(--ig-info); }
+summary .milestone-tag.m3 { border-color: var(--ig-warning); color: var(--ig-warning); }
+summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(--ig-white-40); }
+
+.feature-content {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid var(--ig-border);
+}
+
+/* ── Feature sub-sections ── */
+.sub-section {
+  margin-top: 1.25rem;
+}
+
+.sub-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sub-section-title::before {
+  content: '';
+  width: 3px;
+  height: 12px;
+  background: var(--ig-white-40);
+  display: inline-block;
+}
+
+/* ── Flow steps ── */
+.flow-steps {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+}
+
+.flow-steps li {
+  counter-increment: step;
+  padding: 0.5rem 0 0.5rem 2.5rem;
+  position: relative;
+  border-left: 1px solid var(--ig-border);
+  margin-left: 0.75rem;
+  font-size: 0.88rem;
+}
+
+.flow-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: -0.75rem;
+  top: 0.45rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--ig-dark);
+  border: 1px solid var(--ig-border);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ig-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.flow-steps li:last-child { border-left-color: transparent; }
+
+.flow-error {
+  font-size: 0.8rem;
+  color: var(--ig-error);
+  margin-top: 0.25rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--ig-error);
+}
+
+/* ── API endpoint blocks ── */
+.endpoint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.82rem;
+}
+
+.method {
+  font-weight: 600;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  min-width: 3.5rem;
+  text-align: center;
+}
+
+.method.get { background: rgba(34,197,94,0.15); color: var(--ig-success); border: 1px solid rgba(34,197,94,0.3); }
+.method.post { background: rgba(59,130,246,0.15); color: var(--ig-info); border: 1px solid rgba(59,130,246,0.3); }
+.method.put { background: rgba(234,179,8,0.15); color: var(--ig-warning); border: 1px solid rgba(234,179,8,0.3); }
+.method.patch { background: rgba(234,179,8,0.15); color: var(--ig-warning); border: 1px solid rgba(234,179,8,0.3); }
+.method.delete { background: rgba(239,68,68,0.15); color: var(--ig-error); border: 1px solid rgba(239,68,68,0.3); }
+
+.endpoint .path { color: var(--ig-white); }
+
+/* ── Metrics ── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.metric {
+  background: var(--ig-dark);
+  border: 1px solid var(--ig-border);
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+
+.metric .value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ig-white);
+}
+
+.metric .label {
+  font-size: 0.65rem;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.15rem;
+}
+
+/* ── Color swatches ── */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.swatch {
+  border: 1px solid var(--ig-border);
+}
+
+.swatch-color {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swatch-info {
+  padding: 0.5rem 0.65rem;
+  background: var(--ig-dark-card);
+}
+
+.swatch-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.swatch-hex {
+  font-size: 0.7rem;
+  color: var(--ig-gray);
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* ── Typography specimen ── */
+.type-specimen {
+  border: 1px solid var(--ig-border);
+  padding: 1.25rem;
+  margin: 0.5rem 0;
+  background: var(--ig-dark-card);
+}
+
+.type-specimen .sample {
+  margin-bottom: 0.5rem;
+}
+
+.type-specimen .specs {
+  font-size: 0.7rem;
+  color: var(--ig-gray);
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* ── Divider ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--ig-border);
+  margin: 2.5rem 0;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--ig-border);
+  color: var(--ig-gray);
+}
+
+.badge.p0 { border-color: var(--ig-error); color: var(--ig-error); }
+.badge.p1 { border-color: var(--ig-warning); color: var(--ig-warning); }
+.badge.p2 { border-color: var(--ig-info); color: var(--ig-info); }
+.badge.p3 { border-color: var(--ig-white-20); color: var(--ig-white-40); }
+
+/* ── Print ── */
+@media print {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  details { break-inside: avoid; }
+  details[open] { break-inside: auto; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 1.5rem 1rem; }
+  h1 { font-size: 1.8rem; }
+  .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
+}
+
+/* ── Milestone timeline ── */
+.timeline {
+  display: flex;
+  gap: 0;
+  margin: 1.5rem 0;
+  border: 1px solid var(--ig-border);
+}
+
+.timeline-item {
+  flex: 1;
+  padding: 1rem;
+  border-right: 1px solid var(--ig-border);
+  text-align: center;
+}
+
+.timeline-item:last-child { border-right: none; }
+
+.timeline-item .date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  font-family: 'Roboto Mono', monospace;
+}
+
+.timeline-item .label {
+  font-size: 0.7rem;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.timeline-item.active {
+  background: var(--ig-dark-card);
+  border-bottom: 2px solid var(--ig-white);
+}
+
+/* ── Section anchor offset ── */
+[id] {
+  scroll-margin-top: 1rem;
+}
+
+/* ── Feature Checklist ── */
+.feature-checklist {
+  display:flex; flex-wrap:wrap; gap:0.4rem 1.2rem;
+  margin:0.75rem 0 0.25rem;
+  padding:0;
+  list-style:none;
+}
+.feature-checklist li {
+  display:flex; align-items:center; gap:0.4rem;
+  font-size:0.78rem;
+  color:var(--ig-gray);
+}
+.feature-checklist li::before {
+  content:"";
+  display:inline-block;
+  width:14px; height:14px;
+  border:1.5px solid #444;
+  border-radius:3px;
+  flex-shrink:0;
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ SIDEBAR ════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.3rem;">
+      <svg class="brand-logo" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 11h-3.18C14.4 9.84 13.3 9 12 9s-2.4.84-2.82 2H6c-.33 0-2-.1-2-2V8c0-1.83 1.54-2 2-2h10.18C16.6 7.16 17.7 8 19 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3c-1.3 0-2.4.84-2.82 2H6C4.39 4 2 5.06 2 8v1c0 2.94 2.39 4 4 4h3.18c.42 1.16 1.52 2 2.82 2s2.4-.84 2.82-2H18c.33 0 2 .1 2 2v1c0 1.83-1.54 2-2 2H7.82C7.4 16.84 6.3 16 5 16a3 3 0 0 0-3 3 3 3 0 0 0 3 3c1.3 0 2.4-.84 2.82-2H18c1.61 0 4-1.07 4-4v-1c0-2.93-2.39-4-4-4m1-7a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M5 20a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1" fill="#ffffff"/></svg>
+      <h1>AI Gateway</h1>
+    </div>
+    <div class="subtitle">Product Requirements Document</div>
+    <div class="meta">v1.0 &middot; March 23, 2026 &middot; Draft</div>
+  </div>
+  <nav>
+    <div class="nav-section">Document</div>
+    <a href="#overview">Overview &amp; Vision</a>
+    <a href="#brand">Brand Guidelines</a>
+    <a href="#personas">Users &amp; Personas</a>
+    <a href="#milestones">Milestones &amp; Timeline</a>
+
+    <div class="nav-section">A &mdash; Auth &amp; Users</div>
+    <a href="#a1" class="indent">A1. User Authentication</a>
+    <a href="#a2" class="indent">A2. Team/Org Management</a>
+
+    <div class="nav-section">B &mdash; Inference API</div>
+    <a href="#b1" class="indent">B1. Unified Inference API</a>
+    <a href="#b2" class="indent">B2. Model Catalog</a>
+    <a href="#b3" class="indent">B3. Streaming Responses</a>
+
+    <div class="nav-section">C &mdash; API Keys</div>
+    <a href="#c1" class="indent">C1. Basic Key Management</a>
+    <a href="#c2" class="indent">C2. Advanced Key Scoping</a>
+    <a href="#c3" class="indent">C3. Key Rotation</a>
+
+    <div class="nav-section">D &mdash; Dashboard &amp; Playground</div>
+    <a href="#d1" class="indent">D1. Dashboard Shell</a>
+    <a href="#d2" class="indent">D2. Interactive Playground</a>
+    <a href="#d3" class="indent">D3. Side-by-Side Comparison</a>
+    <a href="#d4" class="indent">D4. Blind Comparison</a>
+    <a href="#d5" class="indent">D5. Public Playground</a>
+
+    <div class="nav-section">E &mdash; Cost Intelligence</div>
+    <a href="#e1" class="indent">E1. Cost Dashboard</a>
+    <a href="#e2" class="indent">E2. Budget Alerts</a>
+    <a href="#e3" class="indent">E3. Usage Analytics</a>
+
+    <div class="nav-section">F &mdash; Billing</div>
+    <a href="#f1" class="indent">F1. Credit System</a>
+    <a href="#f2" class="indent">F2. Metered Billing</a>
+    <a href="#f3" class="indent">F3. Pricing Tiers</a>
+    <a href="#f4" class="indent">F4. Billing Dashboard</a>
+    <a href="#f5" class="indent">F5. Enterprise Discounts</a>
+
+    <div class="nav-section">Architecture</div>
+    <a href="#tech">Technical Architecture</a>
+
+  </nav>
+</aside>
+
+<!-- ════════════════ MAIN CONTENT ════════════════ -->
+<div class="main">
+
+<!-- ──────────── OVERVIEW ──────────── -->
+<section id="overview">
+<h3>Product Summary</h3>
+<p>AI Gateway is a unified open-source LLM inference platform built by <strong>Infinia Technologies</strong> (IHC Group). It provides a single OpenAI-compatible API endpoint to 40+ open-source models with cost intelligence, enterprise governance, and compliance-as-architecture.</p>
+
+<h4>Tech Stack</h4>
+<table>
+  <tr><th>Layer</th><th>Technology</th></tr>
+  <tr><td>Frontend</td><td>Next.js 16, React 19, TypeScript 5</td></tr>
+  <tr><td>UI Library</td><td>Engineering team decision</td></tr>
+  <tr><td>Charts</td><td>Recharts</td></tr>
+  <tr><td>Data Tables</td><td>TanStack Table (pivot/grouping)</td></tr>
+  <tr><td>API Compatibility</td><td>OpenAI-compatible (<code>/v1/chat/completions</code>)</td></tr>
+  <tr><td>Payments</td><td>Stripe (metered billing)</td></tr>
+  <tr><td>Auth</td><td>NextAuth.js / Auth.js (email + Google OAuth)</td></tr>
+  <tr><td>Database</td><td>Engineering team decision</td></tr>
+  <tr><td>API Key Prefix</td><td><code>tf-</code></td></tr>
+</table>
+
+<h4>Timeline</h4>
+<div class="timeline">
+  <div class="timeline-item"><div class="date">Mar 28</div><div class="label">M1 &mdash; Sign Up + API</div></div>
+  <div class="timeline-item"><div class="date">Apr 5</div><div class="label">M2 &mdash; Playground + Teams</div></div>
+  <div class="timeline-item"><div class="date">Apr 11</div><div class="label">M3 &mdash; Billing Live</div></div>
+  <div class="timeline-item active"><div class="date">Apr 15</div><div class="label">LAUNCH</div></div>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- ──────────── BRAND GUIDELINES ──────────── -->
+<section id="brand">
+<h2>Brand Guidelines</h2>
+<p>AI Gateway follows a dark-first monochrome design system. Sharp corners, uppercase headings, and technical precision define the visual language.</p>
+
+<h3>Logo</h3>
+<p>The AI Gateway logo is the Material Design <code>transit-connection-variant</code> icon — a network of connected nodes representing unified model routing and connectivity.</p>
+
+<div class="grid grid-3" style="margin:1.5rem 0;">
+  <div class="card" style="text-align:center;">
+    <div style="margin-bottom:0.75rem;">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 11h-3.18C14.4 9.84 13.3 9 12 9s-2.4.84-2.82 2H6c-.33 0-2-.1-2-2V8c0-1.83 1.54-2 2-2h10.18C16.6 7.16 17.7 8 19 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3c-1.3 0-2.4.84-2.82 2H6C4.39 4 2 5.06 2 8v1c0 2.94 2.39 4 4 4h3.18c.42 1.16 1.52 2 2.82 2s2.4-.84 2.82-2H18c.33 0 2 .1 2 2v1c0 1.83-1.54 2-2 2H7.82C7.4 16.84 6.3 16 5 16a3 3 0 0 0-3 3 3 3 0 0 0 3 3c1.3 0 2.4-.84 2.82-2H18c1.61 0 4-1.07 4-4v-1c0-2.93-2.39-4-4-4m1-7a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M5 20a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1" fill="#ffffff"/></svg>
+    </div>
+    <div style="font-size:0.7rem;color:var(--ig-gray);text-transform:uppercase;letter-spacing:0.06em;">On Dark Background</div>
+  </div>
+  <div class="card" style="text-align:center;background:#ffffff;">
+    <div style="margin-bottom:0.75rem;">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 11h-3.18C14.4 9.84 13.3 9 12 9s-2.4.84-2.82 2H6c-.33 0-2-.1-2-2V8c0-1.83 1.54-2 2-2h10.18C16.6 7.16 17.7 8 19 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3c-1.3 0-2.4.84-2.82 2H6C4.39 4 2 5.06 2 8v1c0 2.94 2.39 4 4 4h3.18c.42 1.16 1.52 2 2.82 2s2.4-.84 2.82-2H18c.33 0 2 .1 2 2v1c0 1.83-1.54 2-2 2H7.82C7.4 16.84 6.3 16 5 16a3 3 0 0 0-3 3 3 3 0 0 0 3 3c1.3 0 2.4-.84 2.82-2H18c1.61 0 4-1.07 4-4v-1c0-2.93-2.39-4-4-4m1-7a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M5 20a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1" fill="#000000"/></svg>
+    </div>
+    <div style="font-size:0.7rem;color:#9c9c9c;text-transform:uppercase;letter-spacing:0.06em;">On Light Background</div>
+  </div>
+  <div class="card" style="text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:0.75rem;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 11h-3.18C14.4 9.84 13.3 9 12 9s-2.4.84-2.82 2H6c-.33 0-2-.1-2-2V8c0-1.83 1.54-2 2-2h10.18C16.6 7.16 17.7 8 19 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3c-1.3 0-2.4.84-2.82 2H6C4.39 4 2 5.06 2 8v1c0 2.94 2.39 4 4 4h3.18c.42 1.16 1.52 2 2.82 2s2.4-.84 2.82-2H18c.33 0 2 .1 2 2v1c0 1.83-1.54 2-2 2H7.82C7.4 16.84 6.3 16 5 16a3 3 0 0 0-3 3 3 3 0 0 0 3 3c1.3 0 2.4-.84 2.82-2H18c1.61 0 4-1.07 4-4v-1c0-2.93-2.39-4-4-4m1-7a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M5 20a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1" fill="#ffffff"/></svg>
+      <span style="font-size:1.4rem;font-weight:700;color:var(--ig-white);text-transform:uppercase;letter-spacing:0.04em;">AI Gateway</span>
+    </div>
+    <div style="font-size:0.7rem;color:var(--ig-gray);text-transform:uppercase;letter-spacing:0.06em;">Lockup (Icon + Wordmark)</div>
+  </div>
+</div>
+
+<h4>Logo Usage Rules</h4>
+<table>
+  <tr><th>Rule</th><th>Details</th></tr>
+  <tr><td>Minimum size</td><td>24px &times; 24px (icon only), 120px width (lockup)</td></tr>
+  <tr><td>Clear space</td><td>Minimum 50% of icon width on all sides</td></tr>
+  <tr><td>Dark backgrounds</td><td>White icon (#ffffff)</td></tr>
+  <tr><td>Light backgrounds</td><td>Black icon (#000000)</td></tr>
+  <tr><td>Do not</td><td>Rotate, distort, add drop shadows, change colors, place on busy backgrounds</td></tr>
+  <tr><td>Source</td><td>Material Design Icons: <code>transit-connection-variant</code></td></tr>
+  <tr><td>Favicon</td><td>Use icon-only at 32px &times; 32px with transparent background</td></tr>
+</table>
+
+<h3>Color Palette</h3>
+<div class="swatch-grid">
+  <div class="swatch"><div class="swatch-color" style="background:#000000;"></div><div class="swatch-info"><div class="swatch-name">Black</div><div class="swatch-hex">#000000 &middot; Backgrounds</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#111111;"></div><div class="swatch-info"><div class="swatch-name">Dark</div><div class="swatch-hex">#111111 &middot; Surfaces</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#1a1a1a;"></div><div class="swatch-info"><div class="swatch-name">Card</div><div class="swatch-hex">#1a1a1a &middot; Cards, panels</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#ffffff;"><span style="color:#000;">Aa</span></div><div class="swatch-info"><div class="swatch-name">White</div><div class="swatch-hex">#ffffff &middot; Primary text</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:rgba(255,255,255,0.8);"><span style="color:#000;">Aa</span></div><div class="swatch-info"><div class="swatch-name">White 80%</div><div class="swatch-hex">rgba(255,255,255,0.8) &middot; Body</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#9c9c9c;"></div><div class="swatch-info"><div class="swatch-name">Gray</div><div class="swatch-hex">#9c9c9c &middot; Muted, labels</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:rgba(255,255,255,0.12);"></div><div class="swatch-info"><div class="swatch-name">Border</div><div class="swatch-hex">rgba(255,255,255,0.12)</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#22c55e;"></div><div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-hex">#22c55e &middot; Status</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#eab308;"></div><div class="swatch-info"><div class="swatch-name">Warning</div><div class="swatch-hex">#eab308 &middot; Alerts</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#ef4444;"></div><div class="swatch-info"><div class="swatch-name">Error</div><div class="swatch-hex">#ef4444 &middot; Destructive</div></div></div>
+  <div class="swatch"><div class="swatch-color" style="background:#3b82f6;"></div><div class="swatch-info"><div class="swatch-name">Info</div><div class="swatch-hex">#3b82f6 &middot; Links, accents</div></div></div>
+</div>
+
+<h3>Typography</h3>
+<div class="type-specimen"><div class="sample" style="font-size:2.4rem;font-weight:700;text-transform:uppercase;letter-spacing:-0.02em;color:var(--ig-white);">Heading Level 1</div><div class="specs">Space Grotesk &middot; 2.4rem &middot; 700 &middot; uppercase &middot; -0.02em</div></div>
+<div class="type-specimen"><div class="sample" style="font-size:1.5rem;font-weight:700;text-transform:uppercase;letter-spacing:0.01em;color:var(--ig-white);">Heading Level 2</div><div class="specs">Space Grotesk &middot; 1.5rem &middot; 700 &middot; uppercase &middot; 0.01em</div></div>
+<div class="type-specimen"><div class="sample" style="font-size:1.15rem;font-weight:700;text-transform:uppercase;letter-spacing:0.02em;color:var(--ig-white);">Heading Level 3</div><div class="specs">Space Grotesk &middot; 1.15rem &middot; 700 &middot; uppercase &middot; 0.02em</div></div>
+<div class="type-specimen"><div class="sample" style="font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--ig-gray);">LABEL / CAPTION</div><div class="specs">Space Grotesk &middot; 0.85rem &middot; 600 &middot; uppercase &middot; 0.08em &middot; Gray</div></div>
+<div class="type-specimen"><div class="sample" style="font-size:0.95rem;color:var(--ig-white-80);">Body text uses Space Grotesk at 0.95rem with line-height 1.65 for optimal readability on dark backgrounds.</div><div class="specs">Space Grotesk &middot; 0.95rem &middot; 400 &middot; rgba(255,255,255,0.8)</div></div>
+<div class="type-specimen"><div class="sample" style="font-family:'Roboto Mono',monospace;font-size:0.82rem;color:var(--ig-white-80);">const apiKey = "tf-xxxxxxxxxxxx";</div><div class="specs">Roboto Mono &middot; 0.82rem &middot; 400 &middot; Code, schemas, endpoints</div></div>
+
+<h3>Component Patterns</h3>
+<table>
+  <tr><th>Pattern</th><th>Properties</th><th>Usage</th></tr>
+  <tr><td>Card</td><td>bg: #1a1a1a, border: 1px rgba(255,255,255,0.12), padding: 1.5rem, radius: 0</td><td>Content containers, stats, pricing</td></tr>
+  <tr><td>Featured Card</td><td>border: 2px #ffffff, box-shadow: 0 4px 20px rgba(255,255,255,0.08)</td><td>Highlighted items, popular tier</td></tr>
+  <tr><td>Feature Box</td><td>border-left: 3px rgba(255,255,255,0.6), bg: rgba(255,255,255,0.04)</td><td>Callouts, feature highlights</td></tr>
+  <tr><td>Table Header</td><td>bg: #1a1a1a, font: 0.75rem uppercase 0.06em spacing</td><td>All data tables</td></tr>
+  <tr><td>Hover State</td><td>translateY(-2px), box-shadow: 0 4px 16px rgba(0,0,0,0.3), transition: 0.2s</td><td>All interactive cards</td></tr>
+  <tr><td>Grid</td><td>auto-fit minmax, gap: 1.25rem</td><td>Responsive layouts</td></tr>
+</table>
+
+<h3>Spacing &amp; Layout</h3>
+<table>
+  <tr><th>Element</th><th>Value</th></tr>
+  <tr><td>Card padding</td><td>1.5rem</td></tr>
+  <tr><td>Grid gap</td><td>1.25rem</td></tr>
+  <tr><td>Section margin</td><td>2.5rem</td></tr>
+  <tr><td>Border width</td><td>1px (standard), 2px (featured)</td></tr>
+  <tr><td>Border radius</td><td>0 (always)</td></tr>
+  <tr><td>Content max-width</td><td>1100px</td></tr>
+  <tr><td>Sidebar width</td><td>260px</td></tr>
+</table>
+
+<h3>Brand Voice</h3>
+<p>Enterprise, technical, precise. Uppercase headings convey authority. Concise descriptions respect the reader's time. Monospace for all technical content. Dark-first design signals professional-grade tooling.</p>
+</section>
+
+<hr class="divider">
+
+<!-- ──────────── PERSONAS ──────────── -->
+<section id="personas">
+<h2>Target Users &amp; Personas</h2>
+
+<table>
+  <tr><th>Segment</th><th>Description</th><th>Monthly Spend</th><th>Priority</th></tr>
+  <tr><td><strong>C1: Indie Hacker</strong></td><td>Individual devs, students, hobbyists. Price-sensitive, high social influence.</td><td>$0-50</td><td>Medium (funnel)</td></tr>
+  <tr><td><strong>C2: Startup Builder</strong></td><td>Seed-to-Series B, 5-50 employees. Speed-to-market driven.</td><td>$50-2,000</td><td>High (growth)</td></tr>
+  <tr><td><strong>C3: Mid-Market</strong></td><td>50-1,000 employees, 5-20 AI devs. Need cost visibility + RBAC.</td><td>$2K-25K</td><td>High</td></tr>
+  <tr><td><strong>C4: Enterprise</strong></td><td>Fortune 500. 6-18 month procurement. SOC 2, SSO, SLAs required.</td><td>$25K-500K</td><td>High (revenue)</td></tr>
+  <tr><td><strong>C5: AI-Native</strong></td><td>AI is the product. Benchmark rigorously. Multi-provider architecture.</td><td>$10K-1M+</td><td>Medium (credibility)</td></tr>
+  <tr><td><strong>C6: Regulated</strong></td><td>Healthcare, finance, government. Compliance-first decisions.</td><td>$50K-2M+</td><td>High (post-SOC 2)</td></tr>
+  <tr><td><strong>C7: IHC Group</strong></td><td>50-100 tech-active subsidiaries. Near-zero acquisition cost.</td><td>$5K-500K</td><td>Highest (launch)</td></tr>
+</table>
+
+<h3>Behavioral Segments</h3>
+<div class="grid grid-4">
+  <div class="stat-card"><div class="stat-number">60%</div><div class="stat-label">Experimenters &middot; 3% revenue</div></div>
+  <div class="stat-card"><div class="stat-number">25%</div><div class="stat-label">Steady-State &middot; 30% revenue</div></div>
+  <div class="stat-card"><div class="stat-number">10%</div><div class="stat-label">High-Volume &middot; 45% revenue</div></div>
+  <div class="stat-card"><div class="stat-number">5%</div><div class="stat-label">Batch Users &middot; 22% revenue</div></div>
+</div>
+</section>
+
+<hr class="divider">
+
+<!-- ──────────── MILESTONES ──────────── -->
+<section id="milestones">
+<h2>Milestones &amp; Timeline</h2>
+
+<div class="timeline">
+  <div class="timeline-item"><div class="date">Mar 28</div><div class="label">M1</div></div>
+  <div class="timeline-item"><div class="date">Apr 5</div><div class="label">M2</div></div>
+  <div class="timeline-item"><div class="date">Apr 11</div><div class="label">M3</div></div>
+  <div class="timeline-item active"><div class="date">Apr 15</div><div class="label">Launch</div></div>
+</div>
+
+<h3>M1: March 28 &mdash; Users Can Sign Up and Make API Calls</h3>
+<p>Features: A1 (Auth), B1 (Unified API), B2 (Model Catalog), B3 (Streaming), C1 (API Keys), D1 (Dashboard Shell), F1 (Credits)</p>
+<p><strong>Exit criteria:</strong> New user signs up, receives $5 credit, creates API key, makes successful <code>POST /v1/chat/completions</code> with streaming. All 40+ models accessible.</p>
+
+<h3>M2: April 5 &mdash; Playground, Cost Dashboard, Team Management</h3>
+<p>Features: D2 (Playground), D3 (Side-by-Side), D4 (Blind Comparison), E1 (Cost Dashboard), E2 (Budget Alerts), E3 (Usage Analytics), C2 (Key Scoping), C3 (Key Rotation), A2 (Team/Org)</p>
+<p><strong>Exit criteria:</strong> Full playground with comparison modes. Cost dashboard with real-time spend. Org creation with role-based access. Key scoping and rotation working.</p>
+
+<h3>M3: April 11 &mdash; Billing Live</h3>
+<p>Features: F2 (Metered Billing), F3 (Pricing Tiers), F4 (Billing Dashboard), F5 (Enterprise Discounts), D5 (Public Playground)</p>
+<p><strong>Exit criteria:</strong> Stripe billing active. All tiers purchasable. Invoices generated. Public playground with IP-based rate limiting.</p>
+
+<h3>M4: April 15 &mdash; LAUNCH</h3>
+<p><strong>Gate criteria:</strong> All M1-M3 features passing. 99.9% uptime for 7+ consecutive days. Load test at 2x peak. Security audit complete. 1+ IHC subsidiary onboarded end-to-end. Monitoring and on-call operational.</p>
+
+<h4>Feature-to-Milestone Matrix</h4>
+<table>
+  <tr><th>ID</th><th>Feature</th><th>M1</th><th>M2</th><th>M3</th><th>Priority</th></tr>
+  <tr><td>A1</td><td>User Authentication</td><td>&#10003;</td><td></td><td></td><td><span class="badge p0">P0</span></td></tr>
+  <tr><td>A2</td><td>Team/Org Management</td><td></td><td>&#10003;</td><td></td><td><span class="badge p1">P1</span></td></tr>
+  <tr><td>B1</td><td>Unified Inference API</td><td>&#10003;</td><td></td><td></td><td><span class="badge p0">P0</span></td></tr>
+  <tr><td>B2</td><td>Model Catalog</td><td>&#10003;</td><td></td><td></td><td><span class="badge p0">P0</span></td></tr>
+  <tr><td>B3</td><td>Streaming Responses</td><td>&#10003;</td><td></td><td></td><td><span class="badge p0">P0</span></td></tr>
+  <tr><td>C1</td><td>Basic API Key Mgmt</td><td>&#10003;</td><td></td><td></td><td><span class="badge p0">P0</span></td></tr>
+  <tr><td>C2</td><td>Advanced Key Scoping</td><td></td><td>&#10003;</td><td></td><td><span class="badge p1">P1</span></td></tr>
+  <tr><td>C3</td><td>Key Rotation</td><td></td><td>&#10003;</td><td></td><td><span class="badge p1">P1</span></td></tr>
+  <tr><td>D1</td><td>Dashboard Shell</td><td>&#10003;</td><td></td><td></td><td><span class="badge p0">P0</span></td></tr>
+  <tr><td>D2</td><td>Interactive Playground</td><td></td><td>&#10003;</td><td></td><td><span class="badge p0">P0</span></td></tr>
+  <tr><td>D3</td><td>Side-by-Side Comparison</td><td></td><td>&#10003;</td><td></td><td><span class="badge p0">P0</span></td></tr>
+  <tr><td>D4</td><td>Blind Comparison</td><td></td><td>&#10003;</td><td></td><td><span class="badge p0">P0</span></td></tr>
+  <tr><td>D5</td><td>Public Playground</td><td></td><td></td><td>&#10003;</td><td><span class="badge p1">P1</span></td></tr>
+  <tr><td>E1</td><td>Cost Intelligence Dashboard</td><td></td><td>&#10003;</td><td></td><td><span class="badge p1">P1</span></td></tr>
+  <tr><td>E2</td><td>Budget Alerts</td><td></td><td>&#10003;</td><td></td><td><span class="badge p1">P1</span></td></tr>
+  <tr><td>E3</td><td>Usage Analytics</td><td></td><td>&#10003;</td><td></td><td><span class="badge p1">P1</span></td></tr>
+  <tr><td>F1</td><td>Credit System</td><td>&#10003;</td><td></td><td></td><td><span class="badge p0">P0</span></td></tr>
+  <tr><td>F2</td><td>Metered Billing</td><td></td><td></td><td>&#10003;</td><td><span class="badge p0">P0</span></td></tr>
+  <tr><td>F3</td><td>Pricing Tiers</td><td></td><td></td><td>&#10003;</td><td><span class="badge p1">P1</span></td></tr>
+  <tr><td>F4</td><td>Billing Dashboard</td><td></td><td></td><td>&#10003;</td><td><span class="badge p1">P1</span></td></tr>
+  <tr><td>F5</td><td>Enterprise Discounts</td><td></td><td></td><td>&#10003;</td><td><span class="badge p2">P2</span></td></tr>
+</table>
+</section>
+
+<hr class="divider">
+
+<!-- ════════════════════════════════════════════════════════════════
+     FEATURE DEEP DIVES
+     ════════════════════════════════════════════════════════════════ -->
+
+<h2>Feature Requirements &mdash; Deep Dive</h2>
+
+<!-- ───── DOMAIN A ───── -->
+<h3>Domain A: Authentication &amp; User Management</h3>
+
+<!-- A1 -->
+<details id="a1">
+<summary>A1. User Authentication <span class="milestone-tag m1">M1 &middot; Mar 28</span></summary>
+<div class="feature-content">
+
+<p>Email/password signup, Google OAuth, email verification, forgot password. $5 free credit applied on verification.</p>
+<ul class="feature-checklist">
+  <li>Email/password signup</li>
+  <li>Google OAuth</li>
+  <li>Email verification</li>
+  <li>Forgot password</li>
+  <li>$5 free credit on verification</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User visits <code>/signup</code>. Sees form with email, password, confirm password fields and "Sign up with Google" OAuth button.</li>
+  <li><strong>Email path:</strong> User enters email + password (min 8 chars, mixed case, 1 number). Clicks "Create Account".</li>
+  <li>System creates account in <code>pending_verification</code> state. Sends verification email within 30 seconds.</li>
+  <li>User clicks verification link (expires 24h). Account moves to <code>active</code>. $5 credit applied. Redirected to dashboard with onboarding card.</li>
+  <li><strong>Google OAuth path:</strong> User clicks "Sign up with Google". Redirected to Google consent. On return, account created (or linked if email matches) and immediately active. $5 credit applied.</li>
+  <li><strong>Forgot password:</strong> User clicks "Forgot password" on <code>/login</code>. Enters email. Reset email sent within 30s. Link expires 1h. User sets new password. Existing sessions preserved.</li>
+</ol>
+<div class="flow-error">Error: Duplicate email &rarr; "An account with this email already exists. Sign in or use a different email."</div>
+<div class="flow-error">Error: Weak password &rarr; Inline validation showing requirements not met.</div>
+<div class="flow-error">Error: Expired verification link &rarr; "This link has expired. Click here to resend verification email."</div>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;90%</div><div class="label">Signup completion rate</div></div>
+  <div class="metric"><div class="value">&gt;80%</div><div class="label">Email verification rate</div></div>
+  <div class="metric"><div class="value">&gt;60%</div><div class="label">Users making first API call within 24h</div></div>
+  <div class="metric"><div class="value">&lt;2min</div><div class="label">Signup to first API call</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- A2 -->
+<details id="a2">
+<summary>A2. Team/Org Management <span class="milestone-tag m2">M2 &middot; Apr 5</span></summary>
+<div class="feature-content">
+
+<p>Create organizations, invite members by email, Admin/Member roles, org-level default settings.</p>
+<ul class="feature-checklist">
+  <li>Create organizations</li>
+  <li>Invite members by email</li>
+  <li>Admin/Member roles</li>
+  <li>Org-level default settings</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>Authenticated user navigates to Settings &rarr; Organization. Clicks "Create Organization".</li>
+  <li>Dialog opens: org name, URL-safe slug (auto-generated, editable). Clicks "Create". User becomes Owner.</li>
+  <li>Owner navigates to Team tab. Clicks "Invite Member". Enters email + selects role (Admin or Member).</li>
+  <li>Invitee receives email with join link (expires 7 days). Clicks link, signs up or signs in, joins org.</li>
+  <li>Owner/Admin navigates to Org Settings. Sets default model allowlist, rate limits, and cost ceilings for new keys.</li>
+  <li>Members see org context in dashboard. Can switch between personal and org contexts via user menu.</li>
+</ol>
+<div class="flow-error">Error: Duplicate org slug &rarr; "This URL is already taken. Please choose another."</div>
+<div class="flow-error">Error: Invite expired &rarr; "This invitation has expired. Ask your admin to send a new invite."</div>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">3+</div><div class="label">IHC subsidiaries onboarded</div></div>
+  <div class="metric"><div class="value">&gt;70%</div><div class="label">Invite acceptance rate</div></div>
+  <div class="metric"><div class="value">&gt;50%</div><div class="label">Orgs with 3+ members (30d)</div></div>
+  <div class="metric"><div class="value">&gt;40%</div><div class="label">Orgs using custom default settings</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- ───── DOMAIN B ───── -->
+<h3>Domain B: Inference API &amp; Models</h3>
+
+<!-- B1 -->
+<details id="b1">
+<summary>B1. Unified Inference API <span class="milestone-tag m1">M1 &middot; Mar 28</span></summary>
+<div class="feature-content">
+
+<p>Single OpenAI-compatible endpoint supporting 40+ open-source models. Drop-in replacement for any OpenAI SDK.</p>
+<ul class="feature-checklist">
+  <li>OpenAI-compatible endpoint</li>
+  <li>40+ open-source models</li>
+  <li>Drop-in SDK replacement</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>Developer copies API key (<code>tf-xxxx</code>) from dashboard.</li>
+  <li>Changes base URL in existing code: <code>base_url = "https://api.aigateway.ai/v1"</code></li>
+  <li>Sets model to any supported model: <code>model = "meta-llama/llama-3.1-70b-instruct"</code></li>
+  <li>Makes <code>POST /v1/chat/completions</code> with <code>Authorization: Bearer tf-xxxx</code>.</li>
+  <li>Receives response in exact OpenAI format. Usage object includes token counts for billing.</li>
+  <li>Each request generates a billing event: model, tokens (input/output), cost, latency, key ID.</li>
+</ol>
+<div class="flow-error">Error: Invalid API key &rarr; 401 <code>{"error":{"type":"authentication_error","message":"Invalid API key"}}</code></div>
+<div class="flow-error">Error: Rate limited &rarr; 429 with <code>Retry-After</code> header</div>
+<div class="flow-error">Error: Model not found &rarr; 404 <code>{"error":{"type":"invalid_request_error","message":"Model not found"}}</code></div>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">40+</div><div class="label">Models available at launch</div></div>
+  <div class="metric"><div class="value">&gt;80%</div><div class="label">Developers successful on first API call</div></div>
+  <div class="metric"><div class="value">&gt;50%</div><div class="label">Users trying 2+ models (30d)</div></div>
+  <div class="metric"><div class="value">&gt;70%</div><div class="label">Week-1 to Week-2 retention</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- B2 -->
+<details id="b2">
+<summary>B2. Model Catalog <span class="milestone-tag m1">M1 &middot; Mar 28</span></summary>
+<div class="feature-content">
+
+<p>Browsable, searchable list of all models with rich metadata: provider, context window, cost, capabilities, speed, benchmarks.</p>
+<ul class="feature-checklist">
+  <li>Browsable model list</li>
+  <li>Search/filter</li>
+  <li>Provider metadata</li>
+  <li>Context window</li>
+  <li>Cost per token</li>
+  <li>Capabilities &amp; speed</li>
+  <li>Benchmarks</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User navigates to Models page from dashboard sidebar.</li>
+  <li>Sees full model list with columns: Name, Provider, Context, Input Cost, Output Cost, Capabilities, Speed.</li>
+  <li>Uses search bar (Command/⌘K) to find models by name or family.</li>
+  <li>Filters by: capability (chat/code/vision), provider, price range, context window size, speed tier.</li>
+  <li>Clicks model row to expand detail view with benchmarks (MMLU, HumanEval), full description, and "Try in Playground" button.</li>
+  <li>Sorts by any column (cost, context window, speed).</li>
+</ol>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;60%</div><div class="label">Users visiting catalog within first session</div></div>
+  <div class="metric"><div class="value">&gt;40%</div><div class="label">Users using search/filter</div></div>
+  <div class="metric"><div class="value">&gt;25%</div><div class="label">Catalog visitors clicking "Try in Playground"</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- B3 -->
+<details id="b3">
+<summary>B3. Streaming Responses <span class="milestone-tag m1">M1 &middot; Mar 28</span></summary>
+<div class="feature-content">
+
+<p>Real-time token-by-token streaming via Server-Sent Events for all chat completion requests.</p>
+<ul class="feature-checklist">
+  <li>Token-by-token streaming</li>
+  <li>Server-Sent Events</li>
+  <li>All chat completions</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>Client sends <code>POST /v1/chat/completions</code> with <code>"stream": true</code>.</li>
+  <li>Server responds with <code>Content-Type: text/event-stream</code>.</li>
+  <li>Tokens arrive as SSE events: <code>data: {"choices":[{"delta":{"content":"token"}}]}</code>.</li>
+  <li>Client renders tokens as they arrive (playground, SDK, custom app).</li>
+  <li>Stream ends with <code>data: [DONE]</code>. Connection closed. Final usage object in last chunk.</li>
+</ol>
+<div class="flow-error">Error mid-stream &rarr; Error event sent before connection close. Client receives partial content + error indication.</div>
+</div>
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;90%</div><div class="label">Streaming adoption rate (vs non-streaming)</div></div>
+  <div class="metric"><div class="value">&gt;70%</div><div class="label">Playground sessions using streaming</div></div>
+  <div class="metric"><div class="value">100%</div><div class="label">OpenAI SDK drop-in compatibility confirmed</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- ───── DOMAIN C ───── -->
+<h3>Domain C: API Key Management</h3>
+
+<!-- C1 -->
+<details id="c1">
+<summary>C1. Basic API Key Management <span class="milestone-tag m1">M1 &middot; Mar 28</span></summary>
+<div class="feature-content">
+
+<p>Create, view (masked), copy, and revoke API keys. Keys prefixed with <code>tf-</code>.</p>
+<ul class="feature-checklist">
+  <li>Create API keys</li>
+  <li>View (masked)</li>
+  <li>Copy to clipboard</li>
+  <li>Revoke keys</li>
+  <li><code>tf-</code> prefix</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User navigates to API Keys page from dashboard sidebar.</li>
+  <li>Clicks "Create Key". Dialog: enter key name, optional source/app label.</li>
+  <li>Key generated and displayed <strong>once</strong> in full: <code>tf-sk_live_xxxxxxxxxxxxxxxxxxxx</code>. Prominent "Copy" button.</li>
+  <li>After dialog close, key shows as masked: <code>tf-sk_l...xxxx</code>.</li>
+  <li>Key list shows: Name, Masked Value, Source/App, Created, Last Used, Status (active/revoked).</li>
+  <li>User clicks "Revoke" on a key. AlertDialog confirmation. Key immediately stops authenticating (&lt;1s).</li>
+</ol>
+<div class="flow-error">Error: User dismissed key without copying &rarr; Warning: "This key will not be shown again. Are you sure?"</div>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;95%</div><div class="label">Users creating a key within first session</div></div>
+  <div class="metric"><div class="value">&gt;80%</div><div class="label">Keys named with descriptive labels</div></div>
+  <div class="metric"><div class="value">100%</div><div class="label">Revoked keys immediately stop authenticating</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- C2 -->
+<details id="c2">
+<summary>C2. Advanced API Key Scoping <span class="milestone-tag m2">M2 &middot; Apr 5</span></summary>
+<div class="feature-content">
+
+<p>Per-key model allowlists, RPM rate limits, monthly cost ceilings, labels/tags.</p>
+<ul class="feature-checklist">
+  <li>Model allowlists</li>
+  <li>RPM rate limits</li>
+  <li>Monthly cost ceilings</li>
+  <li>Labels/tags</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User creates or edits a key. "Advanced Settings" section expands.</li>
+  <li><strong>Model allowlist:</strong> Multi-select from model catalog. Only selected models allowed. Others return 403.</li>
+  <li><strong>RPM limit:</strong> Number input. Requests exceeding limit get 429 with Retry-After header.</li>
+  <li><strong>Monthly cost ceiling:</strong> Dollar amount. Key stops working when ceiling hit. Email at 80% and 100%.</li>
+  <li><strong>Labels/tags:</strong> Key-value pairs for filtering and reporting (e.g., <code>env:production</code>, <code>team:ml-ops</code>).</li>
+  <li>Settings saved. Enforcement immediate for new requests.</li>
+</ol>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">80%+</div><div class="label">Enterprise keys using at least one scope</div></div>
+  <div class="metric"><div class="value">&gt;50%</div><div class="label">Scoped keys with model allowlists set</div></div>
+  <div class="metric"><div class="value">&gt;60%</div><div class="label">Keys with cost ceilings among Pro+ users</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- C3 -->
+<details id="c3">
+<summary>C3. Key Rotation <span class="milestone-tag m2">M2 &middot; Apr 5</span></summary>
+<div class="feature-content">
+
+<p>Generate replacement key with 24-hour grace period where both old and new keys work.</p>
+<ul class="feature-checklist">
+  <li>Generate replacement key</li>
+  <li>24-hour grace period</li>
+  <li>Dual-key overlap</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User clicks "Rotate" on an active key.</li>
+  <li>New key generated and displayed once. Old key enters 24-hour grace period.</li>
+  <li>Dashboard shows countdown timer on old key. Both keys labeled clearly ("Current" / "Rotating out").</li>
+  <li>Both keys authenticate successfully for 24 hours.</li>
+  <li>After 24h, old key auto-revoked. New key becomes sole active key.</li>
+  <li>User can cancel rotation during grace period (old key restored as primary).</li>
+</ol>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;90%</div><div class="label">Rotations completed without support tickets</div></div>
+  <div class="metric"><div class="value">0</div><div class="label">API calls failing due to rotation gaps</div></div>
+  <div class="metric"><div class="value">&gt;70%</div><div class="label">Enterprise keys rotated at least quarterly</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- ───── DOMAIN D ───── -->
+<h3>Domain D: Dashboard &amp; Playground</h3>
+
+<!-- D1 -->
+<details id="d1">
+<summary>D1. Dashboard Shell <span class="milestone-tag m1">M1 &middot; Mar 28</span></summary>
+<div class="feature-content">
+
+<p>Authenticated dashboard with sidebar navigation, user menu, and onboarding card for first-time users.</p>
+<ul class="feature-checklist">
+  <li>Sidebar navigation</li>
+  <li>User menu</li>
+  <li>Onboarding card</li>
+  <li>Authenticated access</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User logs in. Redirected to <code>/dashboard</code>.</li>
+  <li>Sees sidebar with navigation: Overview, Playground, Models, API Keys, Usage, Billing, Settings, Team.</li>
+  <li>Top-right shows user avatar + dropdown: Profile, Organization, Billing, Logout.</li>
+  <li>First-time users see onboarding card with 3 steps: (1) Copy your API key, (2) Make your first API call, (3) Explore the playground. Progress tracked.</li>
+  <li>Onboarding card is dismissible. Does not reappear after dismissal.</li>
+  <li>Dashboard adapts: desktop (sidebar visible), tablet (collapsible sidebar), mobile (hamburger menu).</li>
+</ol>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;70%</div><div class="label">Onboarding card completion rate</div></div>
+  <div class="metric"><div class="value">&gt;5</div><div class="label">Avg pages visited per session</div></div>
+  <div class="metric"><div class="value">&gt;60%</div><div class="label">Users returning within 7 days of signup</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- D2 -->
+<details id="d2">
+<summary>D2. Interactive Playground <span class="milestone-tag m2">M2 &middot; Apr 5</span></summary>
+<div class="feature-content">
+
+<p>Web-based chat interface to test any model with system prompt, message composer, and streamed responses.</p>
+<ul class="feature-checklist">
+  <li>Chat interface</li>
+  <li>Model selector</li>
+  <li>System prompt</li>
+  <li>Message composer</li>
+  <li>Streamed responses</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User navigates to Playground from sidebar.</li>
+  <li>Selects model from dropdown (searchable, grouped by family).</li>
+  <li>Optionally sets system prompt in collapsible text area at top.</li>
+  <li>Types message in composer at bottom. Send on Enter (Shift+Enter for newline).</li>
+  <li>Response streams token-by-token with typing indicator.</li>
+  <li>After response completes: shows model, tokens (input/output), cost, TTFT, total latency below the message.</li>
+  <li>User can continue conversation or click "New Chat" to clear.</li>
+  <li>Usage deducted from credit balance / billing. Appears in cost dashboard.</li>
+</ol>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;3min</div><div class="label">Avg session duration</div></div>
+  <div class="metric"><div class="value">&gt;5</div><div class="label">Avg prompts per session</div></div>
+  <div class="metric"><div class="value">&gt;40%</div><div class="label">Playground users who later use API programmatically</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- D3 -->
+<details id="d3">
+<summary>D3. Side-by-Side Comparison <span class="milestone-tag m2">M2 &middot; Apr 5</span></summary>
+<div class="feature-content">
+
+<p>Send same prompt to 2 models simultaneously. See responses stream in parallel with latency and cost comparison.</p>
+<ul class="feature-checklist">
+  <li>Dual model selection</li>
+  <li>Parallel streaming</li>
+  <li>Latency comparison</li>
+  <li>Cost comparison</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User switches to "Compare" tab in Playground.</li>
+  <li>Selects Model A (left panel) and Model B (right panel).</li>
+  <li>Types prompt. Clicks "Compare" (or Enter). Prompt sent to both models simultaneously.</li>
+  <li>Both responses stream in parallel in side-by-side panels.</li>
+  <li>After completion: each panel shows tokens, cost, TTFT, total latency. Faster/cheaper model highlighted.</li>
+</ol>
+</div>
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">100+</div><div class="label">Comparisons per week by M2</div></div>
+  <div class="metric"><div class="value">&gt;60%</div><div class="label">Comparisons leading to model selection change</div></div>
+  <div class="metric"><div class="value">&gt;30%</div><div class="label">Playground users trying comparison mode</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- D4 -->
+<details id="d4">
+<summary>D4. Blind Comparison Mode <span class="milestone-tag m2">M2 &middot; Apr 5</span></summary>
+<div class="feature-content">
+
+<p>Responses shown without labels. User picks winner. Models revealed after choice. Shareable URLs.</p>
+<ul class="feature-checklist">
+  <li>Anonymous responses</li>
+  <li>Winner selection</li>
+  <li>Model reveal</li>
+  <li>Shareable URLs</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User switches to "Blind" tab in Playground.</li>
+  <li>Selects 2 models (hidden from view after selection). Types prompt. Clicks "Go".</li>
+  <li>Responses stream as "Response A" and "Response B" with no identifying info.</li>
+  <li>After both complete, user clicks "Pick Winner" on preferred response.</li>
+  <li>Reveal animation: model names, costs, latency shown for both. Winner highlighted.</li>
+  <li>Unique shareable URL generated. Anyone with URL sees prompt, both responses (blinded), and can view reveal.</li>
+</ol>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">100+</div><div class="label">Shared URLs in first week</div></div>
+  <div class="metric"><div class="value">&gt;50%</div><div class="label">Shared URLs viewed by at least 1 other person</div></div>
+  <div class="metric"><div class="value">&gt;20%</div><div class="label">Viewers who sign up after seeing a shared comparison</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- D5 -->
+<details id="d5">
+<summary>D5. Public Playground <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
+<div class="feature-content">
+
+<p>No account required for basic use. Limited to 5 requests per session. Connected to billing when authenticated.</p>
+<ul class="feature-checklist">
+  <li>No account required</li>
+  <li>5 requests/session limit</li>
+  <li>Billing connection when authed</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>Unauthenticated visitor navigates to <code>/playground</code>.</li>
+  <li>Can select model and send prompts. IP-based rate limit: 5 requests per session.</li>
+  <li>After 5th request, banner: "Create a free account for unlimited playground access + $5 credit."</li>
+  <li>If signed in, playground usage counts against credit balance / billing method.</li>
+</ol>
+</div>
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;15%</div><div class="label">Playground to signup conversion</div></div>
+  <div class="metric"><div class="value">&gt;3</div><div class="label">Avg prompts before signup</div></div>
+  <div class="metric"><div class="value">&gt;50%</div><div class="label">Converted users making API call within 24h</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- ───── DOMAIN E ───── -->
+<h3>Domain E: Cost &amp; Usage Intelligence</h3>
+
+<!-- E1 -->
+<details id="e1">
+<summary>E1. Cost Intelligence Dashboard <span class="milestone-tag m2">M2 &middot; Apr 5</span></summary>
+<div class="feature-content">
+
+<p>Real-time spend tracking: total over time, by model, by API key. Date range picker. CSV export. <strong>Pivot table for multi-dimensional analysis.</strong></p>
+<ul class="feature-checklist">
+  <li>Real-time spend tracking</li>
+  <li>By model breakdown</li>
+  <li>By API key breakdown</li>
+  <li>Date range picker</li>
+  <li>CSV export</li>
+  <li>Pivot table analysis</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User navigates to Usage &rarr; Cost from sidebar.</li>
+  <li>Top bar: date range picker (Today, 7d, 30d, This Month, Custom) + CSV export button.</li>
+  <li><strong>Total spend card</strong> at top with current period total and trend vs. previous period.</li>
+  <li><strong>Spend over time chart</strong> (line/area chart) showing daily/weekly spend.</li>
+  <li><strong>Spend by model</strong> bar chart: horizontal bars showing cost per model, sorted by spend.</li>
+  <li><strong>Spend by API key</strong> table: key name, spend, % of total, request count.</li>
+  <li><strong>Pivot table view:</strong> User can group by model &times; key &times; date &times; team to see any permutation of cost breakdown. Column visibility toggles. Drill-down by clicking group headers.</li>
+  <li>Clicks "Export CSV". Downloads current view as CSV file.</li>
+</ol>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;50%</div><div class="label">Pro/Enterprise users accessing weekly</div></div>
+  <div class="metric"><div class="value">&gt;30%</div><div class="label">Users exporting CSV at least once</div></div>
+  <div class="metric"><div class="value">&gt;40%</div><div class="label">Users using pivot table feature</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- E2 -->
+<details id="e2">
+<summary>E2. Budget Alerts <span class="milestone-tag m2">M2 &middot; Apr 5</span></summary>
+<div class="feature-content">
+
+<p>Monthly cost ceiling per organization. Email notifications at 80% and 100% thresholds.</p>
+<ul class="feature-checklist">
+  <li>Monthly cost ceiling</li>
+  <li>80% threshold alert</li>
+  <li>100% threshold alert</li>
+  <li>Email notifications</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>Owner/Admin navigates to Org Settings &rarr; Budget.</li>
+  <li>Sets monthly budget amount (e.g., $5,000).</li>
+  <li>Chooses behavior at 100%: "Alert only" or "Hard stop" (disable all keys).</li>
+  <li>At 80% ($4,000): automated email to all Admins + Owner. Yellow warning banner on dashboard.</li>
+  <li>At 100% ($5,000): automated email. Red banner. If hard-stop: all org keys return 429 until budget increased or next billing cycle.</li>
+</ol>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;60%</div><div class="label">Orgs setting a monthly budget</div></div>
+  <div class="metric"><div class="value">&gt;80%</div><div class="label">Users taking action within 24h of alert</div></div>
+  <div class="metric"><div class="value">30%+</div><div class="label">Budget alert recipients increasing budget or upgrading</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- E3 -->
+<details id="e3">
+<summary>E3. Usage Analytics <span class="milestone-tag m2">M2 &middot; Apr 5</span></summary>
+<div class="feature-content">
+
+<p>Requests by model, token breakdown (input/output), latency p50/p95/p99, error rates. Filterable with <strong>pivot table for permutation/combination analysis</strong>.</p>
+<ul class="feature-checklist">
+  <li>Requests by model</li>
+  <li>Token breakdown (input/output)</li>
+  <li>Latency p50/p95/p99</li>
+  <li>Error rates</li>
+  <li>Pivot table analysis</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User navigates to Usage &rarr; Analytics from sidebar.</li>
+  <li><strong>Request volume chart:</strong> Line chart showing requests over time, colored by model.</li>
+  <li><strong>Token breakdown:</strong> Stacked bar chart (input vs. output tokens) by model.</li>
+  <li><strong>Latency percentiles:</strong> Table showing p50, p95, p99 per model. Sparkline charts for trends.</li>
+  <li><strong>Error rates:</strong> Error percentage per model. Breakdown by error code (429, 500, 503).</li>
+  <li><strong>Pivot table:</strong> User can group and pivot by any combination of: Model, API Key, Status, Date, Team. See request counts, tokens, latency, error rate across all permutations.</li>
+  <li>All views filterable by model, API key, date range, status (success/error).</li>
+</ol>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;40%</div><div class="label">Active users checking analytics weekly</div></div>
+  <div class="metric"><div class="value">&gt;25%</div><div class="label">Users applying filters or using pivot table</div></div>
+  <div class="metric"><div class="value">&gt;50%</div><div class="label">Pro+ users viewing latency percentiles</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- ───── DOMAIN F ───── -->
+<h3>Domain F: Billing &amp; Payments</h3>
+
+<!-- F1 -->
+<details id="f1">
+<summary>F1. Credit System <span class="milestone-tag m1">M1 &middot; Mar 28</span></summary>
+<div class="feature-content">
+
+<p>$5 free credit on signup. Consumed before any paid billing method is charged.</p>
+<ul class="feature-checklist">
+  <li>$5 free credit</li>
+  <li>Auto-apply on signup</li>
+  <li>Consumed before paid billing</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User completes email verification (or Google OAuth signup).</li>
+  <li>$5.00 credit automatically applied to account. No credit card required.</li>
+  <li>Credit balance visible in dashboard header and billing page.</li>
+  <li>API usage deducts from credit balance first.</li>
+  <li>When balance falls below $1.00: email + dashboard notification ("Low credit balance").</li>
+  <li>When balance reaches $0.00: if no payment method, API calls return 402. Prompt to add payment method or upgrade plan.</li>
+</ol>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">3x</div><div class="label">Signup lift vs credit-card-required flow</div></div>
+  <div class="metric"><div class="value">5-10%</div><div class="label">Free to paid conversion within 90 days</div></div>
+  <div class="metric"><div class="value">&gt;70%</div><div class="label">Users consuming &gt;$1 of free credit</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- F2 -->
+<details id="f2">
+<summary>F2. Metered Billing <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
+<div class="feature-content">
+
+<p>Automatic per-token billing with hourly usage aggregation via Stripe.</p>
+<ul class="feature-checklist">
+  <li>Per-token billing</li>
+  <li>Hourly usage aggregation</li>
+  <li>Stripe integration</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User adds payment method (credit/debit card via Stripe Elements).</li>
+  <li>API usage generates billing events per request (input tokens + output tokens at model-specific rates).</li>
+  <li>Usage aggregated hourly. Real-time estimates on dashboard (not billed until aggregation).</li>
+  <li>At end of billing period (monthly): invoice generated with line items per model.</li>
+  <li>Stripe charges payment method. Invoice status: paid/pending/failed.</li>
+  <li>Failed payment: retry 3 times over 7 days. After final failure, account downgraded to free tier.</li>
+</ol>
+</div>
+
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">0</div><div class="label">Billing disputes per 1000 invoices</div></div>
+  <div class="metric"><div class="value">&gt;90%</div><div class="label">Users understanding their invoice on first view</div></div>
+  <div class="metric"><div class="value">&gt;95%</div><div class="label">Invoices paid without manual intervention</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- F3 -->
+<details id="f3">
+<summary>F3. Pricing Tiers <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
+<div class="feature-content">
+
+<p>Free, Pay-As-You-Go, Pro ($99/mo), Team ($299/mo), Enterprise (custom $2K+/mo). Prepaid and postpaid options.</p>
+<ul class="feature-checklist">
+  <li>Free tier</li>
+  <li>Pay-As-You-Go</li>
+  <li>Pro ($99/mo)</li>
+  <li>Team ($299/mo)</li>
+  <li>Enterprise ($2K+/mo)</li>
+  <li>Prepaid/postpaid options</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User navigates to Billing &rarr; Plans. Sees tier comparison cards.</li>
+  <li>Each card shows: tier name, price, token discount, RPM limit, included features.</li>
+  <li>Clicks "Upgrade" on desired tier. Confirms plan change in dialog.</li>
+  <li>Upgrade: immediate. Pro-rated charge for remainder of billing cycle.</li>
+  <li>Downgrade: takes effect at end of current billing cycle. No refund for current period.</li>
+  <li>Enterprise: "Contact Sales" button opens form or calendly link.</li>
+</ol>
+</div>
+
+
+<div class="sub-section">
+<div class="sub-section-title">Tier Details</div>
+<table>
+  <tr><th>Tier</th><th>Price</th><th>Discount</th><th>RPM</th><th>Keys</th><th>Key Features</th></tr>
+  <tr><td>Free</td><td>$0/mo</td><td>None</td><td>10</td><td>1</td><td>$5 credit, playground</td></tr>
+  <tr><td>PAYG</td><td>$0/mo</td><td>None</td><td>100</td><td>Unlimited</td><td>Standard pricing, basic dashboard</td></tr>
+  <tr><td>Pro</td><td>$99/mo</td><td>5-10%</td><td>1,000</td><td>Unlimited</td><td>RBAC, cost allocation, webhooks, fine-tuning, priority support</td></tr>
+  <tr><td>Team</td><td>$299/mo</td><td>8-12%</td><td>5,000</td><td>Unlimited</td><td>SSO, team workspaces, advanced analytics</td></tr>
+  <tr><td>Enterprise</td><td>$2K+/mo</td><td>15-30%</td><td>Custom</td><td>Unlimited</td><td>VPC, custom SLA, CSM, ZDR, audit logs, data residency</td></tr>
+</table>
+</div>
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;7%</div><div class="label">Free to paid conversion (90d)</div></div>
+  <div class="metric"><div class="value">&gt;2%</div><div class="label">PAYG to Pro upgrade rate (90d)</div></div>
+  <div class="metric"><div class="value">&gt;30%</div><div class="label">Pricing page visitors who start checkout</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- F4 -->
+<details id="f4">
+<summary>F4. Billing Dashboard <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
+<div class="feature-content">
+
+<p>Current plan, usage summary, invoice history, payment method, upgrade/downgrade flow.</p>
+<ul class="feature-checklist">
+  <li>Current plan display</li>
+  <li>Usage summary</li>
+  <li>Invoice history</li>
+  <li>Payment method</li>
+  <li>Upgrade/downgrade flow</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li>User navigates to Billing from sidebar.</li>
+  <li><strong>Current Plan card:</strong> Tier name, renewal date, included features summary.</li>
+  <li><strong>Usage summary card:</strong> Current period tokens and dollar amount.</li>
+  <li><strong>Invoice history table:</strong> Date, amount, status (paid/pending/failed), download PDF.</li>
+  <li><strong>Payment method section:</strong> Card on file (masked), "Update" and "Add backup" buttons.</li>
+  <li><strong>Plan management:</strong> "Upgrade" / "Downgrade" buttons with plan comparison.</li>
+</ol>
+</div>
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">&gt;80%</div><div class="label">Users self-serving billing questions (no support ticket)</div></div>
+  <div class="metric"><div class="value">&gt;50%</div><div class="label">Users downloading at least one invoice PDF</div></div>
+  <div class="metric"><div class="value">&gt;90%</div><div class="label">Plan changes completed without abandonment</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- F5 -->
+<details id="f5">
+<summary>F5. Invoice/Payment Level Discounts <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
+<div class="feature-content">
+
+<p>Enterprise volume discounts, custom pricing, prepaid token credit purchases.</p>
+<ul class="feature-checklist">
+  <li>Volume discounts</li>
+  <li>Custom pricing</li>
+  <li>Prepaid token credits</li>
+</ul>
+
+<div class="sub-section">
+<div class="sub-section-title">User Flow</div>
+<ol class="flow-steps">
+  <li><strong>Volume discounts:</strong> Enterprise customers on committed spend get automatic discount applied at invoice level.</li>
+  <li><strong>Custom pricing:</strong> Admin sets custom per-token rates for specific enterprise accounts via internal tool.</li>
+  <li><strong>Prepaid:</strong> Enterprise customer purchases token credit block at discounted rate. Balance tracked. Consumed before metered billing.</li>
+  <li>All discounts visible on invoice as separate line items.</li>
+</ol>
+</div>
+
+
+<div class="sub-section">
+<div class="sub-section-title">Success Metrics</div>
+<div class="metrics-grid">
+  <div class="metric"><div class="value">$5M+</div><div class="label">Committed ARR from discount programs</div></div>
+  <div class="metric"><div class="value">&gt;80%</div><div class="label">Enterprise customers on committed spend agreements</div></div>
+  <div class="metric"><div class="value">&gt;90%</div><div class="label">Prepaid credit blocks fully consumed before expiry</div></div>
+</div>
+</div>
+
+</div>
+</details>
+
+<hr class="divider">
+
+<!-- ──────────── TECH ARCHITECTURE ──────────── -->
+<section id="tech">
+<h2>Technical Architecture</h2>
+
+<h3>System Overview</h3>
+<p>The platform follows a layered architecture with clear ownership boundaries. All external traffic enters through CloudFlare, which handles CDN, DDoS protection, and edge caching before routing to the internal infrastructure.</p>
+
+<h3>Request Flow</h3>
+<div class="flow">
+<div class="flow-step">User Portal / App</div>
+<div class="flow-arrow">&darr;</div>
+<div class="flow-step">CloudFlare (CDN + Edge)</div>
+<div class="flow-arrow">&darr;</div>
+<div class="flow-step">Envoy Proxy (ext_auth/tcp &harr; Control Service)</div>
+<div class="flow-arrow">&darr;</div>
+<div class="flow-step">Dynamic Forward Proxy &rarr; K8s GPU Cluster &rarr; Models</div>
+</div>
+
+<h3>Component Map</h3>
+<table>
+  <tr><th>Component</th><th>Technology</th><th>Purpose</th></tr>
+  <tr><td>Edge Layer</td><td>CloudFlare</td><td>CDN, DDoS mitigation, TLS termination, edge caching</td></tr>
+  <tr><td>API Gateway</td><td>Envoy Proxy</td><td>Auth (ext_auth/tcp), rate limiting, request routing</td></tr>
+  <tr><td>Control Service</td><td>Custom service</td><td>Auth decisions, ext_proc/gRPC processing, policy enforcement</td></tr>
+  <tr><td>Backend</td><td>Application server</td><td>Dashboard API, billing logic, org management</td></tr>
+  <tr><td>Dynamic Forward Proxy</td><td>Envoy</td><td>Routes inference requests to model endpoints in GPU cluster</td></tr>
+  <tr><td>Model Serving</td><td>K8s GPU Cluster</td><td>Hosts open-source model instances (LLaMA, DeepSeek, Mistral, etc.)</td></tr>
+  <tr><td>Operator</td><td>K8s Operator</td><td>Model lifecycle management, scaling, health checks</td></tr>
+  <tr><td>Data Storage</td><td>Engineering team decision</td><td>Users, orgs, API keys, billing, plans, model metadata, configurations, caching</td></tr>
+  <tr><td>CI/CD</td><td>GitHub</td><td>Source control, operator deployment pipelines</td></tr>
+</table>
+
+<h3>Ownership Domains</h3>
+<table>
+  <tr><th>Owner</th><th>Domain</th><th>Components</th></tr>
+  <tr><td><strong>Jawad</strong></td><td>Infrastructure &amp; Data</td><td>Backend, Control Service, Envoy Proxy, Data Stores, Dynamic Forward Proxy</td></tr>
+  <tr><td><strong>Shivank</strong></td><td>Platform &amp; Models</td><td>Plans/Tags/Org/Keys/Usage/Billing logic, Model Management &amp; Operations, K8s GPU Cluster, Operator, GitHub CI/CD</td></tr>
+</table>
+
+<h3>Envoy Proxy Integration</h3>
+<p>Envoy acts as the central API gateway with two extension points connecting to the Control Service:</p>
+<table>
+  <tr><th>Extension</th><th>Protocol</th><th>Purpose</th></tr>
+  <tr><td><code>ext_auth</code></td><td>TCP</td><td>Authentication &amp; authorization — validates API keys (<code>tf-</code> prefix), checks rate limits, verifies org membership</td></tr>
+  <tr><td><code>ext_proc</code></td><td>gRPC</td><td>Request/response processing — token counting, usage metering, request transformation, billing event emission</td></tr>
+</table>
+
+<h3>GPU Cluster</h3>
+<p>Models run on a Kubernetes GPU cluster managed by a custom operator. The operator handles model deployment, scaling, health monitoring, and connects to GitHub for GitOps-driven model configuration. Inference requests reach models via Envoy's Dynamic Forward Proxy, which routes based on the requested model ID.</p>
+
+<h3>Data Stores</h3>
+<p>Database and storage technology choices are left to the engineering team. Key data domains to support:</p>
+<table>
+  <tr><th>Data Domain</th><th>Access Pattern</th></tr>
+  <tr><td>Users, orgs, API keys, billing accounts, invoices, plans, tags</td><td>Transactional CRUD, joins for billing aggregation</td></tr>
+  <tr><td>Model catalog, provider configs, playground conversations</td><td>Document reads, flexible updates</td></tr>
+  <tr><td>Rate limit counters, session tokens, cached model lists</td><td>High-frequency reads/writes, TTL-based expiry</td></tr>
+</table>
+
+</section>
+
+<hr class="divider">
+
+<footer style="text-align:center;padding:2rem 0;color:var(--ig-gray);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;">
+  AI Gateway &middot; Infinia Technologies &middot; IHC Group &middot; PRD v1.0 &middot; March 2026
+</footer>
+
+</div>
+</body>
+</html>
