@@ -2,24 +2,26 @@
 
 ## A1. User Authentication — M1 · Mar 28
 
-Email/password signup, Google OAuth, email verification, forgot password. $5 free credit applied on verification.
+Email/password signup, Google OAuth, Microsoft Entra ID SSO, email verification, forgot password. $5 free credit applied on verification.
 
 ### Features
 
 - Email/password signup
 - Google OAuth
+- Microsoft Entra ID (Azure AD) SSO
 - Email verification
 - Forgot password
 - $5 free credit on verification
 
 ### User Flow
 
-1. User visits `/signup`. Sees form with email, password, confirm password fields and "Sign up with Google" OAuth button.
+1. User visits `/signup`. Sees form with email, password, confirm password fields, "Sign up with Google" OAuth button, and "Sign in with Microsoft" button.
 2. **Email path:** User enters email + password (min 8 chars, mixed case, 1 number). Clicks "Create Account".
 3. System creates account in `pending_verification` state. Sends verification email within 30 seconds.
 4. User clicks verification link (expires 24h). Account moves to `active`. $5 credit applied. Redirected to dashboard with onboarding card.
 5. **Google OAuth path:** User clicks "Sign up with Google". Redirected to Google consent. On return, account created (or linked if email matches) and immediately active. $5 credit applied.
-6. **Forgot password:** User clicks "Forgot password" on `/login`. Enters email. Reset email sent within 30s. Link expires 1h. User sets new password. Existing sessions preserved.
+6. **Microsoft Entra ID path:** User clicks "Sign in with Microsoft". Redirected to Microsoft identity platform (OAuth 2.0 / OIDC). Supports personal Microsoft accounts, work/school (Entra ID) accounts, and multi-tenant configurations. On return, account created (or linked if email matches) and immediately active. $5 credit applied. Organisation auto-created as above. If the user's Entra tenant provides group claims, these are stored for future RBAC mapping.
+7. **Forgot password:** User clicks "Forgot password" on `/login`. Enters email. Reset email sent within 30s. Link expires 1h. User sets new password. Existing sessions preserved.
 
 ### Error Handling
 

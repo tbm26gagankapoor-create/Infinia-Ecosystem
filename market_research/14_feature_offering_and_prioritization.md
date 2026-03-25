@@ -158,7 +158,7 @@ No competitor offers the full scoping matrix. Together AI has basic key manageme
 
 **Success metrics:**
 - Zero bill-shock incidents for organizations using cost-capped keys
-- 80%+ of Enterprise tier organizations using model-scoped keys within 60 days
+- 80%+ of postpaid enterprise organizations using model-scoped keys within 60 days
 - Key configuration changes take effect within 1 second (no stale permission windows)
 
 **Dependencies:** P0.3 (basic key management), P0.4 (cost tracking per key).
@@ -173,18 +173,18 @@ No competitor offers the full scoping matrix. Together AI has basic key manageme
 
 **Success metrics:**
 - IHC Group structure with 5+ subsidiaries configured within 2 weeks of feature launch
-- 100% of Enterprise tier customers using team-based organization within 90 days
+- 100% of postpaid enterprise customers using team-based organization within 90 days
 - Subsidiary-level cost reports generated automatically (no manual data aggregation)
 
 **Dependencies:** P0.3 (keys belong to teams), P0.4 (billing per team).
 
 ---
 
-### P1.3: SSO / SAML / Active Directory Integration
+### P1.3: SSO / SAML / Microsoft Entra ID Integration
 
-**What it is:** Enterprise SSO via SAML 2.0 and OIDC. Active Directory integration for IHC Group subsidiaries. SCIM provisioning for automated user lifecycle management. Multi-factor authentication support. Built via WorkOS or Auth0 partnership rather than from scratch — delivering enterprise-grade auth in weeks rather than months.
+**What it is:** Enterprise SSO via SAML 2.0 and OIDC. Microsoft Entra ID (Azure AD) integration for IHC Group subsidiaries, supporting personal Microsoft accounts, work/school (Entra ID) accounts, and multi-tenant configurations. Google OAuth for developer-friendly signup. SCIM provisioning for automated user lifecycle management. Multi-factor authentication support. Built via WorkOS or Auth0 partnership rather than from scratch — delivering enterprise-grade auth in weeks rather than months.
 
-**Why it matters:** SSO is a checkbox on every enterprise security questionnaire. Failing it eliminates Token Factory from consideration for any company above 200 employees. For IHC Group's internal adoption specifically, Active Directory integration must work from day one — IHC subsidiaries use centralized identity management, and asking developers to maintain separate credentials is a non-starter for IT security teams.
+**Why it matters:** SSO is a checkbox on every enterprise security questionnaire. Failing it eliminates Token Factory from consideration for any company above 200 employees. For IHC Group's internal adoption specifically, Microsoft Entra ID integration must work from day one — IHC subsidiaries use centralized identity management, and asking developers to maintain separate credentials is a non-starter for IT security teams.
 
 **Success metrics:**
 - SSO configuration for a new enterprise customer under 1 hour
@@ -207,7 +207,7 @@ V1 does not need predictive modeling or optimization recommendations — that is
 - Finance team usability: non-technical users can generate a cost allocation report without engineering assistance
 - Dashboard data freshness under 60 seconds (cost visible within 1 minute of API call)
 - Cost report export in CSV, PDF, and JSON formats
-- 50%+ of Pro and Enterprise customers accessing cost dashboard weekly within 60 days
+- 50%+ of active paying customers accessing cost dashboard weekly within 60 days
 
 **Dependencies:** P0.4 (per-key cost data is the source), analytics pipeline.
 
@@ -281,7 +281,7 @@ The competitive landscape forces Token Factory's hand on several P2 features. To
 - Spend forecast accuracy within 15% of actual (measured monthly)
 - Optimization recommendations generate measurable savings for 30%+ of customers who act on them
 - Anomaly detection catches 95%+ of spend anomalies within 5 minutes
-- 70%+ of Pro and Enterprise customers using cost intelligence for budgeting within 6 months of V2 launch
+- 70%+ of active paying customers using cost intelligence for budgeting within 6 months of V2 launch
 
 **Dependencies:** P0.4 and P1.4 (historical cost data provides training data for forecasting models), analytics infrastructure, ML pipeline for anomaly detection.
 
@@ -326,7 +326,7 @@ The competitive landscape forces Token Factory's hand on several P2 features. To
 
 **Success metrics:**
 - 5+ pre-built integrations at launch (Slack, PagerDuty, Datadog, Zapier, GitHub Actions)
-- 60%+ of Pro tier customers using at least one webhook within 90 days
+- 60%+ of active paying customers using at least one webhook within 90 days
 - Webhook delivery reliability of 99.9%
 
 **Dependencies:** P0.4 (events to trigger webhooks), event streaming pipeline.
@@ -356,7 +356,7 @@ The competitive landscape forces Token Factory's hand on several P2 features. To
 **Why it matters:** Burjeel Holdings — 82+ healthcare facilities across six countries — is one of Token Factory's highest-value IHC Group subsidiaries. Healthcare represents one of the largest vertical opportunities for AI inference: clinical decision support, medical coding, patient communication, and research. HIPAA compliance unlocks not just Burjeel but the entire Gulf healthcare market and eventually global healthcare enterprises. Without HIPAA, any workload touching patient data is off-limits — a large portion of healthcare AI use cases.
 
 **Success metrics:**
-- HIPAA BAA available for Enterprise tier customers
+- HIPAA BAA available for postpaid enterprise customers
 - Burjeel deploying clinical AI workloads through Token Factory
 - 5+ external healthcare customers within 6 months of HIPAA compliance
 
@@ -366,7 +366,7 @@ The competitive landscape forces Token Factory's hand on several P2 features. To
 
 ### P2.7: Startup & Academic Programs
 
-**What it is:** Startup Program: $10,000 in credits over 12 months for companies with less than $5M in raised capital. Academic Program: 50% discount on all tiers for universities and research institutions. Both with application process and community features — dedicated Slack/Discord community, office hours with engineering team, and showcase events for program participants.
+**What it is:** Startup Program: $10,000 in prepaid credits over 12 months for companies with less than $5M in raised capital. Academic Program: 50% discount on per-million-token rates for universities and research institutions. Both with application process and community features — dedicated Slack/Discord community, office hours with engineering team, and showcase events for program participants.
 
 **Why it matters:** Startups are the highest-growth, highest-LTV customer segment. A startup that adopts Token Factory during the seed stage typically stays through Series A, B, and beyond — their inference usage grows 10-100x, and the platform they chose early becomes default infrastructure. The $10,000 credit costs $4,000-$6,000 in GPU compute; even 10-20% conversion to $1,000+/month customers yields LTV that vastly exceeds the investment. The Academic Program plants seeds for three-to-five year payoff: today's PhD students are tomorrow's CTOs choosing inference platforms for their companies.
 
@@ -426,7 +426,7 @@ Intelligent routing requires 6-12 months of aggregate performance data to train 
 
 **Success metrics:**
 - 1,000+ prompt templates created within 6 months of launch
-- A/B testing used by 30%+ of Pro and Enterprise customers
+- A/B testing used by 30%+ of active paying customers
 - Prompt performance analytics accessed weekly by 50%+ of users with templates
 - Measurable increase in customer retention after prompt management adoption
 
@@ -487,14 +487,14 @@ For IHC Group specifically, the marketplace enables subsidiaries to monetize dom
 
 **What it is:** Deployment of small, optimized models on edge servers for low-latency, data-sovereign applications. Offline synchronization for intermittent connectivity. Edge deployment management dashboard. Initially targeting IHC Group use cases as a controlled pilot.
 
-**Why it matters:** Edge inference unlocks use cases that cloud-based inference cannot serve: real-time clinical decision support at point-of-care in Burjeel hospitals (where milliseconds matter and patient data cannot leave the facility), on-premises AI for ALDAR smart buildings (where continuous cloud connectivity cannot be guaranteed), and in-vehicle AI for Al Seer Marine logistics (where satellite connectivity is intermittent). This is a pilot-only feature in P3 because the infrastructure requirements are fundamentally different from cloud inference, but it positions Token Factory for the expanding edge AI market and strengthens the IHC Group relationship by solving problems no other provider can address. The Tenstorrent RISC-V partnership may accelerate this for sovereign edge deployments.
+**Why it matters:** Edge inference unlocks use cases that cloud-based inference cannot serve: real-time clinical decision support at point-of-care in Burjeel hospitals (where milliseconds matter and patient data cannot leave the facility), on-premises AI for ALDAR smart buildings (where continuous cloud connectivity cannot be guaranteed), and in-vehicle AI for Al Seer Marine logistics (where satellite connectivity is intermittent). This is a pilot-only feature in P3 because the infrastructure requirements are fundamentally different from cloud inference, but it positions Token Factory for the expanding edge AI market and strengthens the IHC Group relationship by solving problems no other provider can address. The GPU partnerships RISC-V partnership may accelerate this for sovereign edge deployments.
 
 **Success metrics:**
 - 3+ IHC Group subsidiaries running edge inference pilots
 - Sub-10ms inference latency for edge-deployed models
 - Offline operation sustained for 24+ hours with data synchronization on reconnect
 
-**Dependencies:** Small model optimization, edge server infrastructure. Tenstorrent hardware partnership.
+**Dependencies:** Small model optimization, edge server infrastructure. GPU partnerships hardware partnership.
 
 ---
 
@@ -534,34 +534,34 @@ P0.1 (Unified API)
 
 ## Alignment Summary
 
-| Feature | Phase | Revenue Stream Enabled | Consolidation Defense | Tier Unlocked |
-|---------|-------|----------------------|----------------------|---------------|
-| **P0.1** Unified API | Pre-Phase 1 | All (table stakes) | Credibility to compete | Free, PAYG |
+| Feature | Phase | Revenue Stream Enabled | Consolidation Defense | Billing Method |
+|---------|-------|----------------------|----------------------|----------------|
+| **P0.1** Unified API | Pre-Phase 1 | All (table stakes) | Credibility to compete | Prepaid + Postpaid |
 | **P0.2** SDKs & Docs | Pre-Phase 1 | All (table stakes) | Developer trust | All |
 | **P0.3** Key Management | Pre-Phase 1 | All (table stakes) | Foundation for governance | All |
-| **P0.4** Billing & Analytics | Pre-Phase 1 | All (table stakes) | Data pipeline for FinOps | Free, PAYG |
-| **P0.5** Playground | Pre-Phase 1 | Self-serve acquisition | Differentiated conversion | Free |
+| **P0.4** Billing & Analytics | Pre-Phase 1 | All (table stakes) | Data pipeline for FinOps | Prepaid + Postpaid |
+| **P0.5** Playground | Pre-Phase 1 | Self-serve acquisition | Differentiated conversion | Free credits |
 | **P0.6** Streaming | Pre-Phase 1 | All (table stakes) | Interactive use cases | All |
-| **P1.1** Advanced Key Scoping | Phase 1 | Enterprise ($3-6M IHC) | Governance gap capture | Pro, Team, Enterprise |
-| **P1.2** Org & Team Hierarchy | Phase 1 | Enterprise ($3-6M IHC) | Conglomerate-scale governance | Team, Enterprise |
-| **P1.3** SSO/SAML | Phase 1 | Enterprise ($3-6M IHC) | Enterprise procurement gate | Team, Enterprise |
-| **P1.4** Cost Dashboard V1 | Phase 1 | Enterprise expansion | FinOps category creation | Pro, Team, Enterprise |
-| **P1.5** Audit Logging | Phase 1 | Regulated enterprise | Compliance foundation | Enterprise |
+| **P1.1** Advanced Key Scoping | Phase 1 | Enterprise ($3-6M IHC) | Governance gap capture | Postpaid + High-volume Prepaid |
+| **P1.2** Org & Team Hierarchy | Phase 1 | Enterprise ($3-6M IHC) | Conglomerate-scale governance | Postpaid |
+| **P1.3** SSO/SAML/Entra ID | Phase 1 | Enterprise ($3-6M IHC) | Enterprise procurement gate | Postpaid |
+| **P1.4** Cost Dashboard V1 | Phase 1 | Enterprise expansion | FinOps category creation | All paying customers |
+| **P1.5** Audit Logging | Phase 1 | Regulated enterprise | Compliance foundation | Postpaid |
 | **P1.6** IHC Billing | Phase 1 | IHC Group ($3-6M) | Captive market unlock | Internal |
-| **P1.7** ZDR Mode | Phase 1 | Regulated enterprise | Data sovereignty proof | Enterprise |
-| **P2.1** Cost Intelligence V2 | Phase 2-3 | Retention + expansion | Category-defining FinOps | Pro, Team, Enterprise |
-| **P2.2** Fine-Tuning | Phase 2-3 | Pro + Enterprise | Switching cost ($5-50K) | Pro, Enterprise |
-| **P2.3** SOC 2 Certification | Phase 2 | Global enterprise | Market access gate | Enterprise |
-| **P2.4** Webhooks | Phase 2 | Mid-market retention | Operational embedding | Pro, Team, Enterprise |
-| **P2.5** Migration Tooling | Phase 2 | Self-serve + enterprise | Competitor displacement | PAYG, Pro |
-| **P2.6** HIPAA | Phase 2 | Healthcare vertical | Regulated market access | Enterprise |
-| **P2.7** Programs | Phase 2 | Startup pipeline | Community + long-term LTV | Free, PAYG |
+| **P1.7** ZDR Mode | Phase 1 | Regulated enterprise | Data sovereignty proof | Postpaid |
+| **P2.1** Cost Intelligence V2 | Phase 2-3 | Retention + expansion | Category-defining FinOps | All paying customers |
+| **P2.2** Fine-Tuning | Phase 2-3 | Paying customers | Switching cost ($5-50K) | Prepaid + Postpaid |
+| **P2.3** SOC 2 Certification | Phase 2 | Global enterprise | Market access gate | Postpaid |
+| **P2.4** Webhooks | Phase 2 | Mid-market retention | Operational embedding | All paying customers |
+| **P2.5** Migration Tooling | Phase 2 | Self-serve + enterprise | Competitor displacement | Prepaid + Postpaid |
+| **P2.6** HIPAA | Phase 2 | Healthcare vertical | Regulated market access | Postpaid |
+| **P2.7** Programs | Phase 2 | Startup pipeline | Community + long-term LTV | Prepaid credits |
 | **P3.1** Intelligent Routing | Phase 3 | Outcome-based pricing | Data flywheel moat | All |
-| **P3.2** Prompt Management | Phase 3 | Platform subscription | Workflow embedding | Pro, Team, Enterprise |
-| **P3.3** Observability | Phase 3 | Platform subscription | Agent ecosystem lock-in | Pro, Team, Enterprise |
+| **P3.2** Prompt Management | Phase 3 | Platform revenue | Workflow embedding | All paying customers |
+| **P3.3** Observability | Phase 3 | Platform revenue | Agent ecosystem lock-in | All paying customers |
 | **P3.4** Marketplace | Phase 3 | Commission revenue | Network effects moat | All |
-| **P3.5** EU AI Act | Phase 3 | European enterprise | Regulatory moat | Enterprise |
-| **P3.6** Edge Inference | Phase 3 | IHC + edge market | Hardware + sovereignty moat | Enterprise |
+| **P3.5** EU AI Act | Phase 3 | European enterprise | Regulatory moat | Postpaid |
+| **P3.6** Edge Inference | Phase 3 | IHC + edge market | Hardware + sovereignty moat | Postpaid |
 
 ---
 

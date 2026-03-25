@@ -1,6 +1,6 @@
 # Brand Guidelines
 
-AI Gateway follows a dark-first monochrome design system. Sharp corners, uppercase headings, and technical precision define the visual language.
+AI Gateway follows a dark-first design system with vibrant accent colors. Sharp corners, uppercase headings, and technical precision define the visual language. The site supports both dark and light modes, with the light mode inspired by Notion's warm, readable aesthetic.
 
 ## Logo
 
@@ -20,6 +20,8 @@ The AI Gateway logo is the Material Design `transit-connection-variant` icon —
 
 ## Color Palette
 
+### Dark Mode (Default)
+
 | Color | Value | Usage |
 |-------|-------|-------|
 | Black | `#000000` | Backgrounds |
@@ -29,10 +31,51 @@ The AI Gateway logo is the Material Design `transit-connection-variant` icon —
 | White 80% | `rgba(255,255,255,0.8)` | Body text |
 | Gray | `#9c9c9c` | Muted, labels |
 | Border | `rgba(255,255,255,0.12)` | Borders |
-| Success | `#22c55e` | Status |
-| Warning | `#eab308` | Alerts |
-| Error | `#ef4444` | Destructive |
-| Info | `#3b82f6` | Links, accents |
+
+### Accent Colors
+
+| Color | Dark Mode | Light Mode | Usage |
+|-------|-----------|------------|-------|
+| Violet (Primary) | `#a78bfa` | `#9065B0` | Links, featured borders, brand chip, active tabs |
+| Violet Soft | `rgba(167,139,250,0.15)` | `#F6F3F8` | Hover fills, feature box backgrounds |
+| Violet Strong | `#c4b5fd` | `#8A67AB` | Active states, emphasis |
+| Cyan (Secondary) | `#22d3ee` | `#337EA9` | Secondary highlights, stat accents |
+| Cyan Soft | `rgba(34,211,238,0.12)` | `#E9F3F7` | Subtle fills |
+| Amber (Tertiary) | `#fbbf24` | `#D87620` | Warm accents, enterprise tier |
+| Amber Soft | `rgba(251,191,36,0.12)` | `#F8ECDF` | Subtle fills |
+
+### Status Colors
+
+| Color | Dark Mode | Light Mode | Usage |
+|-------|-----------|------------|-------|
+| Success | `#22c55e` | `#448361` | Status, positive |
+| Success Soft | `rgba(34,197,94,0.15)` | `#EEF3ED` | Tag/chip background |
+| Warning | `#eab308` | `#CB912F` | Alerts |
+| Warning Soft | `rgba(250,204,21,0.15)` | `#FAF3DD` | Tag/chip background |
+| Error / Danger | `#ef4444` | `#D44C47` | Destructive |
+| Danger Soft | `rgba(239,68,68,0.2)` | `#FAECEC` | Tag/chip background |
+| Info | `#3b82f6` | `#337EA9` | Informational |
+| Info Soft | `rgba(59,130,246,0.12)` | `#E9F3F7` | Tag/chip background |
+
+### Light Mode (Notion-Inspired)
+
+| Color | Value | Usage |
+|-------|-------|-------|
+| Background | `#ffffff` | Page background |
+| Subtle Background | `#f7f6f3` | Warm gray surfaces, header, cards |
+| Card Background | `#ffffff` | Card surfaces with subtle border |
+| Text | `#373530` | Primary body text |
+| Text Muted | `#787774` | Labels, captions, secondary text |
+| Border | `rgba(55,53,48,0.09)` | Subtle warm borders |
+
+### Semantic Tag Classes
+
+| Tag Class | Light BG | Light Text | Dark BG | Dark Text |
+|-----------|----------|------------|---------|-----------|
+| `.tag-threat-critical` | `#FAECEC` | `#D44C47` | `rgba(239,68,68,0.2)` | `#fca5a5` |
+| `.tag-threat-high` | `#F8ECDF` | `#CC782F` | `rgba(234,179,8,0.15)` | `#fde68a` |
+| `.tag-threat-medium` | `#FAF3DD` | `#C29343` | `rgba(250,204,21,0.15)` | `#fde68a` |
+| `.tag-threat-low` | `#EEF3ED` | `#448361` | `rgba(34,197,94,0.15)` | `#86efac` |
 
 ## Typography
 
@@ -49,10 +92,10 @@ The AI Gateway logo is the Material Design `transit-connection-variant` icon —
 
 | Pattern | Properties | Usage |
 |---------|-----------|-------|
-| Card | bg: #1a1a1a, border: 1px rgba(255,255,255,0.12), padding: 1.5rem, radius: 0 | Content containers, stats, pricing |
-| Featured Card | border: 2px #ffffff, box-shadow: 0 4px 20px rgba(255,255,255,0.08) | Highlighted items, popular tier |
-| Feature Box | border-left: 3px rgba(255,255,255,0.6), bg: rgba(255,255,255,0.04) | Callouts, feature highlights |
-| Table Header | bg: #1a1a1a, font: 0.75rem uppercase 0.06em spacing | All data tables |
+| Card | bg: var(--ig-bg-card), border: 1px var(--ig-border), colored top border via accent, padding: 1.5rem, radius: 0 | Content containers, stats, pricing |
+| Featured Card | border: 2px var(--ig-accent), box-shadow with accent glow | Highlighted items, popular tier |
+| Feature Box | border-left: 3px var(--ig-accent), bg: var(--ig-accent-soft) | Callouts, feature highlights |
+| Table Header | bg: var(--ig-bg-card), border-bottom: 2px var(--ig-accent), font: 0.75rem uppercase 0.06em | All data tables |
 | Hover State | translateY(-2px), box-shadow: 0 4px 16px rgba(0,0,0,0.3), transition: 0.2s | All interactive cards |
 | Grid | auto-fit minmax, gap: 1.25rem | Responsive layouts |
 

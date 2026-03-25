@@ -37,7 +37,7 @@ gantt
 
 > **Goal:** Maximise top-of-funnel signups and generate first revenue through self-serve and IHC pilots.
 
-- **D2C self-serve** — 2-minute onboarding: landing page to first API call. Zero-friction credit card billing.
+- **D2C self-serve** — 2-minute onboarding: landing page to first API call. $5 free credit, prepaid or postpaid billing.
 - **Cloud marketplaces** — List on AWS, GCP, and Azure. Enterprise sales cycle drops to **2-4 weeks** (vs. 6-12 months for direct procurement).
 - **Framework integrations** — Ship first-class support for LangChain (80K+ GitHub stars), Vercel AI SDK (500K+ users), LlamaIndex, and CrewAI. Developers discover AI Gateway where they already build.
 - **IHC internal pilots** — Burjeel (healthcare), ALDAR (real estate), 2PointZero (fintech). Real workloads from day one with executive sponsorship.
@@ -47,7 +47,7 @@ gantt
 
 > **Goal:** Deepen platform entrenchment so that leaving AI Gateway means losing tools, data, and workflows.
 
-- **Fine-tuning adoption** — Target 20% of Pro/Enterprise customers running custom fine-tunes. Models trained on AI Gateway do not port easily.
+- **Fine-tuning adoption** — Target 20% of active customers running custom fine-tunes. Models trained on AI Gateway do not port easily.
 - **Team workspaces** — Organisational coordination costs: shared billing, role-based access, usage dashboards. Once a team is onboard, switching requires group consensus.
 - **Cost analytics entrenchment** — Historical spend data, model-level cost breakdowns, budget alerts. Information lock-in — this data does not exist elsewhere.
 - **Prompt libraries** — Customer IP stored on-platform: versioned prompts, evaluation datasets, A/B test results.

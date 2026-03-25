@@ -29,6 +29,7 @@
   --ig-warning: #eab308;
   --ig-error: #ef4444;
   --ig-info: #3b82f6;
+  --ig-teal: #2dd4bf;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -115,13 +116,25 @@ body {
   background: var(--ig-white-10);
 }
 
+.sidebar a.active {
+  color: var(--ig-teal);
+  background: rgba(45,212,191,0.08);
+  border-left: 2px solid var(--ig-teal);
+  padding-left: calc(0.5rem - 2px);
+}
+
+.sidebar a.indent.active {
+  padding-left: calc(1.25rem - 2px);
+}
+
 .sidebar a.indent { padding-left: 1.25rem; font-size: 0.75rem; }
 
 /* ── Main content ── */
 .main {
-  margin-left: 260px;
   padding: 2.5rem 3rem 4rem;
   max-width: 1100px;
+  margin-right: auto;
+  margin-left: max(260px, calc(260px + (100vw - 260px - 1100px) / 2));
 }
 
 /* ── Typography ── */
@@ -238,6 +251,80 @@ code {
   letter-spacing: 0.08em;
 }
 
+/* ── Persona Cards ── */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.persona-card {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1rem 0.75rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.persona-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.persona-avatar {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 0.5rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid var(--ig-border);
+}
+
+.persona-name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3rem;
+}
+
+.persona-desc {
+  font-size: 0.62rem;
+  color: var(--ig-gray);
+  line-height: 1.45;
+  margin-bottom: 0.4rem;
+}
+
+.persona-meta {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ig-white-60);
+  margin-top: auto;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--ig-border);
+  width: 100%;
+}
+
+.persona-meta span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.persona-meta strong {
+  color: var(--ig-white-80);
+  font-weight: 600;
+}
+
 /* ── Tables ── */
 table {
   width: 100%;
@@ -272,6 +359,7 @@ details {
   background: var(--ig-dark-card);
   border: 1px solid var(--ig-border);
   margin-bottom: 0.75rem;
+  border-radius: 6px;
 }
 
 details[open] {
@@ -323,13 +411,20 @@ summary .milestone-tag.m3 { border-color: var(--ig-warning); color: var(--ig-war
 summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(--ig-white-40); }
 
 .feature-content {
-  padding: 0 1.25rem 1.25rem;
+  padding: 0.75rem 1.5rem 1.5rem;
   border-top: 1px solid var(--ig-border);
+}
+
+.feature-content > p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--ig-white-60);
+  margin-bottom: 0.75rem;
 }
 
 /* ── Feature sub-sections ── */
 .sub-section {
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .sub-section-title {
@@ -338,7 +433,7 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
   color: var(--ig-gray);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -350,6 +445,7 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
   height: 12px;
   background: var(--ig-white-40);
   display: inline-block;
+  border-radius: 1px;
 }
 
 /* ── Flow steps ── */
@@ -361,22 +457,25 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 
 .flow-steps li {
   counter-increment: step;
-  padding: 0.5rem 0 0.5rem 2.5rem;
+  padding: 0.75rem 0 0.75rem 2.75rem;
   position: relative;
-  border-left: 1px solid var(--ig-border);
+  border-left: 1px solid var(--ig-white-10);
   margin-left: 0.75rem;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--ig-white-80);
 }
 
 .flow-steps li::before {
   content: counter(step);
   position: absolute;
-  left: -0.75rem;
-  top: 0.45rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  left: -0.85rem;
+  top: 0.65rem;
+  width: 1.7rem;
+  height: 1.7rem;
   background: var(--ig-dark);
-  border: 1px solid var(--ig-border);
+  border: 1px solid var(--ig-white-20);
+  border-radius: 50%;
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--ig-white);
@@ -388,12 +487,16 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 
 .flow-steps li:last-child { border-left-color: transparent; }
 
-.flow-error {
-  font-size: 0.8rem;
-  color: var(--ig-error);
-  margin-top: 0.25rem;
-  padding-left: 0.5rem;
-  border-left: 2px solid var(--ig-error);
+.flow-steps li strong {
+  color: var(--ig-white);
+}
+
+.flow-steps li code {
+  font-size: 0.82rem;
+  padding: 0.15rem 0.4rem;
+  background: var(--ig-code-bg);
+  border: 1px solid var(--ig-border);
+  border-radius: 3px;
 }
 
 /* ── API endpoint blocks ── */
@@ -435,22 +538,24 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 .metric {
   background: var(--ig-dark);
   border: 1px solid var(--ig-border);
-  padding: 0.75rem 1rem;
+  padding: 1rem 1rem;
   text-align: center;
+  border-radius: 4px;
 }
 
 .metric .value {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--ig-white);
 }
 
 .metric .label {
-  font-size: 0.65rem;
-  color: var(--ig-gray);
+  font-size: 0.68rem;
+  color: var(--ig-white-40);
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-top: 0.15rem;
+  margin-top: 0.25rem;
+  line-height: 1.4;
 }
 
 /* ── Color swatches ── */
@@ -533,6 +638,26 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 .badge.p2 { border-color: var(--ig-info); color: var(--ig-info); }
 .badge.p3 { border-color: var(--ig-white-20); color: var(--ig-white-40); }
 
+/* ── Chips ── */
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+}
+.chip {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--ig-white-20);
+  background: var(--ig-white-10);
+  color: var(--ig-white-60);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
 /* ── Print ── */
 @media print {
   .sidebar { display: none; }
@@ -593,23 +718,41 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 
 /* ── Feature Checklist ── */
 .feature-checklist {
-  display:flex; flex-wrap:wrap; gap:0.4rem 1.2rem;
-  margin:0.75rem 0 0.25rem;
-  padding:0;
-  list-style:none;
+  margin: 0.5rem 0 0.5rem 1.25rem;
+  padding: 0;
+  list-style: disc;
 }
 .feature-checklist li {
-  display:flex; align-items:center; gap:0.4rem;
-  font-size:0.78rem;
-  color:var(--ig-gray);
+  font-size: 0.88rem;
+  color: var(--ig-white-60);
+  padding: 0.15rem 0;
+  line-height: 1.6;
 }
-.feature-checklist li::before {
-  content:"";
-  display:inline-block;
-  width:14px; height:14px;
-  border:1.5px solid #444;
-  border-radius:3px;
-  flex-shrink:0;
+.feature-checklist li::marker {
+  color: var(--ig-white-40);
+}
+
+.arch-diagram-wrapper {
+  margin: 1.5rem 0 2rem;
+  padding: 1.25rem;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid var(--ig-border);
+  text-align: center;
+}
+
+.arch-diagram-wrapper img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.arch-diagram-wrapper .caption {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 </style>
 </head>
@@ -624,6 +767,7 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
     </div>
     <div class="subtitle">Product Requirements Document</div>
     <div class="meta">v1.0 &middot; March 23, 2026 &middot; Draft</div>
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.7rem;color:var(--ig-white-40);text-decoration:none;margin-top:0.75rem;transition:color 0.15s;" onmouseover="this.style.color='var(--ig-white)'" onmouseout="this.style.color='var(--ig-white-40)'">&larr; Back to Portal</a>
   </div>
   <nav>
     <div class="nav-section">Document</div>
@@ -660,10 +804,10 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 
     <div class="nav-section">F &mdash; Billing</div>
     <a href="#f1" class="indent">F1. Credit System</a>
-    <a href="#f2" class="indent">F2. Metered Billing</a>
-    <a href="#f3" class="indent">F3. Pricing Tiers</a>
+    <a href="#f2" class="indent">F2. Postpaid Billing</a>
+    <a href="#f3" class="indent">F3. Per-Million-Token Pricing</a>
     <a href="#f4" class="indent">F4. Billing Dashboard</a>
-    <a href="#f5" class="indent">F5. Enterprise Discounts</a>
+    <a href="#f5" class="indent">F5. Enterprise &amp; Volume Agreements</a>
 
     <div class="nav-section">Architecture</div>
     <a href="#tech">Technical Architecture</a>
@@ -677,21 +821,7 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <!-- ──────────── OVERVIEW ──────────── -->
 <section id="overview">
 <h3>Product Summary</h3>
-<p>AI Gateway is a unified open-source LLM inference platform built by <strong>Infinia Technologies</strong> (IHC Group). It provides a single OpenAI-compatible API endpoint to 40+ open-source models with cost intelligence, enterprise governance, and compliance-as-architecture.</p>
-
-<h4>Tech Stack</h4>
-<table>
-  <tr><th>Layer</th><th>Technology</th></tr>
-  <tr><td>Frontend</td><td>Next.js 16, React 19, TypeScript 5</td></tr>
-  <tr><td>UI Library</td><td>Engineering team decision</td></tr>
-  <tr><td>Charts</td><td>Recharts</td></tr>
-  <tr><td>Data Tables</td><td>TanStack Table (pivot/grouping)</td></tr>
-  <tr><td>API Compatibility</td><td>OpenAI-compatible (<code>/v1/chat/completions</code>)</td></tr>
-  <tr><td>Payments</td><td>Stripe (metered billing)</td></tr>
-  <tr><td>Auth</td><td>NextAuth.js / Auth.js (email + Google OAuth)</td></tr>
-  <tr><td>Database</td><td>Engineering team decision</td></tr>
-  <tr><td>API Key Prefix</td><td><code>tf-</code></td></tr>
-</table>
+<p>AI Gateway is a unified open-source LLM inference platform built by <strong>Infinia Technologies</strong> (IHC Group). It provides a dual-compatible API (OpenAI + Anthropic format) endpoint to many open-source models with cost intelligence, enterprise governance, and compliance-as-architecture.</p>
 
 <h4>Timeline</h4>
 <div class="timeline">
@@ -802,16 +932,86 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <section id="personas">
 <h2>Target Users &amp; Personas</h2>
 
-<table>
-  <tr><th>Segment</th><th>Description</th><th>Monthly Spend</th><th>Priority</th></tr>
-  <tr><td><strong>C1: Indie Hacker</strong></td><td>Individual devs, students, hobbyists. Price-sensitive, high social influence.</td><td>$0-50</td><td>Medium (funnel)</td></tr>
-  <tr><td><strong>C2: Startup Builder</strong></td><td>Seed-to-Series B, 5-50 employees. Speed-to-market driven.</td><td>$50-2,000</td><td>High (growth)</td></tr>
-  <tr><td><strong>C3: Mid-Market</strong></td><td>50-1,000 employees, 5-20 AI devs. Need cost visibility + RBAC.</td><td>$2K-25K</td><td>High</td></tr>
-  <tr><td><strong>C4: Enterprise</strong></td><td>Fortune 500. 6-18 month procurement. SOC 2, SSO, SLAs required.</td><td>$25K-500K</td><td>High (revenue)</td></tr>
-  <tr><td><strong>C5: AI-Native</strong></td><td>AI is the product. Benchmark rigorously. Multi-provider architecture.</td><td>$10K-1M+</td><td>Medium (credibility)</td></tr>
-  <tr><td><strong>C6: Regulated</strong></td><td>Healthcare, finance, government. Compliance-first decisions.</td><td>$50K-2M+</td><td>High (post-SOC 2)</td></tr>
-  <tr><td><strong>C7: IHC Group</strong></td><td>50-100 tech-active subsidiaries. Near-zero acquisition cost.</td><td>$5K-500K</td><td>Highest (launch)</td></tr>
-</table>
+<div class="persona-grid">
+
+  <!-- C1: Indie Hacker -->
+  <div class="persona-card">
+    <img class="persona-avatar" src="https://joesch.moe/api/v1/indie-hacker" alt="Indie Hacker">
+    <div class="persona-name">C1: Indie Hacker</div>
+    <div class="persona-desc">Individual devs, students, hobbyists. Price-sensitive, high social influence.</div>
+    <div class="persona-meta">
+      <span><strong>$0-50</strong> /mo</span>
+      <span><strong>Medium</strong> (funnel)</span>
+    </div>
+  </div>
+
+  <!-- C2: Startup Builder -->
+  <div class="persona-card">
+    <img class="persona-avatar" src="https://joesch.moe/api/v1/startup-founder" alt="Startup Builder">
+    <div class="persona-name">C2: Startup Builder</div>
+    <div class="persona-desc">Seed-to-Series B, 5-50 employees. Speed-to-market driven.</div>
+    <div class="persona-meta">
+      <span><strong>$50-2K</strong> /mo</span>
+      <span><strong>High</strong> (growth)</span>
+    </div>
+  </div>
+
+  <!-- C3: Mid-Market -->
+  <div class="persona-card">
+    <img class="persona-avatar" src="https://joesch.moe/api/v1/female/team-lead" alt="Mid-Market">
+    <div class="persona-name">C3: Mid-Market</div>
+    <div class="persona-desc">50-1,000 employees, 5-20 AI devs. Need cost visibility + RBAC.</div>
+    <div class="persona-meta">
+      <span><strong>$2K-25K</strong> /mo</span>
+      <span><strong>High</strong></span>
+    </div>
+  </div>
+
+  <!-- C4: Enterprise -->
+  <div class="persona-card">
+    <img class="persona-avatar" src="https://joesch.moe/api/v1/male/enterprise-exec" alt="Enterprise">
+    <div class="persona-name">C4: Enterprise</div>
+    <div class="persona-desc">Fortune 500. 6-18 month procurement. SOC 2, SSO, SLAs required.</div>
+    <div class="persona-meta">
+      <span><strong>$25K-500K</strong> /mo</span>
+      <span><strong>High</strong> (revenue)</span>
+    </div>
+  </div>
+
+  <!-- C5: AI-Native -->
+  <div class="persona-card">
+    <img class="persona-avatar" src="https://joesch.moe/api/v1/ai-engineer" alt="AI-Native">
+    <div class="persona-name">C5: AI-Native</div>
+    <div class="persona-desc">AI is the product. Benchmark rigorously. Multi-provider architecture.</div>
+    <div class="persona-meta">
+      <span><strong>$10K-1M+</strong> /mo</span>
+      <span><strong>Medium</strong> (credibility)</span>
+    </div>
+  </div>
+
+  <!-- C6: Regulated -->
+  <div class="persona-card">
+    <img class="persona-avatar" src="https://joesch.moe/api/v1/female/compliance-officer" alt="Regulated">
+    <div class="persona-name">C6: Regulated</div>
+    <div class="persona-desc">Healthcare, finance, government. Compliance-first decisions.</div>
+    <div class="persona-meta">
+      <span><strong>$50K-2M+</strong> /mo</span>
+      <span><strong>High</strong> (post-SOC 2)</span>
+    </div>
+  </div>
+
+  <!-- C7: IHC Group -->
+  <div class="persona-card">
+    <img class="persona-avatar" src="https://joesch.moe/api/v1/male/group-director" alt="IHC Group">
+    <div class="persona-name">C7: IHC Group</div>
+    <div class="persona-desc">50-100 tech-active subsidiaries. Near-zero acquisition cost.</div>
+    <div class="persona-meta">
+      <span><strong>$5K-500K</strong> /mo</span>
+      <span><strong>Highest</strong> (launch)</span>
+    </div>
+  </div>
+
+</div>
 
 <h3>Behavioral Segments</h3>
 <div class="grid grid-4">
@@ -836,15 +1036,39 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 </div>
 
 <h3>M1: March 28 &mdash; Users Can Sign Up and Make API Calls</h3>
-<p>Features: A1 (Auth), B1 (Unified API), B2 (Model Catalog), B3 (Streaming), C1 (API Keys), D1 (Dashboard Shell), F1 (Credits)</p>
-<p><strong>Exit criteria:</strong> New user signs up, receives $5 credit, creates API key, makes successful <code>POST /v1/chat/completions</code> with streaming. All 40+ models accessible.</p>
+<div class="chip-group">
+  <span class="chip">A1 Auth</span>
+  <span class="chip">B1 Unified API</span>
+  <span class="chip">B2 Model Catalog</span>
+  <span class="chip">B3 Streaming</span>
+  <span class="chip">C1 API Keys</span>
+  <span class="chip">D1 Dashboard Shell</span>
+  <span class="chip">F1 Credits</span>
+</div>
+<p><strong>Exit criteria:</strong> New user signs up, receives $5 credit, creates API key, makes successful <code>POST /v1/chat/completions</code> with streaming. All models accessible.</p>
 
 <h3>M2: April 5 &mdash; Playground, Cost Dashboard, Team Management</h3>
-<p>Features: D2 (Playground), D3 (Side-by-Side), D4 (Blind Comparison), E1 (Cost Dashboard), E2 (Budget Alerts), E3 (Usage Analytics), C2 (Key Scoping), C3 (Key Rotation), A2 (Team/Org)</p>
+<div class="chip-group">
+  <span class="chip">D2 Playground</span>
+  <span class="chip">D3 Side-by-Side</span>
+  <span class="chip">D4 Blind Comparison</span>
+  <span class="chip">E1 Cost Dashboard</span>
+  <span class="chip">E2 Budget Alerts</span>
+  <span class="chip">E3 Usage Analytics</span>
+  <span class="chip">C2 Key Scoping</span>
+  <span class="chip">C3 Key Rotation</span>
+  <span class="chip">A2 Team/Org</span>
+</div>
 <p><strong>Exit criteria:</strong> Full playground with comparison modes. Cost dashboard with real-time spend. Org management with role-based access. Key scoping and rotation working.</p>
 
 <h3>M3: April 11 &mdash; Billing Live</h3>
-<p>Features: F2 (Metered Billing), F3 (Pricing Tiers), F4 (Billing Dashboard), F5 (Enterprise Discounts), D5 (Public Playground)</p>
+<div class="chip-group">
+  <span class="chip">F2 Metered Billing</span>
+  <span class="chip">F3 Pricing Tiers</span>
+  <span class="chip">F4 Billing Dashboard</span>
+  <span class="chip">F5 Enterprise Discounts</span>
+  <span class="chip">D5 Public Playground</span>
+</div>
 <p><strong>Exit criteria:</strong> Stripe billing active. All tiers purchasable. Invoices generated. Public playground with IP-based rate limiting.</p>
 
 <h3>M4: April 15 &mdash; LAUNCH</h3>
@@ -893,10 +1117,11 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <summary>A1. User Authentication <span class="milestone-tag m1">M1 &middot; Mar 28</span></summary>
 <div class="feature-content">
 
-<p>Email/password signup, Google OAuth, email verification, forgot password. $5 free credit applied on verification.</p>
+<p>Email/password signup, Google OAuth, Microsoft Entra ID SSO, email verification, forgot password. $5 free credit applied on verification.</p>
 <ul class="feature-checklist">
   <li>Email/password signup</li>
   <li>Google OAuth</li>
+  <li>Microsoft Entra ID (Azure AD) SSO</li>
   <li>Email verification</li>
   <li>Forgot password</li>
   <li>$5 free credit on verification</li>
@@ -905,16 +1130,14 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <div class="sub-section">
 <div class="sub-section-title">User Flow</div>
 <ol class="flow-steps">
-  <li>User visits <code>/signup</code>. Sees form with email, password, confirm password fields and "Sign up with Google" OAuth button.</li>
+  <li>User visits <code>/signup</code>. Sees form with email, password, confirm password fields, "Sign up with Google" OAuth button, and "Sign in with Microsoft" button.</li>
   <li><strong>Email path:</strong> User enters email + password (min 8 chars, mixed case, 1 number). Clicks "Create Account".</li>
   <li>System creates account in <code>pending_verification</code> state. Sends verification email within 30 seconds.</li>
   <li>User clicks verification link (expires 24h). Account moves to <code>active</code>. $5 credit applied. System auto-creates an organisation named <code>"{User's Name}'s Organisation"</code> with an auto-generated URL-safe slug. User becomes Owner. Redirected to dashboard under this org context with onboarding card.</li>
   <li><strong>Google OAuth path:</strong> User clicks "Sign up with Google". Redirected to Google consent. On return, account created (or linked if email matches) and immediately active. $5 credit applied. Organisation auto-created as above.</li>
+  <li><strong>Microsoft Entra ID path:</strong> User clicks "Sign in with Microsoft". Redirected to Microsoft identity platform (OAuth 2.0 / OIDC). Supports personal Microsoft accounts, work/school (Entra ID) accounts, and multi-tenant configurations. On return, account created (or linked if email matches) and immediately active. $5 credit applied. Organisation auto-created as above. If the user's Entra tenant provides group claims, these are stored for future RBAC mapping.</li>
   <li><strong>Forgot password:</strong> User clicks "Forgot password" on <code>/login</code>. Enters email. Reset email sent within 30s. Link expires 1h. User sets new password. Existing sessions preserved.</li>
 </ol>
-<div class="flow-error">Error: Duplicate email &rarr; "An account with this email already exists. Sign in or use a different email."</div>
-<div class="flow-error">Error: Weak password &rarr; Inline validation showing requirements not met.</div>
-<div class="flow-error">Error: Expired verification link &rarr; "This link has expired. Click here to resend verification email."</div>
 </div>
 
 
@@ -954,7 +1177,6 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
   <li>Owner/Admin navigates to Org Settings. Sets default model allowlist, rate limits, and cost ceilings for new keys.</li>
   <li>Members see org context in dashboard.</li>
 </ol>
-<div class="flow-error">Error: Invite expired &rarr; "This invitation has expired. Ask your admin to send a new invite."</div>
 </div>
 
 
@@ -980,11 +1202,13 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <summary>B1. Unified Inference API <span class="milestone-tag m1">M1 &middot; Mar 28</span></summary>
 <div class="feature-content">
 
-<p>Single OpenAI-compatible endpoint supporting 40+ open-source models. Drop-in replacement for any OpenAI SDK.</p>
+<p>Dual-compatible inference API supporting both OpenAI and Anthropic SDK formats. many open-source models served from self-hosted K8s GPU cluster. Drop-in replacement for both OpenAI and Anthropic SDKs.</p>
 <ul class="feature-checklist">
-  <li>OpenAI-compatible endpoint</li>
-  <li>40+ open-source models</li>
-  <li>Drop-in SDK replacement</li>
+  <li>OpenAI-compatible endpoint (<code>/v1/chat/completions</code>)</li>
+  <li>Anthropic-compatible endpoint (<code>/v1/messages</code>)</li>
+  <li>many open-source models</li>
+  <li>Drop-in replacement for both OpenAI SDK and Anthropic SDK</li>
+  <li>Dual auth header support (<code>Authorization: Bearer</code> for OpenAI, <code>x-api-key</code> for Anthropic)</li>
 </ul>
 
 <div class="sub-section">
@@ -993,13 +1217,10 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
   <li>Developer copies API key (<code>tf-xxxx</code>) from dashboard.</li>
   <li>Changes base URL in existing code: <code>base_url = "https://api.aigateway.ai/v1"</code></li>
   <li>Sets model to any supported model: <code>model = "meta-llama/llama-3.1-70b-instruct"</code></li>
-  <li>Makes <code>POST /v1/chat/completions</code> with <code>Authorization: Bearer tf-xxxx</code>.</li>
-  <li>Receives response in exact OpenAI format. Usage object includes token counts for billing.</li>
+  <li>Makes <code>POST /v1/chat/completions</code> (OpenAI) or <code>POST /v1/messages</code> (Anthropic) with appropriate auth header.</li>
+  <li>Receives response in the caller&rsquo;s expected format. Usage object includes token counts for billing.</li>
   <li>Each request generates a billing event: model, tokens (input/output), cost, latency, key ID.</li>
 </ol>
-<div class="flow-error">Error: Invalid API key &rarr; 401 <code>{"error":{"type":"authentication_error","message":"Invalid API key"}}</code></div>
-<div class="flow-error">Error: Rate limited &rarr; 429 with <code>Retry-After</code> header</div>
-<div class="flow-error">Error: Model not found &rarr; 404 <code>{"error":{"type":"invalid_request_error","message":"Model not found"}}</code></div>
 </div>
 
 
@@ -1007,7 +1228,7 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <div class="sub-section">
 <div class="sub-section-title">Success Metrics</div>
 <div class="metrics-grid">
-  <div class="metric"><div class="value">40+</div><div class="label">Models available at launch</div></div>
+  <div class="metric"><div class="value">Many</div><div class="label">Models available at launch</div></div>
   <div class="metric"><div class="value">&gt;80%</div><div class="label">Developers successful on first API call</div></div>
   <div class="metric"><div class="value">&gt;50%</div><div class="label">Users trying 2+ models (30d)</div></div>
   <div class="metric"><div class="value">&gt;70%</div><div class="label">Week-1 to Week-2 retention</div></div>
@@ -1074,13 +1295,12 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <div class="sub-section">
 <div class="sub-section-title">User Flow</div>
 <ol class="flow-steps">
-  <li>Client sends <code>POST /v1/chat/completions</code> with <code>"stream": true</code>.</li>
-  <li>Server responds with <code>Content-Type: text/event-stream</code>.</li>
-  <li>Tokens arrive as SSE events: <code>data: {"choices":[{"delta":{"content":"token"}}]}</code>.</li>
-  <li>Client renders tokens as they arrive (playground, SDK, custom app).</li>
-  <li>Stream ends with <code>data: [DONE]</code>. Connection closed. Final usage object in last chunk.</li>
+  <li>Client sends a chat completion request with streaming enabled.</li>
+  <li>Server opens a persistent connection and begins streaming the response.</li>
+  <li>Tokens arrive incrementally as they are generated.</li>
+  <li>Client renders tokens as they arrive in real time.</li>
+  <li>Stream ends when generation is complete and the connection is closed.</li>
 </ol>
-<div class="flow-error">Error mid-stream &rarr; Error event sent before connection close. Client receives partial content + error indication.</div>
 </div>
 
 
@@ -1089,7 +1309,7 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <div class="metrics-grid">
   <div class="metric"><div class="value">&gt;90%</div><div class="label">Streaming adoption rate (vs non-streaming)</div></div>
   <div class="metric"><div class="value">&gt;70%</div><div class="label">Playground sessions using streaming</div></div>
-  <div class="metric"><div class="value">100%</div><div class="label">OpenAI SDK drop-in compatibility confirmed</div></div>
+  <div class="metric"><div class="value">100%</div><div class="label">OpenAI + Anthropic SDK drop-in compatibility confirmed</div></div>
 </div>
 </div>
 
@@ -1123,7 +1343,6 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
   <li>Key list shows: Name, Masked Value, Source/App, Created, Last Used, Status (active/revoked).</li>
   <li>User clicks "Revoke" on a key. AlertDialog confirmation. Key immediately stops authenticating (&lt;1s).</li>
 </ol>
-<div class="flow-error">Error: User dismissed key without copying &rarr; Warning: "This key will not be shown again. Are you sure?"</div>
 </div>
 
 
@@ -1264,13 +1483,14 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <summary>D2. Interactive Playground <span class="milestone-tag m2">M2 &middot; Apr 5</span></summary>
 <div class="feature-content">
 
-<p>Web-based chat interface to test any model with system prompt, message composer, and streamed responses.</p>
+<p>Web-based chat interface to test any model with system prompt, message composer, and streamed responses. Connected to the active wallet balance — every request consumes tokens and deducts the corresponding cost from the wallet balance in real time.</p>
 <ul class="feature-checklist">
   <li>Chat interface</li>
   <li>Model selector</li>
   <li>System prompt</li>
   <li>Message composer</li>
   <li>Streamed responses</li>
+  <li>Sessions saved and resumable</li>
 </ul>
 
 <div class="sub-section">
@@ -1282,7 +1502,8 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
   <li>Types message in composer at bottom. Send on Enter (Shift+Enter for newline).</li>
   <li>Response streams token-by-token with typing indicator.</li>
   <li>After response completes: shows model, tokens (input/output), cost, TTFT, total latency below the message.</li>
-  <li>User can continue conversation or click "New Chat" to clear.</li>
+  <li>User can continue conversation or click "New Chat" to start a fresh session.</li>
+  <li>All sessions are automatically saved and listed under a "History" panel. User can resume any past session.</li>
   <li>Usage deducted from credit balance / billing. Appears in cost dashboard.</li>
 </ol>
 </div>
@@ -1382,7 +1603,7 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <summary>D5. Public Playground <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
 <div class="feature-content">
 
-<p>No account required for basic use. Limited to 5 requests per session. Connected to billing when authenticated.</p>
+<p>No account required for basic use. Limited to 5 requests per session. When authenticated, connected to the active wallet balance — requests consume tokens and deduct from the wallet balance in real time.</p>
 <ul class="feature-checklist">
   <li>No account required</li>
   <li>5 requests/session limit</li>
@@ -1580,29 +1801,30 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 
 <!-- F2 -->
 <details id="f2">
-<summary>F2. Metered Billing <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
+<summary>F2. Postpaid Billing (Invoice) <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
 <div class="feature-content">
 
-<p>Automatic per-token billing with hourly usage aggregation via Stripe.</p>
+<p>Postpaid billing method. Usage is metered per million tokens consumed at model-specific rates and invoiced monthly.</p>
 <ul class="feature-checklist">
-  <li>Per-token billing</li>
+  <li>Per-million-token billing at model-specific rates</li>
+  <li>Input and output tokens metered separately</li>
   <li>Hourly usage aggregation</li>
-  <li>Stripe integration</li>
+  <li>Monthly invoice generation via Stripe</li>
+  <li>Net-30 payment terms</li>
 </ul>
 
 <div class="sub-section">
 <div class="sub-section-title">User Flow</div>
 <ol class="flow-steps">
-  <li>User adds payment method (credit/debit card via Stripe Elements).</li>
-  <li>API usage generates billing events per request (input tokens + output tokens at model-specific rates).</li>
-  <li>Usage aggregated hourly. Real-time estimates on dashboard (not billed until aggregation).</li>
-  <li>At end of billing period (monthly): invoice generated with line items per model.</li>
-  <li>Stripe charges payment method. Invoice status: paid/pending/failed.</li>
-  <li>Failed payment: retry 3 times over 7 days. After final failure, account downgraded to free tier.</li>
+  <li>User applies for postpaid billing (requires credit approval for new accounts, or enterprise agreement).</li>
+  <li>API usage generates billing events per request (input tokens + output tokens at model-specific rates per million tokens).</li>
+  <li>Usage aggregated hourly. Real-time estimates on dashboard (not billed until invoice).</li>
+  <li>At end of billing period (monthly): invoice generated with line items per model showing token consumption and cost.</li>
+  <li>Invoice sent via email and available in dashboard. Payment due Net-30.</li>
+  <li>Stripe charges payment method on file, or customer pays via bank transfer.</li>
+  <li>Failed payment: retry 3 times over 7 days. After final failure, account restricted to prepaid only.</li>
 </ol>
 </div>
-
-
 
 <div class="sub-section">
 <div class="sub-section-title">Success Metrics</div>
@@ -1618,51 +1840,58 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 
 <!-- F3 -->
 <details id="f3">
-<summary>F3. Pricing Tiers <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
+<summary>F3. Per-Million-Token Model Pricing <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
 <div class="feature-content">
 
-<p>Free, Pay-As-You-Go, Pro ($99/mo), Team ($299/mo), Enterprise (custom $2K+/mo). Prepaid and postpaid options.</p>
+<p>All models priced per million tokens with separate input and output rates. Both prepaid and postpaid billing methods use the same published rates.</p>
 <ul class="feature-checklist">
-  <li>Free tier</li>
-  <li>Pay-As-You-Go</li>
-  <li>Pro ($99/mo)</li>
-  <li>Team ($299/mo)</li>
-  <li>Enterprise ($2K+/mo)</li>
-  <li>Prepaid/postpaid options</li>
+  <li>Per-million-token pricing for every model</li>
+  <li>Separate input and output token rates</li>
+  <li>Published rate card on website</li>
+  <li>Volume discounts for bulk prepaid purchases or committed postpaid spend</li>
+  <li>Custom enterprise rates available</li>
 </ul>
+
+<div class="sub-section">
+<div class="sub-section-title">Model Pricing Structure</div>
+<table>
+  <tr><th>Model Category</th><th>Example Models</th><th>Input (per 1M tokens)</th><th>Output (per 1M tokens)</th></tr>
+  <tr><td>Small (7–8B)</td><td>LLaMA 3.1 8B, Mistral 7B</td><td>$0.10–0.20</td><td>$0.10–0.20</td></tr>
+  <tr><td>Medium (13–34B)</td><td>LLaMA 3.1 13B, CodeLlama 34B</td><td>$0.30–0.60</td><td>$0.30–0.60</td></tr>
+  <tr><td>Large (70B+)</td><td>LLaMA 3.1 70B, Mistral Large, DeepSeek V3</td><td>$0.50–1.20</td><td>$0.50–1.50</td></tr>
+  <tr><td>Embeddings</td><td>Various embedding models</td><td>$0.01–0.05</td><td>—</td></tr>
+</table>
+</div>
+
+<div class="sub-section">
+<div class="sub-section-title">Volume Discounts</div>
+<table>
+  <tr><th>Commitment Level</th><th>Discount</th></tr>
+  <tr><td>$1K+ prepaid credit purchase</td><td>5%</td></tr>
+  <tr><td>$5K+ prepaid credit purchase</td><td>10%</td></tr>
+  <tr><td>$10K+ prepaid or committed postpaid spend</td><td>15%</td></tr>
+  <tr><td>$50K+ committed annual spend</td><td>20–30% (custom)</td></tr>
+</table>
+</div>
 
 <div class="sub-section">
 <div class="sub-section-title">User Flow</div>
 <ol class="flow-steps">
-  <li>User navigates to Billing &rarr; Plans. Sees tier comparison cards.</li>
-  <li>Each card shows: tier name, price, token discount, RPM limit, included features.</li>
-  <li>Clicks "Upgrade" on desired tier. Confirms plan change in dialog.</li>
-  <li>Upgrade: immediate. Pro-rated charge for remainder of billing cycle.</li>
-  <li>Downgrade: takes effect at end of current billing cycle. No refund for current period.</li>
-  <li>Enterprise: "Contact Sales" button opens form or calendly link.</li>
+  <li>User navigates to Pricing page. Sees per-million-token rates for all models.</li>
+  <li>Chooses billing method: Prepaid (buy credits) or Postpaid (monthly invoice).</li>
+  <li>For Prepaid: enters credit purchase amount, applies payment. Credits available immediately.</li>
+  <li>For Postpaid: completes credit approval or enterprise agreement. Usage billed monthly.</li>
+  <li>Volume discounts applied automatically based on purchase/commitment level.</li>
+  <li>Enterprise customers: "Contact Sales" button opens form for custom rates and committed spend agreements.</li>
 </ol>
 </div>
-
-
-<div class="sub-section">
-<div class="sub-section-title">Tier Details</div>
-<table>
-  <tr><th>Tier</th><th>Price</th><th>Discount</th><th>RPM</th><th>Keys</th><th>Key Features</th></tr>
-  <tr><td>Free</td><td>$0/mo</td><td>None</td><td>10</td><td>1</td><td>$5 credit, playground</td></tr>
-  <tr><td>PAYG</td><td>$0/mo</td><td>None</td><td>100</td><td>Unlimited</td><td>Standard pricing, basic dashboard</td></tr>
-  <tr><td>Pro</td><td>$99/mo</td><td>5-10%</td><td>1,000</td><td>Unlimited</td><td>RBAC, cost allocation, webhooks, fine-tuning, priority support</td></tr>
-  <tr><td>Team</td><td>$299/mo</td><td>8-12%</td><td>5,000</td><td>Unlimited</td><td>SSO, team workspaces, advanced analytics</td></tr>
-  <tr><td>Enterprise</td><td>$2K+/mo</td><td>15-30%</td><td>Custom</td><td>Unlimited</td><td>VPC, custom SLA, CSM, ZDR, audit logs, data residency</td></tr>
-</table>
-</div>
-
 
 <div class="sub-section">
 <div class="sub-section-title">Success Metrics</div>
 <div class="metrics-grid">
   <div class="metric"><div class="value">&gt;7%</div><div class="label">Free to paid conversion (90d)</div></div>
-  <div class="metric"><div class="value">&gt;2%</div><div class="label">PAYG to Pro upgrade rate (90d)</div></div>
-  <div class="metric"><div class="value">&gt;30%</div><div class="label">Pricing page visitors who start checkout</div></div>
+  <div class="metric"><div class="value">&gt;40%</div><div class="label">Prepaid users who top up within 30 days</div></div>
+  <div class="metric"><div class="value">&gt;30%</div><div class="label">Pricing page visitors who complete purchase</div></div>
 </div>
 </div>
 
@@ -1674,34 +1903,34 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 <summary>F4. Billing Dashboard <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
 <div class="feature-content">
 
-<p>Current plan, usage summary, invoice history, payment method, upgrade/downgrade flow.</p>
+<p>Current billing method, usage summary, credit balance or invoice history, payment method, and method switching flow.</p>
 <ul class="feature-checklist">
-  <li>Current plan display</li>
-  <li>Usage summary</li>
-  <li>Invoice history</li>
-  <li>Payment method</li>
-  <li>Upgrade/downgrade flow</li>
+  <li>Current billing method display (Prepaid or Postpaid)</li>
+  <li>Credit balance (Prepaid) or current period usage (Postpaid)</li>
+  <li>Token consumption breakdown by model</li>
+  <li>Invoice history (Postpaid) or top-up history (Prepaid)</li>
+  <li>Payment method management</li>
+  <li>Switch between billing methods</li>
 </ul>
 
 <div class="sub-section">
 <div class="sub-section-title">User Flow</div>
 <ol class="flow-steps">
   <li>User navigates to Billing from sidebar.</li>
-  <li><strong>Current Plan card:</strong> Tier name, renewal date, included features summary.</li>
-  <li><strong>Usage summary card:</strong> Current period tokens and dollar amount.</li>
-  <li><strong>Invoice history table:</strong> Date, amount, status (paid/pending/failed), download PDF.</li>
+  <li><strong>Billing method card:</strong> Shows "Prepaid" or "Postpaid" with option to switch.</li>
+  <li>For Prepaid: Credit balance, recent deductions by model, top-up history, "Add Credits" button.</li>
+  <li>For Postpaid: Current period usage by model, estimated invoice amount, invoice history table (date, amount, status, download PDF).</li>
+  <li><strong>Token consumption breakdown:</strong> Per-model table showing tokens consumed, rate per million, and cost.</li>
   <li><strong>Payment method section:</strong> Card on file (masked), "Update" and "Add backup" buttons.</li>
-  <li><strong>Plan management:</strong> "Upgrade" / "Downgrade" buttons with plan comparison.</li>
 </ol>
 </div>
-
 
 <div class="sub-section">
 <div class="sub-section-title">Success Metrics</div>
 <div class="metrics-grid">
   <div class="metric"><div class="value">&gt;80%</div><div class="label">Users self-serving billing questions (no support ticket)</div></div>
   <div class="metric"><div class="value">&gt;50%</div><div class="label">Users downloading at least one invoice PDF</div></div>
-  <div class="metric"><div class="value">&gt;90%</div><div class="label">Plan changes completed without abandonment</div></div>
+  <div class="metric"><div class="value">&gt;90%</div><div class="label">Billing method switches completed without abandonment</div></div>
 </div>
 </div>
 
@@ -1710,31 +1939,32 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 
 <!-- F5 -->
 <details id="f5">
-<summary>F5. Invoice/Payment Level Discounts <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
+<summary>F5. Enterprise &amp; Volume Agreements <span class="milestone-tag m3">M3 &middot; Apr 11</span></summary>
 <div class="feature-content">
 
-<p>Enterprise volume discounts, custom pricing, prepaid token credit purchases.</p>
+<p>Custom pricing, volume discounts, and committed spend agreements for high-volume customers. Includes IHC Group inter-company billing.</p>
 <ul class="feature-checklist">
-  <li>Volume discounts</li>
-  <li>Custom pricing</li>
-  <li>Prepaid token credits</li>
+  <li>Volume discounts on prepaid credit purchases</li>
+  <li>Committed spend agreements for postpaid customers</li>
+  <li>Custom per-million-token rates for enterprise accounts</li>
+  <li>IHC Group inter-company billing</li>
 </ul>
 
 <div class="sub-section">
 <div class="sub-section-title">User Flow</div>
 <ol class="flow-steps">
-  <li><strong>Volume discounts:</strong> Enterprise customers on committed spend get automatic discount applied at invoice level.</li>
-  <li><strong>Custom pricing:</strong> Admin sets custom per-token rates for specific enterprise accounts via internal tool.</li>
-  <li><strong>Prepaid:</strong> Enterprise customer purchases token credit block at discounted rate. Balance tracked. Consumed before metered billing.</li>
-  <li>All discounts visible on invoice as separate line items.</li>
+  <li><strong>Volume discounts (Prepaid):</strong> Customers purchasing bulk credits receive automatic discounts at defined thresholds.</li>
+  <li><strong>Committed spend (Postpaid):</strong> Enterprise customers commit to minimum monthly or annual spend in exchange for discounted per-million-token rates.</li>
+  <li><strong>Custom pricing:</strong> Admin sets custom per-million-token rates for specific enterprise accounts via internal tool.</li>
+  <li><strong>IHC Group billing:</strong> Inter-company billing with 20–30% discount on published rates. Automated cost allocation and cross-charging.</li>
+  <li>All discounts visible on invoice or credit purchase receipt as separate line items.</li>
 </ol>
 </div>
-
 
 <div class="sub-section">
 <div class="sub-section-title">Success Metrics</div>
 <div class="metrics-grid">
-  <div class="metric"><div class="value">$5M+</div><div class="label">Committed ARR from discount programs</div></div>
+  <div class="metric"><div class="value">$5M+</div><div class="label">Committed ARR from volume agreements</div></div>
   <div class="metric"><div class="value">&gt;80%</div><div class="label">Enterprise customers on committed spend agreements</div></div>
   <div class="metric"><div class="value">&gt;90%</div><div class="label">Prepaid credit blocks fully consumed before expiry</div></div>
 </div>
@@ -1751,6 +1981,11 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 
 <h3>System Overview</h3>
 <p>The platform follows a layered architecture with clear ownership boundaries. All external traffic enters through CloudFlare, which handles CDN, DDoS protection, and edge caching before routing to the internal infrastructure.</p>
+
+<div class="arch-diagram-wrapper">
+  <img src="assets/architecture-diagram.png" alt="Token Factory Technical Architecture — system topology showing CloudFlare edge, Envoy proxy, Control Service, Backend, K8s GPU cluster, and data stores with Jawad (infrastructure) and Shivank (platform) ownership domains">
+  <div class="caption">Fig. 1 — System Architecture &amp; Ownership Domains</div>
+</div>
 
 <h3>Request Flow</h3>
 <div class="flow">
@@ -1813,5 +2048,27 @@ summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(-
 </footer>
 
 </div>
+<script>
+(function() {
+  const navLinks = Array.from(document.querySelectorAll('.sidebar a[href^="#"]'));
+  const sectionIds = navLinks.map(a => a.getAttribute('href').slice(1));
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  function setActive(id) {
+    navLinks.forEach(a => {
+      const matches = a.getAttribute('href') === '#' + id;
+      a.classList.toggle('active', matches);
+    });
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+})();
+</script>
 </body>
 </html>

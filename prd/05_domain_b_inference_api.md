@@ -20,7 +20,7 @@ Dual-compatible inference API supporting both OpenAI and Anthropic SDK formats. 
 3. Sets model to any supported model: `model = "meta-llama/llama-3.1-70b-instruct"`
 4. Makes `POST /v1/chat/completions` with `Authorization: Bearer tf-xxxx`.
 5. Receives response in exact OpenAI format. Usage object includes token counts for billing.
-6. Each request generates a billing event: model, tokens (input/output), cost, latency, key ID.
+6. Each request generates a billing event: model, tokens (input/output), cost, latency, key ID, project ID.
 
 ### User Flow — Anthropic SDK
 
@@ -29,7 +29,7 @@ Dual-compatible inference API supporting both OpenAI and Anthropic SDK formats. 
 3. Sets API key: `api_key = "tf-xxxx"`
 4. Calls `client.messages.create(model="meta-llama/llama-3.1-70b-instruct", messages=[...], max_tokens=1024)`.
 5. Receives response in exact Anthropic format. Usage object includes `input_tokens` and `output_tokens` for billing.
-6. Each request generates a billing event: model, tokens (input/output), cost, latency, key ID.
+6. Each request generates a billing event: model, tokens (input/output), cost, latency, key ID, project ID.
 
 ### OpenAI Endpoint Spec
 
@@ -120,9 +120,9 @@ Errors on `/v1/chat/completions` follow OpenAI's error shape:
 
 - **Invalid API key** → `401 {"error":{"type":"authentication_error","message":"Invalid API key"}}`
 - **Insufficient credit** → `402 {"error":{"type":"billing_error","message":"Insufficient credit"}}`
-- **Model not allowed** → `403 {"error":{"type":"permission_error","message":"Model not allowed for this key"}}`
+- **Model not allowed** → `403 {"error":{"type":"permission_error","message":"Model not allowed for this project"}}`
 - **Model not found** → `404 {"error":{"type":"invalid_request_error","message":"Model not found"}}`
-- **Rate limited** → `429` with `Retry-After` header, `{"error":{"type":"rate_limit_error","message":"Rate limit exceeded"}}`
+- **Rate limited** → `429` with `Retry-After` header, `{"error":{"type":"rate_limit_error","message":"Project rate limit exceeded"}}`
 
 ### Error Handling — Anthropic Format
 
@@ -130,13 +130,15 @@ Errors on `/v1/messages` follow Anthropic's error shape:
 
 - **Invalid API key** → `401 {"type":"error","error":{"type":"authentication_error","message":"Invalid API key"}}`
 - **Insufficient credit** → `402 {"type":"error","error":{"type":"billing_error","message":"Insufficient credit"}}`
-- **Model not allowed** → `403 {"type":"error","error":{"type":"permission_error","message":"Model not allowed for this key"}}`
+- **Model not allowed** → `403 {"type":"error","error":{"type":"permission_error","message":"Model not allowed for this project"}}`
 - **Model not found** → `404 {"type":"error","error":{"type":"not_found_error","message":"Model not found"}}`
-- **Rate limited** → `429` with `retry-after` header, `{"type":"error","error":{"type":"rate_limit_error","message":"Rate limit exceeded"}}`
+- **Rate limited** → `429` with `retry-after` header, `{"type":"error","error":{"type":"rate_limit_error","message":"Project rate limit exceeded"}}`
 
 ### Architecture
 
 All models run on the self-hosted K8s GPU cluster. The API does not proxy to external providers. Both OpenAI and Anthropic request formats are normalized into a unified internal format by the Control Service (via Envoy ext_proc) before routing to the model serving layer. Responses are translated back into the caller's expected wire format.
+
+When a request arrives, the Control Service resolves the **project** from the API key, then enforces project-level controls: model allowlist, RPM rate limit, and cost ceilings (daily and monthly, if configured). All keys belonging to the same project share these limits — there are no per-key overrides.
 
 ### Success Metrics
 

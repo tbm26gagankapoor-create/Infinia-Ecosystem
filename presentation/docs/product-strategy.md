@@ -94,15 +94,15 @@ gantt
         Team/Org Management              :2026-04-04, 2d
         Public Playground (No Auth)      :2026-04-04, 1d
     section Phase 3: Monetization & AI
-        Pricing Tiers & Credit System    :2026-04-06, 2d
-        Metered Billing                  :2026-04-07, 2d
+        Prepaid & Postpaid Billing       :2026-04-06, 2d
+        Per-Million-Token Pricing        :2026-04-07, 2d
         Billing Dashboard                :2026-04-08, 2d
         Usage Analytics                  :2026-04-08, 3d
         Intelligent Model Routing        :2026-04-09, 2d
         Routing Insights Widget          :2026-04-10, 1d
         Cost Optimization Recommendations:2026-04-10, 2d
     section Phase 4: Launch Readiness
-        Pricing Page & Landing Update    :2026-04-12, 1d
+        Pricing & Rate Card Page         :2026-04-12, 1d
         Documentation                    :2026-04-12, 2d
         Error Handling & Rate Limiting   :2026-04-13, 2d
         IHC Enterprise Onboarding        :2026-04-14, 2d
@@ -149,14 +149,14 @@ gantt
 ### Phase 3: Monetization & AI Intelligence (Apr 6-11, 6 days)
 
 !!! success "Milestone: Revenue & Intelligence"
-    Pro customer billed correctly. `model: "auto"` routes intelligently. Dashboard shows actionable cost recommendations.
+    Prepaid and postpaid billing working correctly. `model: "auto"` routes intelligently. Dashboard shows actionable cost recommendations.
 
 | # | Feature | Details |
 |---|---------|---------|
-| 16 | **Pricing Tiers** | Free ($5 credit), Pay-As-You-Go (per-token), Pro ($99/mo), Enterprise (contact sales) |
-| 17 | **Credit System** | $5 free credit on signup, consumed before paid billing |
-| 18 | **Metered Billing** | Automatic per-token billing with hourly usage aggregation |
-| 19 | **Billing Dashboard** | Current plan, usage, invoices, payment method, upgrade/downgrade flow |
+| 16 | **Prepaid Billing (Credits)** | Purchase credits upfront, deducted per million tokens at model-specific rates. $5 free credit on signup |
+| 17 | **Postpaid Billing (Invoice)** | Monthly invoicing per million tokens consumed. Committed spend agreements available |
+| 18 | **Per-Million-Token Pricing** | Model-specific input/output rates. Volume discounts on bulk purchases or committed spend |
+| 19 | **Billing Dashboard** | Credit balance or invoice history, per-model consumption breakdown, payment method management |
 | 20 | **Usage Analytics** | Requests by model, token breakdown (input/output), latency p50/p95/p99, error rates. Filterable |
 | 21 | **Intelligent Model Routing** | `model: "auto"` with strategies: `"cost"`, `"speed"`, `"quality"`, `"balanced"` — platform auto-selects |
 | 22 | **Routing Insights** | Visibility into routing decisions, models selected, estimated savings |
@@ -171,7 +171,7 @@ gantt
 
 | # | Feature | Details |
 |---|---------|---------|
-| 24 | **Pricing Page** | Tier comparison cards, feature matrix, FAQ |
+| 24 | **Pricing Page** | Prepaid vs Postpaid comparison, per-million-token rate card, volume discounts, FAQ |
 | 25 | **Landing Page Update** | Hero with playground CTA, live model count, IHC customer logos |
 | 26 | **Documentation** | API reference, quick-start, routing guide, billing guide, team management guide |
 | 27 | **Interactive Docs** | "Try It" buttons opening playground with pre-filled example prompts |
@@ -211,7 +211,7 @@ gantt
 | Prompt management platform | Year 2 |
 | LLM observability platform | Year 2 |
 | Fine-tuned model marketplace | Year 2 |
-| Edge inference & Tenstorrent integration | Year 2-3 |
+| Edge inference & GPU partnerships integration | Year 2-3 |
 | Vertical AI APIs (Healthcare, Finance, Real Estate) | Year 2-3 |
 
 ---

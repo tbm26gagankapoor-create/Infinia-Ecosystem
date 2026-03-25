@@ -15,7 +15,7 @@
 | **Compliance & Regulatory** | :white_check_mark: | :x: | :x: | :x: | :x: |
 | **Developer Experience** | :white_check_mark: | Partial | Partial | Partial | Partial |
 | **Sovereign AI / MENA** | :white_check_mark: | :x: | :x: | :x: | :x: |
-| **Custom Silicon Strategy** | Tenstorrent | :x: | :x: | LPU | :x: |
+| **Custom Silicon Strategy** | GPU partnerships | :x: | :x: | LPU | :x: |
 
 > **AI Gateway is the only platform positioned in the "Full Platform Leader" quadrant** — combining strong inference capability with deep platform features. Every competitor excels in one dimension but lacks the unified platform layer that enterprises require.
 
@@ -137,9 +137,9 @@ Production reliability, global reach, and hardware strategy for long-term compet
 | Feature | Description | AI Gateway | Together AI | Fireworks AI | Groq | OpenRouter |
 |---|---|:---:|:---:|:---:|:---:|:---:|
 | **Global Regions** | Geographically distributed inference endpoints to minimise latency and meet data residency requirements. | US, EU, UAE, KSA | US | US | US | Varies (aggregator) |
-| **Uptime SLA** | Guaranteed availability with financial penalties for downtime. Public status page with historical uptime data, incident timelines, and post-mortems. | 99.99% (Enterprise) | 99.9% | 99.9% | 99.9% | Best-effort |
-| **Custom Silicon Strategy** | Proprietary or strategic hardware partnerships for long-term cost and performance advantages beyond commodity Nvidia GPUs. | Tenstorrent (RISC-V AI accelerators) | :x: Nvidia GPUs | :x: Nvidia GPUs | LPU (custom ASIC) | :x: No hardware |
-| **VPC Peering / Dedicated Infra** | Private network connectivity between customer cloud and AI Gateway — data never traverses the public internet. Available on Enterprise tier. | :white_check_mark: | :x: | :x: | :x: | :x: |
+| **Uptime SLA** | Guaranteed availability with financial penalties for downtime. Public status page with historical uptime data, incident timelines, and post-mortems. | 99.99% | 99.9% | 99.9% | 99.9% | Best-effort |
+| **Custom Silicon Strategy** | Proprietary or strategic hardware partnerships for long-term cost and performance advantages beyond commodity Nvidia GPUs. | GPU partnerships (RISC-V AI accelerators) | :x: Nvidia GPUs | :x: Nvidia GPUs | LPU (custom ASIC) | :x: No hardware |
+| **VPC Peering / Dedicated Infra** | Private network connectivity between customer cloud and AI Gateway — data never traverses the public internet. | :white_check_mark: | :x: | :x: | :x: | :x: |
 | **Auto-Scaling** | Elastic capacity that scales with demand without manual intervention. GPU-based architecture enables smoother scaling than supply-constrained custom silicon. | :white_check_mark: | :white_check_mark: | :white_check_mark: | Limited (LPU supply) | N/A (aggregator) |
 | **Cloud Marketplace Listings** | Available for purchase through AWS Marketplace, GCP Marketplace, and Azure Marketplace — enabling procurement through existing enterprise cloud contracts. | :white_check_mark: | :white_check_mark: | Partial | :x: | :x: |
 
@@ -147,18 +147,16 @@ Production reliability, global reach, and hardware strategy for long-term compet
 
 ## 8. Pricing & Business Model
 
-Transparent, developer-friendly pricing designed to convert free users into enterprise customers.
+Transparent, developer-friendly pricing with two billing methods — Prepaid and Postpaid — both based on per-million-token consumption.
 
 | Feature | Description | AI Gateway | Together AI | Fireworks AI | Groq | OpenRouter |
 |---|---|:---:|:---:|:---:|:---:|:---:|
-| **Free Tier** | Zero-cost entry point for evaluation and prototyping with real production models. | :white_check_mark: $5 credit, 3 models, 100 RPM | :white_check_mark: Limited | :white_check_mark: Limited | :white_check_mark: Limited | :white_check_mark: Free models available |
-| **Pay-As-You-Go** | Usage-based billing with no minimum commitment. All models accessible, charges per million tokens. | :white_check_mark: All models, 500 RPM | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| **Pro Tier** | Enhanced tier with platform features: cost analytics, fine-tuning access, priority support. | $99/month | :x: No equivalent | :x: No equivalent | :x: No equivalent | :x: No equivalent |
-| **Team Tier** | Collaborative tier with team workspaces, SSO, and dedicated support for growing organisations. | $299/month | :x: | :x: | :x: | :x: |
-| **Enterprise Custom Pricing** | Tailored pricing with committed spend, VPC peering, dedicated CSM, and custom SLA. | $2K–25K/month | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: |
-| **Transparent Per-Token Pricing** | Publicly listed input/output token rates for every model with no hidden fees or opaque "compute unit" abstractions. | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **Prepaid (Credits)** | Purchase credits upfront, deducted per million tokens consumed at model-specific rates. Includes $5 free credit on signup. | :white_check_mark: $5 free credit, all models | :white_check_mark: Limited | :white_check_mark: Limited | :white_check_mark: Limited | :white_check_mark: Free models available |
+| **Postpaid (Invoice)** | Use now, get invoiced monthly per million tokens consumed. Net-30 terms. Committed spend agreements available. | :white_check_mark: All models | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: |
+| **Transparent Per-Token Pricing** | Publicly listed input/output token rates per million for every model with no hidden fees or opaque "compute unit" abstractions. | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| **Volume Discounts** | Automatic discounts on bulk prepaid credit purchases or committed postpaid spend (5-30% based on volume). | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: |
 | **Startup Programme** | Dedicated credits and support for early-stage companies building on AI. | $10K credits (12 months) | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x: |
-| **Academic Discount** | Reduced pricing for universities and research institutions. | 50% discount | :x: | :x: | :x: | :x: |
+| **Academic Discount** | Reduced per-million-token rates for universities and research institutions. | 50% discount | :x: | :x: | :x: | :x: |
 | **Migration Bonus** | Credit incentive for developers switching from a competitor to reduce switching friction. | $100 credit | :x: | :x: | :x: | :x: |
 | **Referral Programme** | Credit reward for existing users who bring new developers to the platform. | $25 per conversion | :x: | :x: | :x: | :x: |
 
@@ -181,7 +179,7 @@ Retrofitting compliance into an existing inference platform is like adding safet
 IHC Group's $238B ecosystem with 422 subsidiaries across healthcare, real estate, finance, and agriculture provides a built-in enterprise customer base with near-zero acquisition cost. No Silicon Valley competitor can replicate this advantage.
 
 **5. Hardware Sovereignty**
-The Tenstorrent partnership (RISC-V AI accelerators) provides a strategic path to reduce the 80–90% Nvidia dependency that constrains every other inference provider. Combined with AI Gateway's software platform, this creates a full-stack sovereign AI offering.
+The GPU partnerships partnership (RISC-V AI accelerators) provides a strategic path to reduce the 80–90% Nvidia dependency that constrains every other inference provider. Combined with AI Gateway's software platform, this creates a full-stack sovereign AI offering.
 
 ---
 

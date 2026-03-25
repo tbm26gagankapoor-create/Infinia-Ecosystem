@@ -28,7 +28,7 @@ Real-time spend tracking: total over time, by model, by API key. Date range pick
 
 | Metric | Target |
 |--------|--------|
-| Pro/Enterprise users accessing weekly | >50% |
+| Active paying users accessing weekly | >50% |
 | Users exporting CSV at least once | >30% |
 | Users using pivot table feature | >40% |
 
@@ -91,4 +91,4 @@ Requests by model, token breakdown (input/output), latency p50/p95/p99, error ra
 |--------|--------|
 | Active users checking analytics weekly | >40% |
 | Users applying filters or using pivot table | >25% |
-| Pro+ users viewing latency percentiles | >50% |
+| Active paying users viewing latency percentiles | >50% |

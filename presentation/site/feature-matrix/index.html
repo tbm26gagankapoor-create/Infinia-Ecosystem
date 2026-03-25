@@ -67,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="white">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -125,7 +125,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="white"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -135,7 +135,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -563,7 +563,7 @@
 </tr>
 <tr>
 <td><strong>Custom Silicon Strategy</strong></td>
-<td style="text-align: center;">Tenstorrent</td>
+<td style="text-align: center;">GPU partnerships</td>
 <td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /></td>
 <td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /></td>
 <td style="text-align: center;">LPU</td>
@@ -592,16 +592,16 @@
 <tbody>
 <tr>
 <td><strong>Multi-Model API</strong></td>
-<td>Single API endpoint to access multiple open-source model families (LLaMA, DeepSeek, Mistral, Qwen, Command R) without managing separate integrations.</td>
-<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> 40+ models</td>
+<td>Single API endpoint to access many open-source and fine-tuned model families (LLaMA, DeepSeek, Mistral, Qwen, Command R) without managing separate integrations. Self-hosted on K8s GPU cluster.</td>
+<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> 150+ models</td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> 80+ models</td>
 <td style="text-align: center;">Limited ~20 models</td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> 300+ (open + proprietary)</td>
 </tr>
 <tr>
-<td><strong>OpenAI-Compatible Endpoints</strong></td>
-<td>Drop-in replacement for the OpenAI API (<code>/v1/chat/completions</code>, <code>/v1/embeddings</code>, <code>/v1/models</code>), enabling migration with zero code changes. ~98% of developers already know this interface.</td>
+<td><strong>OpenAI + Anthropic Compatible Endpoints</strong></td>
+<td>Drop-in replacement for both the OpenAI API (<code>/v1/chat/completions</code>) and Anthropic Messages API (<code>/v1/messages</code>), enabling migration with zero code changes from either SDK.</td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
@@ -1205,7 +1205,7 @@
 <tr>
 <td><strong>Uptime SLA</strong></td>
 <td>Guaranteed availability with financial penalties for downtime. Public status page with historical uptime data, incident timelines, and post-mortems.</td>
-<td style="text-align: center;">99.99% (Enterprise)</td>
+<td style="text-align: center;">99.99%</td>
 <td style="text-align: center;">99.9%</td>
 <td style="text-align: center;">99.9%</td>
 <td style="text-align: center;">99.9%</td>
@@ -1214,7 +1214,7 @@
 <tr>
 <td><strong>Custom Silicon Strategy</strong></td>
 <td>Proprietary or strategic hardware partnerships for long-term cost and performance advantages beyond commodity Nvidia GPUs.</td>
-<td style="text-align: center;">Tenstorrent (RISC-V AI accelerators)</td>
+<td style="text-align: center;">GPU partnerships (RISC-V AI accelerators)</td>
 <td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /> Nvidia GPUs</td>
 <td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /> Nvidia GPUs</td>
 <td style="text-align: center;">LPU (custom ASIC)</td>
@@ -1222,7 +1222,7 @@
 </tr>
 <tr>
 <td><strong>VPC Peering / Dedicated Infra</strong></td>
-<td>Private network connectivity between customer cloud and AI Gateway — data never traverses the public internet. Available on Enterprise tier.</td>
+<td>Private network connectivity between customer cloud and AI Gateway — data never traverses the public internet.</td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
 <td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /></td>
 <td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /></td>
@@ -1251,7 +1251,7 @@
 </table>
 <hr />
 <h2 id="8-pricing-business-model">8. Pricing &amp; Business Model</h2>
-<p>Transparent, developer-friendly pricing designed to convert free users into enterprise customers.</p>
+<p>Transparent, developer-friendly pricing with two billing methods — Prepaid and Postpaid — both based on per-million-token consumption.</p>
 <table>
 <thead>
 <tr>
@@ -1266,45 +1266,18 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Free Tier</strong></td>
-<td>Zero-cost entry point for evaluation and prototyping with real production models.</td>
-<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> $5 credit, 3 models, 100 RPM</td>
+<td><strong>Prepaid (Credits)</strong></td>
+<td>Purchase credits upfront, deducted per million tokens consumed at model-specific rates. Includes $5 free credit on signup.</td>
+<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> $5 free credit, all models</td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> Limited</td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> Limited</td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> Limited</td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> Free models available</td>
 </tr>
 <tr>
-<td><strong>Pay-As-You-Go</strong></td>
-<td>Usage-based billing with no minimum commitment. All models accessible, charges per million tokens.</td>
-<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> All models, 500 RPM</td>
-<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
-<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
-<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
-<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
-</tr>
-<tr>
-<td><strong>Pro Tier</strong></td>
-<td>Enhanced tier with platform features: cost analytics, fine-tuning access, priority support.</td>
-<td style="text-align: center;">$99/month</td>
-<td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /> No equivalent</td>
-<td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /> No equivalent</td>
-<td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /> No equivalent</td>
-<td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /> No equivalent</td>
-</tr>
-<tr>
-<td><strong>Team Tier</strong></td>
-<td>Collaborative tier with team workspaces, SSO, and dedicated support for growing organisations.</td>
-<td style="text-align: center;">$299/month</td>
-<td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /></td>
-<td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /></td>
-<td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /></td>
-<td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /></td>
-</tr>
-<tr>
-<td><strong>Enterprise Custom Pricing</strong></td>
-<td>Tailored pricing with committed spend, VPC peering, dedicated CSM, and custom SLA.</td>
-<td style="text-align: center;">$2K–25K/month</td>
+<td><strong>Postpaid (Invoice)</strong></td>
+<td>Use now, get invoiced monthly per million tokens consumed. Net-30 terms. Committed spend agreements available.</td>
+<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /> All models</td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
@@ -1312,12 +1285,21 @@
 </tr>
 <tr>
 <td><strong>Transparent Per-Token Pricing</strong></td>
-<td>Publicly listed input/output token rates for every model with no hidden fees or opaque "compute unit" abstractions.</td>
+<td>Publicly listed input/output token rates per million for every model with no hidden fees or opaque "compute unit" abstractions.</td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
 <td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+</tr>
+<tr>
+<td><strong>Volume Discounts</strong></td>
+<td>Automatic discounts on bulk prepaid credit purchases or committed postpaid spend (5-30% based on volume).</td>
+<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td style="text-align: center;"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" title=":white_check_mark:" /></td>
+<td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /></td>
 </tr>
 <tr>
 <td><strong>Startup Programme</strong></td>
@@ -1330,7 +1312,7 @@
 </tr>
 <tr>
 <td><strong>Academic Discount</strong></td>
-<td>Reduced pricing for universities and research institutions.</td>
+<td>Reduced per-million-token rates for universities and research institutions.</td>
 <td style="text-align: center;">50% discount</td>
 <td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /></td>
 <td style="text-align: center;"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" title=":x:" /></td>
@@ -1369,7 +1351,7 @@ Retrofitting compliance into an existing inference platform is like adding safet
 <p><strong>4. Distribution Moat That Cannot Be Replicated</strong>
 IHC Group's $238B ecosystem with 422 subsidiaries across healthcare, real estate, finance, and agriculture provides a built-in enterprise customer base with near-zero acquisition cost. No Silicon Valley competitor can replicate this advantage.</p>
 <p><strong>5. Hardware Sovereignty</strong>
-The Tenstorrent partnership (RISC-V AI accelerators) provides a strategic path to reduce the 80–90% Nvidia dependency that constrains every other inference provider. Combined with AI Gateway's software platform, this creates a full-stack sovereign AI offering.</p>
+The GPU partnerships partnership (RISC-V AI accelerators) provides a strategic path to reduce the 80–90% Nvidia dependency that constrains every other inference provider. Combined with AI Gateway's software platform, this creates a full-stack sovereign AI offering.</p>
 <hr />
 <h3 id="competitor-by-competitor-summary">Competitor-by-Competitor Summary</h3>
 <table>

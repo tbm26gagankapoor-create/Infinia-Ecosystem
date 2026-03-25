@@ -8,12 +8,12 @@ theme:
   palette:
     - scheme: slate
       primary: black
-      accent: white
+      accent: deep-purple
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
     - scheme: default
-      primary: black
+      primary: white
       accent: deep-purple
       toggle:
         icon: material/brightness-7

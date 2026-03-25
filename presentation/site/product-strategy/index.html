@@ -71,7 +71,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="white">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -129,7 +129,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="white"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -139,7 +139,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -773,17 +773,17 @@
   </div>
   <div class="stat-card">
     <div class="stat-number">100%</div>
-    <div class="stat-label">OpenAI Compatible</div>
+    <div class="stat-label">OpenAI + Anthropic Compatible</div>
   </div>
 </div>
 
 <p>The MVP delivers six capabilities designed to prove product-market fit and generate initial revenue:</p>
 <ul>
-<li><strong>Unified Inference API</strong> — access to 200+ open-source models through a single endpoint</li>
+<li><strong>Unified Inference API</strong> — access to many open-source and fine-tuned models through dual-compatible endpoints (OpenAI + Anthropic)</li>
 <li><strong>Interactive Playground</strong> — with blind model comparison for evaluation and selection</li>
 <li><strong>Cost Tracking Dashboard</strong> — real-time visibility into spend across models and teams</li>
 <li><strong>API Key Management</strong> — with team-level scoping, rotation, and rate limits</li>
-<li><strong>OpenAI-Compatible Endpoints</strong> — drop-in replacement for existing integrations</li>
+<li><strong>OpenAI + Anthropic Compatible Endpoints</strong> — drop-in replacement for existing integrations using either SDK</li>
 <li><strong>Usage Analytics &amp; Billing</strong> — granular consumption data and automated invoicing</li>
 </ul>
 <hr />
@@ -810,7 +810,7 @@
     axisFormat %b %d
     section Phase 1: Core Platform
         User Authentication              :done, 2026-03-24, 2d
-        Unified Inference API (40+ models):active, 2026-03-24, 3d
+        Unified Inference API (OpenAI + Anthropic):active, 2026-03-24, 3d
         Model Catalog                    :2026-03-25, 2d
         API Key Management               :2026-03-26, 2d
         Streaming Responses              :2026-03-26, 1d
@@ -826,15 +826,15 @@
         Team/Org Management              :2026-04-04, 2d
         Public Playground (No Auth)      :2026-04-04, 1d
     section Phase 3: Monetization &amp; AI
-        Pricing Tiers &amp; Credit System    :2026-04-06, 2d
-        Metered Billing                  :2026-04-07, 2d
+        Prepaid &amp; Postpaid Billing       :2026-04-06, 2d
+        Per-Million-Token Pricing        :2026-04-07, 2d
         Billing Dashboard                :2026-04-08, 2d
         Usage Analytics                  :2026-04-08, 3d
         Intelligent Model Routing        :2026-04-09, 2d
         Routing Insights Widget          :2026-04-10, 1d
         Cost Optimization Recommendations:2026-04-10, 2d
     section Phase 4: Launch Readiness
-        Pricing Page &amp; Landing Update    :2026-04-12, 1d
+        Pricing &amp; Rate Card Page         :2026-04-12, 1d
         Documentation                    :2026-04-12, 2d
         Error Handling &amp; Rate Limiting   :2026-04-13, 2d
         IHC Enterprise Onboarding        :2026-04-14, 2d
@@ -862,7 +862,7 @@
 <tr>
 <td>2</td>
 <td><strong>Unified Inference API</strong></td>
-<td>Single OpenAI-compatible endpoint supporting 40+ open-source models (LLaMA 3.x, DeepSeek V3/R1, Mistral, Qwen 2.5, Command R+, Gemma 2)</td>
+<td>Dual-compatible endpoints (OpenAI + Anthropic formats) supporting many open-source and fine-tuned models (LLaMA 3.x, DeepSeek V3/R1, Mistral, Qwen 2.5, Command R+, Gemma 2) on self-hosted GPUs</td>
 </tr>
 <tr>
 <td>3</td>
@@ -882,7 +882,7 @@
 <tr>
 <td>6</td>
 <td><strong>Dashboard Shell</strong></td>
-<td>Authenticated dashboard with sidebar navigation, user menu, onboarding card</td>
+<td>Authenticated dashboard with navigation and onboarding flow</td>
 </tr>
 </tbody>
 </table>
@@ -919,7 +919,7 @@
 <tr>
 <td>10</td>
 <td><strong>Cost Intelligence Dashboard</strong></td>
-<td>Real-time spend tracking: total over time, by model, by API key. Date range picker. CSV export</td>
+<td>Real-time spend tracking: total over time, by model, by API key. Date range filtering. CSV export</td>
 </tr>
 <tr>
 <td>11</td>
@@ -952,7 +952,7 @@
 <h3 id="phase-3-monetization-ai-intelligence-apr-6-11-6-days">Phase 3: Monetization &amp; AI Intelligence (Apr 6-11, 6 days)</h3>
 <div class="admonition success">
 <p class="admonition-title">Milestone: Revenue &amp; Intelligence</p>
-<p>Pro customer billed correctly. <code>model: "auto"</code> routes intelligently. Dashboard shows actionable cost recommendations.</p>
+<p>Prepaid and postpaid billing working correctly. <code>model: "auto"</code> routes intelligently. Dashboard shows actionable cost recommendations.</p>
 </div>
 <table>
 <thead>
@@ -965,23 +965,23 @@
 <tbody>
 <tr>
 <td>16</td>
-<td><strong>Pricing Tiers</strong></td>
-<td>Free ($5 credit), Pay-As-You-Go (per-token), Pro ($99/mo), Enterprise (contact sales)</td>
+<td><strong>Prepaid Billing (Credits)</strong></td>
+<td>Purchase credits upfront, deducted per million tokens at model-specific rates. $5 free credit on signup</td>
 </tr>
 <tr>
 <td>17</td>
-<td><strong>Credit System</strong></td>
-<td>$5 free credit on signup, consumed before paid billing</td>
+<td><strong>Postpaid Billing (Invoice)</strong></td>
+<td>Monthly invoicing per million tokens consumed. Committed spend agreements available</td>
 </tr>
 <tr>
 <td>18</td>
-<td><strong>Metered Billing</strong></td>
-<td>Automatic per-token billing with hourly usage aggregation</td>
+<td><strong>Per-Million-Token Pricing</strong></td>
+<td>Model-specific input/output rates. Volume discounts on bulk purchases or committed spend</td>
 </tr>
 <tr>
 <td>19</td>
 <td><strong>Billing Dashboard</strong></td>
-<td>Current plan, usage, invoices, payment method, upgrade/downgrade flow</td>
+<td>Credit balance or invoice history, per-model consumption breakdown, payment method management</td>
 </tr>
 <tr>
 <td>20</td>
@@ -996,7 +996,7 @@
 <tr>
 <td>22</td>
 <td><strong>Routing Insights</strong></td>
-<td>Dashboard widget showing routing decisions, models selected, estimated savings</td>
+<td>Visibility into routing decisions, models selected, estimated savings</td>
 </tr>
 <tr>
 <td>23</td>
@@ -1023,7 +1023,7 @@
 <tr>
 <td>24</td>
 <td><strong>Pricing Page</strong></td>
-<td>Tier comparison cards, feature matrix, FAQ</td>
+<td>Prepaid vs Postpaid comparison, per-million-token rate card, volume discounts, FAQ</td>
 </tr>
 <tr>
 <td>25</td>
@@ -1158,7 +1158,7 @@
 <td>Year 2</td>
 </tr>
 <tr>
-<td>Edge inference &amp; Tenstorrent integration</td>
+<td>Edge inference &amp; GPU partnerships integration</td>
 <td>Year 2-3</td>
 </tr>
 <tr>

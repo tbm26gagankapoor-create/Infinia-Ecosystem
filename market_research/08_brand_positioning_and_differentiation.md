@@ -62,7 +62,7 @@ Groq's LPU hardware delivers remarkable TTFT for the models it supports (primari
 
 ### vs. OpenRouter: Broad Catalog and Simple Pricing
 
-OpenRouter's appeal is simplicity: hundreds of models (including proprietary models from OpenAI and Anthropic), straightforward per-token pricing, and a single API key that accesses everything. Token Factory must match OpenRouter's pricing simplicity (no hidden fees, no complex pricing tiers that confuse developers) and approach its catalog breadth (while not including proprietary models, the open-source catalog should be comparably comprehensive). Where OpenRouter offers breadth without depth, Token Factory offers depth with breadth — the same model access plus platform features that OpenRouter does not provide.
+OpenRouter's appeal is simplicity: hundreds of models (including proprietary models from OpenAI and Anthropic), straightforward per-token pricing, and a single API key that accesses everything. Token Factory must match OpenRouter's pricing simplicity (no hidden fees, unified per-million-token rates for all customers regardless of billing method) and approach its catalog breadth (while not including proprietary models, the open-source catalog should be comparably comprehensive). Where OpenRouter offers breadth without depth, Token Factory offers depth with breadth — the same model access plus platform features that OpenRouter does not provide.
 
 ---
 
@@ -210,7 +210,7 @@ Maintaining this unique position requires disciplined investment in both dimensi
 
 The positioning statements above are strategic frameworks; the actual messaging must be tailored to each customer segment's motivations and evaluation criteria.
 
-For indie hackers and hobbyists, the message is: "Access every open-source model through one API. Free tier, transparent pricing, no surprises." The emphasis is on catalog breadth, cost (free and cheap), and simplicity. Platform features are mentioned but not emphasized — this segment adopts for the inference, and discovers the platform later.
+For indie hackers and hobbyists, the message is: "Access every open-source model through one API. $5 free credit, transparent per-million-token pricing, no surprises." The emphasis is on catalog breadth, cost (free credits to start, simple prepaid top-ups), and simplicity. Platform features are mentioned but not emphasized — this segment adopts for the inference, and discovers the platform later.
 
 For startup builders, the message is: "Ship AI features faster. One API for every model, smart cost tools, production-ready from day one." The emphasis is on speed-to-market, cost efficiency (because startups watch every dollar), and reliability (because downtime means lost users). The startup program ($10K credits for early-stage companies) is the primary acquisition mechanism.
 

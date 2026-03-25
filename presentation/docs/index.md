@@ -64,7 +64,7 @@ Open-source models have crossed the performance threshold. Enterprises *want* to
   </a>
   <a href="pricing/">
     <strong>Pricing</strong>
-    <span>5-tier architecture from free to enterprise</span>
+    <span>Prepaid and Postpaid — per-million-token pricing</span>
   </a>
   <a href="go-to-market/">
     <strong>Go-to-Market</strong>

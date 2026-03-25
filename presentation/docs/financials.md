@@ -42,9 +42,9 @@
 | Channel | Conservative | Ambitious | Driver |
 |---|---|---|---|
 | **IHC Internal** | $1.8-6.0M | $6-60M | 422 subsidiaries across the group |
-| **Self-Serve (D2C)** | Developer signups | PAYG + Pro tier conversions | Organic + paid acquisition |
+| **Self-Serve (Prepaid)** | Developer signups | Credit purchases + consumption | Organic + paid acquisition |
 | **Cloud Marketplaces** | Enterprise customers | via AWS / GCP / Azure | Procurement convenience |
-| **Enterprise Direct** | 1-3 year contracts | $2K-25K/month | Dedicated sales motion |
+| **Enterprise (Postpaid)** | 1-3 year contracts | Committed spend agreements | Dedicated sales motion |
 
 ---
 
@@ -52,24 +52,16 @@
 
 <div class="stat-grid">
   <div class="stat-card">
-    <div class="stat-number">Negative</div>
-    <div class="stat-label">Free Tier Margin</div>
+    <div class="stat-number">40-60%</div>
+    <div class="stat-label">Per-Token Gross Margin</div>
   </div>
   <div class="stat-card">
-    <div class="stat-number">20-30%</div>
-    <div class="stat-label">PAYG Margin</div>
+    <div class="stat-number">85-95%</div>
+    <div class="stat-label">Platform Feature Margin</div>
   </div>
   <div class="stat-card">
-    <div class="stat-number">50-60%</div>
-    <div class="stat-label">Pro Margin</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-number">55-65%</div>
-    <div class="stat-label">Team Margin</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-number">60-70%</div>
-    <div class="stat-label">Enterprise Margin</div>
+    <div class="stat-number">50-70%</div>
+    <div class="stat-label">Enterprise Postpaid Margin</div>
   </div>
 </div>
 
@@ -77,7 +69,7 @@
     Raw inference margins compress as model prices decline **50-80% every 12-18 months** — but platform margins hold. Fine-tuning, compliance, and analytics are inherently **high-margin services** that grow as a share of revenue over time.
 
 - **Platform features drive margin improvement** — each layer of value (routing, caching, governance) adds margin without proportional cost
-- **Tier progression increases blended margin** as customers move from Free to Enterprise
+- **Enterprise postpaid commitments increase blended margin** as customers lock in higher-volume agreements
 - **Infrastructure efficiency compounds** as shared GPU pools, caching, and batching improve utilization
 
 ---
@@ -86,10 +78,10 @@
 
 | Segment | Monthly Spend | Customers Needed | Revenue Potential |
 |---|---|---|---|
-| **Free / PAYG** | $0-50 | 100,000+ | $1-2M (conversion to paid) |
-| **Pro** | $99-500 | 5,000-10,000 | $6-60M |
-| **Team** | $299-2,000 | 500-2,000 | $1.8-48M |
-| **Enterprise** | $2K-25K | 50-200 | $1.2-60M |
+| **Free Credit Users** | $0-5 | 100,000+ | $1-2M (conversion to prepaid/postpaid) |
+| **Prepaid (Low Volume)** | $5-500 | 10,000-20,000 | $6-60M |
+| **Prepaid (High Volume)** | $500-5,000 | 500-2,000 | $3-48M |
+| **Postpaid (Enterprise)** | $2K-25K | 50-200 | $1.2-60M |
 | **IHC Internal** | $5K-500K | 30-50 | $1.8-60M |
 
 !!! success "Diversified Revenue Base"

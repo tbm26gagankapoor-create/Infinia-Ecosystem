@@ -8,7 +8,7 @@ IHC Group operates 422 subsidiaries across healthcare, real estate, agriculture,
 
 The IHC Group structure provides something even more valuable than capital: a built-in customer base. Burjeel Holdings (82+ healthcare facilities across six countries), ALDAR Properties (the UAE's largest listed real estate developer), 2PointZero (fintech), Multiply Group (investments and digital), and dozens of other subsidiaries represent $5-20 million per year in addressable internal inference demand. This demand can be captured through internal procurement channels with 2-4 week sales cycles, providing Token Factory with a revenue floor and reference customers before it competes for external enterprise business. No competitor has this advantage. Together AI must spend $50,000-$200,000 in sales and marketing cost per enterprise customer acquired through external channels; Token Factory can acquire its first 10-20 enterprise customers at near-zero marginal acquisition cost.
 
-Infinia Technologies' partnership with Tenstorrent adds a sovereign AI dimension that no pure-software competitor can replicate. Tenstorrent, backed by Hyundai and Samsung, is developing RISC-V-based AI accelerators that offer an alternative to Nvidia's CUDA monopoly. For nations pursuing AI sovereignty — the UAE, Saudi Arabia, India, EU member states — Tenstorrent hardware paired with Token Factory's software platform represents a complete stack that is not dependent on any single US technology supplier. This positioning is strategic rather than immediate (Tenstorrent's inference-grade hardware is still maturing), but it represents a future competitive moat that is essentially unreplicable by competitors without equivalent hardware partnerships.
+Infinia Technologies' partnership with GPU partnerships adds a sovereign AI dimension that no pure-software competitor can replicate. GPU partnerships, backed by Hyundai and Samsung, is developing RISC-V-based AI accelerators that offer an alternative to Nvidia's CUDA monopoly. For nations pursuing AI sovereignty — the UAE, Saudi Arabia, India, EU member states — GPU partnerships hardware paired with Token Factory's software platform represents a complete stack that is not dependent on any single US technology supplier. This positioning is strategic rather than immediate (GPU partnerships's inference-grade hardware is still maturing), but it represents a future competitive moat that is essentially unreplicable by competitors without equivalent hardware partnerships.
 
 Token Factory's **core competence** is platform-first open-source inference. This is a deliberate strategic choice that distinguishes it from competitors who optimize for different dimensions of the value chain. Together AI optimizes for training throughput — it offers both training and inference, with inference as a secondary revenue stream. Fireworks AI optimizes for inference speed — its proprietary FireAttention kernel achieves industry-leading latency on popular models. Groq optimizes for hardware differentiation — its custom Language Processing Units deliver 18x faster token generation than GPU-based systems. Token Factory optimizes for the **complete developer and enterprise experience**: authentication, organization management, API key lifecycle, cost analytics, compliance, billing, and multi-model orchestration. The thesis is that inference is rapidly commoditizing (identical models, similar latency, converging prices), and the durable competitive advantage lies in the platform layer that sits above inference — the layer that transforms raw token generation into a managed, governable, optimizable enterprise capability. This is the Stripe thesis applied to AI inference: payments processing was a commodity, but Stripe built a multi-billion-dollar business by making the developer experience and platform capabilities the product, not the underlying payment rail.
 
@@ -104,6 +104,182 @@ OpenRouter's weaknesses are significant and represent Token Factory's primary co
 
 ---
 
+## Section 3.5: Competitor Pricing, Model Catalog & Technical Specifications
+
+*Based on live dashboard exploration of each competitor platform, March 2026. Prices are per million tokens (input / output) unless stated otherwise.*
+
+---
+
+### Billing Model Comparison
+
+How each platform structures the commercial relationship — before you get to per-token rates. Structural differences here drive enterprise deal eligibility as much as any per-token rate.
+
+| Dimension | Token Factory | Together AI | Fireworks AI | Groq | OpenRouter |
+|---|---|---|---|---|---|
+| **Billing Model** | Prepaid credits OR Postpaid invoice | Prepaid credits only | Tiered credits + monthly invoice | 3-tier subscription (Free / Developer / Enterprise) | Prepaid credits only |
+| **Free Access** | $5 credit, no credit card | Read-only until deposit paid | $6 credits on signup, card required | Free tier (rate-limited, no card) | Free models available, no card |
+| **Credit Card Required at Signup** | No — $5 pre-loaded | Yes — deposit required for full access | Yes — for paid tier | No — free tier available | No |
+| **Postpaid / Invoice Billing** | Yes — Net-30, all models | Yes | Yes — monthly cycle | Yes — Developer / Enterprise tiers | **No — credits only** |
+| **Spending Caps** | Customer-set hard ceilings per key and per team | No hard stop | Tier-based cap ($50/mo Tier 1 default) | Per-model rate limits by tier | Per-key spending limits |
+| **Tier Gating of Features** | None — all features available on any billing method | None | Tier 1 → Tier 2 → Enterprise (manual upgrade required) | Free / Developer / Enterprise — features locked by tier | None |
+| **Volume Discounts** | 5–30% (bulk prepaid + committed spend) | Yes | Yes | Yes — Enterprise custom | No |
+| **Committed Spend Agreements** | Yes | Yes | Yes | Yes — Enterprise | No |
+| **Custom Enterprise Rates** | Yes | Yes | Yes | Yes | No |
+| **Startup Program** | $10K credits over 12 months | Yes | Yes | Yes | No |
+| **Migration Incentive** | $100 credit for verified competitor spend | No | No | No | No |
+
+**Key structural insight — Fireworks Tier 1 cap:** Fireworks' default spending limit is $50/month for new accounts. A startup hitting product-market fit and scaling to 10M+ daily tokens gets hard-blocked until they manually request a tier upgrade. This creates involuntary churn at the most critical growth moment. Token Factory's model — customer-set ceilings they can raise themselves — is architecturally superior.
+
+**Key structural insight — OpenRouter has no postpaid:** Zero enterprise contracts are possible without Net-30 invoicing. Every enterprise with standard AP processes is locked out of OpenRouter's model entirely. Token Factory's postpaid channel is an exclusive enterprise lane that OpenRouter cannot serve.
+
+**Key structural insight — Together AI read-only gating:** New accounts are in read-only mode until they make a deposit. Developers evaluating the platform cannot make their first API call without a financial commitment. Token Factory's $5 pre-loaded free credit requires zero commitment — the platform is fully functional from the moment of signup.
+
+---
+
+### Per-Token Pricing — Model by Model
+
+#### Large Models (70B+) — The High-Volume Enterprise Category
+
+| Model | Together AI | Fireworks AI | Groq | OpenRouter | Competitive Implication |
+|---|---|---|---|---|---|
+| **LLaMA 3.1 70B** | ~$0.90 / ~$0.90 | ~$0.70 / ~$0.70 | N/A (LPU not ported) | ~$0.50 / ~$0.75 | OpenRouter cheapest; Fireworks fastest |
+| **LLaMA 3.3 70B** | ~$0.59 / ~$0.59 | ~$0.70 / ~$0.90 | $0.59 / $0.79 | ~$0.59 / ~$0.79 | Groq + OpenRouter at parity |
+| **DeepSeek V3** | ~$0.28 / ~$1.10 | ~$0.22 / ~$0.88 | N/A | ~$0.28 / ~$1.10 | Fireworks 21% cheaper input |
+| **DeepSeek R1** | ~$3.00 / ~$7.00 | ~$3.00 / ~$7.00 | N/A | ~$0.50 / ~$2.19 | OpenRouter dramatically cheaper via cheaper providers |
+| **Mistral Large 2** | ~$1.20 / ~$1.20 | ~$0.90 / ~$0.90 | N/A | ~$1.00 / ~$3.00 | Fireworks 25% cheaper |
+| **Qwen 2.5 72B** | ~$0.60 / ~$3.60 (Qwen3.5 397B) | ~$0.60 / ~$0.60 | $0.29 / $0.39 (Qwen3 32B) | ~$0.40 / ~$0.40 | Groq cheapest but only 32B; OpenRouter competitive |
+| **Kimi K2.5** | ~$0.50 / ~$2.80 | $0.60 uncached / **$0.10 cached** input, $2.50 output | N/A | ~$0.50 / ~$2.50 | Fireworks cached pricing = 83% savings on repeated prompts |
+| **MiniMax M2.5** | ~$0.30 / ~$1.20 | ~$0.30 / ~$1.20 | N/A | ~$0.30 / ~$1.20 | Parity across platforms |
+| **GLM-5** | ~$1.00 / ~$3.20 | ~$1.00 / ~$3.20 | N/A | ~$1.00 / ~$3.20 | Parity |
+
+#### Frontier / Reasoning Models (New in 2025–2026)
+
+| Model | Together AI | Fireworks AI | Groq | OpenRouter | Notes |
+|---|---|---|---|---|---|
+| **GPT-OSS 120B** (OpenAI open-source) | Available | N/A | Available (all tiers) | ~$4.00 / ~$16.00 | Groq has it natively on LPU; very fast |
+| **GPT-OSS 20B** | N/A | N/A | Available | ~$1.00 / ~$4.00 | — |
+| **LLaMA 4 Scout** (vision) | N/A | N/A | Available | ~$0.17 / ~$0.17 | Only Groq + OpenRouter currently |
+| **Claude Opus 4.6** | N/A | N/A | N/A | ~$15.00 / ~$75.00 | Anthropic proprietary; OpenRouter routes to Anthropic API |
+| **GPT-5.4 family** | N/A | N/A | N/A | Available | OpenAI proprietary via OpenRouter only |
+
+#### Small Models (7–13B) — Developer Funnel and Loss Leaders
+
+| Model | Together AI | Fireworks AI | Groq | OpenRouter | Notes |
+|---|---|---|---|---|---|
+| **LLaMA 3.1 8B** | ~$0.06 / ~$0.06 | ~$0.05 / ~$0.05 | ~$0.05 / ~$0.08 | ~$0.06 / ~$0.06 | Market floor ~$0.05/M |
+| **Mistral 7B** | ~$0.10 / ~$0.10 | ~$0.10 / ~$0.10 | N/A | ~$0.04 / ~$0.04 | OpenRouter routes to cheaper provider |
+| **Gemma 3N** | ~$0.02 / ~$0.02 | ~$0.02 / ~$0.02 | N/A | ~$0.02 / ~$0.02 | Near-commodity pricing |
+| **ServiceNow Apriel** | **Free** | N/A | N/A | N/A | Together AI free tier model |
+
+#### Embeddings
+
+| Model | Together AI | Fireworks AI | Groq | OpenRouter | Notes |
+|---|---|---|---|---|---|
+| **General embedding models** | ~$0.008 / — | ~$0.013–0.016 / — | **Not available** | ~$0.013 / — | Groq has no embeddings at all |
+| **Qwen3 Embedding / Reranker** | N/A | Available | N/A | Available | Fireworks has full reranking suite |
+
+#### Multimodal / Non-Text Pricing
+
+| Category | Together AI | Fireworks AI | Groq | OpenRouter |
+|---|---|---|---|---|
+| **Image generation** | $0.0006–$0.075 per image | Available | Not available | Available (via providers) |
+| **Video generation** | $0.14–$3.20 per video (Veo 3.0, Sora 2, Kling 2.1) | Not available | Not available | Alpha (Seedance, Sora 2, Veo 3.1) |
+| **TTS (text-to-speech)** | Available (Kokoro, Orpheus, Cartesia) | Available | Orpheus TTS — $0.10 / 1K chars | Limited |
+| **Speech-to-text (Whisper)** | ~$0.006 / minute | Available | $0.111 / hour audio | Available |
+
+---
+
+### Fireworks AI: Cached Input Pricing — Strategic Deep Dive
+
+Fireworks is the only competitor offering tiered input pricing based on prompt caching. This is their most significant cost-intelligence proxy and directly competes with Token Factory's FinOps positioning for developer-tier customers.
+
+| Model | Uncached Input | Cached Input | Cache Savings | Mechanism |
+|---|---|---|---|---|
+| **Kimi K2.5** | $0.60/M | $0.10/M | **83%** | Identical prefix token sequences |
+| **Deepseek V3.2** | $0.27/M | $0.07/M | **74%** | Same |
+| **NVIDIA Nemotron 120B** | $1.00/M | $0.25/M | **75%** | Same |
+| **MiniMax-M2.5** | $0.30/M | $0.07/M | **77%** | Same |
+
+**How it works:** Fireworks caches the KV states of identical input prefix tokens. If consecutive API calls share the same system prompt and conversation history (common in RAG, chatbots, and document processing), the cached portion is re-priced at the lower rate. The developer must engineer their prompts to exploit this — the caching is not automatic.
+
+**The competitive response for Token Factory:** Semantic caching that requires zero developer behavior change. When similar (not just identical) requests arrive, serve from cache automatically. Show the savings clearly in the dashboard. Key message: "Fireworks caches only exact prefixes. Token Factory caches semantically — no prompt engineering required, savings appear automatically."
+
+---
+
+### Groq Rate Limits by Tier (March 2026)
+
+Groq's rate limits are published and unusually restrictive, particularly on the free tier. This creates a specific competitive opportunity: developers who discover Groq's speed advantages are frequently hit by rate limits before they can build production workloads.
+
+#### Free Tier Rate Limits
+
+| Model | Requests/Min | Requests/Day | Tokens/Min | Tokens/Day |
+|---|---|---|---|---|
+| GPT-OSS 120B | 30 | 1,000 | 8,000 | 200,000 |
+| GPT-OSS 20B | 30 | 1,000 | 15,000 | 250,000 |
+| LLaMA 3.3 70B | 30 | 1,000 | 12,000 | 100,000 |
+| Qwen 3 32B | 30 | 1,000 | 6,000 | 100,000 |
+| LLaMA 4 Scout (vision) | 30 | 1,000 | 7,000 | 250,000 |
+| Whisper (audio) | 20 | 2,000 | — | 7,200 audio sec/hr |
+| Orpheus TTS | 10 | 100 | 1,200 | — |
+
+**30 RPM on the free tier is a hard ceiling for any production workload.** Even a simple chatbot serving 10 concurrent users comfortably exceeds this. Developer tier unlocks higher limits (custom, negotiated), but requires payment method and a manual tier request process.
+
+**Post-Nvidia acquisition uncertainty:** Groq's hardware strategy — custom LPU silicon — is now subject to Nvidia's strategic priorities. Nvidia may redirect Groq's roadmap toward data center integration rather than standalone inference API, introduce pricing changes that reflect Nvidia's margin expectations, or restrict third-party model availability on LPU silicon. This acquisition uncertainty is a legitimate enterprise procurement concern: organizations building on Groq are building on Nvidia's future product decisions, not Groq's independent roadmap.
+
+---
+
+### Model Catalog: Size, Modalities & Coverage
+
+| Dimension | Together AI | Fireworks AI | Groq | OpenRouter | Token Factory (Target) |
+|---|---|---|---|---|---|
+| **Total Models** | **227+** | **200+** | **~15** | **658** | **200+** |
+| **LLM / Chat** | 100+ | 100+ | 8 | 400+ | 100+ |
+| **Vision / Multimodal** | 20+ | 20+ | 1 (LLaMA 4 Scout) | 50+ | 15+ at launch |
+| **Image Generation** | 30+ (FLUX, Ideogram, Imagen 4.0, HiDream) | 20+ | None | 50+ | Roadmap |
+| **Video Generation** | Yes (Veo 3.0, Sora 2, Kling 2.1, PixVerse, Seedance) | None | None | Alpha (Seedance, Sora 2, Veo 3.1) | Roadmap |
+| **Audio TTS** | Yes (Kokoro 82M, Orpheus 3B, Cartesia Sonic 1/2/3) | Yes | Yes (Orpheus) | Limited | Roadmap |
+| **Speech-to-Text** | Yes (Whisper large-v3) | Available | Yes (Whisper) | Available | Roadmap |
+| **Embeddings** | Yes (10+ models) | Yes (Qwen3 Embedding series) | **No** | Yes (30+) | Yes at launch |
+| **Reranking** | No | Yes (Qwen3 Reranker) | No | Limited | Roadmap |
+| **Code-Specialized** | 20+ (DeepSeek Coder, CodeLlama) | 20+ | 2 | 50+ | 20+ |
+| **Open + Proprietary** | Open-source only | Open-source only | Open-source only | Both (OpenAI, Anthropic, Google + open) | Open-source only |
+
+**Model catalog strategic notes:**
+
+- **OpenRouter at 658 is misleading** for enterprise evaluation. Of those 658, roughly 300 are duplicates (same model, different providers) and 200+ are experimental or low-quality community uploads. The actionable catalog is closer to 200 production-quality models. OpenRouter's real advantage is proprietary model access (GPT-5, Claude 4, Gemini 3) — not open-source breadth.
+- **Groq's 15-model catalog is a fatal weakness for enterprise adoption.** Clinical AI workloads require embedding models (Groq has none). Multilingual Arabic-English workloads require Qwen or AraGPT (not on Groq). Document processing requires vision models (Groq has one). Any enterprise with more than one AI use case will outgrow Groq in weeks.
+- **Together AI's video generation catalog (Veo 3.0, Sora 2)** is the most advanced in market and serves a distinct use case segment. Token Factory should include video generation on the roadmap but not at launch — it serves creative agencies and media companies, not the enterprise governance buyers who are Token Factory's primary target.
+
+---
+
+### Technical Specifications Comparison
+
+| Specification | Together AI | Fireworks AI | Groq | OpenRouter | Token Factory |
+|---|---|---|---|---|---|
+| **Max Context Window** | 256K tokens (select models) | **262,144 tokens (262K)** — largest | 128K tokens (GPT-OSS models) | Up to 1M+ (Gemini 3.1 Pro via provider) | 128K+ at launch |
+| **Max Output Tokens** | 16K (model-dependent) | 16K (model-dependent) | 32,768 (GPT-OSS models) | Provider-dependent | 16K at launch |
+| **Time to First Token (TTFT)** | ~150–250ms | ~50–100ms (FireAttention) | **Sub-100ms (LPU — fastest)** | Provider-dependent | Sub-second target |
+| **Throughput (tokens/sec)** | 50–120 tok/s | 80–200 tok/s (FireAttention) | **300–500+ tok/s (LPU)** | Provider-dependent | 50–150 tok/s |
+| **Inference Architecture** | Nvidia GPUs (FlashAttention) | Nvidia GPUs (proprietary FireAttention kernel) | **Custom LPU ASIC silicon** | Aggregator — no owned infra | Nvidia GPUs + GPU partnerships (future) |
+| **Batch Processing API** | No | Yes — async JSONL, ~50% discount | Yes — Developer tier+ | No | Yes (add as T1 feature) |
+| **Streaming (SSE)** | Yes | Yes | Yes | Yes | Yes |
+| **Function / Tool Calling** | Yes | Yes | Partial (select models) | Yes (provider-dependent) | Yes |
+| **JSON / Structured Output Mode** | Yes | Yes | Yes | Yes | Yes |
+| **Deployment Modes** | Serverless + Dedicated (reserved) | Serverless + On-demand Deployments | Shared LPU cluster only | Aggregator (no deployment) | Serverless + Dedicated |
+| **Fine-Tuning** | Yes (LoRA, full FT, RLHF) | Yes (LoRA, full FT, **Reinforced FT**) | LoRA — Enterprise only | No | Yes (full lifecycle) |
+| **Evaluations Tooling** | Yes | Yes | No | No | Roadmap |
+| **Uptime SLA** | 99.9% | 99.9% | 99.9% | Best-effort (2 outages Feb 2026) | 99.99% |
+| **Data Residency** | US only | US only | US only | Varies by provider | UAE, EU, US, KSA |
+| **SSO / SCIM** | No | No | Yes — **Enterprise tier only** | No | Yes — all tiers |
+| **Audit Logs** | No | No | 7-day (Developer) / 90-day (Enterprise) | No | **7+ years** |
+| **SOC 2 Type II** | No published attestation | Yes | No published attestation | No | Target (initiate month 3) |
+| **HIPAA BAA** | No | No | No | No | Yes (Sovereign tier) |
+| **BYOK (Bring Your Own Key)** | No | No | No | **Yes — 45+ providers** | Yes |
+| **VPC Peering** | No | No | No | No | Roadmap |
+| **Cloud Marketplace** | AWS Marketplace | Partial | No | No | AWS + Azure + GCP |
+
+---
+
 ## Section 4: Indirect Competition — Proprietary AI Providers
 
 ### OpenAI
@@ -154,11 +330,11 @@ Mitigation strategy: Token Factory must build value above the model layer — pl
 
 ### Tier 2: Infrastructure Partners
 
-Infrastructure partnerships span cloud providers (AWS, GCP, Azure, Oracle Cloud), GPU specialists (CoreWeave, Lambda Labs, Voltage Park), and hardware manufacturers (Nvidia, AMD, Tenstorrent). Token Factory's multi-cloud strategy should ensure that no single infrastructure provider can exert undue leverage — a lesson learned from the many startups that built exclusively on AWS and found their margins compressed when Amazon launched competing services.
+Infrastructure partnerships span cloud providers (AWS, GCP, Azure, Oracle Cloud), GPU specialists (CoreWeave, Lambda Labs, Voltage Park), and hardware manufacturers (Nvidia, AMD, GPU partnerships). Token Factory's multi-cloud strategy should ensure that no single infrastructure provider can exert undue leverage — a lesson learned from the many startups that built exclusively on AWS and found their margins compressed when Amazon launched competing services.
 
-The Tenstorrent partnership deserves special attention. As a RISC-V-based AI accelerator company backed by Hyundai and Samsung, Tenstorrent represents a strategic hedge against Nvidia's GPU monopoly. If Tenstorrent's inference-grade hardware reaches production quality (expected 2026-2027), Token Factory could offer inference on Tenstorrent hardware at costs 30-50% below Nvidia-based infrastructure, creating a pricing advantage that no competitor without a similar hardware partnership can match. This partnership also positions Token Factory for sovereign AI deployments where governments require non-Nvidia hardware for supply chain independence.
+The GPU partnerships partnership deserves special attention. As a RISC-V-based AI accelerator company backed by Hyundai and Samsung, GPU partnerships represents a strategic hedge against Nvidia's GPU monopoly. If GPU partnerships's inference-grade hardware reaches production quality (expected 2026-2027), Token Factory could offer inference on GPU partnerships hardware at costs 30-50% below Nvidia-based infrastructure, creating a pricing advantage that no competitor without a similar hardware partnership can match. This partnership also positions Token Factory for sovereign AI deployments where governments require non-Nvidia hardware for supply chain independence.
 
-The Nvidia dynamic is complex. Nvidia's dominance of the AI accelerator market (>95% share for training, >80% for inference) means that any inference platform is, in some sense, an Nvidia customer. Nvidia's acquisition of Groq signals its intent to participate directly in the inference market, potentially making it both supplier and competitor. Token Factory's multi-hardware strategy (Nvidia GPUs today, AMD MI300X and Tenstorrent as alternatives) is essential risk mitigation.
+The Nvidia dynamic is complex. Nvidia's dominance of the AI accelerator market (>95% share for training, >80% for inference) means that any inference platform is, in some sense, an Nvidia customer. Nvidia's acquisition of Groq signals its intent to participate directly in the inference market, potentially making it both supplier and competitor. Token Factory's multi-hardware strategy (Nvidia GPUs today, AMD MI300X and GPU partnerships as alternatives) is essential risk mitigation.
 
 ### Tier 3: Go-to-Market and Distribution Partners
 
@@ -178,14 +354,26 @@ Technology partnerships provide capabilities that Token Factory should leverage 
 
 | Dimension | Token Factory | Together AI | Fireworks AI | Groq | OpenRouter |
 |---|---|---|---|---|---|
-| Primary Strategy | Platform experience | Full-stack AI | Speed optimization | Hardware differentiation | Model aggregation |
-| Model Selection | 30-50+ (open-source) | 50+ (open-source) | 30+ (open-source) | 10-15 (LPU-ported) | 300+ (open+proprietary) |
-| Enterprise Features | Deep (goal) | Mature | Growing | Basic | Basic |
-| Compliance | SOC2+HIPAA+GDPR (goal) | SOC2 | SOC2 | SOC2 | SOC2 |
-| Middle East Presence | Native (IHC Group) | None | None | None | None |
-| Capital Backing | IHC ($20B+ cash) | $533M VC | $327M VC | Nvidia acquisition | ~$500M valuation |
-| Built-in Customers | 422 IHC subsidiaries | None | None | None | None |
-| Hardware Strategy | Multi (Nvidia+Tenstorrent) | Nvidia | Nvidia | Custom LPU | Provider-dependent |
-| Revenue | Pre-launch | ~$300M ARR | ~$130M ARR | ~$100M ARR | ~$50M ARR |
+| **Primary Strategy** | Platform experience + FinOps | Full-stack AI (train + infer) | Inference speed optimization | Custom LPU hardware | Multi-provider aggregation |
+| **Model Count** | 200+ target | **227+** | **200+** | **~15** | **658** (open + proprietary) |
+| **Max Context** | 128K+ | 256K | **262K** | 128K | Up to 1M+ (via providers) |
+| **TTFT** | Sub-second | 150–250ms | **50–100ms (fastest GPU)** | **Sub-100ms (fastest overall)** | Provider-dependent |
+| **Throughput** | 50–150 tok/s | 50–120 tok/s | **80–200 tok/s** | **300–500+ tok/s** | Provider-dependent |
+| **Batch Processing** | Yes (add T1) | No | Yes | Yes (Developer+) | No |
+| **Fine-Tuning** | Yes (full lifecycle + RLHF roadmap) | Yes (LoRA + RLHF) | Yes (LoRA + **Reinforced FT**) | LoRA — Enterprise only | No |
+| **Embeddings** | Yes | Yes | Yes | **No** | Yes |
+| **Video Generation** | Roadmap | **Yes (Veo 3.0, Sora 2)** | No | No | Alpha |
+| **Postpaid Invoicing** | Yes | Yes | Yes | Yes | **No** |
+| **Free Access** | $5 no card | Read-only until deposit | $6 card required | Free tier no card | Free models no card |
+| **SSO / SCIM** | Yes (all tiers) | No | No | Enterprise only | No |
+| **Audit Logs** | **7+ years** | None | None | 7d Dev / 90d Enterprise | None |
+| **Data Residency** | UAE, EU, US, KSA | US only | US only | US only | Varies |
+| **Compliance** | SOC2+HIPAA+GDPR+UAE PDPL (target) | No attestation | SOC2 Type II | No attestation | No |
+| **Uptime SLA** | **99.99%** | 99.9% | 99.9% | 99.9% | Best-effort |
+| **Middle East Presence** | Native (IHC Group) | None | None | None | None |
+| **Capital Backing** | IHC ($20B+ cash) | $533M VC | $327M VC ($4B valuation) | Nvidia acquisition ($6.5B) | ~$500M valuation |
+| **Built-in Customers** | 422 IHC subsidiaries | None | None | None | None |
+| **Hardware Strategy** | Nvidia + GPU partnerships (RISC-V future) | Nvidia | Nvidia (FireAttention) | Custom LPU ASIC | No hardware |
+| **Revenue** | Pre-launch | ~$300M ARR | ~$130M ARR | ~$100M ARR | ~$50M ARR |
 
 Token Factory's competitive strategy is clear: do not compete on inference speed (Fireworks wins), hardware novelty (Groq wins), training+inference breadth (Together wins), or model count (OpenRouter wins). Compete on the platform layer — the authentication, organization management, cost optimization, compliance, analytics, and governance capabilities that transform commodity inference into enterprise infrastructure. Win IHC Group first, then the Middle East, then the global enterprise market.

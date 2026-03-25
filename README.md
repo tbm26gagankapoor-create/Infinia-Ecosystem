@@ -298,25 +298,24 @@ Send same prompt to 2 models simultaneously. Responses stream in parallel with l
 - Per-token billing with model-specific rates
 - Hourly usage aggregation via Stripe
 - Monthly invoices with per-model line items
-- Failed payment retry (3x over 7 days), then downgrade to free
+- Failed payment retry (3x over 7 days), then account restricted to prepaid only
 
-#### F3. Pricing Tiers — M3
+#### F3. Per-Million-Token Pricing — M3
 
-| Tier | Price | Discount | RPM | Keys | Key Features |
-|------|-------|----------|-----|------|-------------|
-| Free | $0/mo | None | 10 | 1 | $5 credit, playground |
-| PAYG | $0/mo | None | 100 | Unlimited | Standard pricing, basic dashboard |
-| Pro | $99/mo | 5-10% | 1,000 | Unlimited | RBAC, cost allocation, webhooks, fine-tuning, priority support |
-| Team | $299/mo | 8-12% | 5,000 | Unlimited | SSO, team workspaces, advanced analytics |
-| Enterprise | $2K+/mo | 15-30% | Custom | Unlimited | VPC, custom SLA, CSM, ZDR, audit logs, data residency |
+Two billing methods, both charged per million tokens at model-specific rates:
+
+| Billing Method | How It Works | Volume Discounts |
+|---------------|-------------|-----------------|
+| **Prepaid (Credits)** | Purchase credits upfront. Deducted per million tokens consumed. $5 free credit on signup. | 5-15% on bulk purchases ($1K+) |
+| **Postpaid (Invoice)** | Use now, invoiced monthly per million tokens consumed. Net-30 terms. | 15-30% on committed spend |
 
 #### F4. Billing Dashboard — M3
 
-Current plan, usage summary, invoice history (with PDF download), payment method management, upgrade/downgrade flow.
+Current billing method (Prepaid/Postpaid), credit balance or invoice history, per-model token consumption breakdown, payment method management.
 
-#### F5. Enterprise Discounts — M3
+#### F5. Enterprise & Volume Agreements — M3
 
-Volume discounts, custom per-token pricing, prepaid token credit blocks at discounted rates.
+Volume discounts on bulk credit purchases, committed spend agreements for postpaid customers, custom per-million-token rates.
 
 ---
 

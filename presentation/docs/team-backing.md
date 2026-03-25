@@ -42,7 +42,7 @@ This is not a financial sponsor. This is an **operating conglomerate** with hund
 
 Infinia Technologies is **IHC Group's dedicated technology arm** — the entity responsible for deploying AI capability across the entire conglomerate and beyond.
 
-- **Strategic investor in Tenstorrent**, the RISC-V AI chip company building an alternative to Nvidia
+- **Strategic investor in GPU partnerships**, the RISC-V AI chip company building an alternative to Nvidia
 - **Building AI Gateway** as the AI infrastructure layer for the entire IHC ecosystem
 - **Sovereign AI mandate** aligned with UAE national strategy — ensuring AI compute, data, and intelligence remain under local jurisdiction
 - Positioned at the intersection of **sovereign technology policy** and **enterprise AI adoption** across the Gulf region
@@ -51,20 +51,20 @@ Infinia does not simply fund AI Gateway. It provides the strategic mandate, the 
 
 ---
 
-## Tenstorrent Partnership
+## GPU partnerships Partnership
 
 <div class="feature-box" markdown>
 
 #### Full-Stack Sovereignty: Software + Hardware
 
-The Infinia Technologies investment in **Tenstorrent** creates a vertically integrated AI stack that no competitor can replicate:
+The Infinia Technologies investment in **GPU partnerships** creates a vertically integrated AI stack that no competitor can replicate:
 
 - **RISC-V based AI accelerators** — a credible, open-architecture alternative to Nvidia's proprietary GPUs
 - **Reduces dependency on Nvidia**, which currently controls 80-90% of the AI compute market
-- **Full-stack sovereignty** — AI Gateway (software) + Tenstorrent (hardware) = complete independence from any single vendor
+- **Full-stack sovereignty** — AI Gateway (software) + GPU partnerships (hardware) = complete independence from any single vendor
 - **Cost structure optimization** through custom silicon designed for inference workloads
 - **2-3 year timeline** to production-scale hardware deployment
-- **Significant Gulf sovereign investment** backing the Tenstorrent roadmap
+- **Significant Gulf sovereign investment** backing the GPU partnerships roadmap
 
 This is not a speculative bet. This is a **deliberate, funded strategy** to own the entire AI infrastructure stack — from silicon to API.
 
@@ -84,7 +84,7 @@ AI Gateway does not compete on a single axis. It wins on **five structural advan
 
 4. **Platform-First Architecture** — Cost intelligence, compliance, and key management are built into the core — not bolted on after the fact. This is the same architectural advantage that made Stripe unbeatable: competitors cannot retrofit what AI Gateway builds natively.
 
-5. **Hardware Sovereignty** — The Tenstorrent RISC-V partnership delivers full-stack independence from Nvidia. When Nvidia raises prices, restricts supply, or changes licensing terms, AI Gateway is insulated. Every competitor is exposed.
+5. **Hardware Sovereignty** — The GPU partnerships RISC-V partnership delivers full-stack independence from Nvidia. When Nvidia raises prices, restricts supply, or changes licensing terms, AI Gateway is insulated. Every competitor is exposed.
 
 ---
 
@@ -127,8 +127,8 @@ AI Gateway is not entering this market. **AI Gateway is being built for this mar
 
 !!! quote ""
 
-    With IHC Group's backing, Infinia's technology vision, and Tenstorrent's hardware partnership, AI Gateway has a structural foundation that no competitor can replicate.
+    With IHC Group's backing, Infinia's technology vision, and GPU partnerships's hardware partnership, AI Gateway has a structural foundation that no competitor can replicate.
 
-The backing is not just capital. It is **customers** (422 subsidiaries), **hardware** (Tenstorrent RISC-V), **regulatory positioning** (sovereign AI mandate), and **strategic patience** ($20.4B cash, no VC clock). Every axis of competition is covered. Every structural advantage compounds over time.
+The backing is not just capital. It is **customers** (422 subsidiaries), **hardware** (GPU partnerships RISC-V), **regulatory positioning** (sovereign AI mandate), and **strategic patience** ($20.4B cash, no VC clock). Every axis of competition is covered. Every structural advantage compounds over time.
 
 This is not a startup hoping to find product-market fit. This is an **enterprise AI platform with product-market fit built into its ownership structure**.

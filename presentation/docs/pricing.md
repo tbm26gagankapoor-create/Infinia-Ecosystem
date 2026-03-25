@@ -1,93 +1,82 @@
 # Pricing Architecture
 
-<p class="subtitle">5-tier pricing designed to maximize developer acquisition, build switching costs, and capture enterprise value.</p>
+<p class="subtitle">Simple, transparent pricing with two billing methods — Prepaid or Postpaid — based on per-million-token consumption across all models.</p>
 
 ---
 
-## Pricing Tiers
+## Two Billing Methods
 
 <div class="pricing-grid" markdown>
 
-<div class="pricing-card" markdown>
-<div class="tier-name">Free</div>
-<div class="tier-price">$0<span>/month</span></div>
-<div class="tier-desc">+ $5 free credit</div>
-
-- **3** models available
-- **100** RPM rate limit
-- Community support
-
-*Purpose: Try before you buy*
-</div>
-
-<div class="pricing-card" markdown>
-<div class="tier-name">Pay-As-You-Go</div>
-<div class="tier-price">$0<span>/month</span></div>
-<div class="tier-desc">Usage-based billing</div>
+<div class="pricing-card featured tier-pro" markdown>
+<div class="tier-name">Prepaid</div>
+<div class="tier-price">Buy Credits</div>
+<div class="tier-desc">Pay upfront, use as you go</div>
 
 - **All** models available
-- **500** RPM rate limit
-- Email support
+- Credits deducted per million tokens
+- Model-specific rates
+- Real-time balance tracking
+- No commitment — top up anytime
 
-*Purpose: Individual developers*
+*Best for: Teams that want budget control and predictable spend*
 </div>
 
-<div class="pricing-card featured" markdown>
-<div class="tier-name">Pro</div>
-<div class="tier-price">$99<span>/month</span></div>
-<div class="tier-desc">Most popular</div>
+<div class="pricing-card tier-enterprise" markdown>
+<div class="tier-name">Postpaid</div>
+<div class="tier-price">Monthly Invoice</div>
+<div class="tier-desc">Use now, pay later — by agreement</div>
 
-- **All** models + fine-tuning
-- **2,000** RPM rate limit
-- Priority support
-- Cost analytics
+- **All** models available
+- Invoiced per million tokens consumed
+- Model-specific rates
+- Monthly billing cycle with Net-30 payment terms
+- **Requires sales contact + signed SLA**
+- Per-organisation credit limit allocated by Infinia
 
-*Purpose: Professional developers & small teams*
-</div>
+!!! note "How to get started"
+    Postpaid billing is available for qualifying organisations. [Contact sales](mailto:sales@infinia.ai) to discuss your requirements, sign an SLA, and get activated by our team.
 
-<div class="pricing-card" markdown>
-<div class="tier-name">Team</div>
-<div class="tier-price">$299<span>/month</span></div>
-<div class="tier-desc">Collaborative workspace</div>
-
-- Everything in Pro
-- Team workspaces & SSO
-- **5,000** RPM rate limit
-- Dedicated support
-
-*Purpose: Growing teams*
-</div>
-
-<div class="pricing-card" markdown>
-<div class="tier-name">Enterprise</div>
-<div class="tier-price">$2K–25K<span>/month</span></div>
-<div class="tier-desc">Custom agreements</div>
-
-- Custom rate limits
-- VPC peering
-- SLA guarantees
-- Compliance tools
-- Dedicated CSM
-
-*Purpose: Large organizations*
+*Best for: Enterprises and high-volume users who prefer invoicing and have committed spend*
 </div>
 
 </div>
 
 ---
 
-## Feature Comparison
+## How It Works
 
-| Feature | Free | PAYG | Pro | Team | Enterprise |
-|:---|:---:|:---:|:---:|:---:|:---:|
-| **Models** | 3 | All | All | All | All + Custom |
-| **Fine-tuning** | :material-close: | :material-close: | :material-check: | :material-check: | :material-check: |
-| **Cost Analytics** | Basic | Basic | Advanced | Advanced | Custom |
-| **Key Management** | 1 key | 5 keys | 25 keys | Unlimited | Unlimited |
-| **SSO / SAML** | :material-close: | :material-close: | :material-close: | :material-check: | :material-check: |
-| **Compliance Tools** | :material-close: | :material-close: | :material-close: | :material-close: | :material-check: |
-| **SLA** | None | 99.5% | 99.9% | 99.9% | 99.99% |
-| **Support** | Community | Email | Priority | Dedicated | Dedicated CSM |
+Both billing methods charge based on **per-million-token consumption** at model-specific rates. The only difference is when you pay.
+
+| Aspect | Prepaid (Credits) | Postpaid (Invoice) |
+|:---|:---:|:---:|
+| **Payment Timing** | Before usage | After usage (monthly) |
+| **Activation** | Self-serve on signup | Sales contact + SLA required |
+| **Credit Limit** | Based on purchased balance | Org credit limit set by Infinia admin |
+| **Billing Mechanism** | Credit balance deduction | Invoice generation |
+| **Token Rates** | Per million tokens, per model | Per million tokens, per model |
+| **All Models** | :material-check: | :material-check: |
+| **Real-Time Dashboard** | :material-check: | :material-check: |
+| **Cost Analytics** | :material-check: | :material-check: |
+| **Budget Alerts** | :material-check: | :material-check: |
+| **API Key Management** | :material-check: | :material-check: |
+| **Volume Discounts** | Available on bulk credit purchases | Available on committed spend |
+
+---
+
+## Example Model Pricing
+
+Rates are per **million tokens** and vary by model size and capability.
+
+| Model Category | Example Models | Input (per 1M tokens) | Output (per 1M tokens) |
+|:---|:---|:---:|:---:|
+| **Small (7-8B)** | LLaMA 3.1 8B, Mistral 7B | $0.10–0.20 | $0.10–0.20 |
+| **Medium (13-34B)** | LLaMA 3.1 13B, CodeLlama 34B | $0.30–0.60 | $0.30–0.60 |
+| **Large (70B+)** | LLaMA 3.1 70B, Mistral Large, DeepSeek V3 | $0.50–1.20 | $0.50–1.50 |
+| **Embeddings** | Various embedding models | $0.01–0.05 | — |
+
+!!! info "Transparent Pricing"
+    All per-million-token rates are published on the website with no hidden fees. Input and output tokens are metered separately at model-specific rates.
 
 ---
 
@@ -108,13 +97,13 @@ Switch from a competitor platform and receive $100 in credits to offset transiti
 <div class="feature-box" markdown>
 
 ### :material-calendar-check: Volume Commitments
-Discounts available for annual prepay commitments — predictable costs for customers, predictable revenue for us.
+Discounts available for bulk credit purchases or annual postpaid commitments — predictable costs for customers, predictable revenue for us.
 </div>
 
 <div class="feature-box" markdown>
 
 ### :material-account-plus: $25 Referral Credit
-Per referred signup that converts to a paid tier — viral acquisition loop.
+Per referred signup that converts to a paying customer — viral acquisition loop.
 </div>
 
 <div class="feature-box" markdown>
@@ -126,13 +115,13 @@ Qualifying early-stage startups receive up to $10,000 in credits over 12 months.
 <div class="feature-box" markdown>
 
 ### :material-school: 50% Academic Discount
-University researchers and students receive half-price access to Pro-tier features.
+University researchers and students receive half-price token rates.
 </div>
 
 <div class="feature-box" markdown>
 
 ### :material-office-building: IHC Group Discount
-20–30% discount for internal subsidiaries and inter-group enterprise customers.
+20–30% discount on token rates for internal subsidiaries and inter-group enterprise customers.
 </div>
 
 ---
@@ -147,31 +136,16 @@ Target blended gross margin
 </div>
 
 <div class="stat-card" markdown>
-### Negative
-Free tier margin (acquisition cost)
+### 50–70%
+Enterprise postpaid margin
 </div>
 
 <div class="stat-card" markdown>
-### 20–30%
-Pay-As-You-Go margin
-</div>
-
-<div class="stat-card" markdown>
-### 50–60%
-Pro tier margin
-</div>
-
-<div class="stat-card" markdown>
-### 55–65%
-Team tier margin
-</div>
-
-<div class="stat-card" markdown>
-### 60–70%
-Enterprise tier margin
+### 85–95%
+Platform feature margin
 </div>
 
 </div>
 
 !!! info "Margin Driver: Platform Features, Not Raw Inference"
-    Raw inference pass-through carries thin margins. The real margin expansion comes from **platform features** — fine-tuning, cost analytics, compliance tooling, and key management are high-margin services layered on top of commodity inference. As platform adoption deepens across tiers, blended margins improve structurally.
+    Raw inference pass-through carries thin margins. The real margin expansion comes from **platform features** — fine-tuning, cost analytics, compliance tooling, and key management are high-margin services layered on top of commodity inference. As platform adoption deepens, blended margins improve structurally.

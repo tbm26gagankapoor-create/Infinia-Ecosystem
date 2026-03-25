@@ -1,0 +1,32 @@
+{
+  "name": "token-factory",
+  "version": "1.0.0",
+  "description": "**Unified Open-Source LLM Inference Platform**",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tbm26gagankapoor-create/Token-Factory.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tbm26gagankapoor-create/Token-Factory/issues"
+  },
+  "homepage": "https://github.com/tbm26gagankapoor-create/Token-Factory#readme",
+  "dependencies": {
+    "docx": "^9.6.1",
+    "pptxgenjs": "^4.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-icons": "^5.6.0",
+    "sharp": "^0.34.5"
+  }
+}

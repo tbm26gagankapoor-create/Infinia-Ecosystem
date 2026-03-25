@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "vulcan": {
+      "command": "npx",
+      "args": ["-y", "vulcan-mcp-server"],
+      "env": {
+        "VULCAN_TOKEN": "vulcan_ak_ea871b7779324e4788a2df843ee38fd609e498609703edd618b3017f4bfa9968",
+        "VULCAN_API_URL": "https://vulcan.iamsaif.ai/api/v1"
+      }
+    }
+  }
+}

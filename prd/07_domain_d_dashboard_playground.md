@@ -14,7 +14,7 @@ Authenticated dashboard with sidebar navigation, user menu, and onboarding card 
 ### User Flow
 
 1. User logs in. Redirected to `/dashboard`.
-2. Sees sidebar with navigation: Overview, Playground, Models, API Keys, Usage, Billing, Settings, Team.
+2. Sees sidebar with navigation: Overview, Playground, Models, Projects, API Keys, Usage, Billing, Settings, Team.
 3. Top-right shows user avatar + dropdown: Profile, Organization, Billing, Logout.
 4. First-time users see onboarding card with 3 steps: (1) Copy your API key, (2) Make your first API call, (3) Explore the playground. Progress tracked.
 5. Onboarding card is dismissible. Does not reappear after dismissal.
@@ -32,7 +32,7 @@ Authenticated dashboard with sidebar navigation, user menu, and onboarding card 
 
 ## D2. Interactive Playground — M2 · Apr 5
 
-Web-based chat interface to test any model with system prompt, message composer, and streamed responses.
+Web-based chat interface to test any model with system prompt, message composer, and streamed responses. Connected to the active wallet balance — every request consumes tokens and deducts the corresponding cost from the wallet balance in real time.
 
 ### Features
 
@@ -41,6 +41,7 @@ Web-based chat interface to test any model with system prompt, message composer,
 - System prompt
 - Message composer
 - Streamed responses
+- Sessions saved and resumable
 
 ### User Flow
 
@@ -50,8 +51,9 @@ Web-based chat interface to test any model with system prompt, message composer,
 4. Types message in composer at bottom. Send on Enter (Shift+Enter for newline).
 5. Response streams token-by-token with typing indicator.
 6. After response completes: shows model, tokens (input/output), cost, TTFT, total latency below the message.
-7. User can continue conversation or click "New Chat" to clear.
-8. Usage deducted from credit balance / billing. Appears in cost dashboard.
+7. User can continue conversation or click "New Chat" to start a fresh session.
+8. All sessions are automatically saved and listed under a "History" panel. User can resume any past session.
+9. Usage deducted from credit balance / billing. Appears in cost dashboard.
 
 ### Success Metrics
 
@@ -124,7 +126,7 @@ Responses shown without labels. User picks winner. Models revealed after choice.
 
 ## D5. Public Playground — M3 · Apr 11
 
-No account required for basic use. Limited to 5 requests per session. Connected to billing when authenticated.
+No account required for basic use. Limited to 5 requests per session. When authenticated, connected to the active wallet balance — requests consume tokens and deduct from the wallet balance in real time.
 
 ### Features
 
