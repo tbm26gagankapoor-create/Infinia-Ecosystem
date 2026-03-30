@@ -1,0 +1,15 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './globals.css'
+import App from './App.tsx'
+
+// Apply theme before render to prevent flash
+const stored = localStorage.getItem('theme')
+const theme = stored ?? 'dark'
+document.documentElement.classList.toggle('dark', theme === 'dark')
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
