@@ -1,2 +1,22 @@
 [build]
+  command = "cd user-portal && npm install && npm run build && rm -rf ../user-portal-app && cp -r dist ../user-portal-app"
   publish = "."
+
+# Force redirect /user-portal/ to the built app (overrides the source directory)
+[[redirects]]
+  from = "/user-portal"
+  to = "/user-portal-app/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/user-portal/*"
+  to = "/user-portal-app/:splat"
+  status = 301
+  force = true
+
+# SPA fallback — client-side routes serve the SPA index
+[[redirects]]
+  from = "/user-portal-app/*"
+  to = "/user-portal-app/index.html"
+  status = 200

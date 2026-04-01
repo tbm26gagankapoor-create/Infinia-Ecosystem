@@ -18,6 +18,7 @@ import { Highlight, themes } from 'prism-react-renderer'
 import { MODELS, type Model } from '@/lib/mock-data'
 import { cn } from '@/lib/utils'
 import { PageHeader } from '@/components/PageHeader'
+import { ProviderIcon } from '@/components/ProviderIcon'
 import {
   Card,
   CardHeader,
@@ -33,72 +34,6 @@ const SPEEDS = ['All', 'Fast', 'Balanced', 'Quality']
 const LICENSES = ['All', 'Proprietary', 'Open Source']
 const SIZES = ['All', 'Small', 'Medium', 'Large']
 
-const PROVIDER_ICONS: Record<string, { path: string; hex: string }> = {
-  Anthropic: {
-    path: 'M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z',
-    hex: '191919',
-  },
-  OpenAI: {
-    path: 'M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z',
-    hex: '412991',
-  },
-  Meta: {
-    path: 'M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z',
-    hex: '0467DF',
-  },
-  Mistral: {
-    path: 'M17.143 3.429v3.428h-3.429v3.429h-3.428V6.857H6.857V3.43H3.43v13.714H0v3.428h10.286v-3.428H6.857v-3.429h3.429v3.429h3.429v-3.429h3.428v3.429h-3.428v3.428H24v-3.428h-3.43V3.429z',
-    hex: 'FA520F',
-  },
-  Google: {
-    path: 'M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81',
-    hex: '8E75B2',
-  },
-  Microsoft: {
-    path: 'M0 0h11.5v11.5H0V0zm12.5 0H24v11.5H12.5V0zM0 12.5h11.5V24H0V12.5zm12.5 0H24V24H12.5V12.5z',
-    hex: '0078D4',
-  },
-  DeepSeek: {
-    path: 'M23.748 9.614c-.136-.054-.274-.102-.414-.143a7.895 7.895 0 0 0-.24-2.123c-.502-1.97-1.696-3.234-3.347-3.511-.882-.15-1.795.012-2.813.497a9.483 9.483 0 0 0-.584.31c-.638-.29-1.312-.484-2.001-.576C12.66 2.87 11.008 3.5 9.748 4.876c-.553.598-.968 1.333-1.272 2.06-.144-.019-.29-.033-.437-.042-1.655-.1-3.044.504-3.904 1.697-.777 1.079-1.016 2.506-.683 4.05.044.203.098.408.162.614a7.61 7.61 0 0 0-.618.7c-1.021 1.33-1.39 2.842-1.04 4.26.38 1.537 1.504 2.714 3.125 3.234.6.19 1.24.276 1.902.254a7.62 7.62 0 0 0 .739-.065c.441.552.975 1.02 1.579 1.38 1.27.753 2.773.96 4.234.58.658-.174 1.27-.49 1.822-.935.333.064.67.1 1.007.108 1.668.036 3.109-.559 4.061-1.677.9-1.057 1.244-2.49 1.007-4.09a7.494 7.494 0 0 0-.222-.994 7.5 7.5 0 0 0 .594-.647c.982-1.232 1.41-2.7 1.185-4.087a4.728 4.728 0 0 0-.661-1.663z',
-    hex: '4D6BFE',
-  },
-}
-
-const PROVIDER_FALLBACKS: Record<string, { bg: string; initials: string }> = {
-  Cohere: { bg: '#39594F', initials: 'CO' },
-  Qwen:   { bg: '#6366F1', initials: 'QW' },
-}
-
-function ProviderIcon({ provider, size = 14 }: { provider: string; size?: number }) {
-  const icon = PROVIDER_ICONS[provider]
-  const padding = Math.round(size * 0.3)
-  const boxSize = size + padding * 2
-
-  if (icon) {
-    return (
-      <span
-        className="inline-flex shrink-0 items-center justify-center rounded bg-white"
-        style={{ width: boxSize, height: boxSize, padding }}
-        aria-hidden
-      >
-        <svg viewBox="0 0 24 24" width={size} height={size} fill={`#${icon.hex}`}>
-          <path d={icon.path} />
-        </svg>
-      </span>
-    )
-  }
-
-  const fallback = PROVIDER_FALLBACKS[provider] ?? { bg: '#6B7280', initials: provider.slice(0, 2).toUpperCase() }
-  return (
-    <span
-      className="inline-flex shrink-0 items-center justify-center rounded font-bold text-white"
-      style={{ width: boxSize, height: boxSize, backgroundColor: fallback.bg, fontSize: Math.round(size * 0.5) }}
-      aria-hidden
-    >
-      {fallback.initials}
-    </span>
-  )
-}
 
 const SPEED_STYLE: Record<string, string> = {
   Fast: 'bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-950 dark:text-emerald-400 dark:border-emerald-900',
@@ -263,83 +198,106 @@ function ModelDetailSheet({
 
   return (
     <Sheet open={open} onOpenChange={v => !v && onClose()}>
-      <SheetContent className="w-full max-w-[90vw] sm:w-[480px] sm:max-w-[520px] overflow-y-auto">
-        <SheetHeader className="pb-4 border-b border-border">
-          <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            {model.provider}
+      <SheetContent className="w-full max-w-[90vw] sm:w-[480px] sm:max-w-[520px] overflow-y-auto pb-24 p-0">
+        {/* Header */}
+        <div className="sticky top-0 z-10 bg-popover border-b border-border px-5 pt-5 pb-4">
+          <div className="flex items-center gap-2 mb-2">
+            <ProviderIcon provider={model.provider} size={16} />
+            <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+              {model.provider}
+            </span>
+            <Badge className={cn('text-xs border ml-auto', SPEED_STYLE[model.speed])}>{model.speed}</Badge>
           </div>
-          <SheetTitle className="text-lg">{model.name}</SheetTitle>
-          <div className="flex flex-wrap gap-1.5 mt-1">
+          <SheetTitle className="text-lg mb-2">{model.name}</SheetTitle>
+          <div className="flex flex-wrap gap-1.5">
             {model.capabilities.map(c => (
               <Badge key={c} variant="secondary" className="text-xs">{c}</Badge>
             ))}
-            <Badge className={cn('text-xs border', SPEED_STYLE[model.speed])}>{model.speed}</Badge>
           </div>
-        </SheetHeader>
+        </div>
 
-        <div className="py-4 space-y-6">
+        {/* Body */}
+        <div className="px-5 py-5 space-y-5">
           <p className="text-sm text-muted-foreground leading-relaxed">{model.description}</p>
 
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">Pricing</div>
-            <div className="grid grid-cols-3 gap-3">
+          {/* Pricing */}
+          <div className="rounded-lg border border-border overflow-hidden">
+            <div className="px-3.5 py-2 bg-muted/40 border-b border-border">
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pricing</span>
+            </div>
+            <div className="grid grid-cols-3 divide-x divide-border">
               {[
                 { label: 'Context', value: model.contextWindow },
-                { label: 'Input /1M tokens', value: model.inputCost },
-                { label: 'Output /1M tokens', value: model.outputCost },
+                { label: 'Input /1M', value: model.inputCost },
+                { label: 'Output /1M', value: model.outputCost },
               ].map(item => (
-                <div key={item.label} className="rounded-md border border-border bg-muted/30 p-3">
+                <div key={item.label} className="p-3.5 text-center">
                   <div className="text-xs text-muted-foreground mb-1">{item.label}</div>
-                  <div className="text-base font-mono font-semibold text-foreground">{item.value}</div>
+                  <div className="text-sm font-mono font-semibold text-foreground">{item.value}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">Benchmarks</div>
-            <div className="space-y-2.5">
+          {/* Benchmarks */}
+          <div className="rounded-lg border border-border overflow-hidden">
+            <div className="px-3.5 py-2 bg-muted/40 border-b border-border">
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Benchmarks</span>
+            </div>
+            <div className="p-3.5 space-y-3">
               {[
                 { label: 'MMLU', value: model.mmlu },
                 { label: 'HumanEval', value: model.humanEval },
               ].map(b => (
                 <div key={b.label} className="flex items-center gap-3">
-                  <div className="text-xs text-muted-foreground w-20">{b.label}</div>
-                  <div className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
-                    <div className="h-full rounded-full bg-primary" style={{ width: `${b.value}%` }} />
+                  <div className="text-xs font-medium text-muted-foreground w-20">{b.label}</div>
+                  <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-primary transition-all"
+                      style={{ width: `${b.value}%` }}
+                    />
                   </div>
-                  <div className="text-xs font-mono font-semibold text-foreground w-8 text-right">{b.value}</div>
+                  <div className="text-xs font-mono font-semibold text-foreground w-10 text-right">{b.value}%</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">Use Cases</div>
-            <div className="flex flex-wrap gap-1.5">
+          {/* Use Cases */}
+          <div className="rounded-lg border border-border overflow-hidden">
+            <div className="px-3.5 py-2 bg-muted/40 border-b border-border">
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Use Cases</span>
+            </div>
+            <div className="p-3.5 flex flex-wrap gap-1.5">
               {model.useCases.map(uc => (
                 <Badge key={uc} variant="outline" className="text-xs">{uc}</Badge>
               ))}
             </div>
           </div>
 
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">Quickstart</div>
-            <Tabs value={codeTab} onValueChange={setCodeTab}>
-              <TabsList className="h-8">
+          {/* Quickstart */}
+          <div className="rounded-lg border border-border overflow-hidden">
+            <div className="px-3.5 py-2 bg-muted/40 border-b border-border">
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Quickstart</span>
+            </div>
+            <div className="p-3.5">
+              <Tabs value={codeTab} onValueChange={setCodeTab}>
+                <TabsList className="h-8">
+                  {['Python', 'Node.js', 'cURL'].map(l => (
+                    <TabsTrigger key={l} value={l} className="text-xs px-3">{l}</TabsTrigger>
+                  ))}
+                </TabsList>
                 {['Python', 'Node.js', 'cURL'].map(l => (
-                  <TabsTrigger key={l} value={l} className="text-xs px-3">{l}</TabsTrigger>
+                  <TabsContent key={l} value={l} className="mt-2">
+                    <CodeSnippet model={model} lang={l} />
+                  </TabsContent>
                 ))}
-              </TabsList>
-              {['Python', 'Node.js', 'cURL'].map(l => (
-                <TabsContent key={l} value={l} className="mt-2">
-                  <CodeSnippet model={model} lang={l} />
-                </TabsContent>
-              ))}
-            </Tabs>
+              </Tabs>
+            </div>
           </div>
 
-          <div className="flex gap-2 pt-2">
+          {/* Actions */}
+          <div className="flex gap-2 pt-1">
             <Button
               className="flex-1 gap-2"
               onClick={() => { onClose(); navigate(`/playground?model=${model.id}`) }}

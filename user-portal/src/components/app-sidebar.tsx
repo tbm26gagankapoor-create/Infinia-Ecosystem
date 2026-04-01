@@ -18,7 +18,6 @@ import {
   RiHome4Line,
   RiRobotLine,
   RiTerminalBoxLine,
-  RiKeyLine,
   RiBarChartLine,
   RiBankCardLine,
   RiSettingsLine,
@@ -46,11 +45,6 @@ const data = {
       title: "Playground",
       url: "/playground",
       icon: <RiTerminalBoxLine />,
-    },
-    {
-      title: "API Keys",
-      url: "/api-keys",
-      icon: <RiKeyLine />,
     },
   ],
   navAccount: [

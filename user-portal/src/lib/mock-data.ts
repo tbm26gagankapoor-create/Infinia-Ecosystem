@@ -444,6 +444,7 @@ export type Project = {
   keyCount: number
   monthlySpend: string
   status: 'active' | 'archived'
+  createdAt: string
 }
 
 export const PROJECTS: Project[] = [
@@ -458,6 +459,7 @@ export const PROJECTS: Project[] = [
     keyCount: 2,
     monthlySpend: '$8.42',
     status: 'active',
+    createdAt: 'Mar 10, 2026',
   },
   {
     id: 'tf-proj_e5f6g7h8',
@@ -469,6 +471,7 @@ export const PROJECTS: Project[] = [
     keyCount: 1,
     monthlySpend: '$2.15',
     status: 'active',
+    createdAt: 'Mar 14, 2026',
   },
   {
     id: 'tf-proj_i9j0k1l2',
@@ -480,6 +483,7 @@ export const PROJECTS: Project[] = [
     keyCount: 1,
     monthlySpend: '$2.00',
     status: 'active',
+    createdAt: 'Mar 18, 2026',
   },
   {
     id: 'tf-proj_m3n4o5p6',
@@ -491,6 +495,7 @@ export const PROJECTS: Project[] = [
     keyCount: 1,
     monthlySpend: '$0.00',
     status: 'active',
+    createdAt: 'Mar 22, 2026',
   },
 ]
 

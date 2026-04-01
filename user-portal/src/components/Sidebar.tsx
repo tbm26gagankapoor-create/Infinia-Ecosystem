@@ -3,7 +3,6 @@ import {
   LayoutDashboard,
   BrainCircuit,
   Zap,
-  KeyRound,
   BarChart3,
   CreditCard,
   Settings,
@@ -26,7 +25,6 @@ const NAV_SECTIONS = [
     { to: '/dashboard', icon: LayoutDashboard, label: 'Overview' },
     { to: '/models', icon: BrainCircuit, label: 'Models' },
     { to: '/playground', icon: Zap, label: 'Playground' },
-    { to: '/api-keys', icon: KeyRound, label: 'API Keys' },
   ],
   [
     { to: '/usage', icon: BarChart3, label: 'Usage' },

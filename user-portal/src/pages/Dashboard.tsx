@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { CheckCircle, Circle, X, Copy, CheckCheck } from 'lucide-react'
+import { CheckCircle, Circle, X, Copy, CheckCheck, Shield, ArrowRight } from 'lucide-react'
 import { toast } from 'sonner'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -151,26 +151,93 @@ export function Dashboard() {
       </div>
 
       {/* Sovereign AI CTA */}
-      <Card>
-        <CardContent className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6 pt-6">
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-1.5">
-              <div className="h-2 w-2 rounded-full bg-primary" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-primary">Sovereign AI Infrastructure</span>
+      <div className="relative rounded-xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-primary/10">
+        {/* Background decorations — clipped independently */}
+        <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+            backgroundSize: '24px 24px',
+          }} />
+          <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute -bottom-16 -left-16 h-32 w-32 rounded-full bg-primary/5 blur-2xl" />
+        </div>
+
+        <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6 p-6 md:p-8">
+          {/* Icon block */}
+          <div className="flex-shrink-0">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl" />
+              <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 shadow-lg shadow-primary/5">
+                <Shield className="h-8 w-8 text-primary" strokeWidth={1.5} />
+              </div>
             </div>
-            <div className="text-base font-semibold text-foreground mb-1">
-              Your models run in your cloud — not ours.
+          </div>
+
+          {/* Text */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 border border-primary/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                Sovereign AI
+              </span>
             </div>
-            <p className="text-sm text-muted-foreground max-w-lg">
-              AI Gateway is built for enterprises that can't send data to third-party servers. Deploy in your own VPC, keep every prompt and response on your infrastructure.
+            <h3 className="text-lg font-semibold text-foreground mb-1.5 tracking-tight">
+              Your models run in your cloud — not ours
+            </h3>
+            <p className="text-sm text-muted-foreground max-w-xl leading-relaxed">
+              Deploy inside your own VPC. Every prompt, every response, every token stays on your infrastructure — zero data leaves your perimeter.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row md:flex-col gap-2 flex-shrink-0">
-            <Button className="gap-2 whitespace-nowrap">Read the Deployment Guide →</Button>
-            <Button variant="outline" className="gap-2 whitespace-nowrap text-xs">Talk to Sales</Button>
+
+          {/* Illustration + actions */}
+          <div className="flex flex-col items-end gap-4 flex-shrink-0 w-full md:w-auto">
+            {/* Mini architecture diagram */}
+            <div className="hidden md:flex items-center gap-2 text-xs text-muted-foreground">
+              <div className="flex flex-col items-center gap-0.5">
+                <div className="h-8 w-8 rounded-lg border border-border bg-muted/50 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                    <path d="M8 21h8M12 17v4" />
+                  </svg>
+                </div>
+                <span className="text-[10px]">Client</span>
+              </div>
+              <div className="flex items-center gap-1 text-primary/60">
+                <div className="h-px w-4 bg-primary/30" />
+                <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+              <div className="flex flex-col items-center gap-0.5">
+                <div className="h-8 w-8 rounded-lg border border-primary/30 bg-primary/10 flex items-center justify-center">
+                  <Shield className="h-4 w-4 text-primary" strokeWidth={1.5} />
+                </div>
+                <span className="text-[10px] text-primary">Gateway</span>
+              </div>
+              <div className="flex items-center gap-1 text-primary/60">
+                <div className="h-px w-4 bg-primary/30" />
+                <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+              <div className="flex flex-col items-center gap-0.5">
+                <div className="h-8 w-8 rounded-lg border border-border bg-muted/50 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+                    <path d="M12 12v9" />
+                  </svg>
+                </div>
+                <span className="text-[10px]">Your VPC</span>
+              </div>
+            </div>
+            {/* Buttons */}
+            <div className="flex gap-2 w-full md:w-auto">
+              <Button size="sm" className="gap-1.5 flex-1 md:flex-initial">
+                Deployment Guide <ArrowRight className="h-3.5 w-3.5" />
+              </Button>
+              <Button variant="outline" size="sm" className="flex-1 md:flex-initial">
+                Talk to Sales
+              </Button>
+            </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Quick key copy */}
       {defaultKey && (

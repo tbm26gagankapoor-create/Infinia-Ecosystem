@@ -134,6 +134,39 @@
   }
 }
 
+/* Assistant-UI thread overrides */
+.aui-thread-root {
+  background: transparent !important;
+  border: none !important;
+  --aui-thread-max-width: 100%;
+}
+
+.aui-thread-viewport {
+  min-width: 0;
+}
+
+.aui-assistant-message-content,
+.aui-user-message-content {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.aui-avatar-root {
+  border-radius: 0.5rem !important;
+  overflow: hidden;
+  background: var(--aui-avatar-bg, transparent) !important;
+  background-image: var(--aui-avatar-img, none) !important;
+  background-size: cover !important;
+}
+
+.aui-avatar-fallback {
+  opacity: 0 !important;
+}
+
+.aui-avatar-image {
+  border-radius: 0.5rem !important;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }

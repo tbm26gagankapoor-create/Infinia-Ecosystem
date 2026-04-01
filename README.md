@@ -14,6 +14,8 @@ AI Gateway is a unified open-source LLM inference platform built by Infinia Tech
 |--------|-------------|
 | [`prd/`](prd/) | Full Product Requirements Document — 11 files covering vision, brand, personas, milestones, all 6 feature domains (A-F), and technical architecture |
 | [`market_research/`](market_research/) | 14 in-depth market research documents covering opportunity analysis, competitive landscape, pricing, GTM, and more |
+| [`user-portal/`](user-portal/) | React + TypeScript dashboard app (Vite, shadcn/ui, Tailwind) — Playground, Models, Projects, Analytics, API Keys |
+| [`user-portal-app/`](user-portal-app/) | Production build output of the user portal (served by Netlify) |
 
 ---
 
@@ -416,6 +418,28 @@ Backend   Envoy Proxy ──→ PgSQL
 | F3 | Pricing Tiers | | | ✓ | P1 |
 | F4 | Billing Dashboard | | | ✓ | P1 |
 | F5 | Enterprise Discounts | | | ✓ | P2 |
+
+---
+
+## User Portal
+
+The `user-portal/` directory contains the interactive dashboard built with React, TypeScript, Vite, and shadcn/ui. Key pages:
+
+| Page | Description |
+|------|-------------|
+| Dashboard | Overview with quickstart guide, usage stats, and recent activity |
+| Playground | Interactive chat interface with model selector, parameter panel, and streaming responses |
+| Models | Browsable model catalog with provider icons, search, and filtering |
+| Projects | Project-based API key and usage organization |
+| Analytics | Usage analytics with request volume, token breakdown, and cost tracking |
+
+### Local Development
+
+```bash
+cd user-portal
+npm install
+npm run dev
+```
 
 ---
 
