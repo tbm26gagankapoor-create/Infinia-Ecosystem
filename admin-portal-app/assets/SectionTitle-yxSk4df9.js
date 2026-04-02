@@ -1,0 +1,1 @@
+import{d as e,u as t}from"./createLucideIcon-CxWOr3kg.js";var n=t();function r({children:t,className:r}){return(0,n.jsx)(`h3`,{className:e(`text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70`,r),children:t})}export{r as t};

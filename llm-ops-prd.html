@@ -1,0 +1,2511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Gateway — LLMOps PRD</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   AI Gateway LLMOps PRD — Brand Identity Styles
+   Dark monochrome  |  Space Grotesk
+   ============================================ */
+
+:root {
+  --ig-white: #ffffff;
+  --ig-white-80: rgba(255,255,255,0.8);
+  --ig-white-60: rgba(255,255,255,0.6);
+  --ig-white-40: rgba(255,255,255,0.4);
+  --ig-white-20: rgba(255,255,255,0.2);
+  --ig-white-10: rgba(255,255,255,0.1);
+  --ig-black: #000000;
+  --ig-dark: #111111;
+  --ig-dark-card: #1a1a1a;
+  --ig-gray: #9c9c9c;
+  --ig-border: rgba(255,255,255,0.12);
+  --ig-accent: rgba(255,255,255,0.06);
+  --ig-code-bg: #0d0d0d;
+  --ig-success: #22c55e;
+  --ig-warning: #eab308;
+  --ig-error: #ef4444;
+  --ig-info: #3b82f6;
+  --ig-teal: #2dd4bf;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  background: var(--ig-black);
+  color: var(--ig-white-80);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: var(--ig-dark);
+  border-right: 1px solid var(--ig-border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 1.5rem 0;
+}
+
+.sidebar-brand {
+  padding: 0 1.25rem 1.25rem;
+  border-bottom: 1px solid var(--ig-border);
+  margin-bottom: 1rem;
+}
+
+.sidebar-brand h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.15rem;
+}
+
+.sidebar-brand .subtitle {
+  font-size: 0.7rem;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sidebar-brand .meta {
+  font-size: 0.7rem;
+  color: var(--ig-white-40);
+  margin-top: 0.5rem;
+}
+
+.sidebar nav { padding: 0 0.75rem; }
+
+.sidebar .nav-section {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.75rem 0.5rem 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.sidebar a {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  color: var(--ig-white-60);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 400;
+  transition: color 0.15s, background 0.15s;
+}
+
+.sidebar a:hover {
+  color: var(--ig-white);
+  background: var(--ig-white-10);
+}
+
+.sidebar a.active {
+  color: var(--ig-teal);
+  background: rgba(45,212,191,0.08);
+  border-left: 2px solid var(--ig-teal);
+  padding-left: calc(0.5rem - 2px);
+}
+
+.sidebar a.indent.active {
+  padding-left: calc(1.25rem - 2px);
+}
+
+.sidebar a.indent { padding-left: 1.25rem; font-size: 0.75rem; }
+
+/* ── Main content ── */
+.main {
+  padding: 2.5rem 3rem 4rem;
+  max-width: 1100px;
+  margin-right: auto;
+  margin-left: max(260px, calc(260px + (100vw - 260px - 1100px) / 2));
+}
+
+/* ── Typography ── */
+h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ig-border);
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h5 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ig-white-80);
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+p { margin-bottom: 0.75rem; }
+
+strong { color: var(--ig-white); font-weight: 600; }
+
+code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--ig-dark-card);
+  padding: 0.15rem 0.4rem;
+  color: var(--ig-white-80);
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.card.featured {
+  border-color: var(--ig-white);
+  border-width: 2px;
+  box-shadow: 0 4px 20px rgba(255,255,255,0.08);
+}
+
+/* ── Grid ── */
+.grid { display: grid; gap: 1.25rem; margin: 1.5rem 0; }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.grid-5 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+/* ── Stat cards ── */
+.stat-card {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--ig-gray);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Persona Cards ── */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.persona-card {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1.25rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.persona-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.persona-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.persona-section-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+/* ── Tables ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--ig-border);
+  margin: 1rem 0;
+  font-size: 0.85rem;
+}
+
+th {
+  background: var(--ig-dark-card);
+  color: var(--ig-white);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--ig-border);
+}
+
+td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--ig-border);
+  color: var(--ig-white-80);
+}
+
+tr:hover td { background: var(--ig-white-10); }
+
+/* ── Feature sections (collapsible) ── */
+details {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+}
+
+details[open] {
+  border-color: var(--ig-white-20);
+}
+
+summary {
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ig-white);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  user-select: none;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary::before {
+  content: '+';
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  color: var(--ig-gray);
+  width: 1.25rem;
+  flex-shrink: 0;
+}
+
+details[open] summary::before { content: '\2212'; }
+
+summary .milestone-tag {
+  margin-left: auto;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--ig-border);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ig-gray);
+}
+
+summary .milestone-tag.m1 { border-color: var(--ig-success); color: var(--ig-success); }
+summary .milestone-tag.m2 { border-color: var(--ig-info); color: var(--ig-info); }
+summary .milestone-tag.m3 { border-color: var(--ig-warning); color: var(--ig-warning); }
+summary .milestone-tag.deferred { border-color: var(--ig-white-20); color: var(--ig-white-40); }
+
+.feature-content {
+  padding: 0.75rem 1.5rem 1.5rem;
+  border-top: 1px solid var(--ig-border);
+}
+
+.feature-content > p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--ig-white-60);
+  margin-bottom: 0.75rem;
+}
+
+/* ── Feature sub-sections ── */
+.sub-section {
+  margin-top: 1.5rem;
+}
+
+.sub-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sub-section-title::before {
+  content: '';
+  width: 3px;
+  height: 12px;
+  background: var(--ig-white-40);
+  display: inline-block;
+  border-radius: 1px;
+}
+
+/* ── Flow steps ── */
+.flow-steps {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+}
+
+.flow-steps li {
+  counter-increment: step;
+  padding: 0.75rem 0 0.75rem 2.75rem;
+  position: relative;
+  border-left: 1px solid var(--ig-white-10);
+  margin-left: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--ig-white-80);
+}
+
+.flow-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: -0.85rem;
+  top: 0.65rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  background: var(--ig-dark);
+  border: 1px solid var(--ig-white-20);
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ig-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.flow-steps li:last-child { border-left-color: transparent; }
+
+.flow-steps li strong {
+  color: var(--ig-white);
+}
+
+.flow-steps li code {
+  font-size: 0.82rem;
+  padding: 0.15rem 0.4rem;
+  background: var(--ig-code-bg);
+  border: 1px solid var(--ig-border);
+  border-radius: 3px;
+}
+
+/* ── API endpoint blocks ── */
+.endpoint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.82rem;
+}
+
+.method {
+  font-weight: 600;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  min-width: 3.5rem;
+  text-align: center;
+}
+
+.method.get { background: rgba(34,197,94,0.15); color: var(--ig-success); border: 1px solid rgba(34,197,94,0.3); }
+.method.post { background: rgba(59,130,246,0.15); color: var(--ig-info); border: 1px solid rgba(59,130,246,0.3); }
+.method.put { background: rgba(234,179,8,0.15); color: var(--ig-warning); border: 1px solid rgba(234,179,8,0.3); }
+.method.patch { background: rgba(234,179,8,0.15); color: var(--ig-warning); border: 1px solid rgba(234,179,8,0.3); }
+.method.delete { background: rgba(239,68,68,0.15); color: var(--ig-error); border: 1px solid rgba(239,68,68,0.3); }
+
+.endpoint .path { color: var(--ig-white); }
+
+/* ── Metrics ── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.metric {
+  background: var(--ig-dark);
+  border: 1px solid var(--ig-border);
+  padding: 1rem 1rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.metric .value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ig-white);
+}
+
+.metric .label {
+  font-size: 0.68rem;
+  color: var(--ig-white-40);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+/* ── Divider ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--ig-border);
+  margin: 2.5rem 0;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--ig-border);
+  color: var(--ig-gray);
+}
+
+.badge.p0 { border-color: var(--ig-error); color: var(--ig-error); }
+.badge.p1 { border-color: var(--ig-warning); color: var(--ig-warning); }
+.badge.p2 { border-color: var(--ig-info); color: var(--ig-info); }
+.badge.p3 { border-color: var(--ig-white-20); color: var(--ig-white-40); }
+
+/* ── Chips ── */
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+}
+.chip {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--ig-white-20);
+  background: var(--ig-white-10);
+  color: var(--ig-white-60);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* ── Feature Checklist ── */
+.feature-checklist {
+  margin: 0.5rem 0 0.5rem 1.25rem;
+  padding: 0;
+  list-style: disc;
+}
+.feature-checklist li {
+  font-size: 0.88rem;
+  color: var(--ig-white-60);
+  padding: 0.15rem 0;
+  line-height: 1.6;
+}
+.feature-checklist li::marker {
+  color: var(--ig-white-40);
+}
+
+/* ── Timeline ── */
+.timeline {
+  display: flex;
+  gap: 0;
+  margin: 1.5rem 0;
+  border: 1px solid var(--ig-border);
+}
+
+.timeline-item {
+  flex: 1;
+  padding: 1rem;
+  border-right: 1px solid var(--ig-border);
+  text-align: center;
+}
+
+.timeline-item:last-child { border-right: none; }
+
+.timeline-item .date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  font-family: 'Roboto Mono', monospace;
+}
+
+.timeline-item .label {
+  font-size: 0.7rem;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.timeline-item.active {
+  background: var(--ig-dark-card);
+  border-bottom: 2px solid var(--ig-white);
+}
+
+/* ── Architecture diagram ── */
+.arch-pre {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.arch-pre code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--ig-white-60);
+  background: none;
+  padding: 0;
+  line-height: 1.5;
+  white-space: pre;
+}
+
+/* ── Status note ── */
+.status-note {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--ig-accent);
+  border-left: 3px solid var(--ig-white-20);
+  font-size: 0.82rem;
+  color: var(--ig-white-60);
+}
+
+.status-note.in-progress {
+  border-left-color: var(--ig-warning);
+}
+
+.status-note.maybe {
+  border-left-color: var(--ig-white-40);
+}
+
+/* ── Section anchor offset ── */
+[id] {
+  scroll-margin-top: 1rem;
+}
+
+/* ── Print ── */
+@media print {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  details { break-inside: avoid; }
+  details[open] { break-inside: auto; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 1.5rem 1rem; }
+  h1 { font-size: 1.8rem; }
+  .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
+  .persona-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.3rem;">
+      <svg class="brand-logo" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 11h-3.18C14.4 9.84 13.3 9 12 9s-2.4.84-2.82 2H6c-.33 0-2-.1-2-2V8c0-1.83 1.54-2 2-2h10.18C16.6 7.16 17.7 8 19 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3c-1.3 0-2.4.84-2.82 2H6C4.39 4 2 5.06 2 8v1c0 2.94 2.39 4 4 4h3.18c.42 1.16 1.52 2 2.82 2s2.4-.84 2.82-2H18c.33 0 2 .1 2 2v1c0 1.83-1.54 2-2 2H7.82C7.4 16.84 6.3 16 5 16a3 3 0 0 0-3 3 3 3 0 0 0 3 3c1.3 0 2.4-.84 2.82-2H18c1.61 0 4-1.07 4-4v-1c0-2.93-2.39-4-4-4m1-7a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M5 20a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1" fill="#ffffff"/></svg>
+      <h1>AI Gateway</h1>
+    </div>
+    <div class="subtitle">LLMOps Product Requirements</div>
+    <div class="meta">v1.0 &middot; March 2026 &middot; Draft</div>
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.7rem;color:var(--ig-white-40);text-decoration:none;margin-top:0.75rem;transition:color 0.15s;" onmouseover="this.style.color='var(--ig-white)'" onmouseout="this.style.color='var(--ig-white-40)'">&larr; Back to Portal</a>
+  </div>
+  <nav>
+    <div class="nav-section">Document</div>
+    <a href="#overview">Overview &amp; Vision</a>
+    <a href="#architecture" class="indent">Architecture</a>
+
+    <div class="nav-section">Current State</div>
+    <a href="#current-state">What We Have</a>
+    <a href="#cs1" class="indent">CS1. Model Deployment</a>
+    <a href="#cs2" class="indent">CS2. Provider &amp; Model Mgmt</a>
+    <a href="#cs3" class="indent">CS3. Load Balancing</a>
+    <a href="#cs4" class="indent">CS4. GPU &amp; Metrics</a>
+
+    <div class="nav-section">Operational Resilience</div>
+    <a href="#operational-resilience">What We&rsquo;re Hardening</a>
+    <a href="#or1" class="indent">OR1. Model Import</a>
+    <a href="#or2" class="indent">OR2. Capacity Mgmt</a>
+    <a href="#or3" class="indent">OR3. Compute Inventory</a>
+    <a href="#or4" class="indent">OR4. Pre-Deploy Safety</a>
+    <a href="#or5" class="indent">OR5. Failure Recovery</a>
+    <a href="#or6" class="indent">OR6. Provider Resilience</a>
+
+    <div class="nav-section">Feature Gaps</div>
+    <a href="#feature-gaps">What We Need</a>
+    <a href="#fg1" class="indent">FG1. Prompt Management</a>
+    <a href="#fg2" class="indent">FG2. Evaluation</a>
+    <a href="#fg3" class="indent">FG3. Guardrails &amp; Safety</a>
+    <a href="#fg4" class="indent">FG4. Tracing &amp; Observability</a>
+    <a href="#fg5" class="indent">FG5. Model Registry</a>
+    <a href="#fg6" class="indent">FG6. Autoscaling &amp; Cost</a>
+    <a href="#fg7" class="indent">FG7. Access Control</a>
+    <a href="#fg8" class="indent">FG8. Multi-Cluster</a>
+    <a href="#fg9" class="indent">FG9. Notifications</a>
+    <a href="#fg10" class="indent">FG10. Batch Inference</a>
+
+    <div class="nav-section">Analysis</div>
+    <a href="#gap-analysis">Gap Analysis</a>
+    <a href="#roadmap">Roadmap &amp; Timeline</a>
+    <a href="#personas">User Personas</a>
+    <a href="#user-flows">User Flows</a>
+    <a href="#metrics">Success Metrics</a>
+
+    <div class="nav-section">Technical</div>
+    <a href="#tech-reqs">Requirements</a>
+    <a href="#tech-stack">Technology Stack</a>
+  </nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 1: OVERVIEW & VISION                              -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="overview">
+  <h1>LLMOps PRD</h1>
+  <p>A comprehensive product requirements document for the Corerun LLMOps Console &mdash; covering current capabilities, feature gaps, roadmap, and the path to a production-grade LLM operations platform.</p>
+
+  <h3>Vision &amp; Strategic Goals</h3>
+  <div class="card featured" style="margin:1.25rem 0;">
+    <h4 style="margin-top:0;">Vision Statement</h4>
+    <p>A unified, Kubernetes-native LLMOps platform that manages the full lifecycle of LLM inference &mdash; from model deployment and routing to observability, evaluation, and governance.</p>
+  </div>
+
+  <div class="grid grid-4" style="margin-top:1.25rem;">
+    <div class="stat-card">
+      <div class="stat-number" style="font-size:1.1rem;line-height:1.3;">Unified Operations</div>
+      <div class="stat-label" style="margin-top:0.5rem;font-size:0.65rem;line-height:1.5;text-transform:none;letter-spacing:0;">One console to deploy, monitor, evaluate, and govern all LLM workloads across clusters and teams.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="font-size:1.1rem;line-height:1.3;">GitOps-First</div>
+      <div class="stat-label" style="margin-top:0.5rem;font-size:0.65rem;line-height:1.5;text-transform:none;letter-spacing:0;">Declarative model deployments versioned in Git with automatic reconciliation to Kubernetes.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="font-size:1.1rem;line-height:1.3;">Quality &amp; Safety</div>
+      <div class="stat-label" style="margin-top:0.5rem;font-size:0.65rem;line-height:1.5;text-transform:none;letter-spacing:0;">Built-in guardrails, evaluation frameworks, and tracing to ensure LLM outputs are safe and reliable.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="font-size:1.1rem;line-height:1.3;">Cost Transparency</div>
+      <div class="stat-label" style="margin-top:0.5rem;font-size:0.65rem;line-height:1.5;text-transform:none;letter-spacing:0;">Full cost attribution per request, model, team, and application with GPU utilization optimization.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" style="font-size:1.1rem;line-height:1.3;">Developer Velocity</div>
+      <div class="stat-label" style="margin-top:0.5rem;font-size:0.65rem;line-height:1.5;text-transform:none;letter-spacing:0;">Deploy a model in under 5 minutes. Rollback in under 30 seconds. Test prompts in the built-in playground.</div>
+    </div>
+  </div>
+
+  <h3>Problem Statement</h3>
+  <p>Platform teams running LLM inference at scale face fragmented tooling: separate dashboards for deployment (Kubernetes), monitoring (Prometheus/Grafana), prompt management (spreadsheets), evaluation (notebooks), and cost tracking (cloud billing). This fragmentation leads to slow iteration cycles, invisible quality regressions, uncontrolled costs, and safety incidents. Corerun LLMOps unifies these workflows into a single platform purpose-built for LLM operations.</p>
+
+  <h3 id="architecture">Architecture Overview</h3>
+  <div class="arch-pre">
+    <code>&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+&#9474;                          LLMOPS PLATFORM ARCHITECTURE                        &#9474;
+&#9500;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9508;
+&#9474;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;                      &#9474;
+&#9474;   &#9474;  LLMOps Web &#9474;   &#9474;  Admin Web  &#9474;   &#9474; Portal Web  &#9474;   &#9668;&#9472;&#9472; React + Vite   &#9474;
+&#9474;   &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;   &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;   &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                      &#9474;
+&#9474;          &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                              &#9474;
+&#9474;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;                   &#9474;
+&#9474;   &#9474;              Gateway Service (Go)                    &#9474;   &#9668;&#9472;&#9472; Core API   &#9474;
+&#9474;   &#9474;  &#8212; Auth, routing, deployment orchestration, GitOps   &#9474;                  &#9474;
+&#9474;   &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9516;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                   &#9474;
+&#9474;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9524;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;                   &#9474;
+&#9474;   &#9474; LLMOps API  &#9474;   &#9474;       Gateway Service              &#9474;   &#9668;&#9472;&#9472; Go Svcs   &#9474;
+&#9474;   &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;   &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                   &#9474;
+&#9474;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;   &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;                      &#9474;
+&#9474;   &#9474;  PostgreSQL  &#9474;   &#9474;    Redis    &#9474;   &#9474;  Git (Argo)  &#9474;   &#9668;&#9472;&#9472; Data Layer   &#9474;
+&#9474;   &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;   &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;   &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;                      &#9474;
+&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</code>
+  </div>
+
+  <h4>Key Services</h4>
+  <div class="chip-group">
+    <span class="chip">Gateway Service (Go) &mdash; Auth, routing, deployment orchestration, GitOps</span>
+    <span class="chip">LLMOps API &mdash; Proxy layer for LLMOps-specific operations</span>
+    <span class="chip">Portal API (FastAPI) &mdash; User auth, billing, credits</span>
+    <span class="chip">Envoy Proxy &mdash; ext_authz (HTTP) + ext_proc (gRPC)</span>
+    <span class="chip">Health Monitor &mdash; Configurable probe + cooldown</span>
+    <span class="chip">PostgreSQL &mdash; All persistent entities, audit logs, traces</span>
+    <span class="chip">Redis &mdash; API key cache, rate limits, usage counters</span>
+    <span class="chip">Argo CD &mdash; Release tracking for GitOps deployments</span>
+    <span class="chip">Admission Controller &mdash; K8s webhook for GPU/memory quota enforcement</span>
+    <span class="chip">GPU Inventory Agent &mdash; DaemonSet collecting NVML metrics per node</span>
+    <span class="chip">Circuit Breaker &mdash; Per-provider failover state machine in Gateway</span>
+    <span class="chip">Import Pipeline &mdash; 6-step model onboarding with test inference</span>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 2: CURRENT STATE                                  -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="current-state">
+  <h2>Current State &mdash; What We Have</h2>
+  <p>A detailed inventory of every feature that has shipped in the LLMOps platform as of March 2026.</p>
+
+  <!-- CS1 -->
+  <details id="cs1" open>
+    <summary>CS1. Model Deployment &amp; Lifecycle</summary>
+    <div class="feature-content">
+      <ul class="feature-checklist">
+        <li>vLLM, Ollama, SGLang, TGI, Whisper, Piper via Helm chart rendering + K8s server-side apply</li>
+        <li>Create, list, get, update, delete deployments with namespace auto-creation</li>
+        <li>Up to 10 revisions per deployment with spec hash, chart hash, commit SHA tracking</li>
+        <li>Rollback to any previous revision with rolling update strategy</li>
+        <li>Real-time phase tracking: Running, Pending, Deploying, Error with status messages</li>
+        <li>Pull YAML deployment specs from GitHub, render Helm charts, apply to cluster automatically</li>
+        <li>Export current cluster deployments back to Git repository as YAML files</li>
+        <li>GitHub push events trigger automatic sync via webhook endpoint with secret verification</li>
+        <li>Verify GitHub token and repo access with private/public status detection</li>
+        <li>Each deployment tracks its source Git commit SHA in ConfigMap metadata</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- CS2 -->
+  <details id="cs2">
+    <summary>CS2. Provider &amp; Model Management</summary>
+    <div class="feature-content">
+      <ul class="feature-checklist">
+        <li>OpenAI, Anthropic, Google, Azure, custom API types with auth configuration</li>
+        <li>Register models with capabilities, pricing (input/output per 1K tokens), context size</li>
+        <li>Discover models from provider /models endpoint with background polling support</li>
+        <li>Chat, Vision, Code, Embedding, TTS, STT, Tool Calling, Reasoning tags</li>
+        <li>Same model ID across multiple providers shown grouped with backend count</li>
+        <li>AES-256-GCM encrypted provider API keys stored in PostgreSQL, platform or org-scoped</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- CS3 -->
+  <details id="cs3">
+    <summary>CS3. Load Balancing &amp; Routing</summary>
+    <div class="feature-content">
+      <ul class="feature-checklist">
+        <li>Add multiple backend URLs per provider for horizontal scaling</li>
+        <li>Unhealthy endpoints enter cooldown before retry to prevent cascading failures</li>
+        <li>Background polling of endpoints for available models at configurable intervals</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- CS4 -->
+  <details id="cs4">
+    <summary>CS4. GPU &amp; Deployment Metrics</summary>
+    <div class="feature-content">
+      <ul class="feature-checklist">
+        <li>Utilization %, memory %, temperature, power, block allocations</li>
+        <li>vLLM KV cache usage percentage with capacity color coding</li>
+        <li>Time to First Token (TTFT) and End-to-End (E2E) at P50 and P99</li>
+        <li>Time-series area/line charts for KV cache, throughput, latency with configurable duration</li>
+        <li>5s, 10s, 30s, 60s auto-refresh intervals with manual refresh button</li>
+        <li>Running vs total count with stat cards for models, providers, total GPUs</li>
+        <li>Deploy Model and Sync GitOps shortcut buttons from dashboard</li>
+        <li>Last 5 deployments table with name, type, model, status, GPU count</li>
+        <li>Click-to-expand UI pattern across providers, models, and deployments</li>
+        <li>Models page with query search and capability tag filters</li>
+        <li>Multi-step deployment wizard, provider config forms, LB configuration modals</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 2B: OPERATIONAL RESILIENCE                        -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="operational-resilience">
+  <h2>Operational Resilience &mdash; What We&rsquo;re Hardening</h2>
+  <p>Production-grade features for model import, capacity management, compute inventory, deployment safety, failure recovery, and provider resilience. These determine whether the platform survives real-world operational pressure.</p>
+
+  <div style="display:flex;gap:0.75rem;margin:1rem 0 1.5rem;">
+    <span class="badge p0">P0</span> <span style="font-size:0.82rem;color:var(--ig-white-60);">Must ship for production readiness</span>
+    <span class="badge p1" style="margin-left:0.75rem;">P1</span> <span style="font-size:0.82rem;color:var(--ig-white-60);">Required for team adoption</span>
+    <span class="badge p2" style="margin-left:0.75rem;">Backlog</span> <span style="font-size:0.82rem;color:var(--ig-white-60);">Future hardening</span>
+  </div>
+
+  <!-- OR1 -->
+  <details id="or1">
+    <summary>OR1. Model Import &amp; Onboarding <span class="milestone-tag m1">P0</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>Without a structured import pipeline, models enter the registry without validation, test inference, or license checks. This leads to broken deployments, OOM crashes from incorrect memory estimates, and potential legal exposure from restricted model licenses.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Required Import Parameters</div>
+        <ul class="feature-checklist">
+          <li><strong>Model ID</strong> &mdash; Alphanumeric + hyphens, max 64 chars, must be unique across registry</li>
+          <li><strong>Engine Type</strong> &mdash; Enum: vLLM, Ollama, SGLang, TGI, Whisper, Piper</li>
+          <li><strong>Architecture</strong> &mdash; Enum: LLaMA, Mistral, Qwen, Falcon, MPT, GPT-NeoX, Whisper, VITS, etc.</li>
+          <li><strong>Quantization Format</strong> &mdash; Enum: FP16, BF16, INT8, INT4, GPTQ, AWQ, GGUF, None</li>
+          <li><strong>Context Length</strong> &mdash; Range: 512&ndash;1,048,576 tokens. Must not exceed engine maximum</li>
+          <li><strong>Tensor Parallelism</strong> &mdash; Must be power-of-2 and &le; available GPU count</li>
+          <li><strong>GPU Memory Requirement</strong> &mdash; Estimated GB per GPU. Cross-checked against actual node capacity</li>
+          <li><strong>Model Source URI</strong> &mdash; HuggingFace repo ID, S3/GCS path, OCI image, or Git LFS pointer</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Optional Parameters</div>
+        <ul class="feature-checklist">
+          <li>System prompt template (max 4,096 chars)</li>
+          <li>Tokenizer configuration path or HuggingFace tokenizer ID</li>
+          <li>Custom stop tokens (max 16 tokens)</li>
+          <li>Max batch size and max concurrent requests</li>
+          <li>Chat template (Jinja2 format) for instruction-tuned models</li>
+          <li>Estimated tokens/second throughput (used for capacity planning)</li>
+          <li>Description, tags, and owner team assignment</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Validation Rules</div>
+        <ul class="feature-checklist">
+          <li>Model ID uniqueness enforced at database level</li>
+          <li>Engine&ndash;architecture&ndash;quantization compatibility checked against OR4 matrix</li>
+          <li>Context length validated against engine-specific maximums</li>
+          <li>Tensor parallelism must be power-of-2 and &le; GPU count in target namespace</li>
+          <li>GPU memory cross-check: estimated &le; available node capacity + 10% buffer</li>
+          <li>Source URI reachability verified (HTTP HEAD or API metadata call)</li>
+          <li>All string inputs sanitized against injection attacks</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Import Sources</div>
+        <ul class="feature-checklist">
+          <li><strong>HuggingFace Hub</strong> &mdash; Resolve repo, read model card, auto-detect architecture and quantization from <code>config.json</code></li>
+          <li><strong>S3 / GCS Bucket</strong> &mdash; Verify IAM access, list files, validate expected directory structure</li>
+          <li><strong>OCI Registry</strong> &mdash; Pull manifest, verify layer integrity, extract model metadata</li>
+          <li><strong>Git LFS</strong> &mdash; Clone metadata only, verify LFS pointers resolve, validate file sizes</li>
+          <li>Each source adapter returns a normalized metadata object for the import pipeline</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Import Workflow Pipeline</div>
+        <ol class="flow-steps">
+          <li><strong>Validate Parameters</strong> &mdash; Run all validation rules. Block on any failure with specific error messages</li>
+          <li><strong>Download to Staging</strong> &mdash; Pull model weights to staging PVC. Progress reported via WebSocket. Supports resume on network failure</li>
+          <li><strong>Checksum Verification</strong> &mdash; SHA-256 checksum of all downloaded files vs manifest</li>
+          <li><strong>Format Validation</strong> &mdash; Verify <code>config.json</code>, tokenizer files, shard count, and weight file structure</li>
+          <li><strong>Test Inference</strong> &mdash; Spin up ephemeral single-replica K8s Job. Run 3 canary prompts. 10-minute timeout. Must produce non-empty, non-error responses</li>
+          <li><strong>Register</strong> &mdash; Write to model registry with all metadata, mark as &ldquo;Available&rdquo;</li>
+        </ol>
+        <p style="font-size:0.78rem;color:var(--ig-white-40);margin-top:0.5rem;">Pipeline is resumable &mdash; on failure, retry resumes from the last successful step.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">License Compliance</div>
+        <ul class="feature-checklist">
+          <li>Auto-detect license from model card or LICENSE file in source repository</li>
+          <li>Classify: <strong>Permissive</strong> (Apache, MIT), <strong>Copyleft</strong> (GPL), <strong>Restricted</strong> (LLaMA Community, Gemma Terms), <strong>Unknown</strong></li>
+          <li>Configurable policy per organization: block, warn, or allow restricted licenses</li>
+          <li>Restricted license deployments require explicit acknowledgment with audit trail</li>
+          <li>License metadata stored in registry and visible on model detail page</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Success Metrics</div>
+        <ul class="feature-checklist">
+          <li>100% of registered models have passed test inference</li>
+          <li>&gt;90% import wizard completion rate (no abandonment)</li>
+          <li>Zero restricted-license deployments without acknowledgment</li>
+          <li>Import time &lt;15 minutes for models under 30 GB</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- OR2 -->
+  <details id="or2">
+    <summary>OR2. Capacity Management &amp; Admission Control <span class="milestone-tag m1">P0</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>Without admission control, teams deploy models that exceed available GPU capacity, causing OOM kills, cascading failures, and noisy-neighbor problems. Priority queueing and burst capacity ensure critical workloads always get resources while experiments don&rsquo;t starve.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Admission Controller</div>
+        <ul class="feature-checklist">
+          <li>Kubernetes <code>ValidatingAdmissionWebhook</code> evaluating GPU and memory quotas before pod creation</li>
+          <li>Reject with actionable message: <em>&ldquo;Requested 4&times; A100 but namespace has 2 available (2 reserved by team-ml)&rdquo;</em></li>
+          <li>Check both GPU count and GPU memory against namespace quotas and cluster capacity</li>
+          <li>Every admission decision (accept/reject) logged in audit trail with actor, timestamp, and reason</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Priority Queue System</div>
+        <ul class="feature-checklist">
+          <li><strong>Critical</strong> &mdash; Production workloads. Guaranteed SLA. Never preempted</li>
+          <li><strong>Standard</strong> &mdash; Dev/staging workloads. Best-effort fair scheduling. Never preempted by Standard</li>
+          <li><strong>Best-Effort</strong> &mdash; Experiments and batch jobs. Preemptable by Critical when capacity is constrained</li>
+          <li>FIFO ordering within each priority class</li>
+          <li>Queue depth and estimated wait time visible in deployment UI</li>
+          <li>Configurable max queue depth (default 50). Reject with 429 on overflow</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Workload Preemption</div>
+        <ul class="feature-checklist">
+          <li>Critical workloads can preempt Best-Effort on the same GPU type when no free capacity exists</li>
+          <li>30-second graceful drain period before termination. In-flight requests allowed to complete</li>
+          <li>Preempted workloads re-queued automatically at head of their priority class</li>
+          <li>Preemption events trigger notification to workload owner via configured channels</li>
+          <li>Opt-out flag for specific Best-Effort workloads (e.g., long-running fine-tune jobs)</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Capacity Forecasting</div>
+        <ul class="feature-checklist">
+          <li>Linear regression on GPU allocation trends over 7-day, 30-day, and 90-day windows</li>
+          <li>Forecast dates for 80%, 90%, and 100% capacity exhaustion per GPU type</li>
+          <li>Weekly capacity report emailed to cluster administrators</li>
+          <li>Alert when any GPU type forecasted to exhaust within configurable horizon (default 14 days)</li>
+          <li>Cloud burst cost estimate shown alongside on-prem exhaustion forecast</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">GPU Reservation System</div>
+        <ul class="feature-checklist">
+          <li>Reserve GPU slots up to 7 days in advance for planned deployments</li>
+          <li>Reservations count against namespace quota but are not allocated to pods until claimed</li>
+          <li>Auto-expire if unclaimed within configurable window (default 4 hours)</li>
+          <li>Calendar view in UI showing reservations by team, GPU type, and time window</li>
+          <li>Conflict detection prevents double-booking beyond available capacity</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Burst Capacity</div>
+        <ul class="feature-checklist">
+          <li>Overflow to cloud GPU providers (Lambda, CoreWeave, RunPod, AWS) when on-prem capacity exhausted</li>
+          <li>Per-namespace configuration: allowed providers, max GPU count, max cost per hour</li>
+          <li>Auto-provision via provider API when admission controller detects on-prem full + burst enabled</li>
+          <li>Auto-terminate cloud instances when on-prem capacity frees up or max duration reached (default 24h)</li>
+          <li>Full cost tracking with team attribution. Cloud GPU hours billed separately in cost dashboard</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Success Metrics</div>
+        <ul class="feature-checklist">
+          <li>Zero GPU over-subscription incidents</li>
+          <li>Critical workloads scheduled within 5 minutes (P99)</li>
+          <li>Standard workloads wait &lt;30 minutes (P90)</li>
+          <li>Capacity forecast accuracy within &plusmn;10% at 14-day horizon</li>
+          <li>Burst capacity provisioned within 10 minutes</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- OR3 -->
+  <details id="or3">
+    <summary>OR3. Dynamic Compute Inventory System <span class="milestone-tag m1">P0</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>GPU fleets are expensive and opaque. Without real-time inventory tracking, teams can&rsquo;t answer basic questions: How many GPUs are free? Are any failing? Who&rsquo;s using what? Orphaned pods and zombie deployments silently waste capacity that could serve production workloads.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Real-Time GPU Fleet Dashboard</div>
+        <ul class="feature-checklist">
+          <li><strong>Per-Node View</strong> &mdash; Hostname, GPU type (A100, H100, L40S&hellip;), GPU count, allocated vs total, temperature, power draw, driver version</li>
+          <li><strong>Per-GPU View</strong> &mdash; GPU index, PCI bus ID, allocated deployment name or &ldquo;free&rdquo;, memory used/total, ECC error counts</li>
+          <li><strong>Cluster-Wide View</strong> &mdash; Totals by GPU type, allocated/free/maintenance breakdown, utilization heatmap</li>
+          <li>Filterable by GPU type, node label, allocation status, health status</li>
+          <li>Auto-refresh at 10-second intervals with configurable polling</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Inventory Reconciliation</div>
+        <ul class="feature-checklist">
+          <li><strong>Orphaned Pods</strong> &mdash; Detect pods with GPU requests but no corresponding LLMOps deployment record</li>
+          <li><strong>Zombie Deployments</strong> &mdash; Detect deployments marked &ldquo;Running&rdquo; in database but with zero live pods in K8s</li>
+          <li><strong>Leaked GPU Memory</strong> &mdash; Detect <code>nvidia-smi</code> showing memory use with no matching pod on the node</li>
+          <li>Reconciliation scan runs every 5 minutes via background goroutine</li>
+          <li>Dashboard shows discrepancies with one-click cleanup actions (delete orphan, mark zombie as Error, reset leaked GPU)</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Maintenance Windows</div>
+        <ul class="feature-checklist">
+          <li>Operator marks node for maintenance via UI or API</li>
+          <li>Platform drains workloads to other nodes respecting GPU affinity and anti-affinity rules</li>
+          <li>Progress indicator: N/M pods migrated, estimated time remaining</li>
+          <li>Node returns to available pool only after passing health check (GPU functional, driver loaded, NVML responsive)</li>
+          <li>Scheduled recurring maintenance windows (e.g., Sunday 2&ndash;4 AM) with pre-emptive migration starting 30 minutes before</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">GPU Health Monitoring</div>
+        <ul class="feature-checklist">
+          <li>ECC correctable and uncorrectable error counts tracked via NVML</li>
+          <li>Immediate alert on uncorrectable ECC errors (data corruption risk)</li>
+          <li>Thermal throttling alert when GPU sustains throttled state for &gt;5 minutes</li>
+          <li>Clock frequency downclocking detection and alerting</li>
+          <li>Fan speed and power draw anomaly detection</li>
+          <li>Auto-quarantine: GPU removed from scheduling pool when health score drops below configurable threshold</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Allocation Policies</div>
+        <ul class="feature-checklist">
+          <li><strong>Bin-Packing</strong> &mdash; Pack onto fewest nodes. Frees entire nodes for large multi-GPU deployments</li>
+          <li><strong>Spread</strong> &mdash; Distribute across nodes for fault isolation. Recommended for Critical workloads</li>
+          <li><strong>GPU Affinity</strong> &mdash; Co-locate multi-GPU deployments on the same node for NVLink/NVSwitch interconnect</li>
+          <li><strong>NUMA Awareness</strong> &mdash; Schedule on CPU sockets with direct PCIe affinity to allocated GPUs</li>
+          <li>Configurable per-namespace or per-deployment. Default: bin-packing for Best-Effort, spread for Critical</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Inventory Alerts</div>
+        <ul class="feature-checklist">
+          <li>Low capacity warning when free GPUs of any type fall below configurable threshold</li>
+          <li>Hardware failure alert on GPU quarantine event</li>
+          <li>Thermal event alert on sustained throttling</li>
+          <li>Orphan/zombie detection alert on reconciliation discrepancies</li>
+          <li>All alerts routed via FG9 notification channels (Slack, PagerDuty, webhooks)</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Historical Utilization Reports</div>
+        <ul class="feature-checklist">
+          <li>Weekly and monthly reports per-team, per-GPU-type, per-node</li>
+          <li>Peak vs average utilization with idle percentage highlighted</li>
+          <li>Cost attribution by GPU-hours consumed per team</li>
+          <li>30/60/90-day trend lines for capacity planning</li>
+          <li>Export as CSV. Data feeds into OR2 capacity forecasting module</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Success Metrics</div>
+        <ul class="feature-checklist">
+          <li>99.9% inventory accuracy (dashboard matches reality within 30 seconds)</li>
+          <li>Orphaned resource cleanup within 10 minutes of detection</li>
+          <li>Zero dropped requests during planned maintenance migrations</li>
+          <li>GPU failure detected and quarantined within 60 seconds</li>
+          <li>Idle GPU rate reduced 20% within 3 months of deployment</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- OR4 -->
+  <details id="or4">
+    <summary>OR4. Pre-Deployment Safety &amp; Validation <span class="milestone-tag m2">P1</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>Production deployments that fail on launch waste GPU capacity, block the deployment pipeline, and erode team confidence. Pre-flight checks, canary deployments, and approval gates catch issues before they affect users or consume scarce compute resources.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">GPU Memory Pre-Flight</div>
+        <ul class="feature-checklist">
+          <li>Estimate GPU memory requirement: <code>(params &times; bytes_per_param / quant_ratio) + kv_cache_overhead + runtime_overhead</code></li>
+          <li>Compare estimated memory against available node capacity from OR3 inventory</li>
+          <li>Block deployment if estimated memory exceeds available by more than 10% safety buffer</li>
+          <li>Show detailed breakdown in deployment wizard: weights, KV cache, activations, runtime</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Model&ndash;Engine Compatibility Matrix</div>
+        <ul class="feature-checklist">
+          <li>Matrix of engine &times; architecture &times; quantization format with status: <strong>Supported</strong>, <strong>Untested</strong>, <strong>Unsupported</strong></li>
+          <li>Block deployments with unsupported combinations. Warn on untested with user acknowledgment</li>
+          <li>Stored in PostgreSQL, editable by cluster administrators</li>
+          <li>Auto-populated from test inference results in OR1 import pipeline</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Canary Deployment</div>
+        <ul class="feature-checklist">
+          <li>Route configurable percentage of traffic (default 5%) to new revision via Envoy weighted clusters</li>
+          <li>Monitor canary for evaluation window (default 15 minutes): error rate, latency P50/P99, output quality</li>
+          <li>Auto-promote to 100% if all metrics pass thresholds</li>
+          <li>Auto-rollback if any metric breaches threshold during evaluation window</li>
+          <li>Manual override: operator can force promote or rollback at any time</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Deployment Dry-Run</div>
+        <ul class="feature-checklist">
+          <li>Validate Helm chart renders without errors</li>
+          <li>Check RBAC permissions for the target namespace</li>
+          <li>Verify container image is pullable (HTTP HEAD to registry)</li>
+          <li>Confirm GPU resource requests match available node selectors and tolerations</li>
+          <li>Return structured pass/fail report with specific failure reasons</li>
+          <li>Available via API (<code>POST /api/v1/deployments/dry-run</code>) and in the deploy wizard UI</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Approval Gates</div>
+        <ul class="feature-checklist">
+          <li>Configurable per-namespace: require N approvals before production deployment proceeds</li>
+          <li>Approval requests sent via Slack, email, or webhook with deployment details</li>
+          <li>Configurable expiry timeout (default 24 hours). Expired requests must be re-submitted</li>
+          <li>Break-glass bypass for emergencies with mandatory justification and full audit trail</li>
+          <li>Integrated with FG7 RBAC roles: only designated approvers can approve</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Rollback Artifact Safety</div>
+        <ul class="feature-checklist">
+          <li>Before initiating rollback: verify container image exists in registry, model weights accessible, Helm values stored</li>
+          <li>Block rollback and alert operator if any required artifact is missing</li>
+          <li>Configurable retention: keep last N revision artifacts (default 5)</li>
+          <li>Retention policy respects &ldquo;pinned&rdquo; revisions that are never garbage-collected</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Success Metrics</div>
+        <ul class="feature-checklist">
+          <li>Zero OOM deployment failures after pre-flight check enablement</li>
+          <li>95% first-attempt dry-run pass rate (measure deployment quality improvement)</li>
+          <li>Canary catches 100% of regressions exceeding configured thresholds</li>
+          <li>Approval turnaround &lt;1 hour during business hours</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- OR5 -->
+  <details id="or5">
+    <summary>OR5. Model Failure Handling &amp; Recovery <span class="milestone-tag m3">Backlog</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>When a model fails mid-serving, every second of undetected failure means lost requests and degraded user experience. Automatic detection, classification, and recovery transforms model failures from emergencies into managed events.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Health Probes</div>
+        <ul class="feature-checklist">
+          <li><strong>Liveness Probe</strong> &mdash; K8s probe on <code>/health</code>. Restarts pod after 3 consecutive failures (configurable). Timeout 5s, period 10s</li>
+          <li><strong>Readiness Probe</strong> &mdash; Probe on <code>/ready</code> verifying model is loaded and accepting requests. Pod removed from Service endpoints when unhealthy</li>
+          <li><strong>Startup Probe</strong> &mdash; Extended failure threshold of 30 (5-minute window) for large 70B+ models. Prevents liveness probe from killing slow-loading models</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Inference Health Check (Canary Requests)</div>
+        <ul class="feature-checklist">
+          <li>Background synthetic inference requests with configurable prompt and expected latency threshold</li>
+          <li>Runs every 30 seconds per deployment</li>
+          <li>Detects silent model corruption where <code>/health</code> returns 200 but inference quality has degraded</li>
+          <li>Alerts when canary latency exceeds 3&times; baseline or output is empty/malformed</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Automatic Rollback Triggers</div>
+        <ul class="feature-checklist">
+          <li>Error rate exceeds configurable threshold (default: 10% over 5-minute window)</li>
+          <li>P99 latency exceeds 3&times; the rolling 1-hour baseline</li>
+          <li>OOM kill detected via pod termination reason</li>
+          <li>GPU ECC uncorrectable error count exceeds threshold</li>
+          <li>Canary inference produces empty or error responses 3 times consecutively</li>
+          <li>All thresholds configurable per-deployment. Triggers can be individually enabled/disabled</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Rollback Execution</div>
+        <ul class="feature-checklist">
+          <li>When trigger fires: freeze current revision, initiate rollback to last-known-good revision</li>
+          <li>Verify previous revision artifacts exist (container image, model weights, Helm values) via OR4 safety check</li>
+          <li>Rolling update strategy: new pods healthy before old pods terminate</li>
+          <li>If artifacts missing: alert operator, block automatic rollback, escalate to on-call</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Failure Classification Engine</div>
+        <ul class="feature-checklist">
+          <li><strong>Transient</strong> &mdash; Retry with exponential backoff (max 3 attempts). Examples: network timeout, temporary GPU memory spike</li>
+          <li><strong>Permanent</strong> &mdash; Trigger rollback and page on-call. Examples: model corruption, incompatible config, persistent OOM</li>
+          <li><strong>Capacity</strong> &mdash; Queue request and attempt reschedule to different node. Examples: GPU memory fragmentation, node pressure</li>
+          <li>Classification based on error code, pod termination reason, and GPU health status</li>
+          <li>Configurable as YAML rules for extensibility. Stored in deployment event log</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Graceful Degradation</div>
+        <ul class="feature-checklist">
+          <li>On failure detection: mark endpoint as draining, stop accepting new connections</li>
+          <li>Allow in-flight requests up to 30-second timeout to complete</li>
+          <li>Shift traffic to healthy replicas or failover provider (via OR6) before teardown</li>
+          <li>If no healthy replicas available: return 503 with <code>Retry-After</code> header</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Incident Timeline Reconstruction</div>
+        <ul class="feature-checklist">
+          <li>Aggregate deployment events, probe status changes, metric anomalies, and rollback actions into unified timeline</li>
+          <li>Millisecond-precision timestamps for all events</li>
+          <li>Exportable as JSON for integration with PagerDuty, Jira, or post-mortem tools</li>
+          <li>Visual timeline view in deployment detail page</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Success Metrics</div>
+        <ul class="feature-checklist">
+          <li>Mean Time to Detect (MTTD) &lt;30 seconds</li>
+          <li>Auto-rollback MTTR &lt;2 minutes</li>
+          <li>Zero undetected silent model corruption per quarter</li>
+          <li>95% correct failure classification rate</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- OR6 -->
+  <details id="or6">
+    <summary>OR6. Provider Resilience &amp; Failover <span class="milestone-tag m3">Backlog</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>External LLM providers experience outages, rate limits, and degraded performance. Without circuit breakers and failover chains, a single provider issue cascades into application-wide failures. Provider resilience ensures end-to-end availability even when individual providers are down.</p>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Circuit Breaker Pattern</div>
+        <ul class="feature-checklist">
+          <li>Per-provider-endpoint state machine: <strong>Closed</strong> (normal) &rarr; <strong>Open</strong> (fail-fast) &rarr; <strong>Half-Open</strong> (probe)</li>
+          <li>Open after N failures (default 5) or error rate &gt;X% (default 50%) in Y-second window (default 60s)</li>
+          <li>Half-Open: single probe request every Z seconds (default 30s). Success returns to Closed</li>
+          <li>All thresholds configurable per provider. State transitions logged with timestamps</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Automatic Failover Chains</div>
+        <ul class="feature-checklist">
+          <li>Ordered failover per model: primary &rarr; secondary &rarr; tertiary</li>
+          <li>Example: OpenAI GPT-4 &rarr; Azure OpenAI GPT-4 &rarr; self-hosted Llama-3 70B</li>
+          <li>Triggered automatically when primary provider&rsquo;s circuit opens</li>
+          <li>Configurable per-model or per-application</li>
+          <li>Auto-failback when primary circuit returns to Closed state</li>
+          <li>Option for manual failback on critical workloads (prevents flapping)</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Provider Health Scoring</div>
+        <ul class="feature-checklist">
+          <li>Composite score 0&ndash;100: latency P50 vs baseline (30% weight), error rate (40%), availability (30%)</li>
+          <li>Score below threshold (default 40) triggers circuit open</li>
+          <li>Displayed on Provider dashboard with trend sparkline</li>
+          <li>Health history stored for SLA tracking and vendor management</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Degraded Mode</div>
+        <ul class="feature-checklist">
+          <li>When all providers unavailable: optionally serve cached responses for identical prompts</li>
+          <li>Cache keyed on prompt hash + model + temperature. Configurable TTL (default: disabled)</li>
+          <li>Responses tagged with <code>X-Served-From: cache</code> header for client awareness</li>
+          <li>Fallback to smaller/cheaper model on cache miss (configurable fallback model per route)</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Rate Limit Awareness</div>
+        <ul class="feature-checklist">
+          <li>Detect 429 responses and <code>Retry-After</code> headers from providers</li>
+          <li>Preemptive throttling via token bucket per provider (RPM, TPM limits)</li>
+          <li>At 80% of limit: distribute overflow requests to secondary provider</li>
+          <li>Token bucket state synced across Gateway replicas via Redis</li>
+          <li>Dashboard showing current utilization vs configured limit per provider</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Provider SLA Tracking &amp; Alerting</div>
+        <ul class="feature-checklist">
+          <li>Track uptime, latency, and error rate per provider over hourly, daily, and monthly windows</li>
+          <li>Compare measured performance against SLA targets</li>
+          <li>Alert on SLA breach with specific metrics and time window</li>
+          <li>Monthly SLA report for vendor management and contract negotiations</li>
+          <li>Cost-per-token correlated with quality metrics for provider ROI analysis</li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Success Metrics</div>
+        <ul class="feature-checklist">
+          <li>Provider failover completes in &lt;5 seconds</li>
+          <li>Zero user-visible 429 errors with preemptive throttling enabled</li>
+          <li>End-to-end availability &ge;99.95% despite individual provider outages</li>
+          <li>Auto-failback within 2 minutes of provider recovery</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 3: FEATURE GAPS                                   -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="feature-gaps">
+  <h2>Feature Gaps &mdash; What We Need</h2>
+  <p>Comprehensive breakdown of every missing feature, organized by category and prioritized by business impact.</p>
+
+  <div style="display:flex;gap:0.75rem;margin:1rem 0 1.5rem;">
+    <span class="badge p0">P0</span> <span style="font-size:0.82rem;color:var(--ig-white-60);">Must ship for production readiness</span>
+    <span class="badge p1" style="margin-left:0.75rem;">P1</span> <span style="font-size:0.82rem;color:var(--ig-white-60);">Required for team adoption</span>
+    <span class="badge p2" style="margin-left:0.75rem;">P2</span> <span style="font-size:0.82rem;color:var(--ig-white-60);">Enterprise and scale features</span>
+  </div>
+
+  <!-- FG1 -->
+  <details id="fg1">
+    <summary>FG1. Prompt Management &amp; Versioning <span class="milestone-tag m2">P1</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>Prompts are the primary interface to LLMs. Without versioning and management, teams lose reproducibility, cannot iterate safely, and have no way to measure which prompts perform best.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-section-title">Features</div>
+        <ul class="feature-checklist">
+          <li>Central catalog of prompt templates with name, description, model binding, owner, and tags. Searchable and filterable.</li>
+          <li>Full version history for every prompt with diff view between versions, author tracking, and changelog.</li>
+          <li>Support <code>{{variable}}</code> placeholders with type-safe parameter schemas (string, number, enum, JSON). Validate at save time.</li>
+          <li>Test prompts against any registered model. Side-by-side comparison of outputs. Adjustable temperature, top_p, max_tokens.</li>
+          <li>Promote prompts through dev &rarr; staging &rarr; production with optional approval gates. Track which version is active per environment.</li>
+          <li>Route configurable % of traffic between prompt versions. Collect quality metrics per variant. Statistical significance detection.</li>
+          <li>Track usage count, avg token cost, avg latency, error rate per prompt version. Cost projection for prompt changes.</li>
+        </ul>
+      </div>
+      <div class="status-note in-progress">
+        <strong>Status:</strong> In Progress &mdash; being developed in parallel by an intern. Will be merged upon completion.
+      </div>
+    </div>
+  </details>
+
+  <!-- FG2 -->
+  <details id="fg2">
+    <summary>FG2. Evaluation Framework <span class="milestone-tag m2">P1</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>LLM outputs are non-deterministic. Without systematic evaluation, teams ship quality regressions, and degradation goes unnoticed until users complain.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-section-title">Features</div>
+        <ul class="feature-checklist">
+          <li>Upload and manage test datasets as input/expected output pairs. Support JSONL, CSV import. Version datasets alongside prompts.</li>
+          <li>Run prompts against datasets. Built-in scorers: exact match, BLEU, ROUGE, semantic similarity (embedding cosine), LLM-as-judge.</li>
+          <li>Side-by-side output comparison with thumbs up/down, Likert scale (1-5), and free-text feedback. Batch assignment to reviewers.</li>
+          <li>Automated alerts when eval scores drop below configurable threshold after a prompt or model change. Block deployment on regression.</li>
+          <li>Compare same prompt across multiple models/versions on identical dataset. Cost-normalized quality scores.</li>
+          <li>Run eval suite as a GitHub Action pipeline gate. Fail PR if quality regresses. Report eval results as PR comment.</li>
+          <li>Plugin system for domain-specific metrics: factuality checker, medical accuracy, legal compliance, code correctness.</li>
+        </ul>
+      </div>
+      <div class="status-note maybe">
+        <strong>Status:</strong> Maybe &mdash; not a current priority. May implement in a future phase.
+      </div>
+    </div>
+  </details>
+
+  <!-- FG3 -->
+  <details id="fg3">
+    <summary>FG3. Guardrails &amp; Safety <span class="milestone-tag m3">P2</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>Production LLMs need input/output filtering to prevent prompt injection, toxic content, PII leakage, and policy violations.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-section-title">Features</div>
+        <ul class="feature-checklist">
+          <li>Detect and block prompt injection attempts, jailbreak patterns, PII in inputs. Configurable action: block, warn, log.</li>
+          <li>Filter toxic, harmful, or off-topic responses before reaching users. Toxicity classifier + keyword blocklist.</li>
+          <li>Define rules using regex, keyword lists, classifier scores. Apply per-model or globally. Version policies.</li>
+          <li>Score output groundedness against provided context for RAG scenarios. Flag low-confidence responses for review.</li>
+          <li>Automatically detect and mask PII (emails, phone numbers, SSNs, addresses) in inputs and outputs.</li>
+          <li>Dashboard showing block rates, violation types, false positive rates. Drill down by model, application, time range.</li>
+          <li>Bring your own classifier or model for domain-specific filtering. Standard gRPC interface for external guardrail services.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- FG4 -->
+  <details id="fg4">
+    <summary>FG4. Tracing &amp; Observability <span class="milestone-tag m1">P0</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>Current metrics cover GPU/infra only. Production debugging requires request-level tracing with full input/output visibility.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-section-title">Features</div>
+        <ul class="feature-checklist">
+          <li>End-to-end trace for every LLM call: input prompt, output response, latency breakdown, token counts, calculated cost.</li>
+          <li>Search by model, status, latency range, token count, user ID, application, time window.</li>
+          <li>Full request/response inspection with token breakdown, timing waterfall, and span tree.</li>
+          <li>Aggregate error patterns: rate limit hits, timeouts, provider errors. Root cause grouping and frequency analysis.</li>
+          <li>Configurable alerts on error rate, P99 latency, cost thresholds, throughput drops. Slack/webhook delivery.</li>
+          <li>Export traces to Jaeger, Datadog, Grafana Tempo via OTLP. Compatible with existing observability stacks.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- FG5 -->
+  <details id="fg5">
+    <summary>FG5. Model Registry &amp; Versioning <span class="milestone-tag m2">P1</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>Current registry is flat. Production needs versioned models with lineage tracking, model cards, and promotion workflows.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-section-title">Features</div>
+        <ul class="feature-checklist">
+          <li>Track multiple versions (v1, v2, fine-tuned variants). Each version has eval scores, deployment status, and metadata.</li>
+          <li>Visual graph: base model &rarr; fine-tune job &rarr; evaluation &rarr; deployment. Full traceability.</li>
+          <li>Structured metadata: training data summary, eval results, known limitations, license, intended use.</li>
+          <li>Side-by-side comparison of model versions on eval metrics, cost, latency, throughput.</li>
+          <li>Promote model versions through dev &rarr; staging &rarr; prod with approval gates.</li>
+          <li>Archive old versions with configurable retention policies. Cold storage for weights.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- FG6 -->
+  <details id="fg6">
+    <summary>FG6. Autoscaling &amp; Cost Management <span class="milestone-tag m1">P0</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>GPU resources are expensive. Manual replica management leads to over-provisioning or latency spikes. Autoscaling is essential for cost efficiency.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-section-title">Features</div>
+        <ul class="feature-checklist">
+          <li>Horizontal Pod Autoscaler rules based on queue depth, GPU utilization, or custom Prometheus metrics.</li>
+          <li>Scale idle deployments to 0 replicas after configurable inactivity timeout.</li>
+          <li>Cold-start on first request with configurable warm-up. Queue requests during scale-up.</li>
+          <li>Per-team/namespace GPU and memory quotas. Block deployments that exceed quota.</li>
+          <li>Estimated hourly/daily/monthly cost per deployment based on GPU type, count, and pricing.</li>
+          <li>Deploy on spot/preemptible GPUs with automatic fallback to on-demand.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- FG7 -->
+  <details id="fg7">
+    <summary>FG7. Access Control &amp; Governance <span class="milestone-tag m2">P1</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>Teams need role-based access to prevent unauthorized deployments and enforce approval workflows.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-section-title">Features</div>
+        <ul class="feature-checklist">
+          <li>Restrict teams to specific K8s namespaces and model subsets.</li>
+          <li>Require manager approval before deploying to production namespaces.</li>
+          <li>Searchable log of all actions: who deployed what, when, from which Git commit.</li>
+          <li>LLMOps API keys with fine-grained permission scopes.</li>
+          <li>Connect to Okta, Azure AD, Google Workspace. Map SSO groups to platform roles.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- FG8 -->
+  <details id="fg8">
+    <summary>FG8. Multi-Cluster Management <span class="milestone-tag m3">P2</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>Enterprise deployments span multiple clusters and regions for high availability and data residency.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-section-title">Features</div>
+        <ul class="feature-checklist">
+          <li>Register and manage multiple K8s clusters with health monitoring and GPU inventory.</li>
+          <li>Deploy same model to multiple clusters with a single action.</li>
+          <li>Route requests to nearest healthy cluster based on geographic proximity.</li>
+          <li>Aggregated view: total GPUs, running deployments, error rates per cluster.</li>
+          <li>Automatic failover to secondary cluster on primary failure.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- FG9 -->
+  <details id="fg9">
+    <summary>FG9. Notification &amp; Integrations <span class="milestone-tag m2">P1</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>Platform events need to reach the right people through the right channels.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-section-title">Features</div>
+        <ul class="feature-checklist">
+          <li>Notify on deployment status changes, sync failures, alert triggers, approval requests.</li>
+          <li>Generic webhooks for all platform events. JSON payload with event type and metadata.</li>
+          <li>Escalate critical alerts to on-call rotation.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- FG10 -->
+  <details id="fg10">
+    <summary>FG10. Batch Inference <span class="milestone-tag m3">P2</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Why This Matters</div>
+        <p>Many AI workflows require offline batch processing rather than real-time inference.</p>
+      </div>
+      <div class="sub-section">
+        <div class="sub-section-title">Features</div>
+        <ul class="feature-checklist">
+          <li>Submit CSV/JSONL of prompts for offline processing. Select model, parameters, output format.</li>
+          <li>Priority queuing, pause/resume, retry failed items. Progress bar with ETA.</li>
+          <li>Download results as JSONL, CSV, or Parquet. Include token usage and cost per row.</li>
+          <li>Cron-based recurring batch jobs for daily report generation or data enrichment.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 4: GAP ANALYSIS                                   -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="gap-analysis">
+  <h2>Gap Analysis &mdash; Current vs Target</h2>
+  <p>Side-by-side view of current capabilities vs target state for the full platform.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Current State</th>
+        <th>Target State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Model Deployment</strong></td>
+        <td>CRUD, rollback, 6 engines, GitOps</td>
+        <td>Same, mature</td>
+      </tr>
+      <tr>
+        <td><strong>Provider Mgmt</strong></td>
+        <td>CRUD, discovery, LB, health checks</td>
+        <td>+ failover policies, region routing, circuit breakers</td>
+      </tr>
+      <tr>
+        <td><strong>Model Registry</strong></td>
+        <td>Flat</td>
+        <td>+ versioning, lineage, model cards, fine-tune tracking</td>
+      </tr>
+      <tr>
+        <td><strong>Evaluation</strong></td>
+        <td>None</td>
+        <td>Datasets, automated evals, human eval, regression detection</td>
+      </tr>
+      <tr>
+        <td><strong>Guardrails</strong></td>
+        <td>None</td>
+        <td>Maybe &mdash; input/output filters, PII redaction</td>
+      </tr>
+      <tr>
+        <td><strong>Tracing</strong></td>
+        <td>Backend exists, no UI</td>
+        <td>Full trace search, detail view, cost attribution, alerting</td>
+      </tr>
+      <tr>
+        <td><strong>Metrics</strong></td>
+        <td>GPU + throughput + latency</td>
+        <td>+ cost dashboards, alerting, SLO tracking</td>
+      </tr>
+      <tr>
+        <td><strong>Governance</strong></td>
+        <td>Basic RBAC</td>
+        <td>RBAC, team scoping, approval gates, audit UI, SSO</td>
+      </tr>
+      <tr>
+        <td><strong>Notifications</strong></td>
+        <td>None</td>
+        <td>+ Slack, PagerDuty, webhooks, email, OTel export</td>
+      </tr>
+      <tr>
+        <td><strong>Model Import</strong></td>
+        <td>Manual registration</td>
+        <td>6-step pipeline: validate, download, checksum, format check, test inference, register. License compliance</td>
+      </tr>
+      <tr>
+        <td><strong>Capacity Mgmt</strong></td>
+        <td>None</td>
+        <td>Admission control, priority queues, preemption, forecasting, reservations, cloud burst</td>
+      </tr>
+      <tr>
+        <td><strong>Compute Inventory</strong></td>
+        <td>GPU metrics dashboard</td>
+        <td>Fleet tracking, reconciliation, maintenance windows, GPU health, allocation policies</td>
+      </tr>
+      <tr>
+        <td><strong>Pre-Deploy Safety</strong></td>
+        <td>None</td>
+        <td>Memory pre-flight, compatibility matrix, canary deploys, dry-run, approval gates</td>
+      </tr>
+      <tr>
+        <td><strong>Failure Recovery</strong></td>
+        <td>Basic K8s restarts</td>
+        <td>Auto-rollback triggers, canary probes, failure classification, incident timelines</td>
+      </tr>
+      <tr>
+        <td><strong>Provider Resilience</strong></td>
+        <td>Cooldown-based retry</td>
+        <td>Circuit breakers, failover chains, health scoring, rate limit awareness, SLA tracking</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 4B: ROADMAP & TIMELINE                            -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="roadmap">
+  <h2>Roadmap &amp; Timeline</h2>
+  <p>All P0 and P1 features ship by <strong>April 10, 2026</strong>. Day-by-day sprint plan across 8 working days (Apr 2&ndash;10). Backlog features follow post-launch.</p>
+
+  <!-- Visual Phase Timeline -->
+  <div class="timeline">
+    <div class="timeline-item active">
+      <div class="date">Apr 2 &ndash; 5</div>
+      <div class="label">Sprint 1 &middot; P0 Core</div>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Apr 6 &ndash; 9</div>
+      <div class="label">Sprint 2 &middot; P0 + P1</div>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Apr 10</div>
+      <div class="label">Ship Day &middot; Harden &amp; QA</div>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Post-Launch</div>
+      <div class="label">Backlog &middot; P2 / Future</div>
+    </div>
+  </div>
+
+  <!-- Sprint 1: Apr 2-5 -->
+  <details id="phase1" open>
+    <summary>Sprint 1 &mdash; P0 Core Infrastructure <span class="milestone-tag m1">Apr 2&ndash;5</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Goal</div>
+        <p>Stand up the three operational foundations (model import, capacity control, compute inventory) plus tracing and autoscaling. All P0 features functional by end of day Apr 5.</p>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Day</th><th>Feature</th><th>ID</th><th>Deliverables</th><th>Owner</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Apr 2</strong></td>
+            <td><strong>Model Import &amp; Onboarding</strong></td>
+            <td>OR1</td>
+            <td>Import wizard UI, parameter validation, HuggingFace adapter, download pipeline with progress</td>
+            <td>Eng 1</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 2</strong></td>
+            <td><strong>Compute Inventory &mdash; Data Layer</strong></td>
+            <td>OR3</td>
+            <td>GPU Inventory Agent DaemonSet, NVML metrics collection, PostgreSQL schema, per-node/per-GPU data model</td>
+            <td>Eng 2</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 2</strong></td>
+            <td><strong>Capacity Mgmt &mdash; Admission</strong></td>
+            <td>OR2</td>
+            <td>ValidatingAdmissionWebhook, GPU/memory quota checks, reject with actionable messages, audit logging</td>
+            <td>Eng 3</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 2</strong></td>
+            <td><strong>Tracing &mdash; Backend</strong></td>
+            <td>FG4</td>
+            <td>Trace ingestion pipeline, span storage in PostgreSQL, search API (model, status, latency, time window)</td>
+            <td>Eng 4</td>
+          </tr>
+          <tr style="border-top:2px solid var(--ig-border);">
+            <td><strong>Apr 3</strong></td>
+            <td><strong>Model Import &mdash; Completion</strong></td>
+            <td>OR1</td>
+            <td>S3/OCI/Git LFS adapters, SHA-256 checksum, format validation, test inference Job, license detection</td>
+            <td>Eng 1</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 3</strong></td>
+            <td><strong>Compute Inventory &mdash; Dashboard</strong></td>
+            <td>OR3</td>
+            <td>GPU fleet dashboard (per-node, per-GPU, cluster-wide views), orphan/zombie reconciliation, 10s auto-refresh</td>
+            <td>Eng 2</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 3</strong></td>
+            <td><strong>Capacity Mgmt &mdash; Queue &amp; Preemption</strong></td>
+            <td>OR2</td>
+            <td>Priority queue (Critical/Standard/Best-Effort), FIFO within class, preemption logic, queue depth UI</td>
+            <td>Eng 3</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 3</strong></td>
+            <td><strong>Tracing &mdash; UI</strong></td>
+            <td>FG4</td>
+            <td>Trace search page, request/response detail view, span tree, token count breakdown, cost attribution</td>
+            <td>Eng 4</td>
+          </tr>
+          <tr style="border-top:2px solid var(--ig-border);">
+            <td><strong>Apr 4</strong></td>
+            <td><strong>Autoscaling &amp; Cost Mgmt</strong></td>
+            <td>FG6</td>
+            <td>HPA on queue depth + GPU util, scale-to-zero with cold-start queue, per-team GPU quotas</td>
+            <td>Eng 1+3</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 4</strong></td>
+            <td><strong>Inventory &mdash; Health &amp; Policies</strong></td>
+            <td>OR3</td>
+            <td>GPU health monitoring (ECC, thermal, clock), auto-quarantine, allocation policies (bin-pack/spread/affinity)</td>
+            <td>Eng 2</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 4</strong></td>
+            <td><strong>Capacity &mdash; Forecasting</strong></td>
+            <td>OR2</td>
+            <td>Linear regression on GPU trends, exhaustion forecasts (80/90/100%), capacity alerts</td>
+            <td>Eng 3</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 4</strong></td>
+            <td><strong>Tracing &mdash; Alerting</strong></td>
+            <td>FG4</td>
+            <td>Configurable alert rules (error rate, P99 latency, cost), alert history, OTLP export</td>
+            <td>Eng 4</td>
+          </tr>
+          <tr style="border-top:2px solid var(--ig-border);">
+            <td><strong>Apr 5</strong></td>
+            <td><strong>P0 Integration &amp; Testing</strong></td>
+            <td>All P0</td>
+            <td>End-to-end: import model &rarr; admission check &rarr; deploy &rarr; trace &rarr; autoscale. Fix blockers. Cost dashboards</td>
+            <td>All</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section" style="margin-top:1rem;">
+        <div class="sub-section-title">Sprint 1 Exit Criteria (EOD Apr 5)</div>
+        <ul class="feature-checklist">
+          <li>Model import pipeline end-to-end: HuggingFace &rarr; validate &rarr; test inference &rarr; register</li>
+          <li>Admission controller rejecting over-quota deployments with actionable messages</li>
+          <li>GPU fleet dashboard live with &lt;30s accuracy, orphan detection running</li>
+          <li>Trace search returning results with &lt;2s query time</li>
+          <li>At least one deployment auto-scaling on queue depth in staging</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- Sprint 2: Apr 6-9 -->
+  <details id="phase2">
+    <summary>Sprint 2 &mdash; P1 Features + Hardening <span class="milestone-tag m2">Apr 6&ndash;9</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Goal</div>
+        <p>Deliver all P1 features (pre-deploy safety, prompt management, model registry, access control, notifications, evaluation) while hardening P0. Ship-ready by EOD Apr 9.</p>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Day</th><th>Feature</th><th>ID</th><th>Deliverables</th><th>Owner</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Apr 6</strong></td>
+            <td><strong>Pre-Deploy Safety</strong></td>
+            <td>OR4</td>
+            <td>GPU memory pre-flight, engine compatibility matrix, deployment dry-run API + UI</td>
+            <td>Eng 1</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 6</strong></td>
+            <td><strong>Access Control &amp; Governance</strong></td>
+            <td>FG7</td>
+            <td>Team-scoped namespaces, RBAC enforcement, searchable audit log, SSO integration (Okta/Azure AD)</td>
+            <td>Eng 2</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 6</strong></td>
+            <td><strong>Prompt Management &mdash; Core</strong></td>
+            <td>FG1</td>
+            <td>Prompt catalog, version history, diff view, <code>{{variable}}</code> templates, model assignment</td>
+            <td>Eng 3</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 6</strong></td>
+            <td><strong>Model Registry &amp; Versioning</strong></td>
+            <td>FG5</td>
+            <td>Versioned models, lineage graph, model cards, side-by-side comparison</td>
+            <td>Eng 4</td>
+          </tr>
+          <tr style="border-top:2px solid var(--ig-border);">
+            <td><strong>Apr 7</strong></td>
+            <td><strong>Pre-Deploy &mdash; Canary &amp; Gates</strong></td>
+            <td>OR4</td>
+            <td>Canary deployment (Envoy weighted clusters), approval gates with Slack/email, rollback artifact safety</td>
+            <td>Eng 1</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 7</strong></td>
+            <td><strong>Notifications &amp; Integrations</strong></td>
+            <td>FG9</td>
+            <td>Slack, PagerDuty, email channels. Webhooks for deploy/sync/approval/alert events. Channel config UI</td>
+            <td>Eng 2</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 7</strong></td>
+            <td><strong>Prompt Mgmt &mdash; Workflows</strong></td>
+            <td>FG1</td>
+            <td>A/B testing, promotion workflow (dev &rarr; staging &rarr; prod), usage metrics per prompt version</td>
+            <td>Eng 3</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 7</strong></td>
+            <td><strong>Registry &mdash; Promotion &amp; Lifecycle</strong></td>
+            <td>FG5</td>
+            <td>Promotion gates (dev &rarr; staging &rarr; prod), archive policies, cold storage for old versions</td>
+            <td>Eng 4</td>
+          </tr>
+          <tr style="border-top:2px solid var(--ig-border);">
+            <td><strong>Apr 8</strong></td>
+            <td><strong>Evaluation Framework</strong></td>
+            <td>FG2</td>
+            <td>Dataset upload (JSONL/CSV), built-in scorers (BLEU, ROUGE, LLM-as-judge), model comparison, regression detection</td>
+            <td>Eng 1+3</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 8</strong></td>
+            <td><strong>Evaluation &mdash; Human Review</strong></td>
+            <td>FG2</td>
+            <td>Human review UI (thumbs up/down, Likert, free-text), reviewer assignment, score aggregation</td>
+            <td>Eng 4</td>
+          </tr>
+          <tr>
+            <td><strong>Apr 8</strong></td>
+            <td><strong>P0 Hardening</strong></td>
+            <td>OR1&ndash;3</td>
+            <td>Fix P0 bugs from Sprint 1, edge cases in admission/import/inventory, performance tuning</td>
+            <td>Eng 2</td>
+          </tr>
+          <tr style="border-top:2px solid var(--ig-border);">
+            <td><strong>Apr 9</strong></td>
+            <td><strong>P1 Integration &amp; Testing</strong></td>
+            <td>All P1</td>
+            <td>End-to-end: import &rarr; pre-flight &rarr; canary &rarr; approve &rarr; deploy &rarr; evaluate &rarr; promote. Wire notifications to all events</td>
+            <td>All</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section" style="margin-top:1rem;">
+        <div class="sub-section-title">Sprint 2 Exit Criteria (EOD Apr 9)</div>
+        <ul class="feature-checklist">
+          <li>Pre-flight checks blocking OOM-destined deployments; canary auto-promoting on green metrics</li>
+          <li>RBAC enforced on all production namespaces; SSO functional</li>
+          <li>Prompt versioning with at least one A/B test running</li>
+          <li>Notification pipeline delivering to Slack for all deployment and error events</li>
+          <li>Evaluation framework running automated regression check on at least one model</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- Ship Day: Apr 10 -->
+  <details id="ship-day">
+    <summary>Ship Day &mdash; Final QA &amp; Launch <span class="milestone-tag m1">Apr 10</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Goal</div>
+        <p>Final hardening, full regression pass, documentation, and production deployment. No new features &mdash; only stabilization.</p>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Time</th><th>Activity</th><th>Owner</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>AM</strong></td>
+            <td>Full regression: import &rarr; admission &rarr; deploy &rarr; trace &rarr; autoscale &rarr; pre-flight &rarr; canary &rarr; evaluate &rarr; notify</td>
+            <td>All</td>
+          </tr>
+          <tr>
+            <td><strong>AM</strong></td>
+            <td>Fix any P0/P1 blockers found in regression. Performance benchmarks on trace search and fleet dashboard</td>
+            <td>All</td>
+          </tr>
+          <tr>
+            <td><strong>PM</strong></td>
+            <td>Production deployment. Smoke test on live cluster. Verify admission controller, inventory agent, alert pipeline</td>
+            <td>All</td>
+          </tr>
+          <tr>
+            <td><strong>PM</strong></td>
+            <td>Stakeholder demo. Update PRD status. Tag release</td>
+            <td>Lead</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section" style="margin-top:1rem;">
+        <div class="sub-section-title">Launch Checklist</div>
+        <ul class="feature-checklist">
+          <li>All P0 success metrics met (zero over-subscription, &lt;30s inventory accuracy, &lt;2s trace search)</li>
+          <li>All P1 success metrics met (zero OOM deploys, RBAC enforced, eval regression checks running)</li>
+          <li>No P0/P1 regressions in final test pass</li>
+          <li>Production deployment healthy for &ge;1 hour</li>
+          <li>Release tagged and changelog published</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <!-- Post-Launch Backlog -->
+  <details id="phase3">
+    <summary>Post-Launch &mdash; Backlog &amp; Enterprise <span class="milestone-tag m3">Post Apr 10</span></summary>
+    <div class="feature-content">
+      <div class="sub-section">
+        <div class="sub-section-title">Goal</div>
+        <p>Advanced resilience patterns, enterprise features, and scale capabilities. Prioritized based on customer feedback post-launch.</p>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>ID</th><th>Key Deliverables</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Model Failure &amp; Recovery</strong></td>
+            <td>OR5</td>
+            <td>Health probes, canary inference, auto-rollback triggers, failure classification, incident timeline</td>
+            <td>Backlog</td>
+          </tr>
+          <tr>
+            <td><strong>Provider Resilience &amp; Failover</strong></td>
+            <td>OR6</td>
+            <td>Circuit breakers, failover chains, provider health scoring, rate limit awareness, SLA tracking</td>
+            <td>Backlog</td>
+          </tr>
+          <tr>
+            <td><strong>Guardrails &amp; Safety</strong></td>
+            <td>FG3</td>
+            <td>Input/output filters, PII detection &amp; masking, prompt injection detection, custom classifiers</td>
+            <td>P2</td>
+          </tr>
+          <tr>
+            <td><strong>Multi-Cluster Management</strong></td>
+            <td>FG8</td>
+            <td>Cluster registration, cross-cluster deploy, geo-routing, aggregated dashboard, failover</td>
+            <td>P2</td>
+          </tr>
+          <tr>
+            <td><strong>Batch Inference</strong></td>
+            <td>FG10</td>
+            <td>CSV/JSONL upload, priority queue, pause/resume, export, cron-based recurring jobs</td>
+            <td>P2</td>
+          </tr>
+          <tr>
+            <td><strong>GPU Reservation &amp; Burst</strong></td>
+            <td>OR2+</td>
+            <td>7-day advance reservation, calendar UI, cloud burst to Lambda/CoreWeave/RunPod with cost caps</td>
+            <td>Backlog</td>
+          </tr>
+          <tr>
+            <td><strong>Maintenance Windows</strong></td>
+            <td>OR3+</td>
+            <td>Scheduled node drain, workload migration, recurring calendar, health-check return-to-pool</td>
+            <td>Backlog</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  <!-- Dependency Overview -->
+  <div class="sub-section" style="margin-top:1.5rem;">
+    <div class="sub-section-title" style="color:var(--ig-white);font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;">Dependency Chain</div>
+    <p style="font-size:0.82rem;color:var(--ig-white-60);margin-top:0.5rem;">
+      <strong>OR1</strong> (Import) &rarr; <strong>OR4</strong> (Compatibility matrix uses import metadata) &rarr; <strong>FG5</strong> (Registry versions imported models)<br>
+      <strong>OR3</strong> (Inventory) &rarr; <strong>OR2</strong> (Admission uses inventory data) &rarr; <strong>OR2+</strong> (Burst extends admission)<br>
+      <strong>FG4</strong> (Tracing) &rarr; <strong>OR5</strong> (Failure recovery uses trace data) &rarr; <strong>OR6</strong> (Provider resilience extends failure patterns)<br>
+      <strong>FG7</strong> (RBAC) &rarr; <strong>OR4</strong> (Approval gates use RBAC roles)<br>
+      <strong>FG9</strong> (Notifications) &rarr; <strong>OR2</strong> (Preemption alerts) + <strong>OR3</strong> (Inventory alerts) + <strong>OR5</strong> (Incident notifications)
+    </p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 5: USER PERSONAS                                  -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="personas">
+  <h2>User Personas</h2>
+  <p>Who uses the LLMOps platform and what are their core needs and pain points.</p>
+
+  <div class="persona-grid">
+    <div class="persona-card">
+      <div class="persona-name">ML / Platform Engineer</div>
+      <div class="persona-section-label">Needs</div>
+      <ul class="feature-checklist">
+        <li>Deploy and manage inference servers on Kubernetes</li>
+        <li>Configure load balancing and health checks for model endpoints</li>
+        <li>Monitor GPU utilization, throughput, and latency</li>
+        <li>Set up autoscaling and resource quotas</li>
+      </ul>
+      <div class="persona-section-label">Pain Points</div>
+      <ul class="feature-checklist">
+        <li>Manually managing Helm charts and K8s manifests</li>
+        <li>No unified view of all model deployments across namespaces</li>
+        <li>Debugging failed deployments requires kubectl and log digging</li>
+        <li>No rollback mechanism without re-deploying from scratch</li>
+      </ul>
+    </div>
+
+    <div class="persona-card">
+      <div class="persona-name">Engineering Manager / Team Lead</div>
+      <div class="persona-section-label">Needs</div>
+      <ul class="feature-checklist">
+        <li>Understand cost per team, project, and model</li>
+        <li>Control who can deploy to production namespaces</li>
+        <li>Review audit logs for compliance</li>
+        <li>Get alerted on anomalies (cost spikes, error rate increases)</li>
+      </ul>
+      <div class="persona-section-label">Pain Points</div>
+      <ul class="feature-checklist">
+        <li>No visibility into GPU spend per team</li>
+        <li>No approval gates for production deployments</li>
+        <li>Audit trail lives in kubectl logs, not a searchable UI</li>
+        <li>Alerts are ad-hoc Prometheus rules with no context</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 6: USER FLOWS                                     -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="user-flows">
+  <h2>User Flows</h2>
+  <p>Step-by-step workflows showing how users interact with the platform for common tasks.</p>
+
+  <h3 id="flow-deploy">Deploy a Model</h3>
+  <ol class="flow-steps">
+    <li><strong>Navigate to Deploy page</strong> &mdash; Click &ldquo;Deploy Model&rdquo; from dashboard or sidebar</li>
+    <li><strong>Select Engine</strong> &mdash; Choose from vLLM, Ollama, SGLang, TGI, Whisper, Piper</li>
+    <li><strong>Configure</strong> &mdash; Set model path, GPU count, replicas, edit Helm values YAML</li>
+    <li><strong>Deploy</strong> &mdash; Submit creates K8s Deployment + Service via Helm chart rendering</li>
+    <li><strong>Monitor</strong> &mdash; Watch phase transition: Pending &rarr; Deploying &rarr; Running</li>
+    <li><strong>Validate</strong> &mdash; Check GPU utilization, throughput, and latency on Metrics page</li>
+  </ol>
+
+  <h3 id="flow-gitops">Set Up GitOps</h3>
+  <ol class="flow-steps">
+    <li><strong>Connect Repository</strong> &mdash; Enter GitHub org, repo name, branch, and deployment path</li>
+    <li><strong>Authenticate</strong> &mdash; Token encrypted with AES-256-GCM and stored in PostgreSQL</li>
+    <li><strong>Validate</strong> &mdash; Verify token has read/write access to the repository</li>
+    <li><strong>Initial Sync</strong> &mdash; Export current K8s deployments as YAML files to Git</li>
+    <li><strong>Configure Sync</strong> &mdash; Set poll interval or configure webhook for push-triggered sync</li>
+    <li><strong>Deploy via Git</strong> &mdash; Commit new deployment YAML &rarr; Push to Git &rarr; webhook fires &rarr; gateway syncs to K8s automatically</li>
+  </ol>
+
+  <h3 id="flow-provider">Add a Self-Hosted Provider with Load Balancing</h3>
+  <ol class="flow-steps">
+    <li><strong>Create Provider</strong> &mdash; Add provider with name, base URL, API type, mark as self-hosted</li>
+    <li><strong>Set Credentials</strong> &mdash; Optionally set API key for the provider (encrypted at rest)</li>
+    <li><strong>Add Backends</strong> &mdash; Add multiple backend URLs with weights</li>
+    <li><strong>Discover Models</strong> &mdash; Click discover to auto-populate available models from endpoints</li>
+    <li><strong>Verify</strong> &mdash; View endpoint health status on Providers page</li>
+  </ol>
+
+  <h3 id="flow-investigate">Investigate a Production Issue</h3>
+  <ol class="flow-steps">
+    <li><strong>Receive Alert</strong> &mdash; Slack: &ldquo;Error rate &gt; 5% for openai/gpt-4 in last 15min&rdquo;</li>
+    <li><strong>Search Traces</strong> &mdash; Filter traces by model=gpt-4, status=error, last 30 minutes</li>
+    <li><strong>Inspect</strong> &mdash; View full request/response, identify timeout or provider error</li>
+    <li><strong>Check Guardrails</strong> &mdash; Verify if input guardrails are blocking legitimate requests</li>
+    <li><strong>Review Evals</strong> &mdash; Check eval scores for current prompt vs last known good</li>
+    <li><strong>Remediate</strong> &mdash; Revert to previous prompt version or switch to backup model</li>
+  </ol>
+
+  <h3 id="flow-prompt">Evaluate and Deploy a New Prompt</h3>
+  <ol class="flow-steps">
+    <li><strong>Create prompt in registry</strong> &mdash; Write template with <code>{{variables}}</code>, assign to model</li>
+    <li><strong>Test in Playground</strong> &mdash; Try prompt with sample inputs, compare across models</li>
+    <li><strong>Run Evaluation</strong> &mdash; Select eval dataset, run against prompt, collect scores</li>
+    <li><strong>Human Review</strong> &mdash; Submit for human review &rarr; Assign batch of outputs to reviewers for quality assessment</li>
+    <li><strong>Stage</strong> &mdash; Deploy prompt version to staging for integration testing</li>
+    <li><strong>A/B Test</strong> &mdash; Route 10% traffic to new version, compare over 24 hours</li>
+    <li><strong>Promote</strong> &mdash; Promote to 100% after statistical significance confirmed</li>
+  </ol>
+
+  <h3 id="flow-import">Import a New Model</h3>
+  <ol class="flow-steps">
+    <li><strong>Open Import Wizard</strong> &mdash; Click &ldquo;Import Model&rdquo; from Model Registry page</li>
+    <li><strong>Select Source</strong> &mdash; Choose HuggingFace, S3/GCS, OCI Registry, or Git LFS</li>
+    <li><strong>Auto-Detect Metadata</strong> &mdash; System reads <code>config.json</code> and model card to pre-fill architecture, quantization, context length</li>
+    <li><strong>Configure Parameters</strong> &mdash; Review and adjust required/optional parameters. Validation runs in real-time</li>
+    <li><strong>Download &amp; Validate</strong> &mdash; Model downloaded to staging PVC with progress bar. Checksum and format validation run automatically</li>
+    <li><strong>Test Inference</strong> &mdash; Ephemeral K8s Job runs 3 canary prompts. Results shown in wizard. Must pass to proceed</li>
+    <li><strong>Register</strong> &mdash; Model registered in catalog with all metadata, license info, and test results. Available for deployment</li>
+  </ol>
+
+  <h3 id="flow-failure">Handle a Model Failure &amp; Recovery</h3>
+  <ol class="flow-steps">
+    <li><strong>Alert Received</strong> &mdash; Notification: &ldquo;Error rate &gt; 10% for deployment llama-3-70b in namespace prod&rdquo;</li>
+    <li><strong>View Incident Timeline</strong> &mdash; Open deployment detail &rarr; timeline view shows probe failures, metric spikes, and pod events</li>
+    <li><strong>Inspect Classification</strong> &mdash; Failure engine classified as &ldquo;Permanent&rdquo; based on OOM kill termination reason</li>
+    <li><strong>Auto-Rollback</strong> &mdash; System verified previous revision artifacts exist and initiated rolling update to last-known-good</li>
+    <li><strong>Verify Recovery</strong> &mdash; Confirm new pods healthy, error rate returned to baseline, canary probes passing</li>
+    <li><strong>Post-Mortem</strong> &mdash; Export incident timeline as JSON. Root cause: memory estimate was 5 GB below actual due to missing KV cache overhead</li>
+  </ol>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 7: SUCCESS METRICS & KPIs                         -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="metrics">
+  <h2>Success Metrics &amp; KPIs</h2>
+  <p>Measurable targets that define whether the platform is meeting its goals.</p>
+
+  <div class="metrics-grid">
+    <div class="metric">
+      <div class="value">99.9%</div>
+      <div class="label">Platform Availability</div>
+      <p style="font-size:0.7rem;color:var(--ig-white-40);margin-top:0.35rem;margin-bottom:0;">LLMOps API, Gateway Service, and web UIs available 99.9% measured monthly.</p>
+    </div>
+    <div class="metric">
+      <div class="value">99.95%</div>
+      <div class="label">Gateway Uptime</div>
+      <p style="font-size:0.7rem;color:var(--ig-white-40);margin-top:0.35rem;margin-bottom:0;">Envoy proxy and model endpoints. Higher target since this is the live inference path.</p>
+    </div>
+    <div class="metric">
+      <div class="value">Graceful</div>
+      <div class="label">Degradation</div>
+      <p style="font-size:0.7rem;color:var(--ig-white-40);margin-top:0.35rem;margin-bottom:0;">Control plane outage must not affect in-flight inference requests.</p>
+    </div>
+    <div class="metric">
+      <div class="value">&lt;500ms</div>
+      <div class="label">API Latency (P99)</div>
+      <p style="font-size:0.7rem;color:var(--ig-white-40);margin-top:0.35rem;margin-bottom:0;">All LLMOps API endpoints respond within 500ms at the 99th percentile.</p>
+    </div>
+    <div class="metric">
+      <div class="value">&lt;2s</div>
+      <div class="label">Dashboard Load Time</div>
+      <p style="font-size:0.7rem;color:var(--ig-white-40);margin-top:0.35rem;margin-bottom:0;">Initial page load with data. Subsequent navigation instant via SPA.</p>
+    </div>
+    <div class="metric">
+      <div class="value">100+</div>
+      <div class="label">Concurrent Deployments</div>
+      <p style="font-size:0.7rem;color:var(--ig-white-40);margin-top:0.35rem;margin-bottom:0;">Support 100+ active model deployments without control plane degradation.</p>
+    </div>
+    <div class="metric">
+      <div class="value">&lt;2min</div>
+      <div class="label">Auto-Rollback MTTR</div>
+      <p style="font-size:0.7rem;color:var(--ig-white-40);margin-top:0.35rem;margin-bottom:0;">From failure detection to healthy rollback revision serving traffic.</p>
+    </div>
+    <div class="metric">
+      <div class="value">&lt;5s</div>
+      <div class="label">Provider Failover</div>
+      <p style="font-size:0.7rem;color:var(--ig-white-40);margin-top:0.35rem;margin-bottom:0;">Circuit breaker opens and traffic shifts to secondary provider.</p>
+    </div>
+    <div class="metric">
+      <div class="value">0</div>
+      <div class="label">OOM Deploys / Quarter</div>
+      <p style="font-size:0.7rem;color:var(--ig-white-40);margin-top:0.35rem;margin-bottom:0;">Pre-flight memory checks eliminate OOM kills from misconfigured deployments.</p>
+    </div>
+    <div class="metric">
+      <div class="value">99.9%</div>
+      <div class="label">Inventory Accuracy</div>
+      <p style="font-size:0.7rem;color:var(--ig-white-40);margin-top:0.35rem;margin-bottom:0;">GPU fleet dashboard matches physical reality within 30 seconds.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 8: TECHNICAL REQUIREMENTS                         -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="tech-reqs">
+  <h2>Technical Requirements</h2>
+  <p>Performance, security, availability, and compliance targets for the platform.</p>
+
+  <div class="grid grid-3">
+    <div class="card">
+      <h4 style="margin-top:0;">Security</h4>
+      <ul class="feature-checklist">
+        <li>All sensitive data (credentials, tokens, PII) encrypted at rest.</li>
+        <li>All inter-service communication over mTLS. External traffic over TLS 1.3.</li>
+        <li>JWT for web sessions, API keys for programmatic access. Refresh token rotation.</li>
+        <li>Every state-changing action logged with actor, timestamp, and before/after state.</li>
+        <li>Audit log, RBAC, encryption, and access controls compatible with SOC 2.</li>
+        <li>All secrets encrypted (AES-256-GCM). API keys hashed (SHA-256). No plaintext in logs.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4 style="margin-top:0;">Scalability</h4>
+      <ul class="feature-checklist">
+        <li>Gateway Service, LLMOps API, Portal API all horizontally scalable behind load balancer.</li>
+        <li>Architecture supports multiple K8s clusters with federated control plane.</li>
+        <li>PostgreSQL read replicas for heavy read workloads (traces, metrics, audit logs).</li>
+        <li>Admission controller webhook evaluates GPU/memory quotas before pod creation.</li>
+        <li>Priority queue with preemption ensures critical workloads always get resources.</li>
+        <li>Burst capacity to cloud GPU providers when on-prem is exhausted.</li>
+        <li>GPU Inventory Agent (DaemonSet) reports NVML metrics per node at 10s intervals.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4 style="margin-top:0;">Observability</h4>
+      <ul class="feature-checklist">
+        <li>Handle high-throughput trace and span ingestion without data loss.</li>
+        <li>Hot storage for fast search. Cold storage (S3/GCS) for compliance and audit.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 9: TECHNOLOGY STACK                               -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section id="tech-stack">
+  <h2>Technology Stack</h2>
+  <p>Complete technology inventory across all layers of the platform.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>Technology</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Frontend</strong></td>
+        <td>React + Vite</td>
+        <td>Build tool &amp; dev server</td>
+      </tr>
+      <tr>
+        <td><strong>Backend</strong></td>
+        <td>Go</td>
+        <td>Gateway Service &amp; LLMOps API</td>
+      </tr>
+      <tr>
+        <td><strong>Proxy</strong></td>
+        <td>Envoy</td>
+        <td>Data plane (ext_authz + ext_proc)</td>
+      </tr>
+      <tr>
+        <td><strong>Database</strong></td>
+        <td>PostgreSQL</td>
+        <td>All persistent entities</td>
+      </tr>
+      <tr>
+        <td><strong>Cache</strong></td>
+        <td>Redis</td>
+        <td>API key cache, rate limits</td>
+      </tr>
+      <tr>
+        <td><strong>Auth</strong></td>
+        <td>JWT + AES-256-GCM</td>
+        <td>Credential encryption at rest</td>
+      </tr>
+      <tr>
+        <td><strong>GitOps</strong></td>
+        <td>Argo CD / Webhooks</td>
+        <td>Release tracking</td>
+      </tr>
+      <tr>
+        <td><strong>Engines</strong></td>
+        <td>vLLM, Ollama, SGLang, TGI, Whisper, Piper</td>
+        <td>Inference runtimes</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<hr class="divider">
+
+<footer style="text-align:center;padding:2rem 0;color:var(--ig-gray);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;">
+  Corerun AI Gateway Platform &middot; LLMOps PRD v1.0 &middot; March 2026
+</footer>
+
+</div>
+
+<script>
+(function() {
+  const navLinks = Array.from(document.querySelectorAll('.sidebar a[href^="#"]'));
+  const sectionIds = navLinks.map(a => a.getAttribute('href').slice(1));
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  function setActive(id) {
+    navLinks.forEach(a => {
+      const matches = a.getAttribute('href') === '#' + id;
+      a.classList.toggle('active', matches);
+    });
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+})();
+</script>
+</body>
+</html>
