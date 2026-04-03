@@ -95,6 +95,19 @@ export default function ProductDetail() {
             <span>Since {formatDate(product.foundedDate)}</span>
             <span>·</span>
             <span>PM: {product.productManager}</span>
+            {product.websiteUrl && (
+              <>
+                <span>·</span>
+                <a
+                  href={product.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-primary hover:text-primary/80 transition-colors"
+                >
+                  Website <ExternalLink className="h-2.5 w-2.5" />
+                </a>
+              </>
+            )}
           </div>
           <div className="flex flex-wrap gap-1 mt-2.5">
             {product.tags.map(tag => (

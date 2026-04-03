@@ -33,6 +33,7 @@ export interface Product {
   stream: ProductStream
   productManager: string
   foundedDate: string
+  websiteUrl: string
   tags: string[]
   keyFeatures: string[]
   techStack: string[]
@@ -90,6 +91,7 @@ export const PRODUCTS: Product[] = [
     stream: 'foundation',
     productManager: 'Rami Nassar',
     foundedDate: '2023-06-01',
+    websiteUrl: 'https://coredge.io/',
     tags: ['containers', 'orchestration', 'devops', 'infrastructure'],
     keyFeatures: ['Multi-cluster management', 'Private registry', 'Automated CI/CD integration', 'Network policy engine', 'RBAC & audit logs'],
     techStack: ['Go', 'containerd', 'etcd', 'PostgreSQL', 'React'],
@@ -116,6 +118,7 @@ export const PRODUCTS: Product[] = [
     stream: 'foundation',
     productManager: 'Rami Nassar',
     foundedDate: '2023-01-15',
+    websiteUrl: 'https://coredge.io/',
     tags: ['kubernetes', 'orchestration', 'infrastructure', 'enterprise'],
     keyFeatures: ['Automated cluster lifecycle', 'Multi-tenant namespacing', 'GitOps integration', 'Policy as code', 'Cluster observability'],
     techStack: ['Go', 'Kubernetes', 'Helm', 'ArgoCD', 'Prometheus'],
@@ -142,6 +145,7 @@ export const PRODUCTS: Product[] = [
     stream: 'foundation',
     productManager: 'Priya Mehta',
     foundedDate: '2022-09-01',
+    websiteUrl: 'https://coredge.io/',
     tags: ['compute', 'vms', 'infrastructure', 'cloud'],
     keyFeatures: ['Instant provisioning', 'Live migration', 'Snapshot & restore', 'Custom networking', 'GPU passthrough'],
     techStack: ['Go', 'KVM/QEMU', 'Ceph', 'Linux', 'React'],
@@ -167,6 +171,7 @@ export const PRODUCTS: Product[] = [
     stream: 'foundation',
     productManager: 'Omar Khalil',
     foundedDate: '2024-08-01',
+    websiteUrl: 'https://coredge.io/',
     tags: ['multi-cloud', 'orchestration', 'management', 'enterprise'],
     keyFeatures: ['Unified dashboard', 'Cross-cloud cost visibility', 'Policy enforcement', 'Workload migration', 'Cloud-agnostic networking'],
     techStack: ['Go', 'Terraform', 'React', 'PostgreSQL', 'Prometheus'],
@@ -195,6 +200,7 @@ export const PRODUCTS: Product[] = [
     stream: 'ai-foundation',
     productManager: 'Gagan Kapoor',
     foundedDate: '2023-11-01',
+    websiteUrl: 'https://coredge.io/',
     tags: ['gpu', 'ai', 'hpc', 'infrastructure', 'sovereign-cloud'],
     keyFeatures: ['Bare-metal GPU provisioning', 'GPU cluster orchestration (K8s/HPC)', 'Tenant-isolated VPCs', 'High-performance parallel storage', 'RBAC & ABAC multi-tenancy', 'Usage billing & metering', 'Real-time GPU monitoring'],
     techStack: ['Go', 'Kubernetes', 'SLURM', 'NVIDIA DCGM', 'Ceph', 'React'],
@@ -222,6 +228,7 @@ export const PRODUCTS: Product[] = [
     stream: 'ai-foundation',
     productManager: 'Gagan Kapoor',
     foundedDate: '2024-06-01',
+    websiteUrl: 'https://tokenfactoryinfinia.netlify.app/user-portal-app/projects',
     tags: ['api-gateway', 'llm', 'ai', 'enterprise', 'inference'],
     keyFeatures: ['Multi-provider routing', 'Rate limiting & budgets', 'Audit logging', 'Org-level isolation', 'Model allowlists', 'Streaming support'],
     techStack: ['Go', 'PostgreSQL', 'Redis', 'React', 'TypeScript'],
@@ -256,6 +263,7 @@ export const PRODUCTS: Product[] = [
     stream: 'ai-foundation',
     productManager: 'Sara Al Rashid',
     foundedDate: '2025-01-15',
+    websiteUrl: 'https://coredge.io/',
     tags: ['mlops', 'observability', 'llm', 'platform'],
     keyFeatures: ['Request tracing', 'Cost attribution', 'Latency percentiles (p50/p95/p99)', 'Fine-tuning pipelines', 'Eval framework'],
     techStack: ['Python', 'ClickHouse', 'Go', 'React', 'OpenTelemetry'],
@@ -286,6 +294,7 @@ export const PRODUCTS: Product[] = [
     stream: 'agents',
     productManager: 'Nadia Osman',
     foundedDate: '2024-11-01',
+    websiteUrl: 'https://coredge.io/',
     tags: ['edge', 'robotics', 'iot', 'ai-inference', 'fleet-management'],
     keyFeatures: ['Edge fleet management', 'OTA update pipelines', 'On-device AI inference', 'Low-latency messaging', 'Remote diagnostics'],
     techStack: ['Go', 'Rust', 'MQTT', 'Kubernetes', 'React'],
@@ -312,6 +321,7 @@ export const PRODUCTS: Product[] = [
     stream: 'agents',
     productManager: 'Lena Hoffman',
     foundedDate: '2025-02-01',
+    websiteUrl: 'https://coredge.io/',
     tags: ['agents', 'ai', 'automation', 'enterprise', 'workflow'],
     keyFeatures: ['Visual agent builder', 'Tool integrations (Slack, Jira, SF)', 'Human-in-the-loop approvals', 'Agent monitoring & traces', 'Version control & rollback'],
     techStack: ['TypeScript', 'Node.js', 'PostgreSQL', 'React', 'LangGraph'],
@@ -338,6 +348,7 @@ export const PRODUCTS: Product[] = [
     stream: 'agents',
     productManager: 'Omar Khalil',
     foundedDate: '2024-03-01',
+    websiteUrl: 'https://www.esal.tech/',
     tags: ['einvoicing', 'compliance', 'blockchain', 'uae', 'fintech'],
     keyFeatures: ['Peppol-certified invoicing', 'Blockchain audit trails', 'AI fraud detection', 'VAT reconciliation', 'ERP integrations (SAP, Oracle, Dynamics 365)', 'Paper-to-digital scanning'],
     techStack: ['TypeScript', 'Node.js', 'PostgreSQL', 'React', 'Blockchain'],
@@ -364,6 +375,7 @@ export const PRODUCTS: Product[] = [
     stream: 'agents',
     productManager: 'Sara Al Rashid',
     foundedDate: '2025-04-01',
+    websiteUrl: 'https://www.zysec.ai/',
     tags: ['ai', 'data-intelligence', 'enterprise', 'sovereign', 'automation'],
     keyFeatures: ['Autonomous data pipelines', 'Sovereign data processing', 'Enterprise knowledge graphs', 'AI-powered analytics', 'Data governance & compliance', 'Multi-source integration'],
     techStack: ['Python', 'TypeScript', 'PostgreSQL', 'React', 'LangChain'],
@@ -390,6 +402,7 @@ export const PRODUCTS: Product[] = [
     stream: 'agents',
     productManager: 'Lena Hoffman',
     foundedDate: '2025-11-01',
+    websiteUrl: 'https://coredge.io/',
     tags: ['devtools', 'agents', 'ide', 'developer', 'local'],
     keyFeatures: ['Local agent runner', 'Step debugger', 'Mock tool responses', 'Trace visualiser', 'One-click deploy to Xaylon'],
     techStack: ['TypeScript', 'Electron', 'React', 'Node.js'],
