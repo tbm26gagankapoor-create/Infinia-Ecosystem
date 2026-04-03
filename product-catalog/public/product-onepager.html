@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinia Product Suite</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0F1419;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .slide {
+    width: 1280px;
+    height: 720px;
+    background: #0F1419;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  /* Top accent line */
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #22D3EE, #A78BFA, #FBBF24, #34D399);
+  }
+
+  .header {
+    padding: 28px 48px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-name {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    color: #22D3EE;
+  }
+
+  .brand-sub {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: #556677;
+    margin-top: 2px;
+  }
+
+  .title-row {
+    padding: 8px 48px 0;
+  }
+
+  .title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    color: #667788;
+    margin-top: 4px;
+  }
+
+  .legend {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 6px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .legend-dot.live { background: #34D399; }
+  .legend-dot.staging { background: #38BDF8; }
+  .legend-dot.dev { background: #FBBF24; }
+
+  .legend-text.live { color: #34D399; }
+  .legend-text.staging { color: #38BDF8; }
+  .legend-text.dev { color: #FBBF24; }
+
+  .divider {
+    margin: 14px 48px 0;
+    height: 1px;
+    background: #1E2D3D;
+  }
+
+  /* Product Cards */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 18px 48px 0;
+  }
+
+  .card {
+    background: #151E2B;
+    border: 1px solid #1E2D3D;
+    border-radius: 12px;
+    padding: 20px 18px 16px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .card.teal::before { background: #22D3EE; }
+  .card.violet::before { background: #A78BFA; }
+  .card.amber::before { background: #FBBF24; }
+  .card.emerald::before { background: #34D399; }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .logo-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card.teal .logo-circle { background: rgba(34, 211, 238, 0.1); border: 1.5px solid rgba(34, 211, 238, 0.25); }
+  .card.violet .logo-circle { background: rgba(167, 139, 250, 0.1); border: 1.5px solid rgba(167, 139, 250, 0.25); }
+  .card.amber .logo-circle { background: rgba(251, 191, 36, 0.1); border: 1.5px solid rgba(251, 191, 36, 0.25); }
+  .card.emerald .logo-circle { background: rgba(52, 211, 153, 0.1); border: 1.5px solid rgba(52, 211, 153, 0.25); }
+
+  .logo-circle svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  .status-badge.live { color: #34D399; background: rgba(52, 211, 153, 0.1); }
+  .status-badge.staging { color: #38BDF8; background: rgba(56, 189, 248, 0.1); }
+  .status-badge.dev { color: #FBBF24; background: rgba(251, 191, 36, 0.1); }
+
+  .status-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .status-badge.live .dot { background: #34D399; }
+  .status-badge.staging .dot { background: #38BDF8; }
+  .status-badge.dev .dot { background: #FBBF24; }
+
+  .card-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+
+  .card-subtitle {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  .card.teal .card-subtitle { color: #22D3EE; }
+  .card.violet .card-subtitle { color: #A78BFA; }
+  .card.amber .card-subtitle { color: #FBBF24; }
+  .card.emerald .card-subtitle { color: #34D399; }
+
+  .card-desc {
+    font-size: 10px;
+    line-height: 1.55;
+    color: #778899;
+    margin-bottom: 12px;
+    flex-grow: 1;
+  }
+
+  .card-divider {
+    height: 1px;
+    background: #1E2D3D;
+    margin-bottom: 10px;
+  }
+
+  .features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .features li {
+    font-size: 9.5px;
+    color: #99AABB;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 500;
+  }
+
+  .features li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .card.teal .features li::before { background: #22D3EE; }
+  .card.violet .features li::before { background: #A78BFA; }
+  .card.amber .features li::before { background: #FBBF24; }
+  .card.emerald .features li::before { background: #34D399; }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 32px;
+    background: #0C1018;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    font-size: 9px;
+    color: #445566;
+    font-weight: 500;
+  }
+
+  @media print {
+    body { padding: 0; background: #0F1419; }
+    .slide { border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="header">
+    <div class="brand">
+      <div class="brand-name">INFINIA</div>
+      <div class="brand-sub">TECHNOLOGIES</div>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot live"></div><span class="legend-text live">Live</span></div>
+      <div class="legend-item"><div class="legend-dot staging"></div><span class="legend-text staging">Staging</span></div>
+      <div class="legend-item"><div class="legend-dot dev"></div><span class="legend-text dev">In Development</span></div>
+    </div>
+  </div>
+
+  <div class="title-row">
+    <div class="title">Product Suite</div>
+    <div class="subtitle">Building the AI infrastructure layer for the enterprise</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="cards">
+
+    <!-- Vulcan -->
+    <div class="card teal">
+      <div class="card-top">
+        <div class="logo-circle">
+          <svg viewBox="0 0 680 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(340, 340)">
+              <g stroke="#22D3EE" stroke-width="5.5" stroke-linecap="round" fill="none">
+                <line x1="0" y1="-120" x2="0" y2="-78"/><line x1="31.1" y1="-115.9" x2="20.2" y2="-75.3"/>
+                <line x1="60" y1="-103.9" x2="39" y2="-67.5"/><line x1="84.9" y1="-84.9" x2="55.2" y2="-55.2"/>
+                <line x1="103.9" y1="-60" x2="67.5" y2="-39"/><line x1="115.9" y1="-31.1" x2="75.3" y2="-20.2"/>
+                <line x1="120" y1="0" x2="78" y2="0"/><line x1="115.9" y1="31.1" x2="75.3" y2="20.2"/>
+                <line x1="103.9" y1="60" x2="67.5" y2="39"/><line x1="84.9" y1="84.9" x2="55.2" y2="55.2"/>
+                <line x1="60" y1="103.9" x2="39" y2="67.5"/><line x1="31.1" y1="115.9" x2="20.2" y2="75.3"/>
+                <line x1="0" y1="120" x2="0" y2="78"/><line x1="-31.1" y1="115.9" x2="-20.2" y2="75.3"/>
+                <line x1="-60" y1="103.9" x2="-39" y2="67.5"/><line x1="-84.9" y1="84.9" x2="-55.2" y2="55.2"/>
+                <line x1="-103.9" y1="60" x2="-67.5" y2="39"/><line x1="-115.9" y1="31.1" x2="-75.3" y2="20.2"/>
+                <line x1="-120" y1="0" x2="-78" y2="0"/><line x1="-115.9" y1="-31.1" x2="-75.3" y2="-20.2"/>
+                <line x1="-103.9" y1="-60" x2="-67.5" y2="-39"/><line x1="-84.9" y1="-84.9" x2="-55.2" y2="-55.2"/>
+                <line x1="-60" y1="-103.9" x2="-39" y2="-67.5"/><line x1="-31.1" y1="-115.9" x2="-20.2" y2="-75.3"/>
+              </g>
+              <circle cx="0" cy="0" r="48" fill="#22D3EE"/>
+              <circle cx="0" cy="0" r="20" fill="#0F1419"/>
+            </g>
+          </svg>
+        </div>
+        <div class="status-badge live"><div class="dot"></div>Live</div>
+      </div>
+      <div class="card-name">Vulcan</div>
+      <div class="card-subtitle">Project Management</div>
+      <div class="card-desc">AI-powered product management platform with a 4-step wizard that transforms ideas into projects, Kanban boards, sprint planning, and 12 auto-generated documents.</div>
+      <div class="card-divider"></div>
+      <ul class="features">
+        <li>AI Product Wizard (4-step)</li>
+        <li>Kanban, List & Timeline Views</li>
+        <li>12 Auto-Generated Documents</li>
+        <li>SSO & Team Management</li>
+      </ul>
+    </div>
+
+    <!-- Vulcan DMS -->
+    <div class="card violet">
+      <div class="card-top">
+        <div class="logo-circle">
+          <svg viewBox="0 0 500 450" fill="#A78BFA" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="0,0 110,0 222,450 108,450" />
+            <rect x="170" y="0" width="330" height="88" />
+            <polygon points="170,88 500,88 340,450 222,450" />
+          </svg>
+        </div>
+        <div class="status-badge staging"><div class="dot"></div>Staging</div>
+      </div>
+      <div class="card-name">Vulcan DMS</div>
+      <div class="card-subtitle">Document Management</div>
+      <div class="card-desc">Notion-style document management system with rich Tiptap editor, review/approval workflows, version control, and a public MkDocs-style reader portal.</div>
+      <div class="card-divider"></div>
+      <ul class="features">
+        <li>Tiptap v3 Rich Editor</li>
+        <li>Review & Approval Workflows</li>
+        <li>Version History & Diff</li>
+        <li>Client-Themed Reader Portal</li>
+      </ul>
+    </div>
+
+    <!-- Test Pilot -->
+    <div class="card amber">
+      <div class="card-top">
+        <div class="logo-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="m6 17 5-5-5-5"/>
+            <path d="m13 17 5-5-5-5"/>
+          </svg>
+        </div>
+        <div class="status-badge dev"><div class="dot"></div>In Development</div>
+      </div>
+      <div class="card-name">Test Pilot</div>
+      <div class="card-subtitle">QA Automation</div>
+      <div class="card-desc">AI-driven QA platform that scans web apps, auto-generates test cases, and executes them via LLM-powered browser automation (Stagehand).</div>
+      <div class="card-divider"></div>
+      <ul class="features">
+        <li>AI Test Case Generation</li>
+        <li>Stagehand Browser Automation</li>
+        <li>Auth-Aware Testing</li>
+        <li>Real-time Streaming Results</li>
+      </ul>
+    </div>
+
+    <!-- Corerun AI Gateway -->
+    <div class="card emerald">
+      <div class="card-top">
+        <div class="logo-circle">
+          <svg viewBox="0 0 24 24" fill="#34D399" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 11h-3.18C14.4 9.84 13.3 9 12 9s-2.4.84-2.82 2H6c-.33 0-2-.1-2-2V8c0-1.83 1.54-2 2-2h10.18C16.6 7.16 17.7 8 19 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3c-1.3 0-2.4.84-2.82 2H6C4.39 4 2 5.06 2 8v1c0 2.94 2.39 4 4 4h3.18c.42 1.16 1.52 2 2.82 2s2.4-.84 2.82-2H18c.33 0 2 .1 2 2v1c0 1.83-1.54 2-2 2H7.82C7.4 16.84 6.3 16 5 16a3 3 0 0 0-3 3 3 3 0 0 0 3 3c1.3 0 2.4-.84 2.82-2H18c1.61 0 4-1.07 4-4v-1c0-2.93-2.39-4-4-4m1-7a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M5 20a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1"/>
+          </svg>
+        </div>
+        <div class="status-badge dev"><div class="dot"></div>In Development</div>
+      </div>
+      <div class="card-name">Corerun AI Gateway</div>
+      <div class="card-subtitle">LLM Infrastructure</div>
+      <div class="card-desc">Multi-tenant LLM API gateway (OpenAI-compatible) with Envoy proxy, auth & rate limiting, K8s model deployment, GitOps, and live GPU metrics.</div>
+      <div class="card-divider"></div>
+      <ul class="features">
+        <li>OpenAI-Compatible Unified API</li>
+        <li>Envoy + Go Control Plane</li>
+        <li>K8s Model Deploy & GitOps</li>
+        <li>Live GPU Metrics Dashboard</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span>Infinia Technologies &nbsp;|&nbsp; IHC Group &nbsp;|&nbsp; Abu Dhabi, UAE</span>
+    <span>March 2026</span>
+  </div>
+
+</div>
+</body>
+</html>

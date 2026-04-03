@@ -11,11 +11,12 @@ const NAV_LINKS = [
   { label: 'Products', href: '/products', iconName: 'catalog' as const },
   { label: 'Dashboard', href: '/dashboard', iconName: 'dashboard' as const },
   { label: 'Analytics', href: '/analytics', iconName: 'analytics' as const },
+  { label: 'Teams', href: '/teams', iconName: 'teams' as const },
 ]
 
 function NavIconLink({ to, iconName, label, isActive }: {
   to: string
-  iconName: 'home' | 'catalog' | 'dashboard' | 'analytics'
+  iconName: 'home' | 'catalog' | 'dashboard' | 'analytics' | 'teams'
   label: string
   isActive: boolean
 }) {

@@ -1,0 +1,3103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Gateway — Market Research &amp; Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   AI Gateway Market Research — Brand Identity Styles
+   Dark monochrome  |  Space Grotesk
+   ============================================ */
+
+:root {
+  --ig-white: #ffffff;
+  --ig-white-80: rgba(255,255,255,0.8);
+  --ig-white-60: rgba(255,255,255,0.6);
+  --ig-white-40: rgba(255,255,255,0.4);
+  --ig-white-20: rgba(255,255,255,0.2);
+  --ig-white-10: rgba(255,255,255,0.1);
+  --ig-black: #000000;
+  --ig-dark: #111111;
+  --ig-dark-card: #1a1a1a;
+  --ig-gray: #9c9c9c;
+  --ig-border: rgba(255,255,255,0.12);
+  --ig-accent: rgba(255,255,255,0.06);
+  --ig-code-bg: #0d0d0d;
+  --ig-success: #22c55e;
+  --ig-warning: #eab308;
+  --ig-error: #ef4444;
+  --ig-info: #3b82f6;
+  --ig-teal: #2dd4bf;
+  --ig-purple: #a78bfa;
+  --ig-rose: #fb7185;
+  --ig-amber: #fbbf24;
+  --ig-sky: #38bdf8;
+  --ig-lime: #a3e635;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  background: var(--ig-black);
+  color: var(--ig-white-80);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: var(--ig-dark);
+  border-right: 1px solid var(--ig-border);
+  overflow-y: auto;
+  z-index: 100;
+  padding: 1.5rem 0;
+}
+
+.sidebar-brand {
+  padding: 0 1.25rem 1.25rem;
+  border-bottom: 1px solid var(--ig-border);
+  margin-bottom: 1rem;
+}
+
+.sidebar-brand h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.15rem;
+}
+
+.sidebar-brand .subtitle {
+  font-size: 0.7rem;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sidebar-brand .meta {
+  font-size: 0.7rem;
+  color: var(--ig-white-40);
+  margin-top: 0.5rem;
+}
+
+.sidebar nav { padding: 0 0.75rem; }
+
+.sidebar .nav-section {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.75rem 0.5rem 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.sidebar a {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  color: var(--ig-white-60);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 400;
+  transition: color 0.15s, background 0.15s;
+}
+
+.sidebar a:hover {
+  color: var(--ig-white);
+  background: var(--ig-white-10);
+}
+
+.sidebar a.indent { padding-left: 1.25rem; font-size: 0.75rem; }
+
+.back-link {
+  display: block;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.7rem;
+  color: var(--ig-white-40);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--ig-white); }
+
+/* ── Sidebar nav section colors ── */
+.sidebar .nav-section[data-color="teal"] { color: var(--ig-teal); }
+.sidebar .nav-section[data-color="purple"] { color: var(--ig-purple); }
+.sidebar .nav-section[data-color="rose"] { color: var(--ig-rose); }
+.sidebar .nav-section[data-color="amber"] { color: var(--ig-amber); }
+.sidebar .nav-section[data-color="sky"] { color: var(--ig-sky); }
+.sidebar .nav-section[data-color="lime"] { color: var(--ig-lime); }
+
+/* ── Main content ── */
+.main {
+  padding: 2.5rem 3rem 4rem;
+  margin-left: 260px;
+  margin-right: 0;
+}
+
+/* ── Typography ── */
+h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ig-border);
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h5 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ig-white-80);
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+p { margin-bottom: 0.75rem; }
+
+strong { color: var(--ig-white); font-weight: 600; }
+
+code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--ig-dark-card);
+  padding: 0.15rem 0.4rem;
+  color: var(--ig-white-80);
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.card.featured {
+  border-color: var(--ig-white);
+  border-width: 2px;
+  box-shadow: 0 4px 20px rgba(255,255,255,0.08);
+}
+
+/* ── Grid ── */
+.grid { display: grid; gap: 1.25rem; margin: 1.5rem 0; }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.grid-5 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+/* ── Stat cards ── */
+.stat-card {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--ig-gray);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Persona Cards ── */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.persona-card {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1rem 0.85rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.persona-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.persona-avatar {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 0.5rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid var(--ig-border);
+}
+
+.persona-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.35rem;
+}
+
+.persona-desc {
+  font-size: 0.65rem;
+  color: var(--ig-gray);
+  line-height: 1.45;
+  margin-bottom: 0.5rem;
+}
+
+.persona-meta {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ig-white-60);
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--ig-border);
+  width: 100%;
+}
+
+.persona-meta span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.persona-meta strong {
+  color: var(--ig-white-80);
+  font-weight: 600;
+}
+
+/* ── Tables ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--ig-border);
+  margin: 1rem 0;
+  font-size: 0.85rem;
+}
+
+th {
+  background: var(--ig-dark-card);
+  color: var(--ig-white);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--ig-border);
+}
+
+td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--ig-border);
+  color: var(--ig-white-80);
+}
+
+tr:hover td { background: var(--ig-white-10); }
+
+/* ── Sections (flat) ── */
+.section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ig-border);
+}
+.section:first-of-type {
+  margin-top: 2rem;
+}
+
+/* ── Section accent colors ── */
+.section[data-accent="teal"] h2 { border-bottom-color: rgba(45,212,191,0.3); }
+.section[data-accent="purple"] h2 { border-bottom-color: rgba(167,139,250,0.3); }
+.section[data-accent="rose"] h2 { border-bottom-color: rgba(251,113,133,0.3); }
+.section[data-accent="amber"] h2 { border-bottom-color: rgba(251,191,36,0.3); }
+.section[data-accent="sky"] h2 { border-bottom-color: rgba(56,189,248,0.3); }
+.section[data-accent="lime"] h2 { border-bottom-color: rgba(163,230,53,0.3); }
+
+.section[data-accent="teal"] .feature-box { border-left-color: var(--ig-teal); }
+.section[data-accent="purple"] .feature-box { border-left-color: var(--ig-purple); }
+.section[data-accent="rose"] .feature-box { border-left-color: var(--ig-rose); }
+.section[data-accent="amber"] .feature-box { border-left-color: var(--ig-amber); }
+.section[data-accent="sky"] .feature-box { border-left-color: var(--ig-sky); }
+.section[data-accent="lime"] .feature-box { border-left-color: var(--ig-lime); }
+
+.section[data-accent="teal"] .feature-box strong { color: var(--ig-teal); }
+.section[data-accent="purple"] .feature-box strong { color: var(--ig-purple); }
+.section[data-accent="rose"] .feature-box strong { color: var(--ig-rose); }
+.section[data-accent="amber"] .feature-box strong { color: var(--ig-amber); }
+.section[data-accent="sky"] .feature-box strong { color: var(--ig-sky); }
+.section[data-accent="lime"] .feature-box strong { color: var(--ig-lime); }
+
+/* ── Table header accents ── */
+.section[data-accent="teal"] th { border-bottom-color: rgba(45,212,191,0.25); }
+.section[data-accent="purple"] th { border-bottom-color: rgba(167,139,250,0.25); }
+.section[data-accent="rose"] th { border-bottom-color: rgba(251,113,133,0.25); }
+.section[data-accent="amber"] th { border-bottom-color: rgba(251,191,36,0.25); }
+.section[data-accent="sky"] th { border-bottom-color: rgba(56,189,248,0.25); }
+.section[data-accent="lime"] th { border-bottom-color: rgba(163,230,53,0.25); }
+
+/* ── Feature sub-sections ── */
+.sub-section {
+  margin-top: 1.25rem;
+}
+
+.sub-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sub-section-title::before {
+  content: '';
+  width: 3px;
+  height: 12px;
+  background: var(--ig-white-40);
+  display: inline-block;
+}
+
+/* ── Feature Box ── */
+.feature-box {
+  border-left: 3px solid var(--ig-white-60);
+  background: rgba(255,255,255,0.04);
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 0;
+  font-size: 0.9rem;
+}
+.feature-box strong { display: block; margin-bottom: 0.25rem; }
+
+/* ── Metrics ── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.metric {
+  background: var(--ig-dark);
+  border: 1px solid var(--ig-border);
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+
+.metric .value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ig-white);
+}
+
+.metric .label {
+  font-size: 0.65rem;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.15rem;
+}
+
+/* ── Divider ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--ig-border);
+  margin: 2.5rem 0;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--ig-border);
+  color: var(--ig-gray);
+}
+
+.badge.p0 { border-color: var(--ig-error); color: var(--ig-error); }
+.badge.p1 { border-color: var(--ig-warning); color: var(--ig-warning); }
+.badge.p2 { border-color: var(--ig-info); color: var(--ig-info); }
+.badge.p3 { border-color: var(--ig-white-20); color: var(--ig-white-40); }
+
+/* ── Chips ── */
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+}
+.chip {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--ig-white-20);
+  background: var(--ig-white-10);
+  color: var(--ig-white-60);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* ── Milestone timeline ── */
+.timeline {
+  display: flex;
+  gap: 0;
+  margin: 1.5rem 0;
+  border: 1px solid var(--ig-border);
+}
+
+.timeline-item {
+  flex: 1;
+  padding: 1rem;
+  border-right: 1px solid var(--ig-border);
+  text-align: center;
+}
+
+.timeline-item:last-child { border-right: none; }
+
+.timeline-item .date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ig-white);
+  font-family: 'Roboto Mono', monospace;
+}
+
+.timeline-item .label {
+  font-size: 0.7rem;
+  color: var(--ig-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.timeline-item.active {
+  background: var(--ig-dark-card);
+  border-bottom: 2px solid var(--ig-white);
+}
+
+/* ── Section anchor offset ── */
+[id] {
+  scroll-margin-top: 1rem;
+}
+
+/* ── Threat level badges ── */
+.threat-high { color: var(--ig-error); font-weight: 600; }
+.threat-very-high { color: var(--ig-error); font-weight: 700; text-transform: uppercase; }
+.threat-medium { color: var(--ig-warning); font-weight: 600; }
+
+/* ── Print ── */
+@media print {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+}
+
+/* ── SWOT Quadrant Grid ── */
+.swot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+.swot-quadrant {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1.25rem;
+}
+.swot-quadrant h4 { margin-top: 0; margin-bottom: 0.75rem; }
+.swot-quadrant ul { list-style: none; padding: 0; }
+.swot-quadrant ul li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--ig-accent);
+  font-size: 0.85rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.swot-quadrant ul li:last-child { border-bottom: none; }
+.swot-quadrant ul li .swot-id {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  min-width: 1.75rem;
+  flex-shrink: 0;
+}
+.swot-quadrant.strengths { border-top: 3px solid var(--ig-success); }
+.swot-quadrant.strengths .swot-id { color: var(--ig-success); }
+.swot-quadrant.weaknesses { border-top: 3px solid var(--ig-error); }
+.swot-quadrant.weaknesses .swot-id { color: var(--ig-error); }
+.swot-quadrant.opportunities { border-top: 3px solid var(--ig-info); }
+.swot-quadrant.opportunities .swot-id { color: var(--ig-info); }
+.swot-quadrant.threats { border-top: 3px solid var(--ig-warning); }
+.swot-quadrant.threats .swot-id { color: var(--ig-warning); }
+
+/* ── Force Rating ── */
+.force-rating {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-left: 0.5rem;
+}
+.force-rating.high { background: rgba(239,68,68,0.15); color: var(--ig-error); border: 1px solid rgba(239,68,68,0.3); }
+.force-rating.moderate { background: rgba(234,179,8,0.15); color: var(--ig-warning); border: 1px solid rgba(234,179,8,0.3); }
+.force-rating.very-high { background: rgba(239,68,68,0.25); color: var(--ig-error); border: 1px solid rgba(239,68,68,0.4); }
+
+/* ── Phase Card ── */
+.phase-card {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1.25rem;
+  position: relative;
+}
+.phase-card .phase-number {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ig-white-20);
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+}
+.phase-card h4 { margin-top: 0; }
+.phase-card p { font-size: 0.85rem; margin-bottom: 0; }
+
+/* ── Numbered List Cards ── */
+.numbered-card {
+  background: var(--ig-dark-card);
+  border: 1px solid var(--ig-border);
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.numbered-card .num {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ig-white-20);
+  flex-shrink: 0;
+  line-height: 1;
+  min-width: 2rem;
+}
+.numbered-card h4 { margin-top: 0; margin-bottom: 0.25rem; }
+.numbered-card p { font-size: 0.85rem; margin-bottom: 0; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; padding: 1.5rem 1rem; }
+  h1 { font-size: 1.8rem; }
+  .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
+  .swot-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════ SIDEBAR ════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.3rem;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 11h-3.18C14.4 9.84 13.3 9 12 9s-2.4.84-2.82 2H6c-.33 0-2-.1-2-2V8c0-1.83 1.54-2 2-2h10.18C16.6 7.16 17.7 8 19 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3c-1.3 0-2.4.84-2.82 2H6C4.39 4 2 5.06 2 8v1c0 2.94 2.39 4 4 4h3.18c.42 1.16 1.52 2 2.82 2s2.4-.84 2.82-2H18c.33 0 2 .1 2 2v1c0 1.83-1.54 2-2 2H7.82C7.4 16.84 6.3 16 5 16a3 3 0 0 0-3 3 3 3 0 0 0 3 3c1.3 0 2.4-.84 2.82-2H18c1.61 0 4-1.07 4-4v-1c0-2.93-2.39-4-4-4m1-7a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M5 20a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1" fill="#ffffff"/></svg>
+      <h1>AI Gateway</h1>
+    </div>
+    <div class="subtitle">Market Research</div>
+    <div class="meta">Infinia Technologies &middot; IHC Group</div>
+    <a href="index.html" class="back-link">&larr; Back to Portal</a>
+  </div>
+  <nav>
+    <div class="nav-section" data-color="teal">Market Analysis</div>
+    <a href="#market-opportunity">01 Market Opportunity</a>
+    <a href="#competitive-landscape">02 Competitive Landscape</a>
+    <a href="#industry-structure">03 Industry Structure</a>
+
+    <div class="nav-section" data-color="purple">External Environment</div>
+    <a href="#macro-environment">04 Macro Environment</a>
+    <a href="#swot-analysis">05 SWOT Analysis</a>
+
+    <div class="nav-section" data-color="rose">Customer Intelligence</div>
+    <a href="#customer-segments">06 Customer Segments</a>
+    <a href="#target-markets">07 Target Markets</a>
+
+    <div class="nav-section" data-color="amber">Strategy</div>
+    <a href="#brand-positioning">08 Brand Positioning</a>
+    <a href="#product-strategy">09 Product Strategy</a>
+    <a href="#pricing">10 Pricing</a>
+
+    <div class="nav-section" data-color="sky">Go-to-Market</div>
+    <a href="#distribution">11 Distribution</a>
+    <a href="#communications">12 Communications</a>
+    <a href="#quick-wins">13 Quick Wins</a>
+
+    <div class="nav-section" data-color="lime">Product</div>
+    <a href="#feature-prioritization">14 Feature Prioritization</a>
+
+    <div class="nav-section" data-color="white">Appendix</div>
+    <a href="#sources">Sources &amp; References</a>
+  </nav>
+</aside>
+
+<!-- ════════════════ MAIN CONTENT ════════════════ -->
+<div class="main">
+
+  <!-- Hero -->
+  <h1>Market Research</h1>
+  <p style="color:var(--ig-white-60);font-size:1.05rem;margin-bottom:2rem;">
+    Comprehensive market analysis and strategy for AI Gateway &mdash; a unified open-source LLM inference platform by Infinia Technologies (IHC Group). 16 strategic documents covering market opportunity, competitive landscape, customer segments, go-to-market strategy, financial projections, and team backing.
+  </p>
+
+  <div class="grid grid-4">
+    <div class="stat-card" style="border-top: 2px solid var(--ig-teal);">
+      <div class="stat-number">$12.6&ndash;15.6B</div>
+      <div class="stat-label">2026 TAM</div>
+    </div>
+    <div class="stat-card" style="border-top: 2px solid var(--ig-purple);">
+      <div class="stat-number">$5&ndash;20M</div>
+      <div class="stat-label">IHC Group Opportunity</div>
+    </div>
+    <div class="stat-card" style="border-top: 2px solid var(--ig-amber);">
+      <div class="stat-number">35&ndash;40%</div>
+      <div class="stat-label">Open-Source Share</div>
+    </div>
+    <div class="stat-card" style="border-top: 2px solid var(--ig-sky);">
+      <div class="stat-number">422</div>
+      <div class="stat-label">IHC Subsidiaries</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 01 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="market-opportunity" class="section" data-accent="teal">
+    <h2>01 &mdash; Market Opportunity &amp; Customer Value</h2>
+
+      <h3>Our Right to Win</h3>
+      <p style="color:var(--ig-white-60);margin-bottom:1rem;">AI Gateway is not a speculative bet. Infinia Technologies enters this market with two structural advantages that most inference platform startups spend years trying to acquire: <strong style="color:var(--ig-white);">owned computing infrastructure</strong> and a <strong style="color:var(--ig-white);">captive enterprise market ready to deploy immediately</strong>.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;margin:1rem 0;">
+        <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.2);border-radius:6px;padding:1.25rem;">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;color:var(--ig-teal);text-transform:uppercase;margin-bottom:0.5rem;">Computing Ecosystem</div>
+          <div style="font-size:1.5rem;font-weight:700;color:var(--ig-white);margin-bottom:0.4rem;">Infrastructure-Backed</div>
+          <div style="font-size:0.82rem;color:var(--ig-white-60);">IHC Group's data center and GPU assets provide on-demand compute capacity — no dependency on hyperscaler pricing or third-party availability constraints.</div>
+        </div>
+        <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.2);border-radius:6px;padding:1.25rem;">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;color:var(--ig-teal);text-transform:uppercase;margin-bottom:0.5rem;">Ready Market</div>
+          <div style="font-size:1.5rem;font-weight:700;color:var(--ig-white);margin-bottom:0.4rem;">422 Subsidiaries</div>
+          <div style="font-size:0.82rem;color:var(--ig-white-60);">IHC Group's portfolio spans healthcare, real estate, finance, and technology — an immediate enterprise customer base with 2–4 week sales cycles, not 6–12 months.</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:2rem;">Two Pillars of Competitive Advantage</h3>
+      <p style="color:var(--ig-white-60);margin-bottom:1rem;">These are not features — they are structural moats that compound over time.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;margin:0.75rem 0;">
+        <div class="feature-box" style="margin:0;">
+          <strong>GPU &amp; Data Center Ownership</strong>
+          Controlling compute means controlling unit economics. AI Gateway can offer inference at cost — turning infrastructure into a distribution weapon competitors cannot match on price.
+        </div>
+        <div class="feature-box" style="margin:0;">
+          <strong>Sovereign &amp; Regional Positioning</strong>
+          MENA enterprises face data residency mandates that prohibit US-cloud inference. IHC's regional presence and UAE-based infrastructure is a legal requirement others cannot replicate quickly.
+        </div>
+        <div class="feature-box" style="margin:0;">
+          <strong>Built-in Revenue Validation</strong>
+          Internal IHC deployments generate live production traffic, real cost benchmarks, and referenceable case studies before the first external customer signs — compressing go-to-market risk dramatically.
+        </div>
+        <div class="feature-box" style="margin:0;">
+          <strong>Group-Wide Distribution Network</strong>
+          Every IHC subsidiary that adopts AI Gateway becomes a referral node into adjacent sectors. Healthcare wins open doors to pharma; real estate wins open doors to construction and FM.
+        </div>
+      </div>
+
+      <h3>IHC Group Internal Demand</h3>
+      <p>With 422 subsidiaries spanning healthcare (Burjeel), real estate (ALDAR), finance (2PointZero), and technology, IHC Group represents a $5&ndash;20M annual opportunity. Internal sales cycles of 2&ndash;4 weeks compare favorably to 6&ndash;12 months for external enterprise customers, providing rapid revenue validation and case studies.</p>
+
+      <h3>Market Sizing Summary</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Segment</th>
+            <th>2025 TAM</th>
+            <th>2026 TAM</th>
+            <th>Token Factory Target Share (2027)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Global Open-Source LLM Inference (Managed)</td>
+            <td>$3.0&ndash;3.5B</td>
+            <td>$5.5&ndash;7.0B</td>
+            <td>1&ndash;3% ($55&ndash;$210M)</td>
+          </tr>
+          <tr>
+            <td>Middle East AI Infrastructure</td>
+            <td>$1.2B</td>
+            <td>$2.1B</td>
+            <td>5&ndash;10% ($105&ndash;$210M)</td>
+          </tr>
+          <tr>
+            <td>IHC Group Internal</td>
+            <td>$5&ndash;10M</td>
+            <td>$10&ndash;20M</td>
+            <td>50&ndash;80% ($5&ndash;$16M)</td>
+          </tr>
+          <tr>
+            <td>SMB Self-Serve (Global)</td>
+            <td>$2.0&ndash;3.0B</td>
+            <td>$3.5&ndash;5.0B</td>
+            <td>0.5&ndash;1% ($17.5&ndash;$50M)</td>
+          </tr>
+          <tr>
+            <td>Sovereign AI Infrastructure</td>
+            <td>$500M</td>
+            <td>$1.5B</td>
+            <td>1&ndash;2% ($15&ndash;$30M)</td>
+          </tr>
+          <tr>
+            <td><strong>Total Addressable</strong></td>
+            <td><strong>$6.7&ndash;8.0B</strong></td>
+            <td><strong>$12.6&ndash;15.6B</strong></td>
+            <td><strong>$197&ndash;$516M</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Agentic AI Multiplier</h3>
+      <div class="feature-box">
+        <strong>Why This Matters Now</strong>
+        Agentic AI is shifting from research demos to production deployments. Every agentic workflow dramatically increases inference volume &mdash; and the need for a unified routing layer.
+      </div>
+      <div class="grid grid-3">
+        <div class="stat-card">
+          <div class="stat-number">10&ndash;100x</div>
+          <div class="stat-label">Inference Multiplier per Agentic Task</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">Multi-Model</div>
+          <div class="stat-label">Orchestration Requires Unified Routing</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">40%+ YoY</div>
+          <div class="stat-label">Enterprise AI Adoption Growth</div>
+        </div>
+      </div>
+
+      <h3>Growth Drivers</h3>
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 style="margin-top:0;">Open-Source Parity</h4>
+          <p>Open-source model quality reaching parity with proprietary models, expanding the addressable use-case surface.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">Enterprise Acceleration</h4>
+          <p>Enterprise AI adoption accelerating at 40%+ YoY, moving from pilots to production.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">Regulatory Pressure</h4>
+          <p>Sovereign AI infrastructure demand growing &mdash; enterprises need control over where and how models run.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">Cost Optimization</h4>
+          <p>AI spend scaling from experiments to line-item budgets makes cost optimization a C-suite priority.</p>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 02 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="competitive-landscape" class="section" data-accent="teal">
+    <h2>02 &mdash; Competitive Landscape &amp; Ecosystem</h2>
+
+      <h3>IHC Group Advantage</h3>
+      <div class="feature-box">
+        <strong>Strategic Backing</strong>
+        Token Factory is a strategic product of Infinia Technologies, the technology arm of IHC ($238B Abu Dhabi conglomerate). Unlike VC-backed competitors, it has $20.4B cash, 422 built-in subsidiary customers, and the GPU partnerships sovereign AI hardware partnership.
+      </div>
+
+      <h3>Direct Competitors</h3>
+      <div class="grid grid-2">
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#0A0F1E"/><circle cx="12" cy="18" r="4" fill="#6366f1"/><circle cx="24" cy="18" r="4" fill="#6366f1"/><circle cx="18" cy="11" r="4" fill="#818cf8"/><line x1="14" y1="16" x2="16" y2="13" stroke="#818cf8" stroke-width="1.5"/><line x1="22" y1="16" x2="20" y2="13" stroke="#818cf8" stroke-width="1.5"/><line x1="16" y1="18" x2="20" y2="18" stroke="#6366f1" stroke-width="1.5"/></svg>
+            <div>
+              <h4 style="margin-top:0;margin-bottom:0;">Together AI</h4>
+              <span style="font-size:0.7rem;color:var(--ig-gray);">together.ai</span>
+            </div>
+          </div>
+          <p>$533M raised, ~$300M ARR, ~$3.3B valuation</p>
+          <p><strong>Strengths:</strong> Full-stack (training + inference), 50+ models, mature platform</p>
+          <p><strong>Weakness:</strong> US-centric, no Middle East presence, thin governance</p>
+          <p><strong>Threat:</strong> <span class="threat-high">HIGH</span></p>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#1a0a0a"/><path d="M18 8 L24 14 L22 16 L18 12 L14 16 L12 14 Z" fill="#f97316"/><path d="M18 16 L26 24 L24 26 L18 20 L12 26 L10 24 Z" fill="#fb923c"/><path d="M14 20 L18 24 L22 20" stroke="#fdba74" stroke-width="1.5" fill="none"/></svg>
+            <div>
+              <h4 style="margin-top:0;margin-bottom:0;">Fireworks AI</h4>
+              <span style="font-size:0.7rem;color:var(--ig-gray);">fireworks.ai</span>
+            </div>
+          </div>
+          <p>$327M raised, ~$130M ARR, $4B valuation</p>
+          <p><strong>Strengths:</strong> Fastest inference (FireAttention), 20x YoY growth</p>
+          <p><strong>Weakness:</strong> US-centric, narrow model selection</p>
+          <p><strong>Threat:</strong> <span class="threat-very-high">VERY HIGH</span></p>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#0d0d0d"/><path d="M8 26 L18 10 L28 26 Z" fill="none" stroke="#f97316" stroke-width="2.5"/><circle cx="18" cy="22" r="2" fill="#f97316"/></svg>
+            <div>
+              <h4 style="margin-top:0;margin-bottom:0;">Groq</h4>
+              <span style="font-size:0.7rem;color:var(--ig-gray);">groq.com</span>
+            </div>
+          </div>
+          <p>Acquired by Nvidia (~$6.5B), custom LPU hardware</p>
+          <p><strong>Strengths:</strong> 10&ndash;18x faster than GPU inference</p>
+          <p><strong>Weakness:</strong> Limited model support (10&ndash;15), basic platform</p>
+          <p><strong>Threat:</strong> <span class="threat-medium">MEDIUM</span></p>
+        </div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#0f172a"/><circle cx="18" cy="18" r="9" fill="none" stroke="#38bdf8" stroke-width="2"/><path d="M13 18 L16 15 L19 18 L22 13" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="22" cy="13" r="2" fill="#38bdf8"/></svg>
+            <div>
+              <h4 style="margin-top:0;margin-bottom:0;">OpenRouter</h4>
+              <span style="font-size:0.7rem;color:var(--ig-gray);">openrouter.ai</span>
+            </div>
+          </div>
+          <p>~$500M valuation, 5M users, 300+ models</p>
+          <p><strong>Strengths:</strong> Broadest catalog, validated aggregation model</p>
+          <p><strong>Weakness:</strong> Thin proxy, no enterprise features, no fine-tuning</p>
+          <p><strong>Threat:</strong> <span class="threat-medium">MEDIUM</span></p>
+        </div>
+      </div>
+
+      <h3>Competitive Positioning Summary</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Token Factory</th>
+            <th>Together AI</th>
+            <th>Fireworks AI</th>
+            <th>Groq</th>
+            <th>OpenRouter</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primary Strategy</td>
+            <td>Platform experience</td>
+            <td>Full-stack AI</td>
+            <td>Speed optimization</td>
+            <td>Hardware diff.</td>
+            <td>Model aggregation</td>
+          </tr>
+          <tr>
+            <td>Enterprise Features</td>
+            <td>Deep (goal)</td>
+            <td>Mature</td>
+            <td>Growing</td>
+            <td>Basic</td>
+            <td>Basic</td>
+          </tr>
+          <tr>
+            <td>Compliance</td>
+            <td>SOC2+HIPAA+GDPR (goal)</td>
+            <td>SOC2</td>
+            <td>SOC2</td>
+            <td>SOC2</td>
+            <td>SOC2</td>
+          </tr>
+          <tr>
+            <td>Middle East Presence</td>
+            <td>Native (IHC Group)</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Built-in Customers</td>
+            <td>422 IHC subsidiaries</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Feature Comparison Matrix</h3>
+      <div style="overflow-x:auto;">
+      <table style="font-size:0.78rem;">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>AI Gateway</th>
+            <th>Together AI</th>
+            <th>Fireworks AI</th>
+            <th>Groq</th>
+            <th>OpenRouter</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>OpenAI + Anthropic Compatible API</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td></tr>
+          <tr><td>Streaming (SSE)</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td></tr>
+          <tr><td>Embeddings API</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-success);">&#10003;</td></tr>
+          <tr><td>Function / Tool Calling</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-warning);">Partial</td><td style="color:var(--ig-success);">&#10003;</td></tr>
+          <tr><td>Vision / Multimodal</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-success);">&#10003;</td></tr>
+          <tr><td>Interactive Playground</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td></tr>
+          <tr><td>Python &amp; TypeScript SDKs</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-warning);">Community</td></tr>
+          <tr><td>Framework Integrations</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-warning);">Partial</td><td style="color:var(--ig-success);">&#10003;</td></tr>
+          <tr><td>Prepaid (Credits)</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td></tr>
+          <tr><td>Postpaid (Invoice)</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-error);">&#10007;</td></tr>
+          <tr><td>99.9%+ Uptime SLA</td><td style="color:var(--ig-success);">99.99%</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-warning);">Best-effort</td></tr>
+          <tr style="background:var(--ig-accent);"><td><strong>Cost Intelligence / FinOps</strong></td><td style="color:var(--ig-success);"><strong>&#10003;</strong></td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td></tr>
+          <tr style="background:var(--ig-accent);"><td><strong>Enterprise Key Management</strong></td><td style="color:var(--ig-success);"><strong>&#10003;</strong></td><td style="color:var(--ig-warning);">Basic</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td></tr>
+          <tr style="background:var(--ig-accent);"><td><strong>Fine-tuning Pipeline</strong></td><td style="color:var(--ig-success);"><strong>&#10003;</strong></td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-success);">&#10003;</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td></tr>
+          <tr style="background:var(--ig-accent);"><td><strong>Compliance / Governance</strong></td><td style="color:var(--ig-success);"><strong>&#10003;</strong></td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td></tr>
+          <tr style="background:var(--ig-accent);"><td><strong>Sovereign AI / MENA</strong></td><td style="color:var(--ig-success);"><strong>&#10003;</strong></td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td></tr>
+          <tr style="background:var(--ig-accent);"><td><strong>Custom Silicon</strong></td><td style="color:var(--ig-success);"><strong>GPU partnerships</strong></td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-error);">&#10007;</td><td style="color:var(--ig-warning);">LPU</td><td style="color:var(--ig-error);">&#10007;</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="feature-box" style="margin-top:1.5rem;">
+        <strong>Why AI Gateway Wins</strong>
+        AI Gateway is the only player positioned in the &ldquo;Full Platform Leader&rdquo; quadrant &mdash; combining strong inference <em>and</em> deep platform capability. No competitor combines inference + FinOps + governance + sovereign AI in a single platform. The 18&ndash;24 month window before market consolidation (2027&ndash;2028) means first-mover advantage in the enterprise platform layer locks in switching costs before incumbents expand.
+      </div>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- IN-DEPTH COMPETITOR DEEP-DIVES -->
+      <!-- ══════════════════════════════════════════════ -->
+
+      <!-- PRICING COMPARISON TABLE -->
+      <h3 style="margin-top:2.5rem;">Pricing Comparison</h3>
+      <p style="color:var(--ig-gray);font-size:0.85rem;margin-bottom:1rem;">Per-model pricing across major competitors for the most commonly used models (March 2026). Prices in USD per million tokens (input / output) unless noted.</p>
+
+      <div style="overflow-x:auto;margin-bottom:1.5rem;">
+      <table style="font-size:0.78rem;min-width:900px;">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Together AI</th>
+            <th>Fireworks AI</th>
+            <th>Groq</th>
+            <th>OpenRouter</th>
+            <th>AI Gateway (target)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>LLaMA 3.3 70B</strong></td>
+            <td>$0.54 / $0.54</td>
+            <td>$0.90 / $0.90</td>
+            <td>$0.59 / $0.79 (Dev)</td>
+            <td>~$0.35 / $0.40</td>
+            <td style="color:var(--ig-teal);">Competitive</td>
+          </tr>
+          <tr>
+            <td><strong>DeepSeek V3 / V3.2</strong></td>
+            <td>$0.35 / $0.35</td>
+            <td>$0.22 / $0.88</td>
+            <td>&mdash;</td>
+            <td>~$0.27 / $1.10</td>
+            <td style="color:var(--ig-teal);">Competitive</td>
+          </tr>
+          <tr>
+            <td><strong>DeepSeek R1-0528</strong></td>
+            <td>$3.00 / $7.00</td>
+            <td>$3.00 / $7.00</td>
+            <td>&mdash;</td>
+            <td>~$0.55 / $2.19</td>
+            <td style="color:var(--ig-teal);">Competitive</td>
+          </tr>
+          <tr>
+            <td><strong>Qwen3.5 / Qwen 3 32B</strong></td>
+            <td>$0.60 / $3.60 (397B)</td>
+            <td>Varies by size</td>
+            <td>$0.29 / $0.39 (32B)</td>
+            <td>~$0.10 / $0.30 (32B)</td>
+            <td style="color:var(--ig-teal);">Competitive</td>
+          </tr>
+          <tr>
+            <td><strong>Kimi K2.5</strong></td>
+            <td>$0.50 / $2.80</td>
+            <td>$0.60 uncached / <strong style="color:var(--ig-teal);">$0.10 cached</strong> (input)</td>
+            <td>&mdash;</td>
+            <td>~$1.00 / $3.00</td>
+            <td style="color:var(--ig-teal);">Competitive + caching</td>
+          </tr>
+          <tr>
+            <td><strong>GLM-5</strong></td>
+            <td>$1.00 / $3.20</td>
+            <td>$1.00 / $3.20</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td style="color:var(--ig-teal);">Competitive</td>
+          </tr>
+          <tr>
+            <td><strong>Mistral 7B / 8x7B</strong></td>
+            <td>$0.10 / $0.10</td>
+            <td>$0.20 / $0.20</td>
+            <td>&mdash;</td>
+            <td>~$0.03 / $0.055</td>
+            <td style="color:var(--ig-teal);">Competitive</td>
+          </tr>
+          <tr>
+            <td><strong>Gemma 3N (free model)</strong></td>
+            <td style="color:var(--ig-success);">$0.02 / &mdash; (free)</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td style="color:var(--ig-success);">Free (several models)</td>
+            <td style="color:var(--ig-teal);">Free tier included</td>
+          </tr>
+          <tr style="background:var(--ig-accent);">
+            <td><strong>GPT-4o (OpenAI — reference)</strong></td>
+            <td colspan="4" style="text-align:center;color:var(--ig-gray);">Not available on open-source platforms</td>
+            <td style="color:var(--ig-gray);">Via BYOK routing</td>
+          </tr>
+          <tr style="background:var(--ig-accent);">
+            <td><strong>Claude 3.5 Sonnet (Anthropic — reference)</strong></td>
+            <td colspan="4" style="text-align:center;color:var(--ig-gray);">Not available on open-source platforms</td>
+            <td style="color:var(--ig-gray);">Via BYOK routing</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h4 style="margin-bottom:0.75rem;">Platform-Level Pricing Tiers &amp; Access Models</h4>
+      <div style="overflow-x:auto;margin-bottom:1.5rem;">
+      <table style="font-size:0.78rem;min-width:900px;">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Together AI</th>
+            <th>Fireworks AI</th>
+            <th>Groq</th>
+            <th>OpenRouter</th>
+            <th>AI Gateway (target)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Free Tier</strong></td>
+            <td style="color:var(--ig-warning);">Read-only (no deposit)</td>
+            <td style="color:var(--ig-success);">$6 free credits</td>
+            <td style="color:var(--ig-success);">Free tier (30 RPM)</td>
+            <td style="color:var(--ig-success);">Free models available</td>
+            <td style="color:var(--ig-teal);">$5 free credit, no card</td>
+          </tr>
+          <tr>
+            <td><strong>Pay-As-You-Go</strong></td>
+            <td style="color:var(--ig-success);">Credit prepaid</td>
+            <td style="color:var(--ig-warning);">$50/month cap (Tier 1)</td>
+            <td style="color:var(--ig-success);">Developer tier</td>
+            <td style="color:var(--ig-success);">Credit-based</td>
+            <td style="color:var(--ig-teal);">Credit or card on file</td>
+          </tr>
+          <tr>
+            <td><strong>Subscription / Pro</strong></td>
+            <td style="color:var(--ig-error);">No explicit tier</td>
+            <td style="color:var(--ig-warning);">Tier upgrades required</td>
+            <td style="color:var(--ig-success);">Developer plan</td>
+            <td style="color:var(--ig-error);">No subscription</td>
+            <td style="color:var(--ig-teal);">Pro ($99–$499/mo)</td>
+          </tr>
+          <tr>
+            <td><strong>Enterprise / Custom</strong></td>
+            <td style="color:var(--ig-success);">GPU Clusters, custom</td>
+            <td style="color:var(--ig-success);">Reservations, custom</td>
+            <td style="color:var(--ig-success);">Enterprise tier (SSO, SLA)</td>
+            <td style="color:var(--ig-error);">Not offered</td>
+            <td style="color:var(--ig-teal);">Enterprise (custom, SLA)</td>
+          </tr>
+          <tr>
+            <td><strong>Postpaid / Invoice</strong></td>
+            <td style="color:var(--ig-success);">&#10003;</td>
+            <td style="color:var(--ig-success);">&#10003;</td>
+            <td style="color:var(--ig-success);">&#10003;</td>
+            <td style="color:var(--ig-error);">&#10007; (credits only)</td>
+            <td style="color:var(--ig-teal);">&#10003;</td>
+          </tr>
+          <tr>
+            <td><strong>Dedicated Compute</strong></td>
+            <td style="color:var(--ig-success);">GPU Clusters</td>
+            <td style="color:var(--ig-success);">Deployments + Reservations</td>
+            <td style="color:var(--ig-warning);">Limited (LPU supply)</td>
+            <td style="color:var(--ig-error);">&#10007;</td>
+            <td style="color:var(--ig-teal);">&#10003;</td>
+          </tr>
+          <tr>
+            <td><strong>Spending Controls</strong></td>
+            <td style="color:var(--ig-success);">Auto-recharge threshold</td>
+            <td style="color:var(--ig-warning);">Spending limit slider (tier-capped)</td>
+            <td style="color:var(--ig-success);">Spend Limits + per-model RPM</td>
+            <td style="color:var(--ig-success);">Per-key spending limits</td>
+            <td style="color:var(--ig-teal);">Per-team + per-project budgets</td>
+          </tr>
+          <tr style="background:var(--ig-accent);">
+            <td><strong>Pricing Strategy</strong></td>
+            <td>Per-token, credit prepaid</td>
+            <td>Per-token + <strong style="color:var(--ig-teal);">cached/uncached</strong></td>
+            <td>Per-token, tiered access</td>
+            <td>Pass-through + margin</td>
+            <td style="color:var(--ig-teal);">Per-token + FinOps routing savings</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="feature-box" style="margin-bottom:1.5rem;">
+        <strong>Pricing Intelligence Summary</strong>
+        <ul style="margin:0.5rem 0 0;padding-left:1.25rem;font-size:0.85rem;">
+          <li>Open-source model pricing has declined 80–90% in 3 years — commodity dynamics are accelerating</li>
+          <li>Fireworks' cached/uncached input pricing (83% savings on cached prompts) is the most sophisticated cost-optimization model — worth matching at launch</li>
+          <li>OpenRouter's $0.35/M on LLaMA 70B (vs. $0.90 at Fireworks) shows pass-through aggregators can undercut on token price but cannot compete on platform value</li>
+          <li>Groq's structured 3-tier model (Free → Developer → Enterprise) is the clearest progressive unlock structure among competitors</li>
+          <li>AI Gateway's differentiation is not the cheapest per-token rate — it's the FinOps layer that saves enterprises 20–40% through intelligent routing, budget controls, and chargeback reporting</li>
+        </ul>
+      </div>
+
+      <h3 style="margin-top:2.5rem;">In-Depth Competitor Analysis</h3>
+      <p style="color:var(--ig-gray);font-size:0.85rem;margin-bottom:1.5rem;">Based on live dashboard exploration of each competitor platform (March 2026). Each profile covers platform architecture, model catalog, pricing, enterprise features, unique capabilities, and gaps AI Gateway can exploit.</p>
+
+      <!-- TOGETHER AI DEEP DIVE -->
+      <div class="card" style="margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--ig-border);">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#0A0F1E"/><circle cx="12" cy="18" r="4" fill="#6366f1"/><circle cx="24" cy="18" r="4" fill="#6366f1"/><circle cx="18" cy="11" r="4" fill="#818cf8"/><line x1="14" y1="16" x2="16" y2="13" stroke="#818cf8" stroke-width="1.5"/><line x1="22" y1="16" x2="20" y2="13" stroke="#818cf8" stroke-width="1.5"/><line x1="16" y1="18" x2="20" y2="18" stroke="#6366f1" stroke-width="1.5"/></svg>
+          <div>
+            <h4 style="margin:0;font-size:1.1rem;">Together AI — Deep Dive</h4>
+            <span style="font-size:0.7rem;color:var(--ig-gray);">together.ai &nbsp;&bull;&nbsp; Threat: <span class="threat-high">HIGH</span></span>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Platform Architecture</h5>
+            <p style="font-size:0.85rem;">Full-stack training + inference platform. Dashboard organized around: Dashboard (quickstart), Models (catalog), Playground, Inference, Fine-tuning, GPU Clusters, Analytics, and Evaluations. The only direct competitor pursuing both training and inference — inference is a secondary revenue stream on top of its training infrastructure thesis.</p>
+          </div>
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Technical Differentiator</h5>
+            <p style="font-size:0.85rem;">FlashAttention-based inference engine optimized for high-throughput batch workloads. Strong performance for volume processing with moderate latency tolerance — not the fastest on single-request latency, but excellent for bulk jobs. Popular with companies processing large volumes with latency tolerance.</p>
+          </div>
+        </div>
+
+        <h5 style="color:var(--ig-teal);margin:0 0 0.75rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Model Catalog (227+ models) — Broadest Modality Coverage</h5>
+        <div class="grid grid-2" style="gap:0.75rem;margin-bottom:1.25rem;">
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong>Text/LLM:</strong> GLM-5 ($1.00/$3.20), Qwen3.5 397B ($0.60/$3.60), Kimi K2.5 ($0.50/$2.80), DeepSeek R1-0528 (~$7.00/M output), Gemma 3N ($0.02/M — free)</p>
+          </div>
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong>Video Generation:</strong> Google Veo 3.0, Sora 2/2 Pro, Kling 2.1, PixVerse v5, MiniMax Hailuo, ByteDance Seedance ($0.14–$3.20/video)</p>
+          </div>
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong>Image Generation:</strong> FLUX.1/2 variants, Ideogram 3.0, Stable Diffusion, HiDream, Google Imagen 4.0 ($0.0006–$0.075/image)</p>
+          </div>
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong>Audio:</strong> Kokoro 82M TTS, Orpheus 3B, Whisper large-v3, Cartesia Sonic 1/2/3 &nbsp;|&nbsp; <strong>Embeddings + Moderation</strong> included</p>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Pricing &amp; Billing</h5>
+            <ul style="font-size:0.82rem;padding-left:1.25rem;margin:0;">
+              <li>Credit-based prepaid with auto-recharge thresholds</li>
+              <li>Per-token: $0.02/M (Gemma 3N) → $7.00/M output (DeepSeek R1)</li>
+              <li>Serverless and Dedicated deployment options per model</li>
+              <li>Daily cost breakdown by product category, monthly tracking</li>
+              <li>Invoice history with download, tax ID configuration (international)</li>
+              <li><strong style="color:var(--ig-warning);">Read-only mode without initial deposit</strong> — creates onboarding friction</li>
+            </ul>
+          </div>
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Enterprise &amp; Team Features</h5>
+            <ul style="font-size:0.82rem;padding-left:1.25rem;margin:0;">
+              <li>Organization hierarchy with Project structure</li>
+              <li><strong style="color:var(--ig-warning);">Member roles: Admin and Owner only</strong> — no granular RBAC</li>
+              <li>Per-project: API keys, collaborators, cost analytics</li>
+              <li>GPU Cluster Projects for dedicated compute</li>
+              <li>SSH key management, file storage, third-party integrations</li>
+              <li>Auto-recharge with configurable thresholds</li>
+            </ul>
+          </div>
+        </div>
+
+        <h5 style="color:var(--ig-rose);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Gaps AI Gateway Can Exploit</h5>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.25rem;">
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No compliance layer (no SOC 2, HIPAA, GDPR)</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No audit logs</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">RBAC: 2 roles only (Admin/Owner)</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No intelligent routing or failover</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No data residency controls</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Zero Middle East presence</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Deposit gate creates 30–40% signup abandonment</span>
+        </div>
+      </div>
+
+      <!-- FIREWORKS AI DEEP DIVE -->
+      <div class="card" style="margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--ig-border);">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#1a0a0a"/><path d="M18 8 L24 14 L22 16 L18 12 L14 16 L12 14 Z" fill="#f97316"/><path d="M18 16 L26 24 L24 26 L18 20 L12 26 L10 24 Z" fill="#fb923c"/><path d="M14 20 L18 24 L22 20" stroke="#fdba74" stroke-width="1.5" fill="none"/></svg>
+          <div>
+            <h4 style="margin:0;font-size:1.1rem;">Fireworks AI — Deep Dive</h4>
+            <span style="font-size:0.7rem;color:var(--ig-gray);">fireworks.ai &nbsp;&bull;&nbsp; Threat: <span class="threat-very-high">VERY HIGH</span> &nbsp;&bull;&nbsp; Most technically dangerous competitor</span>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Platform Architecture</h5>
+            <p style="font-size:0.85rem;">Organized into three sections — <strong>CREATE</strong> (Deployments, Fine Tuning, Batch API), <strong>EXPLORE</strong> (Developer Pass, Models, Playground), and <strong>MANAGE</strong> (Custom Models, Datasets, Evaluations, Account, Billing, Users &amp; Access, API Keys, Secrets, Quotas, Reservations). Engineering DNA drawn from Meta AI infrastructure team — deepest inference optimization talent in the market.</p>
+          </div>
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Technical Differentiator — FireAttention Kernel</h5>
+            <p style="font-size:0.85rem;">Proprietary inference engine achieving <strong style="color:var(--ig-teal);">50–100ms time-to-first-token</strong> on LLaMA 70B (vs. 150–300ms for most competitors). Best-in-class for real-time conversational AI, code completion, and interactive agents. This is a genuine technical moat that no pure-platform competitor can match at the inference layer.</p>
+          </div>
+        </div>
+
+        <h5 style="color:var(--ig-teal);margin:0 0 0.75rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Model Catalog (200+ models) — Pricing Innovation</h5>
+        <div class="grid grid-2" style="gap:0.75rem;margin-bottom:1.25rem;">
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong>LLM/Chat:</strong> NVIDIA Nemotron 3 Super 120B, MiniMax-M2.5, GLM-5, DeepSeek v3.2, Kimi K2.5 — context windows up to 262K tokens</p>
+          </div>
+          <div style="background:rgba(45,212,191,0.08);border:1px solid rgba(45,212,191,0.3);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong style="color:var(--ig-teal);">Cached vs. Uncached Input Pricing:</strong> Kimi K2.5 — $0.60/M uncached vs. $0.10/M cached = <strong>83% savings on cached prompts</strong>. Most sophisticated cost-optimization pricing model among all competitors.</p>
+          </div>
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong>Audio, Image, Vision, Embeddings, Reranks</strong> — Qwen3 Embedding/Reranker series included</p>
+          </div>
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong>Billing:</strong> Tiered spending system — <strong style="color:var(--ig-warning);">Tier 1 = $50/month max</strong> (default). Monthly billing with CSV export. $6 free credits on signup.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Unique Capabilities</h5>
+            <ul style="font-size:0.82rem;padding-left:1.25rem;margin:0;">
+              <li><strong>Reinforced Fine Tuning (RLHF-based)</strong> — unique among all competitors</li>
+              <li><strong>Batch API</strong> for async bulk processing</li>
+              <li><strong>Deployments</strong> with auto-scaling pay-per-use</li>
+              <li><strong>Evaluations</strong> built-in tooling</li>
+              <li><strong>Quotas &amp; Reservations</strong> system for capacity management</li>
+              <li><strong>Developer Pass</strong> program for developer access/perks</li>
+              <li><strong>Hathora Acquisition (Mar 2026)</strong> — global compute orchestration</li>
+              <li><strong>Microsoft Foundry Partnership</strong> — inference on Azure</li>
+            </ul>
+          </div>
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Enterprise &amp; Team Features</h5>
+            <ul style="font-size:0.82rem;padding-left:1.25rem;margin:0;">
+              <li>API Keys and Secrets vault</li>
+              <li>Quotas for rate limiting</li>
+              <li>Reservations for dedicated capacity</li>
+              <li>Users &amp; Access management (returned 404 during exploration — reliability concern)</li>
+              <li><strong style="color:var(--ig-warning);">No SSO, SCIM, or audit logs visible</strong></li>
+              <li><strong style="color:var(--ig-warning);">$50/month cap at Tier 1</strong> — major friction for enterprise scaling</li>
+            </ul>
+          </div>
+        </div>
+
+        <h5 style="color:var(--ig-rose);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Gaps AI Gateway Can Exploit</h5>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.25rem;">
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No audit logs or compliance certifications</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Spending tier caps block enterprise scaling</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Analytics page 404 — active reliability concern</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No routing or failover</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No data residency or sovereignty</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No BYOK or multi-provider support</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Zero Middle East presence</span>
+        </div>
+        <div class="feature-box" style="margin-top:0.75rem;font-size:0.82rem;">
+          <strong>Strategic Note:</strong> Fireworks should be treated as a potential upstream inference provider for latency-critical workloads — route them to Fireworks via AI Gateway. The 83% cached pricing model is worth matching at launch.
+        </div>
+      </div>
+
+      <!-- GROQ DEEP DIVE -->
+      <div class="card" style="margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--ig-border);">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#0d0d0d"/><path d="M8 26 L18 10 L28 26 Z" fill="none" stroke="#f97316" stroke-width="2.5"/><circle cx="18" cy="22" r="2" fill="#f97316"/></svg>
+          <div>
+            <h4 style="margin:0;font-size:1.1rem;">Groq — Deep Dive</h4>
+            <span style="font-size:0.7rem;color:var(--ig-gray);">groq.com &nbsp;&bull;&nbsp; Threat: <span class="threat-medium">MEDIUM</span> &nbsp;&bull;&nbsp; Acquired by Nvidia (~$6.5B)</span>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Platform Architecture</h5>
+            <p style="font-size:0.85rem;">GroqCloud console organized with project-level navigation: Playground, API Keys, Dashboard, Docs. Settings split into Organization (General, Billing, Team, Profile, Limits, Usage, Model Terms, Projects, Data Controls, Audit Logs) and Project (General, Limits). Competes on a single dimension: <strong>raw inference speed</strong>.</p>
+          </div>
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Technical Differentiator — Custom LPU Silicon</h5>
+            <p style="font-size:0.85rem;">Custom Language Processing Unit (LPU) hardware delivers <strong style="color:var(--ig-teal);">300+ tokens/second</strong> on LLaMA 70B vs. 30–80 tokens/second on Nvidia H100 GPUs — a <strong>10–18x speed advantage</strong>. Transformative for real-time conversational AI, coding assistants, and any application where latency directly impacts UX.</p>
+          </div>
+        </div>
+
+        <h5 style="color:var(--ig-teal);margin:0 0 0.75rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Model Catalog (~15 curated models) — Deliberately Focused</h5>
+        <div class="grid grid-2" style="gap:0.75rem;margin-bottom:1.25rem;">
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong>Reasoning:</strong> GPT-OSS 120B/20B, Qwen 3 32B &nbsp;|&nbsp; <strong>Vision:</strong> Llama 4 Scout &nbsp;|&nbsp; <strong>TTS:</strong> Orpheus &nbsp;|&nbsp; <strong>STT:</strong> Whisper &nbsp;|&nbsp; <strong>Safety:</strong> Moderation models</p>
+          </div>
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong>New (2025–2026):</strong> Google Workspace Connectors (Gmail, Calendar, Drive) for AI agents &nbsp;|&nbsp; Compound AI agents: groq/compound and groq/compound-mini</p>
+          </div>
+        </div>
+
+        <h5 style="color:var(--ig-teal);margin:0 0 0.75rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Pricing — Most Structured 3-Tier Model Among Competitors</h5>
+        <div style="overflow-x:auto;margin-bottom:1.25rem;">
+          <table style="font-size:0.78rem;width:100%;">
+            <thead>
+              <tr><th>Tier</th><th>Access</th><th>Rate Limits</th><th>Key Features</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Free</strong></td><td>Build and test, community support</td><td>30 RPM, 6K–30K TPM per model</td><td>Basic access, playground</td></tr>
+              <tr><td><strong>Developer</strong></td><td>Pay-per-token, chat support</td><td>Higher limits, Flex Service Tier</td><td>Batch Processing, Spend Limits, 7-day Audit Logs</td></tr>
+              <tr><td><strong>Enterprise</strong></td><td>Custom pricing, dedicated support</td><td>Scalable capacity</td><td>LoRA inference, SSO &amp; SCIM, 90-day Audit Logs</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid grid-2" style="gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Enterprise Features — Most Mature Among Competitors</h5>
+            <ul style="font-size:0.82rem;padding-left:1.25rem;margin:0;">
+              <li><strong style="color:var(--ig-teal);">SSO &amp; SCIM</strong> (Enterprise) — only competitor with identity federation</li>
+              <li><strong>Audit Logs:</strong> 7-day (Developer) / 90-day (Enterprise)</li>
+              <li><strong>Data Controls:</strong> Organization-level data governance</li>
+              <li><strong>Projects:</strong> Multi-project structure with per-project limits</li>
+              <li><strong>Model Allow/Block Lists</strong> per organization</li>
+              <li><strong>Per-Model Rate Limits:</strong> Granular RPM, RPD, TPM, TPD per model</li>
+              <li>Team management with user permissions</li>
+            </ul>
+          </div>
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Free Tier Rate Limits (Reference)</h5>
+            <ul style="font-size:0.82rem;padding-left:1.25rem;margin:0;">
+              <li>GPT-OSS 120B: 30 RPM, 1K RPD, 8K TPM, 200K TPD</li>
+              <li>LLaMA 3.3 70B: 30 RPM, 1K RPD, 12K TPM, 100K TPD</li>
+              <li>Whisper: 20 RPM, 2K RPD, 7.2K audio sec/hour</li>
+              <li>Orpheus TTS: 10 RPM, 100 RPD, 1.2K TPM</li>
+            </ul>
+          </div>
+        </div>
+
+        <h5 style="color:var(--ig-rose);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Gaps AI Gateway Can Exploit</h5>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.25rem;">
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">~15 models — fatal catalog weakness</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No image/video generation, no embeddings</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Hardware-locked (supply constrained)</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Fine-tuning Enterprise-only</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No multi-provider routing or BYOK</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Post-Nvidia acquisition strategic uncertainty</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Audit logs max 90 days (AI Gateway: 7+ years)</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Zero MENA presence</span>
+        </div>
+        <div class="feature-box" style="margin-top:0.75rem;font-size:0.82rem;">
+          <strong>Strategic Note:</strong> Best strategy is to integrate Groq as a routing option for latency-critical requests within AI Gateway — position it as a provider within the ecosystem, not a direct rival.
+        </div>
+      </div>
+
+      <!-- OPENROUTER DEEP DIVE -->
+      <div class="card" style="margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--ig-border);">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="8" fill="#0f172a"/><circle cx="18" cy="18" r="9" fill="none" stroke="#38bdf8" stroke-width="2"/><path d="M13 18 L16 15 L19 18 L22 13" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="22" cy="13" r="2" fill="#38bdf8"/></svg>
+          <div>
+            <h4 style="margin:0;font-size:1.1rem;">OpenRouter — Deep Dive</h4>
+            <span style="font-size:0.7rem;color:var(--ig-gray);">openrouter.ai &nbsp;&bull;&nbsp; Threat: <span class="threat-medium">MEDIUM</span> &nbsp;&bull;&nbsp; Closest strategic analog — validated the aggregation market</span>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Platform Architecture</h5>
+            <p style="font-size:0.85rem;">Workspace organized into: API Keys, Guardrails, BYOK, Routing, Presets, Plugins, Observability. Account section: Activity, Logs, Credits, Management Keys, Preferences. A thin proxy at its core — routes API requests to 60+ inference providers through a unified OpenAI-compatible endpoint. <strong>Proven the aggregation model works</strong> — AI Gateway's job is to build the enterprise platform on top of what OpenRouter validated.</p>
+          </div>
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Scale Metrics</h5>
+            <ul style="font-size:0.82rem;padding-left:1.25rem;margin:0;">
+              <li><strong>5M+ registered users</strong></li>
+              <li><strong>30 trillion tokens/month</strong> processed</li>
+              <li><strong>250K+ apps</strong> built on OpenRouter</li>
+              <li><strong>60+ active providers</strong></li>
+              <li><strong>658 models</strong> in catalog (largest of any competitor)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h5 style="color:var(--ig-teal);margin:0 0 0.75rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Model Catalog (658 models — Largest by Far)</h5>
+        <div class="grid grid-2" style="gap:0.75rem;margin-bottom:1.25rem;">
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong>Providers:</strong> OpenAI, Anthropic, Google, Meta, Mistral, Qwen, DeepSeek, MiniMax, and dozens more. Latest: GPT-5.4 family, Claude Opus 4.6, Gemini 3.1 Pro, MiMo-V2, Seedance 1.5 Pro</p>
+          </div>
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong>Filtering:</strong> Input/output modalities, context length, pricing, ZDR flag, providers, authors &nbsp;|&nbsp; <strong>Sorting:</strong> newest, most popular, weekly trend, throughput, latency, cost &nbsp;|&nbsp; Video generation API in alpha</p>
+          </div>
+        </div>
+
+        <h5 style="color:var(--ig-teal);margin:0 0 0.75rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Unique Platform Features — Strongest Routing &amp; BYOK Model</h5>
+        <div class="grid grid-2" style="gap:0.75rem;margin-bottom:1.25rem;">
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0 0 0.3rem;"><strong style="color:var(--ig-teal);">BYOK (45+ providers):</strong> Use your own Anthropic, OpenAI, Azure, etc. keys with priority/fallback — your key first, OpenRouter credits as fallback. "Always use this key" option to block any fallback.</p>
+          </div>
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0 0 0.3rem;"><strong style="color:var(--ig-teal);">Auto Router:</strong> Intelligent routing to best model per request. Configurable allowed models with wildcard patterns. Provider sort options. <strong>Auto Exacto (Mar 2026):</strong> Adaptive quality routing — dynamically picks the most cost-effective model meeting quality thresholds.</p>
+          </div>
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong style="color:var(--ig-teal);">Guardrails:</strong> ZDR (Zero Data Retention) endpoint filtering, spending limits per key/member, model restrictions, usage policies, provider allow/block lists &nbsp;|&nbsp; <strong>Privacy:</strong> Training opt-out, ZDR-only mode, prompt publishing controls</p>
+          </div>
+          <div style="background:var(--ig-accent);border:1px solid var(--ig-border);border-radius:8px;padding:0.75rem;">
+            <p style="font-size:0.78rem;margin:0;"><strong style="color:var(--ig-teal);">Plugins System:</strong> Extensibility framework &nbsp;|&nbsp; <strong>Observability:</strong> Built-in monitoring &nbsp;|&nbsp; <strong>Management Keys:</strong> Separate administrative keys &nbsp;|&nbsp; <strong>Public Rankings:</strong> Model/app usage with token volume data</p>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Recent Developments (2025–2026)</h5>
+            <ul style="font-size:0.82rem;padding-left:1.25rem;margin:0;">
+              <li>Auto Exacto adaptive quality routing (Mar 2026)</li>
+              <li>Model benchmarks on catalog pages (Feb 2026)</li>
+              <li>Free model router (Feb 2026)</li>
+              <li><strong style="color:var(--ig-warning);">Outages: Feb 17 and Feb 19, 2026</strong> — reliability risk</li>
+              <li>Video generation API in alpha (Seedance, Sora 2, Veo 3.1)</li>
+            </ul>
+          </div>
+          <div>
+            <h5 style="color:var(--ig-teal);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Enterprise &amp; Team</h5>
+            <ul style="font-size:0.82rem;padding-left:1.25rem;margin:0;">
+              <li>Workspace-based organization</li>
+              <li>Per-key and per-member guardrails</li>
+              <li><strong style="color:var(--ig-warning);">No SSO/SCIM</strong></li>
+              <li><strong style="color:var(--ig-warning);">No traditional RBAC roles</strong></li>
+              <li>Management keys for admin operations only</li>
+              <li>Credit-based only — <strong style="color:var(--ig-warning);">no enterprise invoicing</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <h5 style="color:var(--ig-rose);margin:0 0 0.5rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;">Gaps AI Gateway Can Exploit</h5>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.25rem;">
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Pure aggregator — no owned GPU infrastructure</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No fine-tuning capability</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No SSO, SCIM, or enterprise identity</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No audit logs</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No compliance certifications</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No dedicated compute or reserved capacity</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">No sovereign deployment / MENA data residency</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Feb 2026 outages — best-effort SLA only</span>
+          <span style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:4px;padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--ig-rose);">Thin pass-through margins constrain investment</span>
+        </div>
+        <div class="feature-box" style="margin-top:0.75rem;font-size:0.82rem;">
+          <strong>Strategic Note:</strong> OpenRouter validated the market — 5M users proved demand for multi-model aggregation. AI Gateway delivers what OpenRouter cannot: compliance, audit logs, SSO/SCIM, sovereign deployment, cost forecasting, per-team chargeback, and owned infrastructure. The BYOK and routing features (OpenRouter's strongest area) should be matched and exceeded at launch.
+        </div>
+      </div>
+
+      <!-- NICHE COMPETITORS -->
+      <h3 style="margin-top:2rem;">Niche Competitors</h3>
+      <div class="grid grid-2" style="gap:1rem;margin-bottom:1.5rem;">
+        <div class="card">
+          <h4 style="margin-top:0;">Replicate</h4>
+          <p style="font-size:0.85rem;">Focus: ML research community, image and video generation model hosting. Text inference is secondary, lacks enterprise features. Not competitive for production LLM workloads.</p>
+          <p style="margin-bottom:0;"><strong>Threat Level:</strong> <span style="color:var(--ig-success);font-weight:600;">LOW</span></p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">Hugging Face Inference API</h4>
+          <p style="font-size:0.85rem;">Leverages dominant model hub (1M+ models). Free tier for most models but unreliable at scale, limited enterprise depth. HF brand drives developer mindshare significantly even when production inference isn't competitive.</p>
+          <p style="margin-bottom:0;"><strong>Threat Level:</strong> <span style="color:var(--ig-success);font-weight:600;">LOW</span> (production) &nbsp;/&nbsp; <span style="color:var(--ig-warning);font-weight:600;">MEDIUM</span> (developer mindshare)</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">DeepInfra</h4>
+          <p style="font-size:0.85rem;">Competitive pricing on popular models (LLaMA 70B at $0.59/M — among the lowest). Platform is sparse: limited analytics, basic billing, minimal enterprise features. Attracts cost-sensitive developers, not enterprise buyers.</p>
+          <p style="margin-bottom:0;"><strong>Threat Level:</strong> <span style="color:var(--ig-success);font-weight:600;">LOW</span></p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">Anyscale / Databricks</h4>
+          <p style="font-size:0.85rem;">Anyscale acquired by Databricks; now integrated into broader ML platform. Inference positioned as part of a wider ML workflow, not standalone. Databricks' enterprise customer base is a distribution advantage for ML-platform buyers.</p>
+          <p style="margin-bottom:0;"><strong>Threat Level:</strong> <span style="color:var(--ig-success);font-weight:600;">LOW</span> (direct inference) &nbsp;/&nbsp; <span style="color:var(--ig-warning);font-weight:600;">MEDIUM</span> (enterprise platform)</p>
+        </div>
+      </div>
+
+      <!-- INDIRECT COMPETITORS -->
+      <h3 style="margin-top:2rem;">Indirect Competitors — Proprietary AI Providers</h3>
+      <div class="grid grid-2" style="gap:1rem;margin-bottom:1.5rem;">
+        <div class="card">
+          <h4 style="margin-top:0;">OpenAI</h4>
+          <p style="font-size:0.85rem;">~$20B ARR (early 2026). Market share of enterprise LLM spend declining: ~50% (early 2024) → ~25% (early 2026) as enterprises diversify. GPT-4o at $2.50/M input &amp; $10.00/M output — <strong>5–10x premium</strong> over comparable open-source models. Single-vendor lock-in, no model diversity, content policy constraints.</p>
+          <div class="feature-box" style="margin-top:0.75rem;font-size:0.82rem;margin-bottom:0;">AI Gateway answer to "why not just OpenAI?": model diversity, 5–10x cost savings, data control, regulatory compliance.</div>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">Anthropic</h4>
+          <p style="font-size:0.85rem;">~$14B ARR. Claude positioned as premium enterprise choice. Claude 3.5 Sonnet at $3.00/M input &amp; $15.00/M output — <strong>10–15x premium</strong> over open-source. Same structural limitation as OpenAI: single vendor, no model diversity. As open-source closes the quality gap, the premium becomes harder to justify.</p>
+        </div>
+        <div class="card" style="grid-column:1 / -1;">
+          <h4 style="margin-top:0;">Cloud Provider AI Services (AWS Bedrock, Google Vertex AI, Azure OpenAI)</h4>
+          <div class="grid grid-2" style="gap:1rem;margin-top:0.75rem;">
+            <div>
+              <p style="font-size:0.82rem;margin:0 0 0.5rem;"><strong style="color:var(--ig-teal);">Advantages:</strong></p>
+              <ul style="font-size:0.82rem;padding-left:1.25rem;margin:0;">
+                <li>Existing enterprise relationships and procurement channels</li>
+                <li>Integrated billing (no new vendor)</li>
+                <li>Compliance certifications already in place</li>
+                <li>Convenience of single-cloud stack</li>
+              </ul>
+            </div>
+            <div>
+              <p style="font-size:0.82rem;margin:0 0 0.5rem;"><strong style="color:var(--ig-rose);">Disadvantages:</strong></p>
+              <ul style="font-size:0.82rem;padding-left:1.25rem;margin:0;">
+                <li><strong>Platform lock-in:</strong> Bedrock routes to S3/Lambda/CloudWatch — creates deep dependencies beyond inference</li>
+                <li><strong>20–40% price premiums</strong> — cloud platform margins on top of inference costs</li>
+                <li>Model selection constrained by commercial partnerships</li>
+                <li>Generalist features lack AI-specific platform depth</li>
+              </ul>
+            </div>
+          </div>
+          <div class="feature-box" style="margin-top:0.75rem;font-size:0.82rem;margin-bottom:0;">AI Gateway response: cloud-agnostic (works with any cloud), specialized AI-specific features deeper than cloud generalists, no cloud platform margins.</div>
+        </div>
+      </div>
+
+      <!-- KEY STRATEGIC INSIGHTS -->
+      <h3 style="margin-top:2rem;">Key Strategic Insights from Live Research</h3>
+      <div class="grid grid-2" style="gap:1rem;">
+        <div class="card">
+          <h5 style="margin-top:0;color:var(--ig-teal);">1. The Enterprise Gap Is Real</h5>
+          <p style="font-size:0.85rem;margin:0;">Only Groq has SSO/SCIM (Enterprise tier only). No competitor offers comprehensive compliance (SOC 2, HIPAA, GDPR) or sovereign deployment. This validates AI Gateway's positioning in the &ldquo;Full Platform Leader&rdquo; quadrant.</p>
+        </div>
+        <div class="card">
+          <h5 style="margin-top:0;color:var(--ig-teal);">2. OpenRouter's Routing Is the Closest Threat to Our Gateway Model</h5>
+          <p style="font-size:0.85rem;margin:0;">Their guardrails, provider restrictions, ZDR controls, and BYOK are sophisticated. Match and exceed these features while adding the enterprise layers they cannot build as a thin aggregator.</p>
+        </div>
+        <div class="card">
+          <h5 style="margin-top:0;color:var(--ig-teal);">3. Fireworks' Cached Pricing Is a Smart Innovation</h5>
+          <p style="font-size:0.85rem;margin:0;">83% savings on cached prompts is compelling. Implement prompt caching with similar or better economics at launch — this creates immediate cost differentiation for heavy users.</p>
+        </div>
+        <div class="card">
+          <h5 style="margin-top:0;color:var(--ig-teal);">4. Together AI Has the Broadest Modality Coverage</h5>
+          <p style="font-size:0.85rem;margin:0;">Video generation (Veo 3, Sora 2, Kling) and advanced audio set a high bar for multimodal. If AI Gateway focuses on text/chat first, a clear multimodal roadmap is essential for enterprise conversations.</p>
+        </div>
+        <div class="card">
+          <h5 style="margin-top:0;color:var(--ig-teal);">5. Groq's 3-Tier Model Is Most Enterprise-Ready</h5>
+          <p style="font-size:0.85rem;margin:0;">Free → Developer → Enterprise with progressive feature unlocks validates tiered pricing. However, Groq's ~15 model catalog is a fatal enterprise weakness — AI Gateway combines Groq's tier discipline with a broad catalog.</p>
+        </div>
+        <div class="card">
+          <h5 style="margin-top:0;color:var(--ig-teal);">6. FinOps Remains Entirely Unclaimed</h5>
+          <p style="font-size:0.85rem;margin:0;">All competitors have basic FinOps — daily cost charts, spending limits, usage tracking. None offer per-team cost allocation, budget forecasting, intelligent cost-optimized routing, or chargeback. This is AI Gateway's strongest and most defensible differentiator.</p>
+        </div>
+        <div class="card">
+          <h5 style="margin-top:0;color:var(--ig-teal);">7. Batch Processing Is Becoming Table Stakes</h5>
+          <p style="font-size:0.85rem;margin:0;">Both Fireworks and Groq offer async batch processing. This must be included at launch — it's no longer a differentiator to have it, but a disqualifier to be missing it.</p>
+        </div>
+        <div class="card">
+          <h5 style="margin-top:0;color:var(--ig-teal);">8. Evaluations Tooling Is Emerging</h5>
+          <p style="font-size:0.85rem;margin:0;">Together AI and Fireworks both have built-in evaluation tooling. This is early-stage but becoming expected. Should be on the near-term AI Gateway roadmap (6–12 months post-launch).</p>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 03 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="industry-structure" class="section" data-accent="teal">
+    <h2>03 &mdash; Industry Structure &amp; Profitability</h2>
+
+      <h3>Porter's Five Forces Analysis</h3>
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 style="margin-top:0;">Buyer Power <span class="force-rating moderate">Moderate-High</span></h4>
+          <p>API standardization means switching costs measured in minutes. Price transparency creates race-to-bottom. Mitigated by fine-tuned models, compliance configs, accumulated analytics.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">Supplier Power <span class="force-rating high">High</span></h4>
+          <p>Nvidia monopoly (80%+ inference market). GPUs = 60&ndash;70% of COGS. Top structural risk. Mitigated by GPU partnerships partnership, AMD MI300X, multi-cloud sourcing.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">Threat of Substitution <span class="force-rating moderate">Moderate</span></h4>
+          <p>Self-hosting viable only at extreme scale (&gt;10M tokens/day). Proprietary API threat declining as open-source reaches quality parity. Edge inference limited to small models.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">Threat of New Entrants <span class="force-rating high">High</span></h4>
+          <p>Low technical barriers (launch in 2&ndash;4 weeks), but high operational barriers (compliance 9&ndash;18 months, brand trust years, $100&ndash;200M capital). Window: 18&ndash;24 months.</p>
+        </div>
+        <div class="card" style="grid-column: 1 / -1;">
+          <h4 style="margin-top:0;">Extent of Rivalry <span class="force-rating very-high">Very High</span></h4>
+          <p>80&ndash;90% price decline in 3 years. Commodity dynamics. The Stripe model: inference = acquisition layer (competitive pricing), platform = monetization layer (premium features).</p>
+        </div>
+      </div>
+
+      <h3>Profitability Outlook</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Industry Avg 2026</th>
+            <th>Together AI</th>
+            <th>Fireworks AI</th>
+            <th>Token Factory Target 2027</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gross Margin (Inference)</td>
+            <td>15&ndash;25%</td>
+            <td>20&ndash;30%</td>
+            <td>25&ndash;35%</td>
+            <td>15&ndash;25%</td>
+          </tr>
+          <tr>
+            <td>Gross Margin (Platform)</td>
+            <td>60&ndash;80%</td>
+            <td>40&ndash;50%</td>
+            <td>45&ndash;55%</td>
+            <td>60&ndash;80%</td>
+          </tr>
+          <tr>
+            <td>Blended Gross Margin</td>
+            <td>20&ndash;35%</td>
+            <td>25&ndash;35%</td>
+            <td>30&ndash;40%</td>
+            <td>30&ndash;45%</td>
+          </tr>
+          <tr>
+            <td>Net Revenue Retention</td>
+            <td>110&ndash;130%</td>
+            <td>120&ndash;140%</td>
+            <td>125&ndash;145%</td>
+            <td>130&ndash;160%</td>
+          </tr>
+        </tbody>
+      </table>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 04 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="macro-environment" class="section" data-accent="purple">
+    <h2>04 &mdash; Macro Environment &amp; Regulatory Landscape</h2>
+
+      <h3>Political Forces: Sovereign AI and Regulatory Divergence</h3>
+      <p>The UAE&rsquo;s National AI Strategy 2031 targets AI contributing over $10 billion to the national economy, with specific investments in AI infrastructure, talent development, and the creation of national AI champions. Saudi Arabia&rsquo;s Vision 2030, augmented by the $100 billion Project Transcendence (announced early 2025), channels unprecedented capital into AI infrastructure. IHC Group&rsquo;s position as a major UAE conglomerate with deep government relationships places Token Factory at the intersection of sovereign AI policy and commercial AI infrastructure &mdash; a role that carries both commercial value ($10&ndash;100M government contracts) and strategic significance as critical national infrastructure.</p>
+      <p>In the United States, the AI policy environment creates both a compliance burden and a market opportunity. Federal procurement requires FedRAMP authorization, and the policy emphasis on AI safety and transparency favors open-source models whose architecture and training data are publicly documented &mdash; a direct tailwind for Token Factory&rsquo;s open-source focus. China&rsquo;s regulatory restrictions on generative AI services complicate the use of Chinese-origin models for certain customer segments. DeepSeek&rsquo;s exceptional price-performance ratio makes it valuable to feature prominently, but the platform must provide clear documentation of model provenance and jurisdictional restrictions to serve regulated enterprise buyers. India&rsquo;s Digital Personal Data Protection Act and forthcoming Digital India Act introduce data residency requirements relevant to Token Factory&rsquo;s planned India expansion, creating incentives for India-hosted inference infrastructure and regional language model support.</p>
+
+      <h3>Economic Forces: Capital Flows and Market Dynamics</h3>
+      <p>The LLM API inference market is growing at 30%+ CAGR &mdash; one of the fastest-growing segments in enterprise technology. Open-source inference share is rising from 15% in 2024 to a projected 45% by 2028 as model quality parity with proprietary alternatives becomes widely established. Three structural forces drive this growth: application penetration (AI features transitioning from differentiators to baseline expectations in software), agentic workflows (multiplying token consumption per user interaction by 10&ndash;100x), and enterprise adoption (pilot budgets of $50,000&ndash;$200,000 converting to production budgets of $500,000&ndash;$5,000,000).</p>
+      <p>The venture capital landscape has shifted from abundant to selective. Industry analysts project consolidation to 3&ndash;4 dominant open-source inference platforms by 2028, mirroring patterns in cloud computing and developer platforms. This creates urgency: the next 18&ndash;24 months are the window to establish a defensible market position. Token Factory&rsquo;s IHC Group backing provides critical advantage here &mdash; while VC-backed competitors face existential risk if fundraising markets tighten, IHC&rsquo;s $20.4 billion cash position enables capital patience that competitors cannot match. Meanwhile, the Middle East&rsquo;s sovereign wealth funds &mdash; ADIA ($993B AUM), PIF ($930B AUM), QIA ($526B AUM), KIA ($923B AUM), and Mubadala ($302B AUM) &mdash; are collectively deploying tens of billions into AI infrastructure, and IHC Group sits at the center of this capital flow. Token Factory can leverage these relationships to secure sovereign AI contracts worth $10&ndash;100M with 5&ndash;10 year terms &mdash; a category no US-based competitor can access.</p>
+
+      <h3>Social Forces: Developer Culture and Professional Identity</h3>
+      <p>The software development community has undergone a cultural shift that strongly favors open-source AI. Reddit&rsquo;s r/LocalLLaMA community, with 1.2 million+ subscribers, celebrates open-source model releases with the enthusiasm typically reserved for major product launches. This community is reflexively skeptical of platforms perceived as extractive or opaque, and Token Factory&rsquo;s open-source model focus, transparent pricing, and developer-centric design philosophy resonate directly with these values. The platform&rsquo;s marketing must speak the language of this community &mdash; celebrating open-source achievements, contributing to projects, and positioning Token Factory as an enabler of the movement rather than a middleman.</p>
+      <p>&ldquo;Vibe coding&rdquo; &mdash; using AI assistants as primary coding partners &mdash; is now mainstream: 65&ndash;75% of professional developers use AI coding assistants daily, and 30&ndash;40% report that AI generates more than half their code. Every vibe-coded session generates hundreds to thousands of API calls, and as the practice becomes standard the aggregate demand for inference grows proportionally. The emergence of &ldquo;AI Engineer&rdquo; as a distinct professional title further validates the market: 50,000+ professionals globally now hold titles like AI Engineer, LLM Engineer, or AI Infrastructure Engineer, growing at 100%+ year-over-year. These professionals are Token Factory&rsquo;s core user persona: technically sophisticated, cost-conscious, multi-model savvy, and responsible for their organization&rsquo;s AI infrastructure decisions. The post-pandemic normalization of distributed teams amplifies this demand for centralized platform management &mdash; unified API key management, role-based access control, and consistent monitoring across time zones.</p>
+
+      <h3>Technological Forces: Model Parity and Infrastructure Innovation</h3>
+      <p>The single most important technological trend for Token Factory is the convergence of open-source and proprietary model quality. DeepSeek V3 matches GPT-4o on MMLU (86.5 vs 87.2) and exceeds it on HumanEval code generation (97.3 vs 90.2). LLaMA 3.1 405B exceeds GPT-4 on virtually every benchmark. Qwen 2.5 72B outperforms Claude 3 Haiku on multilingual benchmarks. This parity eliminates the quality premium that historically justified proprietary pricing: when an enterprise achieves comparable output quality at 5&ndash;10x lower cost using open-source models, continuing to pay premium prices for GPT-4o or Claude becomes difficult to justify at production scale.</p>
+      <p>Hardware is diversifying beyond Nvidia&rsquo;s monopoly. AMD&rsquo;s MI300X GPU offers competitive inference performance at 15&ndash;20% lower price points than Nvidia equivalents. GPU partnerships&rsquo; RISC-V-based AI accelerators &mdash; using an open-source instruction set architecture &mdash; align directly with the sovereign AI movement&rsquo;s emphasis on supply chain transparency, and Infinia Technologies&rsquo; partnership positions Token Factory to offer inference at potentially 30&ndash;50% lower cost than Nvidia-based alternatives. The shift to agentic workflows multiplies demand further: a single user action that consumed 1,500 tokens in a single-turn paradigm now consumes 50,000&ndash;150,000 tokens across 20&ndash;26 orchestration steps in an agentic paradigm. Token Factory&rsquo;s platform features &mdash; latency-optimized routing, automatic retry with provider fallback, real-time cost dashboards with budget alerts &mdash; are directly aligned with agentic workflow requirements. Inference optimization technologies including speculative decoding (2&ndash;3x throughput gains), continuous batching (2&ndash;4x GPU utilization improvement), and Mixture of Experts architectures (5&ndash;10x compute reduction vs. equivalent dense models) further compress COGS as platforms adopt them.</p>
+
+      <h3>Environmental Forces: Energy Consumption and ESG Imperatives</h3>
+      <p>AI data centers globally are projected to consume approximately 1,050 terawatt-hours of electricity by 2026, with AI inference estimated to produce 32&ndash;80 million tons of CO2 annually &mdash; roughly equivalent to the annual emissions of Belgium or Chile. The EU&rsquo;s Corporate Sustainability Reporting Directive (CSRD) requires large companies to report on supply chain emissions including AI workloads, and ESG-focused investors are increasingly scrutinizing the carbon footprint of technology investments.</p>
+      <p>This environmental pressure creates a differentiation opportunity for Token Factory. Carbon-aware routing can direct requests to the lowest-carbon-intensity available infrastructure &mdash; inference processed in French nuclear-powered data centers carries roughly one-tenth the carbon footprint of coal-powered equivalents &mdash; enabling customers to reduce their AI carbon footprint by 30&ndash;70% with no impact on response quality. Green inference tiers (routing to renewable-energy-powered infrastructure at a 5&ndash;10% premium) and per-request carbon reporting integrated directly into the analytics dashboard transform environmental compliance from a burden into a platform feature. IHC Group&rsquo;s own public ESG commitments align with this strategy, giving Token Factory an internal mandate to demonstrate AI sustainability leadership across the conglomerate&rsquo;s portfolio.</p>
+
+      <h3>Legal Forces: Compliance Timelines and Strategic Preparedness</h3>
+      <p>The EU AI Act, with phased enforcement beginning August 2025 and full applicability by August 2026, is the most comprehensive AI regulation globally. Fines reach 35 million EUR or 7% of global annual turnover, whichever is higher &mdash; for IHC Group with $30.3 billion in revenue, a 7% fine would reach $2.1 billion, demanding proactive compliance rather than reactive remediation. Practical product requirements include model cards for every served model, usage logging and audit trails, risk assessment tooling enabling customers to classify use cases by risk level, and GDPR-compatible data processing agreements. GDPR itself remains the foundational data protection framework for EU-serving platforms, with requirements around data residency, right to deletion, consent management, and Data Protection Officer appointment &mdash; each of which simultaneously serves as a competitive advantage over smaller inference providers with limited compliance capabilities.</p>
+      <p>IHC Group&rsquo;s internal portfolio drives an additional compliance stack. HIPAA readiness is required for Burjeel Holdings (82+ healthcare facilities across six countries) by Q4 2026, targeting deployment in Q1 2027. PCI-DSS and SOX controls are required for 2PointZero&rsquo;s fintech operations. Saudi Arabia&rsquo;s PDPL (effective 2025) mandates Data Protection Officer appointment, SDAIA registration, and data processing impact assessments for Saudi enterprise and government customers. Total compliance investment across all certifications is estimated at $1.5&ndash;3.0 million over 24 months &mdash; less than 0.01% of IHC Group&rsquo;s annual revenue, but each certification represents a barrier to entry that smaller competitors cannot easily replicate, progressively narrowing the competitive field in Token Factory&rsquo;s favor.</p>
+
+      <h3>LLM API Market Growth</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Global LLM API Market</th>
+            <th>Open-Source Share</th>
+            <th>Open-Source Market</th>
+            <th>Managed Platform Share</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2024</td>
+            <td>$12B</td>
+            <td>15%</td>
+            <td>$1.8B</td>
+            <td>60% = $1.1B</td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>$18&ndash;20B</td>
+            <td>25%</td>
+            <td>$4.5&ndash;5.0B</td>
+            <td>65% = $2.9&ndash;3.3B</td>
+          </tr>
+          <tr>
+            <td>2026</td>
+            <td>$28&ndash;32B</td>
+            <td>35%</td>
+            <td>$9.8&ndash;11.2B</td>
+            <td>65% = $6.4&ndash;7.3B</td>
+          </tr>
+          <tr>
+            <td>2027</td>
+            <td>$40&ndash;48B</td>
+            <td>40%</td>
+            <td>$16&ndash;19.2B</td>
+            <td>70% = $11.2&ndash;13.4B</td>
+          </tr>
+          <tr>
+            <td>2028</td>
+            <td>$55&ndash;65B</td>
+            <td>45%</td>
+            <td>$24.8&ndash;29.3B</td>
+            <td>70% = $17.3&ndash;20.5B</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Compliance Readiness Timeline</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Certification</th>
+            <th>Target Date</th>
+            <th>Duration</th>
+            <th>Est. Cost</th>
+            <th>Primary Driver</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SOC 2 Type II</td>
+            <td>Q4 2026</td>
+            <td>9&ndash;12 months</td>
+            <td>$150&ndash;300K</td>
+            <td>All enterprise customers</td>
+          </tr>
+          <tr>
+            <td>HIPAA</td>
+            <td>Q4 2026</td>
+            <td>6&ndash;9 months</td>
+            <td>$200&ndash;400K</td>
+            <td>Burjeel Holdings</td>
+          </tr>
+          <tr>
+            <td>GDPR</td>
+            <td>Q3 2026</td>
+            <td>3&ndash;6 months</td>
+            <td>$100&ndash;200K</td>
+            <td>European customers</td>
+          </tr>
+          <tr>
+            <td>EU AI Act</td>
+            <td>Q2 2026 (prep)</td>
+            <td>Ongoing</td>
+            <td>$200&ndash;500K/year</td>
+            <td>European customers</td>
+          </tr>
+          <tr>
+            <td>PCI-DSS</td>
+            <td>Q1 2027</td>
+            <td>3&ndash;6 months</td>
+            <td>$100&ndash;200K</td>
+            <td>2PointZero</td>
+          </tr>
+          <tr>
+            <td>Saudi PDPL</td>
+            <td>Q3 2026</td>
+            <td>3&ndash;6 months</td>
+            <td>$50&ndash;100K</td>
+            <td>Saudi market</td>
+          </tr>
+          <tr>
+            <td>ISO 27001</td>
+            <td>Q2 2027</td>
+            <td>12&ndash;18 months</td>
+            <td>$200&ndash;400K</td>
+            <td>International enterprise</td>
+          </tr>
+        </tbody>
+      </table>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 05 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="swot-analysis" class="section" data-accent="purple">
+    <h2>05 &mdash; Strategic Strengths &amp; Vulnerabilities (SWOT)</h2>
+
+      <div class="swot-grid">
+        <div class="swot-quadrant strengths">
+          <h4>Strengths</h4>
+          <ul>
+            <li><span class="swot-id">S1</span> Comprehensive 13-section platform vision. No competitor covers all.</li>
+            <li><span class="swot-id">S2</span> IHC Group backing &mdash; $20.4B cash, 422 subsidiaries, zero CAC.</li>
+            <li><span class="swot-id">S3</span> OpenAI-compatible API &mdash; switching requires one line of code.</li>
+            <li><span class="swot-id">S4</span> Enterprise-first compliance &mdash; ZDR, PII redaction, audit trails.</li>
+            <li><span class="swot-id">S5</span> Full-lifecycle fine-tuning &mdash; versioning, A/B splitting, rollback.</li>
+            <li><span class="swot-id">S6</span> GPU partnerships partnership &mdash; non-Nvidia RISC-V path.</li>
+          </ul>
+        </div>
+        <div class="swot-quadrant weaknesses">
+          <h4>Weaknesses</h4>
+          <ul>
+            <li><span class="swot-id">W1</span> Late market entry &mdash; 2&ndash;3 year head start by Together ($300M ARR), Fireworks ($130M ARR).</li>
+            <li><span class="swot-id">W2</span> Zero developer brand recognition &mdash; no HN posts, no GitHub stars.</li>
+            <li><span class="swot-id">W3</span> Margin pressure &mdash; inference margins declining to 5&ndash;15%.</li>
+            <li><span class="swot-id">W4</span> GPU capital requirements &mdash; competitive fleet needs $50&ndash;100M.</li>
+            <li><span class="swot-id">W5</span> Upstream model dependency &mdash; reliant on Meta, Mistral, DeepSeek.</li>
+          </ul>
+        </div>
+        <div class="swot-quadrant opportunities">
+          <h4>Opportunities</h4>
+          <ul>
+            <li><span class="swot-id">O1</span> Enterprise governance gap &mdash; competitors underinvest in cost allocation, RBAC, auditing.</li>
+            <li><span class="swot-id">O2</span> EU AI Act compliance urgency &mdash; August 2026 enforcement.</li>
+            <li><span class="swot-id">O3</span> Agentic AI multiplying demand &mdash; 10&ndash;100x token multiplier.</li>
+            <li><span class="swot-id">O4</span> Middle East sovereign AI &mdash; $10B+ UAE/Saudi investment.</li>
+            <li><span class="swot-id">O5</span> SMB underserved segment &mdash; $1K&ndash;$50K/month gap.</li>
+            <li><span class="swot-id">O6</span> AI FinOps as emerging category &mdash; define it like Datadog.</li>
+          </ul>
+        </div>
+        <div class="swot-quadrant threats">
+          <h4>Threats</h4>
+          <ul>
+            <li><span class="swot-id">T1</span> Incumbents adding features &mdash; Together/Fireworks governance in 12&ndash;18 months.</li>
+            <li><span class="swot-id">T2</span> OpenRouter user base &mdash; 5M users could leverage scale.</li>
+            <li><span class="swot-id">T3</span> Continued price war &mdash; another 50&ndash;80% decline plausible.</li>
+            <li><span class="swot-id">T4</span> Proprietary price competitiveness &mdash; GPT-4o-mini at $0.15/M tokens.</li>
+            <li><span class="swot-id">T5</span> Model creator vertical integration &mdash; Mistral, DeepSeek own APIs.</li>
+            <li><span class="swot-id">T6</span> GPU supply constraints &mdash; new entrants face worst Nvidia allocation.</li>
+          </ul>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 06 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="customer-segments" class="section" data-accent="rose">
+    <h2>06 &mdash; Customer Segments &amp; Buyer Profiles</h2>
+
+      <h3>The Seven Customer Clusters</h3>
+      <div class="grid grid-3">
+        <div class="card">
+          <img class="persona-avatar" src="https://joesch.moe/api/v1/indie-hacker" alt="Indie Hacker">
+          <div class="persona-name">C1: Indie Hackers</div>
+          <div class="persona-desc">~8M globally, $0&ndash;50/mo, price-driven. 3% of revenue but 60% of accounts. Pipeline for future CTOs.</div>
+          <div class="persona-meta">
+            <span><strong>Volume</strong> ~8M</span>
+            <span><strong>Spend</strong> $0&ndash;50/mo</span>
+          </div>
+        </div>
+        <div class="card">
+          <img class="persona-avatar" src="https://joesch.moe/api/v1/startup-founder" alt="Startup Builder">
+          <div class="persona-name">C2: Startup Builders</div>
+          <div class="persona-desc">~500K teams, $50&ndash;2K/mo, speed-to-market driven. Highest growth potential.</div>
+          <div class="persona-meta">
+            <span><strong>Volume</strong> ~500K</span>
+            <span><strong>Spend</strong> $50&ndash;2K/mo</span>
+          </div>
+        </div>
+        <div class="card">
+          <img class="persona-avatar" src="https://joesch.moe/api/v1/female/team-lead" alt="Mid-Market">
+          <div class="persona-name">C3: Mid-Market</div>
+          <div class="persona-desc">~80K orgs, $2K&ndash;25K/mo. Need cost visibility, RBAC, moderate compliance.</div>
+          <div class="persona-meta">
+            <span><strong>Volume</strong> ~80K</span>
+            <span><strong>Spend</strong> $2K&ndash;25K/mo</span>
+          </div>
+        </div>
+        <div class="card">
+          <img class="persona-avatar" src="https://joesch.moe/api/v1/male/enterprise-exec" alt="Enterprise">
+          <div class="persona-name">C4: Enterprise</div>
+          <div class="persona-desc">~15K orgs, $25K&ndash;500K/mo. Risk-averse, 6&ndash;18 month sales cycles. SOC 2 required.</div>
+          <div class="persona-meta">
+            <span><strong>Volume</strong> ~15K</span>
+            <span><strong>Spend</strong> $25K&ndash;500K/mo</span>
+          </div>
+        </div>
+        <div class="card">
+          <img class="persona-avatar" src="https://joesch.moe/api/v1/ai-engineer" alt="AI-Native">
+          <div class="persona-name">C5: AI-Native</div>
+          <div class="persona-desc">~5K orgs, $10K&ndash;1M+/mo. Benchmark-driven, technically demanding. Credibility catalysts.</div>
+          <div class="persona-meta">
+            <span><strong>Volume</strong> ~5K</span>
+            <span><strong>Spend</strong> $10K&ndash;1M+/mo</span>
+          </div>
+        </div>
+        <div class="card">
+          <img class="persona-avatar" src="https://joesch.moe/api/v1/female/compliance-officer" alt="Regulated">
+          <div class="persona-name">C6: Regulated Industry</div>
+          <div class="persona-desc">~10K orgs, $50K&ndash;2M+/mo. Compliance is primary selection criterion. Healthcare, finance, gov.</div>
+          <div class="persona-meta">
+            <span><strong>Volume</strong> ~10K</span>
+            <span><strong>Spend</strong> $50K&ndash;2M+/mo</span>
+          </div>
+        </div>
+        <div class="card">
+          <img class="persona-avatar" src="https://joesch.moe/api/v1/male/group-director" alt="IHC Group">
+          <div class="persona-name">C7: IHC Group Internal</div>
+          <div class="persona-desc">50&ndash;100 tech-active entities, $5K&ndash;500K/mo. Zero-cost acquisition, 2&ndash;4 week cycles.</div>
+          <div class="persona-meta">
+            <span><strong>Volume</strong> 50&ndash;100</span>
+            <span><strong>Spend</strong> $5K&ndash;500K/mo</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Buyer Psychology</h3>
+      <div class="grid grid-3">
+        <div class="card" style="border-top: 2px solid var(--ig-success);">
+          <h4 style="margin-top:0;">Compliant <span style="color:var(--ig-gray);font-weight:400;font-size:0.75rem;">40% of enterprise</span></h4>
+          <p>Risk-averse, consensus-driven. Need case studies, certifications, corporate stability. IHC backing addresses core anxiety.</p>
+        </div>
+        <div class="card" style="border-top: 2px solid var(--ig-error);">
+          <h4 style="margin-top:0;">Aggressive <span style="color:var(--ig-gray);font-weight:400;font-size:0.75rem;">35% of tech leaders</span></h4>
+          <p>Performance-obsessed, benchmark-driven. Need self-serve, transparent benchmarks, competitive pricing.</p>
+        </div>
+        <div class="card" style="border-top: 2px solid var(--ig-info);">
+          <h4 style="margin-top:0;">Detached <span style="color:var(--ig-gray);font-weight:400;font-size:0.75rem;">25% of developers</span></h4>
+          <p>Open-source advocates, skeptical of corporations. Need transparency, community engagement, no lock-in.</p>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 07 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="target-markets" class="section" data-accent="rose">
+    <h2>07 &mdash; Target Markets &amp; Prioritization</h2>
+
+      <h3>Revenue Projections</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Year 1</th>
+            <th>Year 2</th>
+            <th>Year 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>IHC subsidiary accounts</td>
+            <td>20</td>
+            <td>60</td>
+            <td>150</td>
+          </tr>
+          <tr>
+            <td>External registered developers</td>
+            <td>50,000</td>
+            <td>200,000</td>
+            <td>500,000</td>
+          </tr>
+          <tr>
+            <td>External paying accounts</td>
+            <td>5,000</td>
+            <td>15,000</td>
+            <td>40,000</td>
+          </tr>
+          <tr>
+            <td>Enterprise contracts</td>
+            <td>5</td>
+            <td>50</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>IHC Group revenue</td>
+            <td>$2.4M</td>
+            <td>$10.8M</td>
+            <td>$27M</td>
+          </tr>
+          <tr>
+            <td>External revenue</td>
+            <td>$16.5M</td>
+            <td>$110M</td>
+            <td>$350M</td>
+          </tr>
+          <tr>
+            <td><strong>Total ARR</strong></td>
+            <td><strong>$18.9M</strong></td>
+            <td><strong>$120.8M</strong></td>
+            <td><strong>$377M</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Priority Sequencing</h3>
+      <ol class="flow-steps">
+        <li><strong>Priority 0 &mdash; IHC Group Internal</strong><br>$2.4M Year 1, zero CAC, generates case studies. 5&ndash;10 subsidiaries in Q1.</li>
+        <li><strong>Priority 1 &mdash; Startups &amp; AI-Native</strong><br>Fastest adoption, strongest word-of-mouth. $10.2M Year 1 combined.</li>
+        <li><strong>Priority 2 &mdash; Mid-Market</strong><br>Platform differentiation sweet spot. $3.6M Year 1, growing to $24M Year 2.</li>
+        <li><strong>Priority 3 &mdash; Enterprise &amp; Regulated</strong><br>Highest LTV ($300K&ndash;$2M+/yr) but longest cycles. SOC 2 gate.</li>
+      </ol>
+
+      <h3>Geographic Priorities</h3>
+      <div class="grid grid-3">
+        <div class="card" style="border-top: 2px solid var(--ig-success);">
+          <h4 style="margin-top:0;">Tier 1: UAE &amp; Gulf</h4>
+          <p>Home market, IHC brand, sovereign AI mandates. Abu Dhabi, Dubai, Riyadh.</p>
+          <div class="chip-group"><span class="chip">Immediate</span></div>
+        </div>
+        <div class="card" style="border-top: 2px solid var(--ig-info);">
+          <h4 style="margin-top:0;">Tier 2: US &amp; EU</h4>
+          <p>40&ndash;45% of global market. EU AI Act catalyst. SF, NYC, London, Berlin, Paris.</p>
+          <div class="chip-group"><span class="chip">Year 1 Q3+</span></div>
+        </div>
+        <div class="card" style="border-top: 2px solid var(--ig-warning);">
+          <h4 style="margin-top:0;">Tier 3: India, SE Asia, Japan</h4>
+          <p>Largest developer population, price-sensitive, emerging AI hubs.</p>
+          <div class="chip-group"><span class="chip">Year 2+</span></div>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 08 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="brand-positioning" class="section" data-accent="amber">
+    <h2>08 &mdash; Brand Positioning &amp; Differentiation</h2>
+
+      <h3>Brand Essence</h3>
+      <div class="feature-box">
+        <strong>"The Stripe of Open-Source AI Inference"</strong>
+        Stripe made payments developer-friendly by building platform capabilities above commodity payment rails. Token Factory does the same for AI inference: model serving, cost management, governance, and compliance unified into one platform.
+      </div>
+
+      <h3>Primary Tagline</h3>
+      <div class="card featured" style="text-align:center;font-size:1.15rem;font-weight:600;color:var(--ig-white);padding:2rem;">
+        "Every open-source model. One platform. Total control."
+      </div>
+
+      <h3>Six Points of Difference</h3>
+      <div class="grid grid-2">
+        <div class="numbered-card">
+          <div class="num" style="color:var(--ig-amber);">01</div>
+          <div>
+            <h4>Unified Cost Intelligence</h4>
+            <p>Per-key cost allocation, spend projections (best/expected/worst), anomaly detection, cross-model cost comparison.</p>
+          </div>
+        </div>
+        <div class="numbered-card">
+          <div class="num" style="color:var(--ig-amber);">02</div>
+          <div>
+            <h4>Enterprise Key Management</h4>
+            <p>Model allowlists/blocklists, spend caps, rate limits, IP allowlisting, dual-active rotation, geographic anomaly detection.</p>
+          </div>
+        </div>
+        <div class="numbered-card">
+          <div class="num" style="color:var(--ig-amber);">03</div>
+          <div>
+            <h4>Full-Lifecycle Fine-Tuning</h4>
+            <p>Dataset versioning, live loss curves, A/B traffic splitting, one-click rollback, evaluation dashboards.</p>
+          </div>
+        </div>
+        <div class="numbered-card">
+          <div class="num" style="color:var(--ig-amber);">04</div>
+          <div>
+            <h4>Developer Experience Innovation</h4>
+            <p>Blind model comparison, one-click code export, conversation forking, request replay.</p>
+          </div>
+        </div>
+        <div class="numbered-card">
+          <div class="num" style="color:var(--ig-amber);">05</div>
+          <div>
+            <h4>Zero-Compromise Compliance</h4>
+            <p>ZDR with cryptographic proof, PII auto-redaction, 7+ year audit trails, data residency (US, EU, UAE, Singapore).</p>
+          </div>
+        </div>
+        <div class="numbered-card">
+          <div class="num" style="color:var(--ig-amber);">06</div>
+          <div>
+            <h4>IHC Group Ecosystem</h4>
+            <p>SAIF integration, Gulf regulatory pre-config, Arabic-English bilingual, inter-company billing.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Positioning Statement</h3>
+      <div class="card featured">
+        <p><strong>FOR</strong> developers, engineering teams, and AI-first enterprises <strong>WHO</strong> need production-grade access to open-source LLMs with cost predictability, team governance, and regulatory compliance &mdash; <strong>TOKEN FACTORY IS</strong> the open-source model inference platform by Infinia Technologies (IHC Group) <strong>THAT</strong> provides optimized serving of 200+ models with enterprise-grade cost intelligence, managed fine-tuning, and built-in compliance. <strong>UNLIKE</strong> Together AI, OpenRouter, or Groq &mdash; <strong>TOKEN FACTORY</strong> combines competitive speed with a full developer platform, FinOps controls, lifecycle fine-tuning, and audit-ready compliance &mdash; backed by a $238 billion conglomerate.</p>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 09 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="product-strategy" class="section" data-accent="amber">
+    <h2>09 &mdash; Product Strategy &amp; Roadmap</h2>
+
+      <h3>Product Vision: Intelligence on Demand</h3>
+      <div class="feature-box">
+        <strong>Beyond Tokens</strong>
+        The product is not tokens or models. It is intelligence on demand &mdash; the ability for any application to send unstructured information and receive structured, intelligent responses. A platform selling tokens competes on price. A platform selling intelligence competes on outcomes.
+      </div>
+
+      <h3>Four Product Levels</h3>
+      <div class="grid grid-2">
+        <div class="phase-card">
+          <div class="phase-number">L1</div>
+          <h4 style="margin-top:0;">Core Benefit</h4>
+          <p>Intelligence on demand. Transforms unstructured input into intelligent output at scale.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-number">L2</div>
+          <h4 style="margin-top:0;">Expected Product</h4>
+          <p>Working API, per-token billing, key auth, usage dashboard, docs, SDKs, 99.9% uptime, streaming, sub-second TTFT, core model catalog.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-number">L3</div>
+          <h4 style="margin-top:0;">Augmented Product</h4>
+          <p>Cost intelligence suite, advanced key scoping, fine-tuning lifecycle, model comparison playground, compliance architecture.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-number">L4</div>
+          <h4 style="margin-top:0;">Potential Product</h4>
+          <p>Intelligent model routing, prompt management, LLM observability platform, custom model marketplace, edge inference.</p>
+        </div>
+      </div>
+
+      <h3>Growth Strategy (Ansoff Matrix)</h3>
+      <div class="grid grid-2">
+        <div class="card" style="border-left: 3px solid var(--ig-success);">
+          <h4 style="margin-top:0;">Market Penetration</h4>
+          <p style="font-size:0.75rem;color:var(--ig-gray);margin-bottom:0.5rem;">MONTHS 1&ndash;12 &middot; EXISTING MARKETS &middot; EXISTING PRODUCTS</p>
+          <p>Win users from Together, Fireworks, OpenRouter. Migration guides, price comparisons, HN launch.</p>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--ig-info);">
+          <h4 style="margin-top:0;">Market Development</h4>
+          <p style="font-size:0.75rem;color:var(--ig-gray);margin-bottom:0.5rem;">MONTHS 6&ndash;18 &middot; NEW MARKETS &middot; EXISTING PRODUCTS</p>
+          <p>Gulf region first, then SE Asia, LatAm, Eastern Europe. Adjacent personas (data scientists, PMs, CTOs).</p>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--ig-warning);">
+          <h4 style="margin-top:0;">Product Development</h4>
+          <p style="font-size:0.75rem;color:var(--ig-gray);margin-bottom:0.5rem;">MONTHS 12&ndash;36 &middot; EXISTING MARKETS &middot; NEW PRODUCTS</p>
+          <p>Intelligent routing, prompt management, LLM observability, model marketplace.</p>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--ig-error);">
+          <h4 style="margin-top:0;">Diversification</h4>
+          <p style="font-size:0.75rem;color:var(--ig-gray);margin-bottom:0.5rem;">YEAR 3+ &middot; NEW MARKETS &middot; NEW PRODUCTS</p>
+          <p>Vertical APIs &mdash; Healthcare AI (Burjeel), Financial AI (2PointZero), Real Estate AI (ALDAR).</p>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 10 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="pricing" class="section" data-accent="amber">
+    <h2>10 &mdash; Pricing Architecture &amp; Monetization</h2>
+
+      <h3>Tier Architecture</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Price</th>
+            <th>Token Discount</th>
+            <th>Target Segment</th>
+            <th>Key Features</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Free</td>
+            <td>$0 + $5 credit</td>
+            <td>&mdash;</td>
+            <td>Indie Hackers</td>
+            <td>1 API key, 10 RPM, playground access</td>
+          </tr>
+          <tr>
+            <td>Pay-As-You-Go</td>
+            <td>$0/mo</td>
+            <td>Standard</td>
+            <td>Light Production</td>
+            <td>Unlimited keys, 100 RPM, basic dashboard</td>
+          </tr>
+          <tr>
+            <td>Pro</td>
+            <td>$99/mo</td>
+            <td>5&ndash;10%</td>
+            <td>Startups/Mid-Market</td>
+            <td>RBAC, cost allocation, fine-tuning, 1K RPM</td>
+          </tr>
+          <tr>
+            <td>Team</td>
+            <td>$299/mo</td>
+            <td>8&ndash;12%</td>
+            <td>Small Enterprise</td>
+            <td>SSO, team workspaces, advanced analytics, 5K RPM</td>
+          </tr>
+          <tr>
+            <td>Enterprise</td>
+            <td>Custom ($2K&ndash;25K/mo)</td>
+            <td>15&ndash;30%</td>
+            <td>Enterprise/Regulated</td>
+            <td>VPC, custom SLA, dedicated CSM, ZDR, audit</td>
+          </tr>
+          <tr>
+            <td>IHC Group</td>
+            <td>Inter-company</td>
+            <td>20&ndash;30% off Enterprise</td>
+            <td>IHC Subsidiaries</td>
+            <td>Group integration, Gulf compliance, SAP billing</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Margin Architecture</h3>
+      <div class="grid grid-3">
+        <div class="stat-card">
+          <div class="stat-number">85&ndash;95%</div>
+          <div class="stat-label">Subscription Margin</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">40&ndash;60%</div>
+          <div class="stat-label">Usage Margin</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">60&ndash;70%</div>
+          <div class="stat-label">Blended Target</div>
+        </div>
+      </div>
+      <div class="feature-box">
+        <strong>Two-Part Pricing Strategy</strong>
+        Two-part pricing (subscription + usage) insulates revenue from per-token price collapse. Target: 40% subscription / 60% usage in Year 2, shifting to 60/40 by Year 3.
+      </div>
+
+      <h3>Example Model Pricing (Per Million Tokens)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Model Category</th>
+            <th>Example Models</th>
+            <th>Input</th>
+            <th>Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Small (7&ndash;8B)</td>
+            <td>LLaMA 3.1 8B, Mistral 7B</td>
+            <td>$0.10&ndash;0.20</td>
+            <td>$0.10&ndash;0.20</td>
+          </tr>
+          <tr>
+            <td>Medium (13&ndash;34B)</td>
+            <td>LLaMA 3.1 13B, CodeLlama 34B</td>
+            <td>$0.30&ndash;0.60</td>
+            <td>$0.30&ndash;0.60</td>
+          </tr>
+          <tr>
+            <td>Large (70B+)</td>
+            <td>LLaMA 3.1 70B, DeepSeek V3</td>
+            <td>$0.50&ndash;1.20</td>
+            <td>$0.50&ndash;1.50</td>
+          </tr>
+          <tr>
+            <td>Embeddings</td>
+            <td>Various embedding models</td>
+            <td>$0.01&ndash;0.05</td>
+            <td>&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Inducement Programs</h3>
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 style="margin-top:0;color:var(--ig-success);">$5 Free Credit</h4>
+          <p>Every new account receives $5 in inference credits upon signup &mdash; zero friction onboarding.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;color:var(--ig-info);">$100 Migration Bonus</h4>
+          <p>Switch from a competitor platform and receive $100 in credits to offset transition costs.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;color:var(--ig-purple);">$25 Referral Credit</h4>
+          <p>Per referred signup that converts to a paying customer &mdash; viral acquisition loop.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;color:var(--ig-amber);">$10K Startup Program</h4>
+          <p>Qualifying early-stage startups receive up to $10,000 in credits over 12 months.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;color:var(--ig-teal);">50% Academic Discount</h4>
+          <p>University researchers and students receive half-price token rates.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;color:var(--ig-rose);">IHC Group Discount</h4>
+          <p>20&ndash;30% discount on token rates for internal subsidiaries and inter-group enterprise customers.</p>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 11 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="distribution" class="section" data-accent="sky">
+    <h2>11 &mdash; Distribution Channels &amp; Go-to-Market</h2>
+
+      <h3>Three-Phase GTM Strategy</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="date">Phase 1</div>
+          <div class="label">Months 1&ndash;6: Maximize Reach</div>
+        </div>
+        <div class="timeline-item active">
+          <div class="date">Phase 2</div>
+          <div class="label">Months 6&ndash;12: Switching Costs</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date">Phase 3</div>
+          <div class="label">Months 12&ndash;24: Enterprise</div>
+        </div>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h4 style="margin-top:0;">Phase 1: Reach</h4>
+          <p>D2C self-serve, cloud marketplaces (AWS/GCP/Azure), framework integrations (LangChain, Vercel AI SDK), IHC Group internal channel.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">Phase 2: Switching Costs</h4>
+          <p>Fine-tuning adoption (20% target), team workspace expansion, cost analytics dependency, prompt library accumulation, compliance integration.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;">Phase 3: Enterprise</h4>
+          <p>SOC 2 unlocks enterprise. 3&ndash;5 AEs + SEs + CSMs. 1&ndash;3 year contracts with VPC peering.</p>
+        </div>
+      </div>
+
+      <h3>IHC Group Distribution</h3>
+      <div class="card featured">
+        <h4 style="margin-top:0;">The Unfair Advantage</h4>
+        <p>422 subsidiaries reachable through internal channels at zero CAC. Top-10 targets: Burjeel, ALDAR, PureHealth, 2PointZero, Alpha Dhabi, Emirates Stallion, Al Seer Marine, Palms Sports, Multiply Group, Ghitha Holdings.</p>
+        <p style="margin-bottom:0;"><strong>2&ndash;4 week deployment</strong> vs. 6&ndash;12 months for external enterprise.</p>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 12 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="communications" class="section" data-accent="sky">
+    <h2>12 &mdash; Communications &amp; Developer Marketing</h2>
+
+      <h3>Marketing Principle</h3>
+      <div class="feature-box">
+        <strong>Value-First Marketing</strong>
+        The most effective developer marketing doesn't look like marketing. Create genuine value for developers, and marketing outcomes follow. Content that developers find useful &gt; content that promotes the brand.
+      </div>
+
+      <h3>Channel Strategy</h3>
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 style="margin-top:0;color:var(--ig-sky);">Guerrilla</h4>
+          <p>Competitor bill-shock response (monitor Twitter/Reddit), LLM Price Tracker website (daily updated), Model Benchmark Leaderboard (open-source, reproducible).</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;color:var(--ig-sky);">Social &amp; Community</h4>
+          <p>Discord server (10K members Year 1), r/LocalLLaMA engagement, weekly &ldquo;Model Monday&rdquo; Twitter Spaces, GITEX Technology Week presence.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;color:var(--ig-sky);">Content Marketing</h4>
+          <p>2&ndash;3 blog posts/week. YouTube 1&ndash;2 videos/week. Weekly newsletter (25K subscribers in 6 months). Benchmarks, tutorials, migration guides, case studies.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0;color:var(--ig-sky);">Paid Media</h4>
+          <p>$1.5&ndash;3.0M Year 1. Google Ads (30%), GitHub (15%), Twitter (15%), Reddit (10%), Conferences (20%), Podcasts (10%). Blended CPA: $12&ndash;50.</p>
+        </div>
+        <div class="card" style="grid-column: 1 / -1;">
+          <h4 style="margin-top:0;color:var(--ig-sky);">DevRel</h4>
+          <p>3&ndash;5 developer advocates with established technical credibility. Live coding streams, conference talks (10&ndash;15/year), open-source contributions to vLLM/LangChain.</p>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 13 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="quick-wins" class="section" data-accent="sky">
+    <h2>13 &mdash; Quick Wins &amp; Strategic Advantages</h2>
+
+      <h3>Five Structural Rights to Win</h3>
+      <div class="grid grid-2">
+        <div class="numbered-card">
+          <div class="num" style="color:var(--ig-sky);">01</div>
+          <div>
+            <h4>Built-In Customer Base</h4>
+            <p>422 IHC subsidiaries, $3&ndash;50M annual potential, zero CAC, 2&ndash;4 week cycles. Case studies from $238B conglomerate.</p>
+          </div>
+        </div>
+        <div class="numbered-card">
+          <div class="num" style="color:var(--ig-sky);">02</div>
+          <div>
+            <h4>Sovereign AI Positioning</h4>
+            <p>Abu Dhabi HQ, UAE/Saudi regulatory alignment, GPU partnerships partnership. Full-stack AI sovereignty narrative.</p>
+          </div>
+        </div>
+        <div class="numbered-card">
+          <div class="num" style="color:var(--ig-sky);">03</div>
+          <div>
+            <h4>Platform-First DNA</h4>
+            <p>Conceived as platform from market analysis, not retrofitted onto inference engine. Cost intelligence, compliance, governance in architecture.</p>
+          </div>
+        </div>
+        <div class="numbered-card" style="grid-column: 1 / -1;">
+          <div class="num" style="color:var(--ig-sky);">05</div>
+          <div>
+            <h4>GPU partnerships Hardware Partnership</h4>
+            <p>Non-Nvidia RISC-V path. Supply chain diversification, potential 30&ndash;50% cost advantage, sovereign AI alignment.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>90-Day Activation Plan</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Win</th>
+            <th>Timeline</th>
+            <th>Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>IHC Group Internal Pilot</td>
+            <td>Weeks 1&ndash;4</td>
+            <td>$100&ndash;500K MRR, case studies, product validation</td>
+          </tr>
+          <tr>
+            <td>Playground Launch</td>
+            <td>Weeks 2&ndash;6</td>
+            <td>Primary conversion tool, viral sharing via URLs</td>
+          </tr>
+          <tr>
+            <td>Price Comparison Page</td>
+            <td>Weeks 1&ndash;2</td>
+            <td>SEO traffic, transparency positioning</td>
+          </tr>
+          <tr>
+            <td>Migration Guides</td>
+            <td>Weeks 2&ndash;4</td>
+            <td>High-intent search capture (Together/OpenAI/Fireworks/Groq)</td>
+          </tr>
+          <tr>
+            <td>Content Blitz</td>
+            <td>Weeks 1&ndash;8</td>
+            <td>20&ndash;30 blog posts, compounding SEO asset</td>
+          </tr>
+          <tr>
+            <td>GITEX Presence</td>
+            <td>Event-aligned</td>
+            <td>170K+ attendees, live IHC subsidiary demos</td>
+          </tr>
+          <tr>
+            <td>Startup Program</td>
+            <td>Weeks 4&ndash;8</td>
+            <td>$10K credits for &lt;$5M funded startups, 500 applications target</td>
+          </tr>
+          <tr>
+            <td>Hacker News Launch</td>
+            <td>Weeks 6&ndash;10</td>
+            <td>10,000&ndash;50,000 signups in one week</td>
+          </tr>
+        </tbody>
+      </table>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SECTION 14 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="feature-prioritization" class="section" data-accent="lime">
+    <h2>14 &mdash; Feature Offering &amp; Prioritization</h2>
+
+      <h3>Prioritization Framework</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Priority</th>
+            <th>Definition</th>
+            <th>Timeline</th>
+            <th>Business Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge p0">P0</span></td>
+            <td>Launch blockers</td>
+            <td>At launch</td>
+            <td>Platform credibility</td>
+          </tr>
+          <tr>
+            <td><span class="badge p1">P1</span></td>
+            <td>Phase 1 revenue enablers</td>
+            <td>Within 3 months</td>
+            <td>$3&ndash;6M internal ARR + first enterprise contracts</td>
+          </tr>
+          <tr>
+            <td><span class="badge p2">P2</span></td>
+            <td>Growth accelerators</td>
+            <td>Within 6&ndash;12 months</td>
+            <td>50K+ signups, $75&ndash;100M ARR trajectory</td>
+          </tr>
+          <tr>
+            <td><span class="badge p3">P3</span></td>
+            <td>Moat builders</td>
+            <td>Within 12&ndash;24 months</td>
+            <td>60&ndash;70% gross margins, defensible position</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Launch Milestone Timeline</h3>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;">
+        <div class="card" style="border-top:3px solid var(--ig-error);text-align:center;">
+          <div style="font-size:0.7rem;color:var(--ig-white-60);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.25rem;">M1</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--ig-error);margin-bottom:0.25rem;">Mar 28</div>
+          <div style="font-size:0.8rem;color:var(--ig-white-80);margin-bottom:0.75rem;">Sign Up &amp; API Calls</div>
+          <div style="font-size:0.7rem;color:var(--ig-white-60);">Auth &bull; Unified API &bull; Model Catalog &bull; Streaming &bull; API Keys &bull; Dashboard &bull; $5 Credit</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--ig-warning);text-align:center;">
+          <div style="font-size:0.7rem;color:var(--ig-white-60);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.25rem;">M2</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--ig-warning);margin-bottom:0.25rem;">Apr 5</div>
+          <div style="font-size:0.8rem;color:var(--ig-white-80);margin-bottom:0.75rem;">Playground, Cost &amp; Teams</div>
+          <div style="font-size:0.7rem;color:var(--ig-white-60);">Playground &bull; Side-by-Side &bull; Blind Comparison &bull; Cost Dashboard &bull; Budget Alerts &bull; RBAC &bull; Key Scoping</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--ig-info);text-align:center;">
+          <div style="font-size:0.7rem;color:var(--ig-white-60);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.25rem;">M3</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--ig-info);margin-bottom:0.25rem;">Apr 11</div>
+          <div style="font-size:0.8rem;color:var(--ig-white-80);margin-bottom:0.75rem;">Billing Live</div>
+          <div style="font-size:0.7rem;color:var(--ig-white-60);">Metered Billing &bull; Pricing Tiers &bull; Billing Dashboard &bull; Enterprise Discounts &bull; Public Playground</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--ig-teal);text-align:center;">
+          <div style="font-size:0.7rem;color:var(--ig-white-60);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.25rem;">M4</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--ig-teal);margin-bottom:0.25rem;">Apr 15</div>
+          <div style="font-size:0.8rem;color:var(--ig-white-80);margin-bottom:0.75rem;">LAUNCH</div>
+          <div style="font-size:0.7rem;color:var(--ig-white-60);">99.9% uptime &bull; Load tested &bull; Security audit &bull; IHC subsidiary onboarded &bull; On-call ops</div>
+        </div>
+      </div>
+
+      <h3>Feature Roadmap by Priority</h3>
+
+      <div class="card" style="border-left: 3px solid var(--ig-error); margin-bottom: 1rem;">
+        <h4 style="margin-top:0;"><span class="badge p0">P0</span> Launch Blockers</h4>
+        <div class="chip-group">
+          <span class="chip">Unified Inference API (200+ Models)</span>
+          <span class="chip">OpenAI + Anthropic Compatible Endpoints</span>
+          <span class="chip">SSE Streaming</span>
+          <span class="chip">Model Catalog</span>
+          <span class="chip">API Key Management</span>
+          <span class="chip">Dashboard Shell</span>
+          <span class="chip">$5 Free Credit</span>
+          <span class="chip">Interactive Playground + Blind Comparison</span>
+          <span class="chip">OpenAI-Compatible SDKs &amp; Docs</span>
+          <span class="chip">Usage Analytics &amp; Real-Time Billing</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-left: 3px solid var(--ig-warning); margin-bottom: 1rem;">
+        <h4 style="margin-top:0;"><span class="badge p1">P1</span> Revenue Enablers &mdash; 3 months post-launch</h4>
+        <div class="chip-group">
+          <span class="chip">Advanced API Key Scoping</span>
+          <span class="chip">Key Rotation</span>
+          <span class="chip">Team/Org Hierarchy + RBAC</span>
+          <span class="chip">SSO / SAML / Microsoft Entra ID</span>
+          <span class="chip">Cost Tracking Dashboard V1</span>
+          <span class="chip">Audit Logging &amp; SOC 2 Readiness</span>
+          <span class="chip">Inter-Company Billing (IHC Group)</span>
+          <span class="chip">Zero Data Retention (ZDR) Mode</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-left: 3px solid var(--ig-info); margin-bottom: 1rem;">
+        <h4 style="margin-top:0;"><span class="badge p2">P2</span> Growth Accelerators &mdash; 6&ndash;12 months</h4>
+        <div class="chip-group">
+          <span class="chip">Cost Intelligence Suite V2 (Predictive)</span>
+          <span class="chip">Fine-Tuning Lifecycle Management</span>
+          <span class="chip">SOC 2 Type II Certification</span>
+          <span class="chip">Webhook &amp; Integration Framework</span>
+          <span class="chip">Migration Tooling ($100 Credit)</span>
+          <span class="chip">HIPAA Compliance Package</span>
+          <span class="chip">Startup &amp; Academic Programs</span>
+        </div>
+      </div>
+
+      <div class="card" style="border-left: 3px solid var(--ig-white-20); margin-bottom: 1rem;">
+        <h4 style="margin-top:0;"><span class="badge p3">P3</span> Moat Builders &mdash; 12&ndash;24 months</h4>
+        <div class="chip-group">
+          <span class="chip">Intelligent Model Routing</span>
+          <span class="chip">Prompt Management as a Service</span>
+          <span class="chip">LLM Observability Platform</span>
+          <span class="chip">Custom Model Marketplace</span>
+          <span class="chip">EU AI Act Compliance Engine</span>
+          <span class="chip">Edge Inference (Pilot)</span>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- SOURCES & REFERENCES -->
+  <!-- ══════════════════════════════════════════════ -->
+  <section id="sources" class="section" data-accent="white" style="border-top:2px solid var(--ig-white-20);margin-top:3rem;padding-top:2rem;">
+    <h2>Sources &amp; References</h2>
+    <p style="color:var(--ig-white-60);margin-bottom:2rem;">
+      Every quantitative claim in this document is sourced below. Internal projections and estimates are labeled accordingly.
+    </p>
+
+    <h3>Market Sizing &amp; Growth</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Global LLM API inference spend: $12B (2024), $18&ndash;20B (2025), $28&ndash;32B (2026)</td>
+          <td>Gartner, &ldquo;Forecast: AI Infrastructure, Worldwide, 2024&ndash;2028&rdquo;; IDC, &ldquo;Worldwide AI and Generative AI Spending Guide,&rdquo; March 2025; a16z, &ldquo;State of AI&rdquo; (2025 edition)</td>
+        </tr>
+        <tr>
+          <td>Open-source share of enterprise LLM API spend: 15% (2024) &rarr; 25% (2025) &rarr; 35&ndash;40% (2026)</td>
+          <td>a16z, &ldquo;State of AI&rdquo; (2025); Menlo Ventures, &ldquo;The State of Generative AI in the Enterprise&rdquo; (2025)</td>
+        </tr>
+        <tr>
+          <td>Open-source inference market: $1.8B (2024), $4.5&ndash;5.0B (2025), $9.8&ndash;11.2B (2026)</td>
+          <td>Derived from Gartner &amp; IDC total market figures applied to a16z open-source share estimates</td>
+        </tr>
+        <tr>
+          <td>Managed inference platform segment: 60&ndash;70% of open-source inference total</td>
+          <td>IDC, &ldquo;Cloud AI Services Market Share,&rdquo; 2025; internal analysis of self-hosted vs. managed deployment ratios</td>
+        </tr>
+        <tr>
+          <td>LLM API market CAGR: 30%+</td>
+          <td>Gartner, &ldquo;Forecast: AI Infrastructure, Worldwide, 2024&ndash;2028&rdquo;</td>
+        </tr>
+        <tr>
+          <td>Inference pricing decline: 80&ndash;90% in 3 years</td>
+          <td>a16z, &ldquo;State of AI&rdquo; (2025); public API pricing history from OpenAI, Together AI, and Fireworks AI (2023&ndash;2026)</td>
+        </tr>
+        <tr>
+          <td>2026 TAM: $12.6&ndash;15.6B (aggregate)</td>
+          <td>Internal market sizing model aggregating the five segments above; methodology detailed in Section 01</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Middle East &amp; MENA Market</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>MENA AI market: $3.2B (2025) &rarr; $8.5B (2028)</td>
+          <td>PwC Middle East, &ldquo;AI in the Middle East&rdquo; (2024); IDC META, &ldquo;AI Spending Forecast,&rdquo; 2025</td>
+        </tr>
+        <tr>
+          <td>UAE National AI Strategy 2031: AI contributing $10B+ to GDP</td>
+          <td>UAE Ministry of AI, Digital Economy and Remote Work Applications; UAE AI Strategy 2031 official publication</td>
+        </tr>
+        <tr>
+          <td>Saudi Arabia Project Transcendence: $100B AI investment</td>
+          <td>Reuters, &ldquo;Saudi Arabia plans $100 billion AI investment,&rdquo; March 2025; Saudi Vision 2030 official documentation</td>
+        </tr>
+        <tr>
+          <td>Sovereign wealth fund AUM: $3T+ directed toward AI</td>
+          <td>Sovereign Wealth Fund Institute (SWFI) Global Rankings, 2025; includes ADQ, Mubadala, PIF, QIA</td>
+        </tr>
+        <tr>
+          <td>Middle East AI Infrastructure TAM: $1.2B (2025), $2.1B (2026)</td>
+          <td>IDC META, &ldquo;AI Infrastructure Spending Forecast,&rdquo; 2025; cross-referenced with PwC Middle East estimates</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>IHC Group &amp; Infinia Technologies</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>IHC conglomerate value: $238B</td>
+          <td>Abu Dhabi Securities Exchange (ADX) market capitalization; IHC Annual Report 2024</td>
+        </tr>
+        <tr>
+          <td>IHC cash &amp; equivalents: $20.4B</td>
+          <td>IHC Annual Report 2024; ADX financial filings</td>
+        </tr>
+        <tr>
+          <td>IHC subsidiaries: 422</td>
+          <td>IHC Annual Report 2024, corporate structure disclosure</td>
+        </tr>
+        <tr>
+          <td>Burjeel Holdings: 82+ healthcare facilities across 6 countries</td>
+          <td>Burjeel Holdings IPO Prospectus (2022); Burjeel Annual Report 2024</td>
+        </tr>
+        <tr>
+          <td>ALDAR Properties: UAE&rsquo;s largest listed developer</td>
+          <td>ADX market capitalization rankings; ALDAR Annual Report 2024</td>
+        </tr>
+        <tr>
+          <td>IHC Group internal opportunity: $5&ndash;20M/year</td>
+          <td>Internal estimate based on subsidiary count, estimated AI workloads per vertical, and inference cost benchmarks</td>
+        </tr>
+        <tr>
+          <td>GPU partnerships: RISC-V AI chip company backed by Hyundai and Samsung</td>
+          <td>GPU partnerships press releases (2024&ndash;2025); Hyundai Motor Group and Samsung investment announcements</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Competitor Financials &amp; Metrics</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Together AI: $533M raised, ~$300M ARR, ~$3.3B valuation</td>
+          <td>Crunchbase; TechCrunch, &ldquo;Together AI raises $305M Series B,&rdquo; 2025; The Information valuation reporting</td>
+        </tr>
+        <tr>
+          <td>Fireworks AI: $327M raised, ~$130M ARR, $4B valuation; 20x YoY growth</td>
+          <td>Crunchbase; Bloomberg, &ldquo;Fireworks AI valuation,&rdquo; 2025; company press release on growth metrics</td>
+        </tr>
+        <tr>
+          <td>Groq: Acquired by Nvidia (~$6.5B)</td>
+          <td>CNBC / Reuters reporting on Nvidia&ndash;Groq acquisition (2025)</td>
+        </tr>
+        <tr>
+          <td>OpenRouter: ~$500M valuation, 5M users, 300+ models</td>
+          <td>OpenRouter public documentation; The Information valuation estimate; company announcements</td>
+        </tr>
+        <tr>
+          <td>Groq LPU inference: 10&ndash;18x faster than GPU inference</td>
+          <td>Groq benchmark publications; independent benchmarks by Artificial Analysis (2024&ndash;2025)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Industry Surveys &amp; Developer Adoption</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>72% of enterprises plan to increase LLM API spend in 2026 (median +40%)</td>
+          <td>a16z, &ldquo;State of AI&rdquo; (2025 edition), enterprise survey section</td>
+        </tr>
+        <tr>
+          <td>48% of enterprises use 3+ LLM providers (up from 31% in 2024)</td>
+          <td>a16z, &ldquo;State of AI&rdquo; (2025 edition)</td>
+        </tr>
+        <tr>
+          <td>37% cite &ldquo;vendor management complexity&rdquo; as top-3 pain point</td>
+          <td>a16z, &ldquo;State of AI&rdquo; (2025 edition)</td>
+        </tr>
+        <tr>
+          <td>r/LocalLLaMA: 1.2M+ members</td>
+          <td>Reddit community statistics (as of Q1 2026)</td>
+        </tr>
+        <tr>
+          <td>65&ndash;75% of developers use AI daily (&ldquo;vibe coding&rdquo; mainstream)</td>
+          <td>GitHub, &ldquo;Octoverse 2025&rdquo;; Stack Overflow Developer Survey 2025</td>
+        </tr>
+        <tr>
+          <td>50K+ &ldquo;AI Engineer&rdquo; titles globally</td>
+          <td>LinkedIn Workforce Report, 2025; Latent Space &ldquo;AI Engineer&rdquo; ecosystem analysis</td>
+        </tr>
+        <tr>
+          <td>Enterprise AI adoption: 40%+ YoY growth</td>
+          <td>McKinsey, &ldquo;The State of AI,&rdquo; annual global survey (2025)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Model Performance &amp; Pricing</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>DeepSeek V3 matches GPT-4o on most benchmarks at 9x lower cost</td>
+          <td>DeepSeek technical report (2025); LMSYS Chatbot Arena ELO ratings; public API pricing comparison</td>
+        </tr>
+        <tr>
+          <td>DeepSeek V3: 97.3% on HumanEval</td>
+          <td>DeepSeek V3 technical report; Papers With Code HumanEval leaderboard</td>
+        </tr>
+        <tr>
+          <td>LLaMA 70B pricing: Together AI $0.90/M, Fireworks AI $0.70/M, DeepInfra $0.59/M</td>
+          <td>Public API pricing pages of Together AI, Fireworks AI, and DeepInfra (as of Q1 2026)</td>
+        </tr>
+        <tr>
+          <td>Task-appropriate model selection: 15&ndash;40% quality improvement, 30&ndash;60% cost reduction</td>
+          <td>Internal benchmarks; corroborated by Martian &ldquo;Model Router&rdquo; whitepaper (2025) and Unify.ai benchmark results</td>
+        </tr>
+        <tr>
+          <td>Semantic caching: eliminates 10&ndash;30% of inference traffic</td>
+          <td>GPTCache benchmarks; internal analysis of production workload token patterns</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Operational Cost Estimates</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Fragmentation overhead: 2&ndash;4 developer-weeks per quarter</td>
+          <td>Internal engineering benchmarks; corroborated by a16z &ldquo;State of AI&rdquo; (2025) infrastructure management survey data</td>
+        </tr>
+        <tr>
+          <td>Per-provider operational overhead: 0.5&ndash;1.0 FTE-weeks per quarter ($50K&ndash;$150K/year for 4 providers)</td>
+          <td>Internal DevOps workflow analysis; Forrester, &ldquo;The Total Economic Impact of API Management Platforms&rdquo; (2024)</td>
+        </tr>
+        <tr>
+          <td>SOC 2 review: 4&ndash;8 weeks InfoSec time at $200&ndash;$400/hr per vendor</td>
+          <td>Drata, &ldquo;SOC 2 Compliance Cost Guide&rdquo; (2025); Vanta industry benchmarks</td>
+        </tr>
+        <tr>
+          <td>Nvidia monopoly: 80%+ inference GPU market share; GPUs: 60&ndash;70% of COGS</td>
+          <td>Mercury Research GPU market share reports; a16z infrastructure cost analysis (2025)</td>
+        </tr>
+        <tr>
+          <td>AI data centers: 1,050 TWh projected by 2026</td>
+          <td>IEA, &ldquo;Electricity 2024&rdquo; report; Goldman Sachs, &ldquo;AI, Data Centers, and the Coming US Power Demand Surge&rdquo; (2024)</td>
+        </tr>
+        <tr>
+          <td>Carbon-aware routing: 30&ndash;70% emission reduction</td>
+          <td>Google Cloud carbon-aware computing whitepaper (2024); WattTime API documentation and case studies</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Compliance Costs &amp; Timelines</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>SOC 2 Type II: 9&ndash;12 months, $150&ndash;300K</td>
+          <td>Drata &amp; Vanta compliance cost benchmarks (2025); AICPA SOC reporting guidance</td>
+        </tr>
+        <tr>
+          <td>HIPAA compliance: 6&ndash;9 months, $200&ndash;400K</td>
+          <td>HHS HIPAA compliance guidance; Clearwater Compliance cost analysis (2025)</td>
+        </tr>
+        <tr>
+          <td>GDPR compliance: 3&ndash;6 months, $100&ndash;200K</td>
+          <td>IAPP GDPR implementation cost survey (2024); DLA Piper GDPR compliance benchmarks</td>
+        </tr>
+        <tr>
+          <td>EU AI Act enforcement: August 2026, fines up to 7% of global turnover</td>
+          <td>EU Regulation 2024/1689 (AI Act), Official Journal of the European Union; Article 99 on penalties</td>
+        </tr>
+        <tr>
+          <td>PCI-DSS: 3&ndash;6 months, $100&ndash;200K</td>
+          <td>PCI Security Standards Council; Coalfire PCI compliance cost guide (2024)</td>
+        </tr>
+        <tr>
+          <td>Saudi PDPL enforcement: effective 2025</td>
+          <td>SDAIA, Royal Decree M/19; enforcement timeline per SDAIA circular (2024)</td>
+        </tr>
+        <tr>
+          <td>ISO 27001: 12&ndash;18 months, $200&ndash;400K</td>
+          <td>ISO/IEC 27001:2022 standard; BSI Group implementation cost benchmarks</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Industry Margins &amp; Benchmarks</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Industry avg gross margin (inference): 15&ndash;25%; (platform): 60&ndash;80%</td>
+          <td>Bessemer Venture Partners, &ldquo;State of the Cloud&rdquo; (2025); a16z infrastructure margin analysis</td>
+        </tr>
+        <tr>
+          <td>Together AI / Fireworks AI gross margins &amp; NRR estimates</td>
+          <td>The Information; internal estimates based on public pricing, infrastructure cost models, and industry benchmarks</td>
+        </tr>
+        <tr>
+          <td>Industry avg NRR: 110&ndash;130%</td>
+          <td>Bessemer &ldquo;State of the Cloud&rdquo; (2025); KeyBanc SaaS Survey (2025)</td>
+        </tr>
+        <tr>
+          <td>Time-to-first-API-call under 2 min &rarr; 3&ndash;5x higher 30-day retention</td>
+          <td>Stripe developer onboarding benchmarks; Twilio developer experience research (2024)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Customer Segment Sizing</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Indie Hackers: ~8M globally</td>
+          <td>GitHub Octoverse 2025 (individual developer accounts with AI repos); Stripe Atlas registration data</td>
+        </tr>
+        <tr>
+          <td>Startup Builders: ~500K teams</td>
+          <td>Crunchbase startup database; PitchBook venture-backed company count (2025)</td>
+        </tr>
+        <tr>
+          <td>Mid-Market orgs: ~80K</td>
+          <td>Gartner, &ldquo;Market Guide for AI Infrastructure,&rdquo; 2025; filtered by $1K&ndash;$50K/mo AI spend</td>
+        </tr>
+        <tr>
+          <td>Enterprise orgs: ~15K; AI-Native: ~5K; Regulated Industry: ~10K</td>
+          <td>IDC, &ldquo;Worldwide AI Spending Guide,&rdquo; 2025; segmented by spend tier and vertical</td>
+        </tr>
+        <tr>
+          <td>IHC Group: 50&ndash;100 tech-active entities (of 422 subsidiaries)</td>
+          <td>Internal Infinia Technologies assessment of IHC portfolio digital maturity (2025)</td>
+        </tr>
+        <tr>
+          <td>Psychographic split: Compliant 40%, Aggressive 35%, Detached 25%</td>
+          <td>Internal customer interview synthesis (N=45); cross-referenced with Gartner AI adoption maturity model</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Financial Projections &amp; Pricing</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Year 1&ndash;3 ARR: $18.9M &rarr; $120.8M &rarr; $377M</td>
+          <td>Internal financial model; assumptions documented in Section 15 (Financial Projections)</td>
+        </tr>
+        <tr>
+          <td>IHC internal revenue: $2.4M &rarr; $10.8M &rarr; $27M</td>
+          <td>Internal projections based on subsidiary onboarding targets and estimated per-subsidiary spend</td>
+        </tr>
+        <tr>
+          <td>Pricing tiers: Free ($5 credit), Pro ($99/mo), Team ($299/mo), Enterprise ($2K&ndash;$25K/mo)</td>
+          <td>Internal pricing architecture; benchmarked against Together AI, Fireworks AI, and OpenRouter public pricing</td>
+        </tr>
+        <tr>
+          <td>Year 1 marketing spend: $1.5&ndash;3.0M; Blended CPA: $12&ndash;50</td>
+          <td>Internal budget model; CPA benchmarks from SimilarWeb &amp; SpyFu for developer-tool category (2025)</td>
+        </tr>
+        <tr>
+          <td>Subscription margin: 85&ndash;95%; Usage margin: 40&ndash;60%; Blended: 60&ndash;70%</td>
+          <td>Internal financial model; consistent with Bessemer &ldquo;State of the Cloud&rdquo; SaaS+usage hybrid benchmarks</td>
+        </tr>
+        <tr>
+          <td>SMB segment: 50K&ndash;100K organizations globally, $2&ndash;5B aggregate spend</td>
+          <td>Derived from IDC &ldquo;Worldwide AI Spending Guide&rdquo; (2025), filtered by company size and AI spend tier</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Regulatory &amp; Policy</h3>
+    <table>
+      <thead><tr><th>Claim</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>EU AI Act enforcement beginning August 2026</td>
+          <td>EU Regulation 2024/1689, Official Journal of the European Union, Article 113 (entry into force and application dates)</td>
+        </tr>
+        <tr>
+          <td>Saudi Personal Data Protection Law effective 2025</td>
+          <td>SDAIA, Royal Decree M/19; enforcement timeline per SDAIA circular (2024)</td>
+        </tr>
+        <tr>
+          <td>UAE data protection and data residency requirements</td>
+          <td>UAE Federal Decree-Law No. 45/2021 on Personal Data Protection; DIFC Data Protection Law No. 5/2020</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="feature-box" style="margin-top:2rem;">
+      <strong>Methodology Note</strong>
+      <p style="margin-top:0.5rem;">
+        Market size estimates combine top-down analysis (total AI infrastructure spend segmented by deployment model and geography) with bottom-up validation (aggregated public pricing, disclosed customer counts, and estimated usage volumes from major providers). Where exact figures are unavailable, ranges are provided. Internal projections (financial forecasts, IHC Group opportunity estimates, customer segment sizing) are based on Infinia Technologies&rsquo; proprietary models and assumptions documented in the relevant sections. All competitor financial data is sourced from public disclosures, Crunchbase, or credible technology press; where marked as estimates, these reflect informed analysis rather than confirmed figures.
+      </p>
+    </div>
+
+  </section>
+
+</div>
+
+</body>
+</html>

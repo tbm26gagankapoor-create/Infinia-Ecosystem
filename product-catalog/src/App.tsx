@@ -7,6 +7,7 @@ const Dashboard     = lazy(() => import('./pages/Dashboard'))
 const Products      = lazy(() => import('./pages/Products'))
 const ProductDetail = lazy(() => import('./pages/ProductDetail'))
 const Analytics     = lazy(() => import('./pages/Analytics'))
+const Teams         = lazy(() => import('./pages/Teams'))
 
 function PageLoader() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/products"        element={<Suspense fallback={<PageLoader />}><Products /></Suspense>} />
           <Route path="/products/:id"    element={<Suspense fallback={<PageLoader />}><ProductDetail /></Suspense>} />
           <Route path="/analytics"       element={<Suspense fallback={<PageLoader />}><Analytics /></Suspense>} />
+          <Route path="/teams"           element={<Suspense fallback={<PageLoader />}><Teams /></Suspense>} />
         </Route>
       </Routes>
     </BrowserRouter>
