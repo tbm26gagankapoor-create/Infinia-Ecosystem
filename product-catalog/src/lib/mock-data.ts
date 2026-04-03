@@ -313,7 +313,7 @@ export const PRODUCTS: Product[] = [
     id: 'prod-xaylon',
     name: 'Xaylon',
     shortName: 'Xaylon',
-    description: 'AI agent platform for enterprise workflows — build, deploy, and monitor multi-step AI agents that integrate with existing business systems over a unified runtime.',
+    description: 'AI agent platform for enterprise workflows — build, deploy, and monitor multi-step AI agents that integrate with existing business systems over a unified runtime. Includes a built-in developer IDE for local agent building and debugging.',
     mission: 'Turn LLM capabilities into reliable, auditable business workflows without requiring ML expertise.',
     icon: '/logos/xaylon.svg',
     phase: 'beta',
@@ -331,7 +331,9 @@ export const PRODUCTS: Product[] = [
     usage: { dau: 120, mau: 440, totalUsers: 720, growthRate: 42, history: makeUsageHistory(80, 18) },
     updates: [
       { date: '2026-03-25', title: 'Salesforce connector', type: 'feature', description: 'Native Salesforce integration — agents can read/write CRM data.' },
+      { date: '2026-03-12', title: 'Trace visualiser', type: 'feature', description: 'Interactive flame graph for debugging multi-step agent execution.' },
       { date: '2026-02-18', title: 'Agent versioning', type: 'feature', description: 'Agents now support semantic versioning and one-click rollback.' },
+      { date: '2026-02-05', title: 'Studio alpha access', type: 'launch', description: 'Local dev IDE opened to all Xaylon beta users as a companion dev tool.' },
       { date: '2026-01-15', title: 'Beta launch', type: 'launch', description: 'Xaylon opens to public beta after 3 months in private preview.' },
     ],
   },
