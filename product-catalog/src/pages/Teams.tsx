@@ -5,6 +5,7 @@ import { PhaseBadge } from '@/components/PhaseBadge'
 import { StatusBadge } from '@/components/StatusBadge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { ProductIcon } from '@/components/ProductIcon'
 import { PRODUCTS, ALL_PMS } from '@/lib/mock-data'
 import { formatCurrency, formatNumber } from '@/lib/formatters'
 import { stagger, STREAM_DEFS } from '@/lib/constants'
@@ -103,7 +104,7 @@ export default function Teams() {
                         to={`/products/${p.id}`}
                         className="flex items-center gap-3 group rounded px-2 py-2 hover:bg-card-hover transition-colors -mx-2"
                       >
-                        <span className="text-lg leading-none w-7 text-center shrink-0">{p.icon}</span>
+                        <ProductIcon icon={p.icon} className="text-lg leading-none w-7 text-center shrink-0" />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
                             <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors truncate">
