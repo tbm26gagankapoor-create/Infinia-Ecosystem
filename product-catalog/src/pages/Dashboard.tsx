@@ -105,7 +105,7 @@ export default function Dashboard() {
                 />
                 <YAxis hide />
                 <Tooltip
-                  formatter={(v: number) => [formatCurrency(v, true), 'MRR']}
+                  formatter={((v: number) => [formatCurrency(v, true), 'MRR']) as never}
                   contentStyle={{
                     background: 'var(--card)',
                     border: '1px solid var(--border)',
@@ -145,7 +145,7 @@ export default function Dashboard() {
                 />
                 <YAxis hide allowDecimals={false} />
                 <Tooltip
-                  formatter={(v: number) => [v, 'Products']}
+                  formatter={((v: number) => [v, 'Products']) as never}
                   contentStyle={{
                     background: 'var(--card)',
                     border: '1px solid var(--border)',

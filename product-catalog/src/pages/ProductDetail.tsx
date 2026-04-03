@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'motion/react'
-import { ArrowLeft, ExternalLink, FileText, BookOpen, BarChart2, Users, Zap } from 'lucide-react'
+import { ArrowLeft, ExternalLink, FileText, BookOpen, BarChart2, Zap } from 'lucide-react'
 import {
   AreaChart, Area, BarChart, Bar,
   XAxis, YAxis, CartesianGrid,
@@ -261,7 +261,7 @@ export default function ProductDetail() {
                       <XAxis dataKey="month" {...AXIS_PROPS} tickFormatter={v => v.slice(5)} />
                       <YAxis hide />
                       <Tooltip
-                        formatter={(v: number) => [formatCurrency(v, true), 'MRR']}
+                        formatter={((v: number) => [formatCurrency(v, true), 'MRR']) as never}
                         contentStyle={TOOLTIP_STYLE}
                         labelStyle={LABEL_STYLE}
                       />
@@ -304,7 +304,7 @@ export default function ProductDetail() {
                     <XAxis dataKey="month" {...AXIS_PROPS} tickFormatter={v => v.slice(5)} />
                     <YAxis hide />
                     <Tooltip
-                      formatter={(v: number) => [formatNumber(v), 'MAU']}
+                      formatter={((v: number) => [formatNumber(v), 'MAU']) as never}
                       contentStyle={TOOLTIP_STYLE}
                       labelStyle={LABEL_STYLE}
                     />

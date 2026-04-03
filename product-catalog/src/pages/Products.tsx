@@ -19,7 +19,7 @@ import {
 } from '@/components/ui/table'
 import { PRODUCTS, type Phase, type ProductStream } from '@/lib/mock-data'
 import { formatCurrency, formatNumber } from '@/lib/formatters'
-import { PHASE_CONFIG, STREAM_DEFS, stagger } from '@/lib/constants'
+import { STREAM_DEFS, stagger } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 type SortKey = 'name' | 'mrr' | 'mau' | 'phase'

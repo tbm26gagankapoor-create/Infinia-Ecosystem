@@ -147,7 +147,7 @@ export default function Analytics() {
                 <XAxis dataKey="month" {...AXIS_PROPS} tickFormatter={v => v.slice(5)} />
                 <YAxis hide />
                 <Tooltip
-                  formatter={(v: number) => [formatCurrency(v, true), 'MRR']}
+                  formatter={((v: number) => [formatCurrency(v, true), 'MRR']) as never}
                   contentStyle={TOOLTIP_STYLE}
                   labelStyle={LABEL_STYLE}
                 />
@@ -172,7 +172,7 @@ export default function Analytics() {
                 <XAxis dataKey="month" {...AXIS_PROPS} tickFormatter={v => v.slice(5)} />
                 <YAxis hide />
                 <Tooltip
-                  formatter={(v: number, name: string) => [formatCurrency(v, true), name]}
+                  formatter={((v: number, name: string) => [formatCurrency(v, true), name]) as never}
                   contentStyle={TOOLTIP_STYLE}
                   labelStyle={LABEL_STYLE}
                 />
@@ -208,7 +208,7 @@ export default function Analytics() {
                 <XAxis dataKey="month" {...AXIS_PROPS} tickFormatter={v => v.slice(5)} />
                 <YAxis hide />
                 <Tooltip
-                  formatter={(v: number, name: string) => [formatNumber(v), name]}
+                  formatter={((v: number, name: string) => [formatNumber(v), name]) as never}
                   contentStyle={TOOLTIP_STYLE}
                   labelStyle={LABEL_STYLE}
                 />
@@ -248,7 +248,7 @@ export default function Analytics() {
                 <XAxis type="number" {...AXIS_PROPS} allowDecimals={false} />
                 <YAxis type="category" dataKey="phase" {...AXIS_PROPS} width={48} />
                 <Tooltip
-                  formatter={(v: number) => [v, 'Products']}
+                  formatter={((v: number) => [v, 'Products']) as never}
                   contentStyle={TOOLTIP_STYLE}
                   labelStyle={LABEL_STYLE}
                 />
