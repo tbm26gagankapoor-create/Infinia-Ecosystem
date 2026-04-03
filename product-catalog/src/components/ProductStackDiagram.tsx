@@ -18,7 +18,7 @@ export function ProductStackDiagram() {
   }, [hovered])
 
   const activeContext = SOLVING_CONTEXTS[activeSlide]
-  const highlightedIds = new Set(activeContext.productIds)
+  const highlightedIds = new Set<string>(activeContext.productIds)
 
   const layers = [...LAYER_DEFS].reverse() // L5 → L1
 
