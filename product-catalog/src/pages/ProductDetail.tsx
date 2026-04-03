@@ -1,6 +1,6 @@
-import { useParams, Link, Navigate } from 'react-router-dom'
+import { useParams, Link, Navigate, useNavigate } from 'react-router-dom'
 import { motion } from 'motion/react'
-import { ArrowLeft, ExternalLink, FileText, BookOpen, BarChart2, Zap } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ExternalLink, FileText, BookOpen, BarChart2, Zap } from 'lucide-react'
 import {
   AreaChart, Area, BarChart, Bar,
   XAxis, YAxis, CartesianGrid,
@@ -16,7 +16,7 @@ import { StatusBadge } from '@/components/StatusBadge'
 import { StatCard } from '@/components/StatCard'
 import { PRODUCTS, type DocType } from '@/lib/mock-data'
 import { formatCurrency, formatNumber, formatDate } from '@/lib/formatters'
-import { CHART_MD, STAT_GRID, stagger, STREAM_DEFS } from '@/lib/constants'
+import { CHART_MD, STAT_GRID, stagger, LAYER_DEFS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 const UPDATE_TYPE_STYLES: Record<string, string> = {
@@ -42,11 +42,13 @@ const DOC_TYPE_LABEL: Record<DocType, string> = {
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
   const product = PRODUCTS.find(p => p.id === id)
 
   if (!product) return <Navigate to="/products" replace />
 
-  const streamLabel = STREAM_DEFS.find(s => s.id === product.stream)?.label ?? product.stream
+  const layerDef = LAYER_DEFS.find(l => l.id === product.layer)
+  const layerLabel = layerDef ? `${layerDef.number} — ${layerDef.label}` : product.layer
   const relatedProducts = PRODUCTS.filter(p => product.relatedProductIds.includes(p.id))
 
   const TOOLTIP_STYLE = {
@@ -90,7 +92,7 @@ export default function ProductDetail() {
             {product.description}
           </p>
           <div className="flex items-center gap-4 mt-2 text-[11px] text-muted-foreground/60">
-            <span>{streamLabel} stream</span>
+            <span>{layerLabel}</span>
             <span>·</span>
             <span>Since {formatDate(product.foundedDate)}</span>
             <span>·</span>
@@ -374,31 +376,61 @@ export default function ProductDetail() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {product.documents.map((doc, i) => {
                   const Icon = DOC_TYPE_ICON[doc.type]
+                  const hasMarkdownDocs = doc.markdownDocs && doc.markdownDocs.length > 0
+
                   return (
-                    <Card key={i} className="border-border/40 hover:bg-card-hover transition-colors">
+                    <Card
+                      key={doc.id ?? i}
+                      className={cn(
+                        'border-border/40 transition-colors',
+                        hasMarkdownDocs
+                          ? 'hover:border-border/80 cursor-pointer group'
+                          : 'hover:bg-card-hover'
+                      )}
+                      onClick={hasMarkdownDocs ? () => navigate(`/products/${product.id}/docs/${doc.id}`) : undefined}
+                    >
                       <CardContent className="p-4 flex items-start gap-3">
-                        <div className="mt-0.5 p-1.5 rounded bg-primary/10 text-primary shrink-0">
-                          <Icon className="h-4 w-4" />
+                        <div
+                          className="mt-0.5 p-1.5 rounded shrink-0"
+                          style={{
+                            backgroundColor: doc.accentColor ? `${doc.accentColor}15` : undefined,
+                            color: doc.accentColor || undefined,
+                          }}
+                        >
+                          <Icon className={cn('h-4 w-4', !doc.accentColor && 'text-primary')} />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between gap-2">
                             <div>
-                              <div className="text-xs font-medium text-foreground">{doc.label}</div>
+                              <div className={cn(
+                                'text-xs font-medium text-foreground',
+                                hasMarkdownDocs && 'group-hover:text-primary transition-colors'
+                              )}>
+                                {doc.label}
+                              </div>
                               <div className="text-[10px] text-muted-foreground/60 uppercase tracking-wider mt-0.5">
                                 {DOC_TYPE_LABEL[doc.type]}
+                                {hasMarkdownDocs && (
+                                  <span className="ml-1.5">· {doc.markdownDocs!.length} docs</span>
+                                )}
                               </div>
                             </div>
-                            <a
-                              href={doc.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="shrink-0"
-                            >
-                              <Button variant="ghost" size="sm" className="h-7 px-2 text-xs gap-1">
-                                Open
-                                <ExternalLink className="h-3 w-3" />
-                              </Button>
-                            </a>
+                            {!hasMarkdownDocs && (
+                              <a
+                                href={doc.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="shrink-0"
+                              >
+                                <Button variant="ghost" size="sm" className="h-7 px-2 text-xs gap-1">
+                                  Open
+                                  <ExternalLink className="h-3 w-3" />
+                                </Button>
+                              </a>
+                            )}
+                            {hasMarkdownDocs && (
+                              <ArrowRight className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0 mt-0.5" />
+                            )}
                           </div>
                           <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
                             {doc.description}

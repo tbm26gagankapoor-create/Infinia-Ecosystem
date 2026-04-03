@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge'
 import { ProductIcon } from '@/components/ProductIcon'
 import { PRODUCTS, ALL_PMS } from '@/lib/mock-data'
 import { formatCurrency, formatNumber } from '@/lib/formatters'
-import { stagger, STREAM_DEFS } from '@/lib/constants'
+import { stagger, LAYER_DEFS } from '@/lib/constants'
 
 // Group products by PM
 const PM_GROUPS = ALL_PMS.map(pm => {
@@ -34,12 +34,12 @@ export default function Teams() {
 
       {/* Summary row */}
       <motion.div {...stagger(1)} className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        {STREAM_DEFS.map(s => {
-          const products = PRODUCTS.filter(p => p.stream === s.id)
+        {LAYER_DEFS.map(l => {
+          const products = PRODUCTS.filter(p => p.layer === l.id)
           return (
-            <Card key={s.id} className="border-border/40">
+            <Card key={l.id} className="border-border/40">
               <CardContent className="p-3">
-                <div className="text-[10px] text-muted-foreground/60 uppercase tracking-wider mb-1">{s.label}</div>
+                <div className="text-[10px] text-muted-foreground/60 uppercase tracking-wider mb-1">{l.number} {l.label}</div>
                 <div className="text-lg font-semibold text-foreground">{products.length}</div>
                 <div className="text-[11px] text-muted-foreground mt-0.5">products</div>
               </CardContent>
@@ -97,7 +97,8 @@ export default function Teams() {
                 <div className="h-px bg-border/30 mb-3" />
                 <div className="space-y-2">
                   {products.map(p => {
-                    const streamLabel = STREAM_DEFS.find(s => s.id === p.stream)?.label ?? p.stream
+                    const layerDef = LAYER_DEFS.find(l => l.id === p.layer)
+                    const streamLabel = layerDef ? `${layerDef.number} ${layerDef.label}` : p.layer
                     return (
                       <Link
                         key={p.id}

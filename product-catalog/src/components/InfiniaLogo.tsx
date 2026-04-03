@@ -4,46 +4,28 @@ interface InfiniaLogoProps {
 }
 
 /**
- * Infinia Technologies triple-chevron logo mark.
- * Three right-pointing chevrons (>>>) with gradient from solid to faded.
- * Adapts to light/dark theme.
+ * Infinia Technologies official logo mark.
+ * Two right-pointing chevron shapes from the official brand SVG.
  */
 export function InfiniaLogo({ size = 28, className }: InfiniaLogoProps) {
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 60 48"
+      viewBox="50 450 190 180"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      {/* Left chevron — brightest */}
-      <path
-        d="M2 4 L20 24 L2 44"
-        strokeWidth="8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="stroke-zinc-800 dark:stroke-white"
-        fill="none"
+      {/* Larger chevron */}
+      <polygon
+        points="233.79 540.34 150.67 623.02 89.72 623.02 172.83 540.34 189.08 540.34 105.97 457.7 150.67 457.7 233.79 540.34"
+        className="fill-zinc-500 dark:fill-[#d3d3d3]"
       />
-      {/* Middle chevron — medium */}
-      <path
-        d="M20 4 L38 24 L20 44"
-        strokeWidth="8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="stroke-zinc-500 dark:stroke-zinc-400"
-        fill="none"
-      />
-      {/* Right chevron — faintest */}
-      <path
-        d="M38 4 L56 24 L38 44"
-        strokeWidth="8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="stroke-zinc-300 dark:stroke-zinc-600"
-        fill="none"
+      {/* Smaller chevron */}
+      <polygon
+        points="151.48 540.34 107.87 583.74 75.87 583.74 119.48 540.34 99.46 540.34 55.82 496.95 107.87 496.95 151.48 540.34"
+        className="fill-zinc-500 dark:fill-[#d3d3d3]"
       />
     </svg>
   )

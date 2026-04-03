@@ -13,13 +13,13 @@ export const STAT_GRID = 'grid grid-cols-2 sm:grid-cols-4 gap-4'
 
 // Animation presets
 export const FADE_IN = {
-  initial: { opacity: 0, y: 8 },
+  initial: { opacity: 0, y: 12 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.25 },
 } as const
 
 export function stagger(index: number, base = 0.04) {
-  return { ...FADE_IN, transition: { duration: 0.2, delay: index * base } }
+  return { ...FADE_IN, transition: { duration: 0.25, delay: index * base } }
 }
 
 // Phase color config — muted, no neon
@@ -62,21 +62,82 @@ export const STATUS_CONFIG = {
   deprecated: { dot: 'bg-zinc-500', label: 'Deprecated' },
 } as const
 
-// Stream definitions (ordered bottom-to-top as shown in stack diagram)
-export const STREAM_DEFS = [
+// Layer definitions (ordered L1 bottom → L5 top)
+export const LAYER_DEFS = [
   {
-    id: 'foundation' as const,
-    label: 'Foundation',
-    description: 'Core infrastructure and platform capabilities',
+    id: 'l1' as const,
+    number: 'L1',
+    label: 'Secure Foundation',
+    color: 'slate' as const,
+    bgClass: 'bg-slate-600',
+    textClass: 'text-slate-300',
+    borderClass: 'border-slate-600/40',
+    rowBgClass: 'bg-slate-900/30',
   },
   {
-    id: 'ai-foundation' as const,
-    label: 'AI Foundation',
-    description: 'AI/ML platform products powering all AI workloads',
+    id: 'l2' as const,
+    number: 'L2',
+    label: 'AI Core Engine',
+    color: 'orange' as const,
+    bgClass: 'bg-orange-600',
+    textClass: 'text-orange-300',
+    borderClass: 'border-orange-600/40',
+    rowBgClass: 'bg-orange-950/20',
   },
   {
-    id: 'agents' as const,
-    label: 'Agents & Applications',
-    description: 'User-facing agent tools and applications',
+    id: 'l3' as const,
+    number: 'L3',
+    label: 'Strategy, Governance & Compliance',
+    color: 'green' as const,
+    bgClass: 'bg-green-700',
+    textClass: 'text-green-300',
+    borderClass: 'border-green-600/40',
+    rowBgClass: 'bg-green-950/20',
+  },
+  {
+    id: 'l4' as const,
+    number: 'L4',
+    label: 'Business Applications',
+    color: 'blue' as const,
+    bgClass: 'bg-blue-700',
+    textClass: 'text-blue-300',
+    borderClass: 'border-blue-600/40',
+    rowBgClass: 'bg-blue-950/20',
+  },
+  {
+    id: 'l5' as const,
+    number: 'L5',
+    label: 'Customer Facing Applications',
+    color: 'purple' as const,
+    bgClass: 'bg-purple-700',
+    textClass: 'text-purple-300',
+    borderClass: 'border-purple-600/40',
+    rowBgClass: 'bg-purple-950/20',
+  },
+] as const
+
+export type LayerId = typeof LAYER_DEFS[number]['id']
+
+// Solving contexts for the carousel (5 slides)
+export const SOLVING_CONTEXTS = [
+  {
+    title: 'Finance Consolidation Engine',
+    productIds: ['prod-esal', 'prod-finance-engine', 'prod-adi-chain', 'prod-effora'],
+  },
+  {
+    title: 'Sovereign AI Infra',
+    productIds: ['prod-corerun-aigw', 'prod-cyberpod', 'prod-agentsight', 'prod-agentic-ocr', 'prod-corerun', 'prod-hci'],
+  },
+  {
+    title: 'Workforce & HR',
+    productIds: ['prod-skillforge', 'prod-actionly', 'prod-support-ops', 'prod-harmony-crm'],
+  },
+  {
+    title: 'Risk & Compliance',
+    productIds: ['prod-scalerisk', 'prod-stratify', 'prod-lighthouse', 'prod-c3'],
+  },
+  {
+    title: 'Cyber Security',
+    productIds: ['prod-cyberpod', 'prod-c3', 'prod-hci', 'prod-stratify'],
   },
 ] as const

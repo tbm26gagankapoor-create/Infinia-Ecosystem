@@ -17,9 +17,9 @@ import {
 import {
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
 } from '@/components/ui/table'
-import { PRODUCTS, type Phase, type ProductStream } from '@/lib/mock-data'
+import { PRODUCTS, type Phase, type ProductLayer } from '@/lib/mock-data'
 import { formatCurrency, formatNumber } from '@/lib/formatters'
-import { STREAM_DEFS, stagger } from '@/lib/constants'
+import { LAYER_DEFS, stagger } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 type SortKey = 'name' | 'mrr' | 'mau' | 'phase'
@@ -34,9 +34,9 @@ const PHASE_FILTERS: Array<{ label: string; value: Phase | 'all' }> = [
   { label: 'Sunset', value: 'sunset' },
 ]
 
-const STREAM_FILTERS: Array<{ label: string; value: ProductStream | 'all' }> = [
-  { label: 'All Streams', value: 'all' },
-  ...STREAM_DEFS.map(s => ({ label: s.label, value: s.id })),
+const LAYER_FILTERS: Array<{ label: string; value: ProductLayer | 'all' }> = [
+  { label: 'All Layers', value: 'all' },
+  ...LAYER_DEFS.map(l => ({ label: `${l.number} — ${l.label}`, value: l.id })),
 ]
 
 const PHASE_ORDER: Record<Phase, number> = { rd: 0, alpha: 1, beta: 2, ga: 3, sunset: 4 }
@@ -44,14 +44,14 @@ const PHASE_ORDER: Record<Phase, number> = { rd: 0, alpha: 1, beta: 2, ga: 3, su
 export default function Products() {
   const [query, setQuery] = useState('')
   const [phaseFilter, setPhaseFilter] = useState<Phase | 'all'>('all')
-  const [streamFilter, setStreamFilter] = useState<ProductStream | 'all'>('all')
+  const [layerFilter, setLayerFilter] = useState<ProductLayer | 'all'>('all')
   const [sort, setSort] = useState<SortKey>('name')
   const [view, setView] = useState<ViewMode>('grid')
 
   const filtered = useMemo(() => {
     let list = PRODUCTS.filter(p => {
       if (phaseFilter !== 'all' && p.phase !== phaseFilter) return false
-      if (streamFilter !== 'all' && p.stream !== streamFilter) return false
+      if (layerFilter !== 'all' && p.layer !== layerFilter) return false
       if (query) {
         const q = query.toLowerCase()
         return (
@@ -74,14 +74,14 @@ export default function Products() {
     })
 
     return list
-  }, [query, phaseFilter, streamFilter, sort])
+  }, [query, phaseFilter, layerFilter, sort])
 
   return (
     <div className="space-y-5">
       <motion.div {...stagger(0)}>
         <PageHeader
           title="Product Catalog"
-          subtitle={`${PRODUCTS.length} products across Foundation, AI Foundation, and Agents streams`}
+          subtitle={`${PRODUCTS.length} products across 5 sovereign layers`}
         />
       </motion.div>
 
@@ -138,12 +138,12 @@ export default function Products() {
             />
           ))}
           <span className="text-border/60 text-xs self-center px-1">|</span>
-          {STREAM_FILTERS.map(f => (
+          {LAYER_FILTERS.map(f => (
             <FilterPill
               key={f.value}
               label={f.label}
-              active={streamFilter === f.value}
-              onClick={() => setStreamFilter(f.value)}
+              active={layerFilter === f.value}
+              onClick={() => setLayerFilter(f.value)}
             />
           ))}
         </div>
@@ -163,10 +163,10 @@ export default function Products() {
         {filtered.length === 0 ? (
           <EmptyState
             title="No products match your filters"
-            description="Try adjusting your search or clearing the phase/stream filters."
+            description="Try adjusting your search or clearing the phase/layer filters."
             action={
               <Button variant="outline" size="sm" className="text-xs h-7"
-                onClick={() => { setQuery(''); setPhaseFilter('all'); setStreamFilter('all') }}
+                onClick={() => { setQuery(''); setPhaseFilter('all'); setLayerFilter('all') }}
               >
                 Clear filters
               </Button>
@@ -185,7 +185,7 @@ export default function Products() {
                 <TableRow className="hover:bg-transparent border-border/40">
                   <TableHead className="text-[11px] text-muted-foreground w-[280px]">Product</TableHead>
                   <TableHead className="text-[11px] text-muted-foreground">Phase</TableHead>
-                  <TableHead className="text-[11px] text-muted-foreground">Stream</TableHead>
+                  <TableHead className="text-[11px] text-muted-foreground">Layer</TableHead>
                   <TableHead className="text-[11px] text-muted-foreground">Status</TableHead>
                   <TableHead className="text-[11px] text-muted-foreground text-right">MRR</TableHead>
                   <TableHead className="text-[11px] text-muted-foreground text-right">MAU</TableHead>
@@ -194,7 +194,8 @@ export default function Products() {
               </TableHeader>
               <TableBody>
                 {filtered.map(p => {
-                  const streamLabel = STREAM_DEFS.find(s => s.id === p.stream)?.label ?? p.stream
+                  const layerDef = LAYER_DEFS.find(l => l.id === p.layer)
+                  const layerLabel = layerDef ? `${layerDef.number} — ${layerDef.label}` : p.layer
                   return (
                     <TableRow key={p.id} className="border-border/30 hover:bg-card-hover">
                       <TableCell className="py-2.5">
@@ -215,7 +216,7 @@ export default function Products() {
                         <PhaseBadge phase={p.phase} showDot />
                       </TableCell>
                       <TableCell className="py-2.5">
-                        <span className="text-[11px] text-muted-foreground">{streamLabel}</span>
+                        <span className="text-[11px] text-muted-foreground">{layerLabel}</span>
                       </TableCell>
                       <TableCell className="py-2.5">
                         <StatusBadge status={p.status} />

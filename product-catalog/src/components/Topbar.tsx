@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { label: 'Home', href: '/', iconName: 'home' as const },
   { label: 'Products', href: '/products', iconName: 'catalog' as const },
   { label: 'Dashboard', href: '/dashboard', iconName: 'dashboard' as const },
-  { label: 'Analytics', href: '/analytics', iconName: 'analytics' as const },
   { label: 'Teams', href: '/teams', iconName: 'teams' as const },
 ]
 
@@ -39,7 +38,7 @@ function NavIconLink({ to, iconName, label, isActive }: {
   )
 }
 
-export function CatalogTopbarNav() {
+export function Topbar() {
   const { pathname } = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
 
