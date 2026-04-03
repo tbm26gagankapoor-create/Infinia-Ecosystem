@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
 import { Layout } from './components/Layout'
+import { ThemeProvider } from './lib/theme'
 
 const Home          = lazy(() => import('./pages/Home'))
 const Dashboard     = lazy(() => import('./pages/Dashboard'))
@@ -20,17 +21,19 @@ function PageLoader() {
 export default function App() {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '')
   return (
-    <BrowserRouter basename={base}>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index                   element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
-          <Route path="/dashboard"       element={<Suspense fallback={<PageLoader />}><Dashboard /></Suspense>} />
-          <Route path="/products"        element={<Suspense fallback={<PageLoader />}><Products /></Suspense>} />
-          <Route path="/products/:id"    element={<Suspense fallback={<PageLoader />}><ProductDetail /></Suspense>} />
-          <Route path="/analytics"       element={<Suspense fallback={<PageLoader />}><Analytics /></Suspense>} />
-          <Route path="/teams"           element={<Suspense fallback={<PageLoader />}><Teams /></Suspense>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter basename={base}>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route index                   element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
+            <Route path="/dashboard"       element={<Suspense fallback={<PageLoader />}><Dashboard /></Suspense>} />
+            <Route path="/products"        element={<Suspense fallback={<PageLoader />}><Products /></Suspense>} />
+            <Route path="/products/:id"    element={<Suspense fallback={<PageLoader />}><ProductDetail /></Suspense>} />
+            <Route path="/analytics"       element={<Suspense fallback={<PageLoader />}><Analytics /></Suspense>} />
+            <Route path="/teams"           element={<Suspense fallback={<PageLoader />}><Teams /></Suspense>} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
