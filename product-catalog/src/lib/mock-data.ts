@@ -373,7 +373,7 @@ export const PRODUCTS: Product[] = [
     phase: 'beta',
     status: 'active',
     stream: 'agents',
-    productManager: 'Sara Al Rashid',
+    productManager: 'Venky',
     foundedDate: '2025-04-01',
     websiteUrl: 'https://www.zysec.ai/',
     tags: ['ai', 'data-intelligence', 'enterprise', 'sovereign', 'automation'],
