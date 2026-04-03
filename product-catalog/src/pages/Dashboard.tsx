@@ -71,10 +71,10 @@ export default function Dashboard() {
           description={`${formatNumber(TOTAL_USERS)} total registered`}
         />
         <StatCard
-          label="Products in GA"
+          label="Products in Production"
           value={String(GA_COUNT)}
           trend={{ value: `${PRODUCTS_BY_PHASE.beta} in Beta`, up: true, text: 'moving up' }}
-          description="Generally available to customers"
+          description="Production ready for customers"
         />
       </motion.div>
 

@@ -30,7 +30,7 @@ const PHASE_FILTERS: Array<{ label: string; value: Phase | 'all' }> = [
   { label: 'R&D', value: 'rd' },
   { label: 'Alpha', value: 'alpha' },
   { label: 'Beta', value: 'beta' },
-  { label: 'GA', value: 'ga' },
+  { label: 'Production Ready', value: 'ga' },
   { label: 'Sunset', value: 'sunset' },
 ]
 

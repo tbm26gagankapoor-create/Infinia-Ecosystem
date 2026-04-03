@@ -129,7 +129,7 @@ export const PRODUCTS: Product[] = [
     updates: [
       { date: '2026-03-22', title: 'K8s 1.32 support', type: 'feature', description: 'Certified support for Kubernetes 1.32 across all cluster tiers.' },
       { date: '2026-02-14', title: 'GitOps workflows', type: 'feature', description: 'First-class ArgoCD integration for declarative cluster management.' },
-      { date: '2025-12-01', title: 'Policy engine GA', type: 'launch', description: 'OPA-based policy engine now available to all customers.' },
+      { date: '2025-12-01', title: 'Policy engine production ready', type: 'launch', description: 'OPA-based policy engine now available to all customers.' },
     ],
   },
 
@@ -154,7 +154,7 @@ export const PRODUCTS: Product[] = [
     revenue: { mrr: 302000, arr: 3624000, growthRate: 6.1, history: makeRevHistory(198000, 3.2) },
     usage: { dau: 1100, mau: 3800, totalUsers: 9200, growthRate: 7, history: makeUsageHistory(2400, 3.5) },
     updates: [
-      { date: '2026-03-10', title: 'GPU passthrough GA', type: 'launch', description: 'NVIDIA GPU passthrough now supported on all bare-metal tiers.' },
+      { date: '2026-03-10', title: 'GPU passthrough production ready', type: 'launch', description: 'NVIDIA GPU passthrough now supported on all bare-metal tiers.' },
       { date: '2026-01-20', title: 'Live migration v2', type: 'feature', description: 'Zero-downtime live migration with under 50ms switchover.' },
     ],
   },
@@ -212,7 +212,7 @@ export const PRODUCTS: Product[] = [
       { date: '2026-03-25', title: 'H200 GPU support', type: 'feature', description: 'NVIDIA H200 clusters now available in all Tier-1 regions.' },
       { date: '2026-02-20', title: 'Sovereign AI tier', type: 'launch', description: 'On-premise sovereign GPU cloud tier for government and regulated industries.' },
       { date: '2026-01-10', title: 'Parallel storage v2', type: 'feature', description: 'New parallel filesystem delivering 400 GB/s aggregate throughput.' },
-      { date: '2025-11-01', title: 'Multi-tenancy GA', type: 'launch', description: 'Full RBAC/ABAC tenant isolation reaches General Availability.' },
+      { date: '2025-11-01', title: 'Multi-tenancy production ready', type: 'launch', description: 'Full RBAC/ABAC tenant isolation reaches production ready status.' },
     ],
   },
 
@@ -247,7 +247,7 @@ export const PRODUCTS: Product[] = [
       { date: '2026-03-10', title: 'Budget Alerts', type: 'feature', description: 'Orgs can now configure spend threshold email + webhook alerts.' },
       { date: '2026-02-15', title: 'Audit Log Export', type: 'feature', description: 'CSV and JSON export for audit logs up to 90 days.' },
       { date: '2026-01-20', title: 'p99 Latency Fix', type: 'bugfix', description: 'Resolved tail latency spike under high concurrency on Redis pool exhaustion.' },
-      { date: '2025-11-01', title: 'GA Launch', type: 'milestone', description: 'AI Gateway reaches General Availability after 8 months in beta.' },
+      { date: '2025-11-01', title: 'Production Ready Launch', type: 'milestone', description: 'AI Gateway reaches production ready status after 8 months in beta.' },
     ],
   },
 

@@ -239,7 +239,7 @@ export default function Analytics() {
         <Card className="border-border/40">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium">Lifecycle Funnel</CardTitle>
-            <CardDescription className="text-xs">Products at each phase — R&D → GA</CardDescription>
+            <CardDescription className="text-xs">Products at each phase — R&D → Production Ready</CardDescription>
           </CardHeader>
           <CardContent className="px-2 pb-4">
             <ResponsiveContainer width="100%" height={CHART_MD}>

@@ -43,7 +43,7 @@ export const PHASE_CONFIG = {
     pill: 'bg-amber-950/40 text-amber-300/70 border-amber-800/30',
   },
   ga: {
-    label: 'GA',
+    label: 'Production Ready',
     dot: 'bg-emerald-500/70',
     text: 'text-emerald-300/70',
     pill: 'bg-emerald-950/40 text-emerald-300/70 border-emerald-800/30',
