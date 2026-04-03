@@ -9,6 +9,13 @@ function PhaseDot({ phase }: { phase: keyof typeof PHASE_CONFIG }) {
   return <span className={cn('inline-block h-1.5 w-1.5 rounded-full flex-shrink-0', cfg.dot)} />
 }
 
+// Funnel: wider at the bottom (foundation), narrower at the top (agents)
+const FUNNEL_PADDING: Record<string, string> = {
+  'agents':        'lg:pl-16 lg:pr-20',
+  'ai-foundation': 'lg:pl-6 lg:pr-10',
+  'foundation':    '',
+}
+
 export function ProductStackDiagram() {
   // Render bottom-to-top: foundation → ai-foundation → agents
   const rows = [...STREAM_DEFS]
@@ -34,8 +41,8 @@ export function ProductStackDiagram() {
                 </div>
               </div>
 
-              {/* Product badges */}
-              <div className="flex flex-wrap gap-3 flex-1">
+              {/* Product badges — funnel padding narrows upper tiers */}
+              <div className={cn('flex flex-wrap gap-3 flex-1', FUNNEL_PADDING[stream.id])}>
                 {products.map((product) => {
                   const phaseCfg = PHASE_CONFIG[product.phase]
                   return (
