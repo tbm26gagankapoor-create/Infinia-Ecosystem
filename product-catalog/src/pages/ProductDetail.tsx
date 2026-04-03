@@ -109,12 +109,12 @@ export default function ProductDetail() {
       {/* Tabs */}
       <motion.div {...stagger(2)}>
         <Tabs defaultValue="overview" className="space-y-5">
-          <TabsList className="bg-card/50 border border-border/40 h-8 p-0.5 gap-0.5">
+          <TabsList className="bg-card border border-border h-9 p-1 gap-1">
             {['overview', 'revenue', 'usage', 'updates', 'docs', 'team'].map(tab => (
               <TabsTrigger
                 key={tab}
                 value={tab}
-                className="h-7 px-3 text-xs capitalize data-[state=active]:bg-background data-[state=active]:shadow-none"
+                className="h-7 px-3 text-sm capitalize data-[state=active]:bg-primary/15 data-[state=active]:text-primary dark:data-[state=active]:text-primary data-[state=active]:shadow-none"
               >
                 {tab}
               </TabsTrigger>
