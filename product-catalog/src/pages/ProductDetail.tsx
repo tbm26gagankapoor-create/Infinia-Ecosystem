@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate, useNavigate } from 'react-router-dom'
 import { motion } from 'motion/react'
-import { ArrowLeft, ArrowRight, ExternalLink, FileText, BookOpen, BarChart2, Zap } from 'lucide-react'
+import { ArrowRight, ExternalLink, FileText, BookOpen, BarChart2, Zap } from 'lucide-react'
 import {
   AreaChart, Area, BarChart, Bar,
   XAxis, YAxis, CartesianGrid,
@@ -16,15 +16,12 @@ import { StatusBadge } from '@/components/StatusBadge'
 import { StatCard } from '@/components/StatCard'
 import { PRODUCTS, type DocType } from '@/lib/mock-data'
 import { formatCurrency, formatNumber, formatDate } from '@/lib/formatters'
-import { CHART_MD, STAT_GRID, stagger, LAYER_DEFS } from '@/lib/constants'
+import { CHART_MD, stagger, LAYER_DEFS } from '@/lib/constants'
+import { STAT_GRID, CHART_TOOLTIP_STYLE, CHART_LABEL_STYLE, CHART_AXIS_PROPS } from '@/lib/design-tokens'
 import { cn } from '@/lib/utils'
-
-const UPDATE_TYPE_STYLES: Record<string, string> = {
-  feature: 'bg-primary/10 text-primary',
-  bugfix: 'bg-destructive/10 text-destructive',
-  launch: 'bg-emerald-500/10 text-emerald-400',
-  milestone: 'bg-amber-500/10 text-amber-400',
-}
+import { usePageTitle } from '@/hooks/usePageTitle'
+import { UpdateTypeBadge } from '@/components/UpdateTypeBadge'
+import { AvatarInitials } from '@/components/AvatarInitials'
 
 const DOC_TYPE_ICON: Record<DocType, typeof FileText> = {
   prd: FileText,
@@ -45,37 +42,23 @@ export default function ProductDetail() {
   const navigate = useNavigate()
   const product = PRODUCTS.find(p => p.id === id)
 
+  usePageTitle(product?.name)
+
   if (!product) return <Navigate to="/products" replace />
 
   const layerDef = LAYER_DEFS.find(l => l.id === product.layer)
   const layerLabel = layerDef ? `${layerDef.number} — ${layerDef.label}` : product.layer
   const relatedProducts = PRODUCTS.filter(p => product.relatedProductIds.includes(p.id))
 
-  const TOOLTIP_STYLE = {
-    background: 'var(--card)',
-    border: '1px solid var(--border)',
-    borderRadius: '6px',
-    fontSize: 12,
-    color: 'var(--foreground)',
-  }
-  const LABEL_STYLE = { color: 'var(--muted-foreground)', fontSize: 11 }
-  const AXIS_PROPS = {
-    tick: { fontSize: 10, fill: 'var(--muted-foreground)' },
-    axisLine: false as const,
-    tickLine: false as const,
-  }
-
   return (
     <div className="space-y-5">
-      {/* Back nav */}
+      {/* Breadcrumb */}
       <motion.div {...stagger(0)}>
-        <Link
-          to="/products"
-          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          All products
-        </Link>
+        <nav className="flex items-center gap-1.5 text-xs text-muted-foreground">
+          <Link to="/products" className="hover:text-foreground transition-colors">Products</Link>
+          <span className="text-muted-foreground/30">/</span>
+          <span className="text-foreground/80 truncate max-w-[200px]">{product.name}</span>
+        </nav>
       </motion.div>
 
       {/* Product header */}
@@ -129,7 +112,7 @@ export default function ProductDetail() {
               <TabsTrigger
                 key={tab}
                 value={tab}
-                className="h-7 px-3 text-sm capitalize data-[state=active]:bg-primary/15 data-[state=active]:text-primary dark:data-[state=active]:text-primary data-[state=active]:shadow-none"
+                className="h-7 px-3 text-sm capitalize data-[state=active]:bg-primary/15 data-[state=active]:text-primary data-[state=active]:shadow-none"
               >
                 {tab}
               </TabsTrigger>
@@ -171,7 +154,7 @@ export default function ProductDetail() {
             {/* Mission */}
             <Card className="border-border/40">
               <CardContent className="p-4">
-                <p className="text-[11px] uppercase tracking-wider text-muted-foreground/50 mb-1.5">Mission</p>
+                <p className="text-[11px] uppercase tracking-wider text-muted-foreground/60 mb-1.5">Mission</p>
                 <p className="text-sm text-foreground/80 leading-relaxed">{product.mission}</p>
               </CardContent>
             </Card>
@@ -202,7 +185,7 @@ export default function ProductDetail() {
                     {product.techStack.map(t => (
                       <span
                         key={t}
-                        className="inline-flex items-center rounded border border-border/40 bg-muted/30 px-2 py-0.5 text-[11px] font-mono text-muted-foreground"
+                        className="inline-flex items-center rounded border border-border/40 bg-muted/20 px-2 py-0.5 text-[11px] font-mono text-muted-foreground"
                       >
                         {t}
                       </span>
@@ -273,12 +256,12 @@ export default function ProductDetail() {
                         </linearGradient>
                       </defs>
                       <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="var(--border)" />
-                      <XAxis dataKey="month" {...AXIS_PROPS} tickFormatter={v => v.slice(5)} />
+                      <XAxis dataKey="month" {...CHART_AXIS_PROPS} tickFormatter={v => v.slice(5)} />
                       <YAxis hide />
                       <Tooltip
                         formatter={((v: number) => [formatCurrency(v, true), 'MRR']) as never}
-                        contentStyle={TOOLTIP_STYLE}
-                        labelStyle={LABEL_STYLE}
+                        contentStyle={CHART_TOOLTIP_STYLE}
+                        labelStyle={CHART_LABEL_STYLE}
                       />
                       <Area type="monotone" dataKey="amount" stroke="var(--chart-1)" strokeWidth={1.5} fill="url(#revGrad)" />
                     </AreaChart>
@@ -316,12 +299,12 @@ export default function ProductDetail() {
                 <ResponsiveContainer width="100%" height={CHART_MD}>
                   <BarChart data={product.usage.history} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
                     <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="var(--border)" />
-                    <XAxis dataKey="month" {...AXIS_PROPS} tickFormatter={v => v.slice(5)} />
+                    <XAxis dataKey="month" {...CHART_AXIS_PROPS} tickFormatter={v => v.slice(5)} />
                     <YAxis hide />
                     <Tooltip
                       formatter={((v: number) => [formatNumber(v), 'MAU']) as never}
-                      contentStyle={TOOLTIP_STYLE}
-                      labelStyle={LABEL_STYLE}
+                      contentStyle={CHART_TOOLTIP_STYLE}
+                      labelStyle={CHART_LABEL_STYLE}
                     />
                     <Bar dataKey="users" fill="var(--chart-1)" radius={[3, 3, 0, 0]} />
                   </BarChart>
@@ -343,12 +326,7 @@ export default function ProductDetail() {
                 {product.updates.map((u, i) => (
                   <Card key={i} className="border-border/40">
                     <CardContent className="p-4 flex items-start gap-3">
-                      <span className={cn(
-                        'inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider shrink-0 mt-0.5',
-                        UPDATE_TYPE_STYLES[u.type] ?? 'bg-zinc-500/10 text-zinc-400'
-                      )}>
-                        {u.type}
-                      </span>
+                      <UpdateTypeBadge type={u.type} className="mt-0.5" />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2">
                           <span className="text-sm font-medium text-foreground">{u.title}</span>
@@ -448,13 +426,11 @@ export default function ProductDetail() {
           <TabsContent value="team" className="mt-0">
             <Card className="border-border/40 max-w-sm">
               <CardContent className="p-4 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/15 flex items-center justify-center text-sm font-semibold text-primary shrink-0">
-                  {product.productManager.split(' ').map(n => n[0]).join('')}
-                </div>
+                <AvatarInitials name={product.productManager} />
                 <div>
                   <div className="text-sm font-medium text-foreground">{product.productManager}</div>
                   <div className="text-[11px] text-muted-foreground mt-0.5">Product Manager</div>
-                  <div className="text-[10px] text-muted-foreground/50 mt-1 font-mono">{product.shortName}</div>
+                  <div className="text-[10px] text-muted-foreground/60 mt-1 font-mono">{product.shortName}</div>
                 </div>
               </CardContent>
             </Card>

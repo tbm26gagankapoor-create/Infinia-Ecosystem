@@ -21,6 +21,8 @@ import { PRODUCTS, type Phase, type ProductLayer } from '@/lib/mock-data'
 import { formatCurrency, formatNumber } from '@/lib/formatters'
 import { LAYER_DEFS, stagger } from '@/lib/constants'
 import { cn } from '@/lib/utils'
+import { AvatarInitials } from '@/components/AvatarInitials'
+import { usePageTitle } from '@/hooks/usePageTitle'
 
 type SortKey = 'name' | 'mrr' | 'mau' | 'phase'
 type ViewMode = 'grid' | 'table'
@@ -42,10 +44,11 @@ const LAYER_FILTERS: Array<{ label: string; value: ProductLayer | 'all' }> = [
 const PHASE_ORDER: Record<Phase, number> = { rd: 0, alpha: 1, beta: 2, ga: 3, sunset: 4 }
 
 export default function Products() {
+  usePageTitle('Products')
   const [query, setQuery] = useState('')
   const [phaseFilter, setPhaseFilter] = useState<Phase | 'all'>('all')
   const [layerFilter, setLayerFilter] = useState<ProductLayer | 'all'>('all')
-  const [sort, setSort] = useState<SortKey>('name')
+  const [sort, setSort] = useState<SortKey>('mrr')
   const [view, setView] = useState<ViewMode>('grid')
 
   const filtered = useMemo(() => {
@@ -93,11 +96,11 @@ export default function Products() {
             placeholder="Search products, tags..."
             value={query}
             onChange={e => setQuery(e.target.value)}
-            className="h-8 text-xs max-w-[260px] bg-card border-border/50"
+            className="h-8 text-xs max-w-[260px] bg-card border-border/40"
           />
           <div className="flex items-center gap-1 ml-auto">
             <Select value={sort} onValueChange={v => setSort(v as SortKey)}>
-              <SelectTrigger className="h-8 text-xs w-[140px] bg-card border-border/50">
+              <SelectTrigger className="h-8 text-xs w-[140px] bg-card border-border/40">
                 <ArrowUpDown className="h-3 w-3 mr-1 text-muted-foreground" />
                 <SelectValue />
               </SelectTrigger>
@@ -128,7 +131,7 @@ export default function Products() {
         </div>
 
         {/* Phase pills */}
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex gap-1.5 overflow-x-auto pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible scrollbar-none">
           {PHASE_FILTERS.map(f => (
             <FilterPill
               key={f.value}
@@ -137,7 +140,7 @@ export default function Products() {
               onClick={() => setPhaseFilter(f.value)}
             />
           ))}
-          <span className="text-border/60 text-xs self-center px-1">|</span>
+          <span className="text-muted-foreground/30 text-xs self-center px-1 shrink-0">|</span>
           {LAYER_FILTERS.map(f => (
             <FilterPill
               key={f.value}
@@ -151,7 +154,7 @@ export default function Products() {
 
       {/* Results count */}
       <motion.div {...stagger(2)}>
-        <p className="text-[11px] text-muted-foreground">
+        <p className="text-xs text-muted-foreground">
           {filtered.length === PRODUCTS.length
             ? `Showing all ${PRODUCTS.length} products`
             : `${filtered.length} of ${PRODUCTS.length} products`}
@@ -173,23 +176,23 @@ export default function Products() {
             }
           />
         ) : view === 'grid' ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
             {filtered.map(p => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
         ) : (
-          <div className="rounded-md border border-border/40 overflow-hidden">
+          <div className="rounded-md border border-border/40 overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow className="hover:bg-transparent border-border/40">
-                  <TableHead className="text-[11px] text-muted-foreground w-[280px]">Product</TableHead>
-                  <TableHead className="text-[11px] text-muted-foreground">Phase</TableHead>
-                  <TableHead className="text-[11px] text-muted-foreground">Layer</TableHead>
-                  <TableHead className="text-[11px] text-muted-foreground">Status</TableHead>
-                  <TableHead className="text-[11px] text-muted-foreground text-right">MRR</TableHead>
-                  <TableHead className="text-[11px] text-muted-foreground text-right">MAU</TableHead>
-                  <TableHead className="text-[11px] text-muted-foreground">Lead</TableHead>
+                  <TableHead className="text-[10px] text-muted-foreground/60 uppercase tracking-wider w-[280px]">Product</TableHead>
+                  <TableHead className="text-[10px] text-muted-foreground/60 uppercase tracking-wider">Phase</TableHead>
+                  <TableHead className="text-[10px] text-muted-foreground/60 uppercase tracking-wider">Layer</TableHead>
+                  <TableHead className="text-[10px] text-muted-foreground/60 uppercase tracking-wider">Status</TableHead>
+                  <TableHead className="text-[10px] text-muted-foreground/60 uppercase tracking-wider text-right">MRR</TableHead>
+                  <TableHead className="text-[10px] text-muted-foreground/60 uppercase tracking-wider text-right">MAU</TableHead>
+                  <TableHead className="text-[10px] text-muted-foreground/60 uppercase tracking-wider">Lead</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -197,7 +200,7 @@ export default function Products() {
                   const layerDef = LAYER_DEFS.find(l => l.id === p.layer)
                   const layerLabel = layerDef ? `${layerDef.number} — ${layerDef.label}` : p.layer
                   return (
-                    <TableRow key={p.id} className="border-border/30 hover:bg-card-hover">
+                    <TableRow key={p.id} className="border-border/20 hover:bg-card-hover">
                       <TableCell className="py-2.5">
                         <Link
                           to={`/products/${p.id}`}
@@ -228,7 +231,13 @@ export default function Products() {
                         {p.usage.mau > 0 ? formatNumber(p.usage.mau) : '—'}
                       </TableCell>
                       <TableCell className="py-2.5">
-                        <span className="text-[11px] text-muted-foreground">{p.productManager}</span>
+                        <Link
+                          to="/teams"
+                          className="inline-flex items-center gap-1.5 rounded-full border border-border/40 bg-card px-2 py-0.5 hover:border-border/60 hover:bg-card-hover transition-colors"
+                        >
+                          <AvatarInitials name={p.productManager} size="sm" className="h-4 w-4 text-[7px]" />
+                          <span className="text-[11px] text-muted-foreground whitespace-nowrap">{p.productManager.split(' ')[0]}</span>
+                        </Link>
                       </TableCell>
                     </TableRow>
                   )

@@ -15,16 +15,30 @@ import {
   PRODUCTS_BY_PHASE, PORTFOLIO_REVENUE_HISTORY, ALL_RECENT_UPDATES, ALL_MONTHS,
 } from '@/lib/mock-data'
 import { formatCurrency, formatNumber, formatDate } from '@/lib/formatters'
-import { CHART_MD, CHART_LG, STAT_GRID, stagger, PHASE_CONFIG, LAYER_DEFS } from '@/lib/constants'
+import { CHART_MD, CHART_LG, stagger, PHASE_CONFIG, LAYER_DEFS } from '@/lib/constants'
+import {
+  STAT_GRID, POSITIVE, CHART_TOOLTIP_STYLE, CHART_LABEL_STYLE, CHART_AXIS_PROPS, CHART_LINE_COLORS,
+} from '@/lib/design-tokens'
+import { UpdateTypeBadge } from '@/components/UpdateTypeBadge'
+import { usePageTitle } from '@/hooks/usePageTitle'
 
 // — Overview data —
 const GA_COUNT = PRODUCTS.filter(p => p.phase === 'ga').length
 const ACTIVE_COUNT = PRODUCTS.filter(p => p.status === 'active').length
+const BETA_COUNT = PRODUCTS.filter(p => p.phase === 'beta').length
 
 const TOP_BY_MRR = [...PRODUCTS]
   .filter(p => p.revenue.mrr > 0)
   .sort((a, b) => b.revenue.mrr - a.revenue.mrr)
   .slice(0, 6)
+
+const SPOTLIGHT_EARNER = TOP_BY_MRR[0]
+const SPOTLIGHT_GROWER = [...PRODUCTS]
+  .filter(p => p.revenue.growthRate > 0)
+  .sort((a, b) => b.revenue.growthRate - a.revenue.growthRate)[0]
+const HIGH_MAU_GROWTH = [...PRODUCTS]
+  .filter(p => p.usage.growthRate >= 30)
+  .length
 
 const PHASE_CHART_DATA = Object.entries(PRODUCTS_BY_PHASE)
   .filter(([, count]) => count > 0)
@@ -34,13 +48,6 @@ const PHASE_CHART_DATA = Object.entries(PRODUCTS_BY_PHASE)
   }))
 
 const RECENT_5 = ALL_RECENT_UPDATES.slice(0, 5)
-
-const UPDATE_TYPE_STYLES: Record<string, string> = {
-  feature: 'bg-primary/10 text-primary',
-  bugfix: 'bg-destructive/10 text-destructive',
-  launch: 'bg-emerald-500/10 text-emerald-400',
-  milestone: 'bg-amber-500/10 text-amber-400',
-}
 
 // — Analytics data —
 const TOP_REVENUE_PRODUCTS = [...PRODUCTS]
@@ -91,22 +98,9 @@ const GROWTH_LEADERS = [...PRODUCTS]
   .sort((a, b) => b.usage.growthRate - a.usage.growthRate)
   .slice(0, 6)
 
-const TOOLTIP_STYLE = {
-  background: 'var(--card)',
-  border: '1px solid var(--border)',
-  borderRadius: '6px',
-  fontSize: 12,
-  color: 'var(--foreground)',
-}
-const LABEL_STYLE = { color: 'var(--muted-foreground)', fontSize: 11 }
-const AXIS_PROPS = {
-  tick: { fontSize: 10, fill: 'var(--muted-foreground)' },
-  axisLine: false as const,
-  tickLine: false as const,
-}
-const LINE_COLORS = ['var(--chart-1)', 'var(--chart-2)', 'var(--chart-3)', 'var(--chart-4)']
 
 export default function Dashboard() {
+  usePageTitle('Dashboard')
   return (
     <div className="space-y-6">
       <motion.div {...stagger(0)}>
@@ -118,13 +112,62 @@ export default function Dashboard() {
 
       <motion.div {...stagger(1)}>
         <Tabs defaultValue="overview">
-          <TabsList className="mb-4">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          <TabsList className="bg-card border border-border/40 h-9 p-1 gap-1 mb-4">
+            <TabsTrigger value="overview" className="h-7 px-3 text-sm data-[state=active]:bg-primary/15 data-[state=active]:text-primary data-[state=active]:shadow-none">Overview</TabsTrigger>
+            <TabsTrigger value="analytics" className="h-7 px-3 text-sm data-[state=active]:bg-primary/15 data-[state=active]:text-primary data-[state=active]:shadow-none">Analytics</TabsTrigger>
           </TabsList>
 
           {/* ── Overview tab ── */}
           <TabsContent value="overview" className="space-y-6 mt-0">
+
+            {/* Quick signals */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <Link to={`/products/${SPOTLIGHT_EARNER.id}`} className="group">
+                <Card className="border-border/40 hover:border-border/60 transition-colors">
+                  <CardContent className="p-3 flex items-center gap-3">
+                    <ProductIcon icon={SPOTLIGHT_EARNER.icon} className="text-xl leading-none shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[10px] text-muted-foreground/60 uppercase tracking-wider mb-0.5">Top Revenue Product</div>
+                      <div className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors truncate">
+                        {SPOTLIGHT_EARNER.shortName}
+                      </div>
+                      <div className="text-xs font-mono text-foreground">{formatCurrency(SPOTLIGHT_EARNER.revenue.mrr, true)}<span className={`ml-1.5 ${POSITIVE}`}>+{SPOTLIGHT_EARNER.revenue.growthRate}%</span></div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to={`/products/${SPOTLIGHT_GROWER.id}`} className="group">
+                <Card className="border-border/40 hover:border-border/60 transition-colors">
+                  <CardContent className="p-3 flex items-center gap-3">
+                    <ProductIcon icon={SPOTLIGHT_GROWER.icon} className="text-xl leading-none shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[10px] text-muted-foreground/60 uppercase tracking-wider mb-0.5">Fastest Revenue Growth</div>
+                      <div className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors truncate">
+                        {SPOTLIGHT_GROWER.shortName}
+                      </div>
+                      <div className={`text-xs font-mono ${POSITIVE}`}>+{SPOTLIGHT_GROWER.revenue.growthRate}% MoM</div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to="/products" className="group">
+                <Card className="border-border/40 hover:border-border/60 transition-colors">
+                  <CardContent className="p-3 flex items-center gap-3">
+                    <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
+                      <span className="text-sm font-bold text-primary">{BETA_COUNT}</span>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[10px] text-muted-foreground/60 uppercase tracking-wider mb-0.5">Beta → Production Pipeline</div>
+                      <div className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                        {BETA_COUNT} products in Beta
+                      </div>
+                      <div className="text-xs text-muted-foreground">{HIGH_MAU_GROWTH} with &gt;30% user growth</div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+
             {/* KPI row */}
             <div className={STAT_GRID}>
               <StatCard
@@ -170,18 +213,12 @@ export default function Dashboard() {
                         </linearGradient>
                       </defs>
                       <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="var(--border)" />
-                      <XAxis
-                        dataKey="month"
-                        tick={{ fontSize: 10, fill: 'var(--muted-foreground)' }}
-                        tickFormatter={v => v.slice(5)}
-                        axisLine={false}
-                        tickLine={false}
-                      />
+                      <XAxis dataKey="month" {...CHART_AXIS_PROPS} tickFormatter={v => v.slice(5)} />
                       <YAxis hide />
                       <Tooltip
                         formatter={((v: number) => [formatCurrency(v, true), 'MRR']) as never}
-                        contentStyle={TOOLTIP_STYLE}
-                        labelStyle={LABEL_STYLE}
+                        contentStyle={CHART_TOOLTIP_STYLE}
+                        labelStyle={CHART_LABEL_STYLE}
                       />
                       <Area
                         type="monotone"
@@ -213,7 +250,7 @@ export default function Dashboard() {
                       <YAxis hide allowDecimals={false} />
                       <Tooltip
                         formatter={((v: number) => [v, 'Products']) as never}
-                        contentStyle={TOOLTIP_STYLE}
+                        contentStyle={CHART_TOOLTIP_STYLE}
                       />
                       <Bar dataKey="count" fill="var(--chart-1)" radius={[3, 3, 0, 0]} />
                     </BarChart>
@@ -235,15 +272,15 @@ export default function Dashboard() {
                     return (
                       <Link key={p.id} to={`/products/${p.id}`} className="block group">
                         <div className="flex items-center gap-3">
-                          <div className="text-[11px] text-muted-foreground/50 w-4 text-right shrink-0">{i + 1}</div>
+                          <div className="text-[11px] text-muted-foreground/60 w-4 text-right shrink-0">{i + 1}</div>
                           <ProductIcon icon={p.icon} className="text-sm" />
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between gap-2 mb-1">
                               <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors truncate">{p.shortName}</span>
                               <span className="text-xs font-mono text-foreground shrink-0">{formatCurrency(p.revenue.mrr, true)}</span>
                             </div>
-                            <div className="h-1 rounded-full bg-border/40 overflow-hidden">
-                              <div className="h-full rounded-full bg-primary/60 transition-all" style={{ width: `${pct}%` }} />
+                            <div className="h-1 rounded-full bg-muted/30 overflow-hidden">
+                              <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${pct}%` }} />
                             </div>
                           </div>
                         </div>
@@ -260,9 +297,7 @@ export default function Dashboard() {
                 <CardContent className="space-y-3 pb-4">
                   {RECENT_5.map((u, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <span className={`inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider shrink-0 mt-0.5 ${UPDATE_TYPE_STYLES[u.type] ?? 'bg-zinc-500/10 text-zinc-400'}`}>
-                        {u.type}
-                      </span>
+                      <UpdateTypeBadge type={u.type} className="mt-0.5" />
                       <div className="min-w-0 flex-1">
                         <Link to={`/products/${u.productId}`} className="text-xs font-medium text-foreground hover:text-primary transition-colors block truncate">
                           {u.title}
@@ -322,12 +357,12 @@ export default function Dashboard() {
                       </linearGradient>
                     </defs>
                     <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="var(--border)" />
-                    <XAxis dataKey="month" {...AXIS_PROPS} tickFormatter={v => v.slice(5)} />
+                    <XAxis dataKey="month" {...CHART_AXIS_PROPS} tickFormatter={v => v.slice(5)} />
                     <YAxis hide />
                     <Tooltip
                       formatter={((v: number) => [formatCurrency(v, true), 'MRR']) as never}
-                      contentStyle={TOOLTIP_STYLE}
-                      labelStyle={LABEL_STYLE}
+                      contentStyle={CHART_TOOLTIP_STYLE}
+                      labelStyle={CHART_LABEL_STYLE}
                     />
                     <Area type="monotone" dataKey="amount" stroke="var(--chart-1)" strokeWidth={1.5} fill="url(#portfolioGrad)" />
                   </AreaChart>
@@ -346,12 +381,12 @@ export default function Dashboard() {
                   <ResponsiveContainer width="100%" height={CHART_MD}>
                     <LineChart data={REVENUE_COMPARE_DATA} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
                       <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="var(--border)" />
-                      <XAxis dataKey="month" {...AXIS_PROPS} tickFormatter={v => v.slice(5)} />
+                      <XAxis dataKey="month" {...CHART_AXIS_PROPS} tickFormatter={v => v.slice(5)} />
                       <YAxis hide />
                       <Tooltip
                         formatter={((v: number, name: string) => [formatCurrency(v, true), name]) as never}
-                        contentStyle={TOOLTIP_STYLE}
-                        labelStyle={LABEL_STYLE}
+                        contentStyle={CHART_TOOLTIP_STYLE}
+                        labelStyle={CHART_LABEL_STYLE}
                       />
                       <Legend
                         wrapperStyle={{ fontSize: 10, color: 'var(--muted-foreground)', paddingTop: 8 }}
@@ -359,7 +394,7 @@ export default function Dashboard() {
                         iconSize={14}
                       />
                       {TOP_REVENUE_PRODUCTS.map((p, i) => (
-                        <Line key={p.id} type="monotone" dataKey={p.shortName} stroke={LINE_COLORS[i]} strokeWidth={1.5} dot={false} />
+                        <Line key={p.id} type="monotone" dataKey={p.shortName} stroke={CHART_LINE_COLORS[i]} strokeWidth={1.5} dot={false} />
                       ))}
                     </LineChart>
                   </ResponsiveContainer>
@@ -375,12 +410,12 @@ export default function Dashboard() {
                   <ResponsiveContainer width="100%" height={CHART_MD}>
                     <LineChart data={MAU_COMPARE_DATA} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
                       <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="var(--border)" />
-                      <XAxis dataKey="month" {...AXIS_PROPS} tickFormatter={v => v.slice(5)} />
+                      <XAxis dataKey="month" {...CHART_AXIS_PROPS} tickFormatter={v => v.slice(5)} />
                       <YAxis hide />
                       <Tooltip
                         formatter={((v: number, name: string) => [formatNumber(v), name]) as never}
-                        contentStyle={TOOLTIP_STYLE}
-                        labelStyle={LABEL_STYLE}
+                        contentStyle={CHART_TOOLTIP_STYLE}
+                        labelStyle={CHART_LABEL_STYLE}
                       />
                       <Legend
                         wrapperStyle={{ fontSize: 10, color: 'var(--muted-foreground)', paddingTop: 8 }}
@@ -388,7 +423,7 @@ export default function Dashboard() {
                         iconSize={14}
                       />
                       {TOP_MAU_PRODUCTS.map((p, i) => (
-                        <Line key={p.id} type="monotone" dataKey={p.shortName} stroke={LINE_COLORS[i]} strokeWidth={1.5} dot={false} />
+                        <Line key={p.id} type="monotone" dataKey={p.shortName} stroke={CHART_LINE_COLORS[i]} strokeWidth={1.5} dot={false} />
                       ))}
                     </LineChart>
                   </ResponsiveContainer>
@@ -407,12 +442,12 @@ export default function Dashboard() {
                   <ResponsiveContainer width="100%" height={CHART_MD}>
                     <BarChart data={FUNNEL_DATA} layout="vertical" margin={{ top: 4, right: 16, left: 0, bottom: 0 }}>
                       <CartesianGrid horizontal={false} strokeDasharray="3 3" stroke="var(--border)" />
-                      <XAxis type="number" {...AXIS_PROPS} allowDecimals={false} />
-                      <YAxis type="category" dataKey="phase" {...AXIS_PROPS} width={48} />
+                      <XAxis type="number" {...CHART_AXIS_PROPS} allowDecimals={false} />
+                      <YAxis type="category" dataKey="phase" {...CHART_AXIS_PROPS} width={48} />
                       <Tooltip
                         formatter={((v: number) => [v, 'Products']) as never}
-                        contentStyle={TOOLTIP_STYLE}
-                        labelStyle={LABEL_STYLE}
+                        contentStyle={CHART_TOOLTIP_STYLE}
+                        labelStyle={CHART_LABEL_STYLE}
                       />
                       <Bar dataKey="count" fill="var(--chart-1)" radius={[0, 3, 3, 0]} />
                     </BarChart>
@@ -439,8 +474,8 @@ export default function Dashboard() {
                             <span className="text-foreground">{formatCurrency(s.mrr, true)}</span>
                           </div>
                         </div>
-                        <div className="h-1.5 rounded-full bg-border/40 overflow-hidden">
-                          <div className="h-full rounded-full bg-primary/60 transition-all" style={{ width: `${pct}%` }} />
+                        <div className="h-1.5 rounded-full bg-muted/30 overflow-hidden">
+                          <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${pct}%` }} />
                         </div>
                       </div>
                     )
@@ -458,18 +493,18 @@ export default function Dashboard() {
               <CardContent className="pb-4 space-y-2">
                 {GROWTH_LEADERS.map((p, i) => (
                   <Link key={p.id} to={`/products/${p.id}`} className="flex items-center gap-3 group">
-                    <div className="text-[11px] text-muted-foreground/50 w-4 text-right shrink-0">{i + 1}</div>
+                    <div className="text-[11px] text-muted-foreground/60 w-4 text-right shrink-0">{i + 1}</div>
                     <ProductIcon icon={p.icon} className="text-sm" />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2 mb-1">
                         <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors truncate">
                           {p.shortName}
                         </span>
-                        <span className="text-xs font-mono text-emerald-400 shrink-0">+{p.usage.growthRate}%</span>
+                        <span className={`text-xs font-mono shrink-0 ${POSITIVE}`}>+{p.usage.growthRate}%</span>
                       </div>
-                      <div className="h-1 rounded-full bg-border/40 overflow-hidden">
+                      <div className="h-1 rounded-full bg-muted/30 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-primary/50 transition-all"
+                          className="h-full rounded-full bg-primary transition-all"
                           style={{ width: `${Math.min(p.usage.growthRate, 100)}%` }}
                         />
                       </div>

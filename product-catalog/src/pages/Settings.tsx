@@ -1,8 +1,10 @@
 import { PageHeader } from '@/components/PageHeader'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ThemeToggle } from '@/components/ThemeToggle'
+import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function Settings() {
+  usePageTitle('Settings')
   return (
     <div className="space-y-6">
       <PageHeader
